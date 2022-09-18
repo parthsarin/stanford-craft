@@ -16,6 +16,9 @@ const Footer = () => (
           <li>
             <a className="hover:underline" href="https://distal.stanford.edu/">Stanford DISTAL Lab</a>
           </li>
+          <li>
+            <a className="hover:underline" href="https://digitaleducation.stanford.edu/">Stanford Vice Provost for Digital Education</a>
+          </li>
         </ul>
       </div>
       <div></div>

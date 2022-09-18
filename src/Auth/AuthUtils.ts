@@ -1,8 +1,6 @@
-import { getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
-import swal from 'sweetalert2';
-import withReactContent from 'sweetalert2-react-content';
+import { getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
+import { MySwal, Toast } from '../Generic/Notify';
 
-const MySwal = withReactContent(swal);
 
 export function loginWithEmailPassword(email: string, password: string) {
   const auth = getAuth();
@@ -26,6 +24,19 @@ export function loginWithGoogle() {
         title: 'Error',
         text: error.message,
         icon: 'error',
+      });
+    })
+}
+
+export function signOutAndNotify(navigate: (path: string) => void) {
+  const auth = getAuth();
+
+  signOut(auth)
+    .then(() => navigate('/'))
+    .then(() => {
+      Toast.fire({
+        title: 'You have been signed out',
+        icon: 'success'
       });
     })
 }
