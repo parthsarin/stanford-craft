@@ -10,6 +10,7 @@ import Login from "../Auth/Login";
 import Dashboard from "../Dashboard";
 
 import './App.css';
+import { QueryClient, QueryClientProvider } from "react-query";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -21,6 +22,12 @@ const router = createBrowserRouter(
   )
 );
 
-const App = () => (<RouterProvider router={router} />);
+const queryClient = new QueryClient();
+
+const App = () => (
+  <QueryClientProvider client={queryClient}>
+    <RouterProvider router={router} />
+  </QueryClientProvider>
+);
 
 export default App;

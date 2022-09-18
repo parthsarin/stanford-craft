@@ -1,13 +1,20 @@
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useAuthUser } from "@react-query-firebase/auth";
 import { useNavigate } from "react-router-dom";
+import { getAuth } from "firebase/auth";
 
 import { getBackground } from "../../Generic/Background";
 import { loginWithGoogle } from "../AuthUtils";
 import EmailAndPasswordForm from "./EmailAndPasswordForm";
 
 const Login = () => {
+  const user = useAuthUser('user', getAuth());
   const navigate = useNavigate();
+
+  if (user.data) {
+    navigate('/dashboard');
+  }
 
   return (
     <div 
