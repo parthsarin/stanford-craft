@@ -19,9 +19,9 @@ const Footer = () => (
         </ul>
       </div>
       <div></div>
-      <div className="mt-5 md:mt-0">
-        <img src={gseLogo} alt="Stanford GSE Logo" loading="lazy" className="w-80 mb-4" />
-        <img src={haiLogo} alt="Stanford GSE Logo" loading="lazy" className="w-80" />
+      <div className="mt-5 md:mt-0 flex flex-col justify-center">
+        <img src={gseLogo} alt="Stanford GSE Logo" loading="lazy" className="w-80 md:w-72  mb-4" />
+        <img src={haiLogo} alt="Stanford GSE Logo" loading="lazy" className="w-80 md:w-72 " />
       </div>
     </div>
     <div className="w-full text-center text-gray-500 mt-8">
