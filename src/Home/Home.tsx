@@ -17,7 +17,7 @@ const Home = () => (
         height: 400
       }}
     >
-      <div className="rounded rounded-md w-5/6 md:w-2/3 bg-white/50 border border-black p-10 backdrop-blur-sm text-center">
+      <div className="rounded rounded-md w-11/12 sm:w-5/6 md:w-2/3 bg-white/50 border border-black p-5 sm:p-10 backdrop-blur-sm text-center">
         <h1 className="text-xl font-bold font-serif">Literacy in Artificial Intelligence</h1>
         <p className="text-lg mb-2">A project from the Stanford Graduate School of Education</p>
         <div className="w-full border-t border-black mb-2"></div>
@@ -29,7 +29,7 @@ const Home = () => (
         </p>
       </div>
     </div>
-    <div className="w-full px-6 sm:px-32 md:px-64 py-8">
+    <div className="w-full px-6 sm:px-16 lg:px-48 py-8">
       <div className="flex flex-row items-center ">
         <div className="hidden md:block">
           <img
@@ -56,7 +56,7 @@ const Home = () => (
           </IconBullet>
           <IconBullet icon={faRobot} title="Play with AI">
             <p className="text-lg">
-              The lessons use AI to teach about AI, to emphasize a spirit of
+              The lessons use AI to teach about AI and emphasize a spirit of
               play and exploration.
             </p>
           </IconBullet>

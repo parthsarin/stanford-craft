@@ -2,7 +2,7 @@ import gseLogo from '../../img/gse-logo.png';
 import haiLogo from '../../img/hai-logo.png';
 
 const Footer = () => (
-  <footer className="w-full bg-gray-300 px-6 sm:px-32 md:px-64 py-8">
+  <footer className="w-full bg-gray-300 px-6 sm:px-16 md:px-32 lg:px-48 py-8">
     <div className="grid grid-cols-2 md:grid-cols-3">
       <div>
         <h3 className="text-md uppercase mb-2 text-gray-500">Affiliates</h3>
