@@ -2,6 +2,7 @@ import { faAtom, faPalette, faRobot } from "@fortawesome/free-solid-svg-icons";
 
 import coworkZoom from '../img/education/cowork-zoom.svg';
 import gsePano from '../img/campus/stanford-gse.jpeg';
+import mainQuad from '../img/campus/main-quad.jpg';
 
 import Footer from "./Footer";
 import IconBullet from "../Generic/IconBullet";
@@ -11,7 +12,7 @@ const Home = () => (
     <div 
       className="w-full flex items-center justify-center"
       style={{
-        backgroundImage: `url(${gsePano})`, 
+        backgroundImage: `url(${Math.random() < .5 ? mainQuad : gsePano})`, 
         backgroundSize: 'cover', 
         backgroundPosition: 'center',
         height: 400
