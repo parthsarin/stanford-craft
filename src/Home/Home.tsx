@@ -1,17 +1,13 @@
-import { faAtom, faPalette, faRightToBracket, faRobot } from "@fortawesome/free-solid-svg-icons";
-
 import coworkZoom from '../img/education/cowork-zoom.svg';
 
 import Footer from "./Footer";
 import IconBullet from "../Generic/IconBullet";
-import { useNavigate } from "react-router-dom";
+import { faAtom, faPalette, faRobot } from "@fortawesome/free-solid-svg-icons";
+
 import { getBackground } from "../Generic/Background";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import ContinueButton from './ContinueButton';
 
-const Home = () => {
-  const navigate = useNavigate();
-
-  return (
+const Home = () => (
   <div className="home w-full">
     <div 
       className="w-full flex items-center justify-center"
@@ -32,17 +28,7 @@ const Home = () => {
           the <a href="https://edequitylab.org/" className="text-blue-600 hover:underline">National Educational Equity Lab</a> offered 
           in Fall 2023.
         </p>
-        <div className="w-full mb-0">
-          <button
-            className={
-            `rounded border border-indigo-700 bg-indigo-700 text-white
-            px-3 py-2 hover:bg-indigo-800
-            `}
-            onClick={() => navigate('/login')}
-          >
-            <FontAwesomeIcon icon={faRightToBracket} className="mr-2" /> Log In
-          </button>
-        </div>
+        <ContinueButton />
       </div>
     </div>
     <div className="w-full px-6 sm:px-16 lg:px-48 py-8">
@@ -81,7 +67,6 @@ const Home = () => {
     </div>
     <Footer />
   </div>
-  );
-}
+);
 
 export default Home;
