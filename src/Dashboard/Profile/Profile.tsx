@@ -35,7 +35,7 @@ const Profile = () => {
             type="text"
             defaultValue={user!.photoURL!}
             className="w-1/2 border border-black rounded px-2 py-1"
-            {...register('photoURL', { required: true })}
+            {...register('photoURL', { required: false })}
           />
         </div>
         <div className="flex flex-col mt-4">

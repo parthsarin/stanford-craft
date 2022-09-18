@@ -6,7 +6,7 @@ import { getAuth } from "firebase/auth";
 
 import { getBackground } from "../../Generic/Background";
 import { loginWithGoogle } from "../AuthUtils";
-import EmailAndPasswordForm from "./EmailAndPasswordForm";
+import EmailSignInForm from "./EmailSignInForm";
 
 const Login = () => {
   const user = useAuthUser('user', getAuth());
@@ -29,7 +29,7 @@ const Login = () => {
         className="rounded rounded-md w-11/12 sm:w-5/6 md:w-2/3 lg:w-1/2 bg-white/50 border border-black p-5 sm:p-10 backdrop-blur-sm text-center m-5"
       >
         <h1 className="text-2xl font-bold">Log In</h1>
-        <EmailAndPasswordForm />
+        <EmailSignInForm />
         <div className="flex flex-row my-4 items-center">
           <div className="border-t border-black flex-1"></div>
           <div className="mx-4">or</div>
