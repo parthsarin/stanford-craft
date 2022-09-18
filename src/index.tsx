@@ -21,6 +21,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 getAnalytics(app);
 
+
+// Render
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );

@@ -1,11 +1,19 @@
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+} from "react-router-dom";
+
+import Home from '../Home';
 import './App.css';
 
-const App = () => {
-  return (
-    <div className="app">
-      <h1>AI Lit</h1>
-    </div>
-  );
-}
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<Home />} />
+  )
+);
+
+const App = () => (<RouterProvider router={router} />);
 
 export default App;
