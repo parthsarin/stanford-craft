@@ -29,19 +29,13 @@ const Login = () => {
           <div className="border-t border-black flex-1"></div>
         </div>
         <button
-          className="rounded w-full border border-rose-700 text-rose-700 px-3 py-2 hover:bg-rose-700 hover:text-white"
+          className="rounded w-full border border-rose-700 text-white px-3 py-2 bg-rose-700 hover:bg-rose-800"
           onClick={() => loginWithGoogle().then(() => navigate('/dashboard'))}
         >
           <div className="flex flex-row w-full">
             <div><FontAwesomeIcon icon={faGoogle} /></div>
             <div className="flex-1">Sign In with Google</div>
           </div>
-        </button>
-        <button
-          className="rounded w-full border border-teal-700 text-teal-700 px-3 py-2 hover:bg-teal-700 hover:text-white mt-2"
-          onClick={() => navigate('/signup')}
-        >
-          Sign Up
         </button>
       </div>
     </div>

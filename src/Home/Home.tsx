@@ -1,4 +1,4 @@
-import { faAtom, faPalette, faRobot } from "@fortawesome/free-solid-svg-icons";
+import { faAtom, faPalette, faRightToBracket, faRobot } from "@fortawesome/free-solid-svg-icons";
 
 import coworkZoom from '../img/education/cowork-zoom.svg';
 
@@ -6,6 +6,7 @@ import Footer from "./Footer";
 import IconBullet from "../Generic/IconBullet";
 import { useNavigate } from "react-router-dom";
 import { getBackground } from "../Generic/Background";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -24,27 +25,23 @@ const Home = () => {
       <div className="rounded rounded-md w-11/12 sm:w-5/6 md:w-2/3 lg:w-1/2 bg-white/50 border border-black p-5 sm:p-10 backdrop-blur-sm text-center m-5">
         <h1 className="text-xl font-bold font-serif">Literacy in Artificial Intelligence</h1>
         <p className="text-lg mb-3">A project from the Stanford Graduate School of Education</p>
-        <div className="w-full border-t border-black mb-3"></div>
+        <div className="w-full border-t border-gray-500 mb-3"></div>
         <p className="text-lg mb-3">
           We're building a curriculum to teach AI literacy to students in grades
           6-12 and piloting that curriculum through a course in collaboration with
           the <a href="https://edequitylab.org/" className="text-blue-600 hover:underline">National Educational Equity Lab</a> offered 
           in Fall 2023.
         </p>
-        <div className="w-full border-t border-black mb-3"></div>
         <div className="w-full mb-0">
           <button
             className={
-            `rounded border border-indigo-700 text-indigo-700
-            px-3 py-2
-            hover:bg-indigo-700 hover:text-white 
+            `rounded border border-indigo-700 bg-indigo-700 text-white
+            px-3 py-2 hover:bg-indigo-800
             `}
             onClick={() => navigate('/login')}
-          >Log In</button>
-          <button
-            className="rounded ml-2 border border-teal-700 text-teal-700 px-3 py-2 hover:bg-teal-700 hover:text-white mt-2"
-            onClick={() => navigate('/signup')}
-          >Sign Up</button>
+          >
+            <FontAwesomeIcon icon={faRightToBracket} className="mr-2" /> Log In
+          </button>
         </div>
       </div>
     </div>

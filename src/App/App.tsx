@@ -7,7 +7,6 @@ import {
 
 import Home from '../Home';
 import Login from "../Auth/Login";
-import SignUp from "../Auth/SignUp";
 import Dashboard from "../Dashboard";
 
 import './App.css';
@@ -17,7 +16,6 @@ const router = createBrowserRouter(
     <>
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<SignUp />} />
       <Route path="/dashboard" element={<Dashboard />} />
     </>
   )
