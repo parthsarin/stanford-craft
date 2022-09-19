@@ -17,7 +17,7 @@ const NoMatch = () => {
     }}
   >
     <div
-      className="rounded rounded-md w-11/12 sm:w-5/6 md:w-2/3 lg:w-1/2 bg-white/50 border border-black p-5 sm:p-10 backdrop-blur-sm text-center m-5"
+      className="rounded w-11/12 sm:w-5/6 md:w-2/3 lg:w-1/2 bg-white/50 border border-black p-5 sm:p-10 backdrop-blur-sm text-center m-5"
     >
       <h1 className="text-2xl font-bold mb-3">404</h1>
       <div className="w-full border-t border-gray-500 mb-3"></div>

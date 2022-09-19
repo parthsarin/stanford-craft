@@ -26,7 +26,7 @@ const Login = () => {
       }}
     >
       <div
-        className="rounded rounded-md w-11/12 sm:w-5/6 md:w-2/3 lg:w-1/2 bg-white/50 border border-black p-5 sm:p-10 backdrop-blur-sm text-center m-5"
+        className="rounded-md w-11/12 sm:w-5/6 md:w-2/3 lg:w-1/2 bg-white/50 border border-black p-5 sm:p-10 backdrop-blur-sm text-center m-5"
       >
         <h1 className="text-2xl font-bold">Log In</h1>
         <EmailSignInForm />

@@ -18,7 +18,7 @@ const Home = () => (
         height: 500
       }}
     >
-      <div className="rounded rounded-md w-11/12 sm:w-5/6 md:w-2/3 lg:w-1/2 bg-white/50 border border-black p-5 sm:p-10 backdrop-blur-sm text-center m-5">
+      <div className="rounded w-11/12 sm:w-5/6 md:w-2/3 lg:w-1/2 bg-white/50 border border-black p-5 sm:p-10 backdrop-blur-sm text-center m-5">
         <h1 className="text-xl font-bold font-serif">Literacy in Artificial Intelligence</h1>
         <p className="text-lg mb-3">A project from the Stanford Graduate School of Education</p>
         <div className="w-full border-t border-gray-500 mb-3"></div>
