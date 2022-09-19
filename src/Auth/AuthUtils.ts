@@ -13,7 +13,7 @@ export function sendSignInLink(email: string) {
     .then(() => {
       window.localStorage.setItem('emailForSignIn', email);
       Toast.fire({
-        icon: 'success',
+        icon: 'info',
         title: 'Sign-in link sent to your email'
       })
     });
@@ -34,9 +34,11 @@ export function callbackSignInLink() {
     .catch((error) => {
       MySwal.fire({
         icon: 'error',
-        title: 'Error',
+        title: 'Error from email sign-in',
         text: error.message
       })
+
+      console.log(error);
     });
 }
 
@@ -47,7 +49,7 @@ export function loginWithGoogle() {
   return signInWithPopup(auth, provider)
     .catch((error) => {
       MySwal.fire({
-        title: 'Error',
+        title: 'Error from Google sign-in',
         text: error.message,
         icon: 'error',
       });

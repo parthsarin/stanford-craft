@@ -1,19 +1,22 @@
 import { faLink } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { getAuth, isSignInWithEmailLink } from "firebase/auth";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { callbackSignInLink, sendSignInLink } from "../AuthUtils";
 
 const EmailSignInForm = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
-
   const auth = getAuth();
   const navigate = useNavigate();
-  if (isSignInWithEmailLink(auth, window.location.href)) {
-    callbackSignInLink()
-      .then(() => navigate('/dashboard'))
-  }
+  
+  useEffect(() => {
+    if (isSignInWithEmailLink(auth, window.location.href)) {
+      callbackSignInLink()
+        .then(() => navigate('/dashboard'))
+    }
+  }, [auth, navigate]);
 
   return (
     <form

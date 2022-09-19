@@ -10,7 +10,7 @@ const ContinueButton = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="w-full mb-0">
+    <>
       { (!isLoading) && (!user) 
       && <button
         className={
@@ -32,7 +32,7 @@ const ContinueButton = () => {
         <FontAwesomeIcon icon={faDashboard} className="mr-2" /> Dashboard
       </button>
       }
-    </div>
+    </>
   )
 }
 

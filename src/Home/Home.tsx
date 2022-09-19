@@ -28,7 +28,9 @@ const Home = () => (
           the <a href="https://edequitylab.org/" className="text-blue-600 hover:underline">National Educational Equity Lab</a> offered 
           in Fall 2023.
         </p>
-        <ContinueButton />
+        <div className="w-full mb-0">
+          <ContinueButton />
+        </div>
       </div>
     </div>
     <div className="w-full px-6 sm:px-16 lg:px-48 py-8">

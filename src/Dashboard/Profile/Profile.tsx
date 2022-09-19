@@ -4,14 +4,18 @@ import { getAuth, updateProfile } from "firebase/auth";
 import { useForm } from "react-hook-form";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { useEffect } from "react";
 
 const Profile = () => {
   const { isLoading, data: user } = useAuthUser('user', getAuth());
   const { register, handleSubmit, formState: { errors } } = useForm();
   const navigate = useNavigate();
   
+  useEffect(() => {
+    if (!isLoading && !user) navigate('/login');
+  }, [user, isLoading, navigate]);
+  
   if (isLoading) return null;
-  if (!user) navigate('/login');
   
   return (
     <div className="flex-1 p-4">
@@ -20,6 +24,12 @@ const Profile = () => {
       <form 
         onSubmit={handleSubmit((data) => updateProfile(user!, data).then(() => navigate(0)))}
       >
+        <div className="flex flex-col mt-2">
+          <span className="text-lg">Email</span>
+          <span
+            className={`w-1/2 py-1`}
+          >{user?.email}</span>
+        </div>
         <div className="flex flex-col mt-2">
           <label className="text-lg" htmlFor="displayName">Name</label>
           <input
