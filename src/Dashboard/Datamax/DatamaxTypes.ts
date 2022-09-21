@@ -13,8 +13,8 @@ interface DataElementTemplate {
 }
 
 enum ResponseType {
-  STRING,
-  MULTIPLE_CHOICE,
+  SHORT_ANSWER = 'short answer',
+  MULTIPLE_CHOICE = 'multiple choice',
 }
 
 interface ResponseTemplate {

@@ -1,13 +1,14 @@
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
-import { FieldErrorsImpl, FieldValues, UseFormRegister } from "react-hook-form";
+import { FieldErrorsImpl, FieldValues, UseFormRegister, UseFormUnregister } from "react-hook-form";
 import { DataElementGenerator } from "../../../DatamaxTypes";
 import { NormalPrompt, UniformPrompt } from "./DistributionParameterPrompt";
 
 interface DataElementTemplateProps {
   deKey: string;
   questionKey: string;
+  unregister: UseFormUnregister<FieldValues>;
   register: UseFormRegister<FieldValues>;
   errors: FieldErrorsImpl<{ [x: string]: any }>;
   destroy: () => void;
@@ -17,6 +18,7 @@ const DataElementTemplate = ({
   deKey,
   questionKey,
   register,
+  unregister,
   errors,
   destroy
 }: DataElementTemplateProps) => {
@@ -28,7 +30,15 @@ const DataElementTemplate = ({
         <FontAwesomeIcon icon={faChartSimple} size={"xl"} />
       </div> */}
       <div className="flex w-fit p-3">
-        <button className="btn-rose" onClick={destroy}>
+        <button className="btn-rose" onClick={() => {
+          unregister(`${questionKey}/de/${deKey}/name`);
+          unregister(`${questionKey}/de/${deKey}/generator`);
+          unregister(`${questionKey}/de/${deKey}/min`);
+          unregister(`${questionKey}/de/${deKey}/max`);
+          unregister(`${questionKey}/de/${deKey}/mean`);
+          unregister(`${questionKey}/de/${deKey}/std`);
+          destroy();
+        }} aria-label={"delete data element"}>
           <FontAwesomeIcon icon={faTrash} size={"xl"} />
         </button>
       </div>
@@ -52,7 +62,7 @@ const DataElementTemplate = ({
             })}
           >
             {Object.values(DataElementGenerator).map((s) => (
-              <option value={s}>{s}</option>
+              <option value={s} key={`${questionKey}/de/${deKey}/generator/${s}`}>{s}</option>
             ))}
           </select>{" "}
           distribution{" "}
