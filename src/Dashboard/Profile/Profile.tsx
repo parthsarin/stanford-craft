@@ -35,7 +35,7 @@ const Profile = () => {
           <input
             type="text"
             defaultValue={user!.displayName!}
-            className={`w-1/2 border border-black rounded px-2 py-1 ${errors.displayName ? 'border-red-700' : ''}`}
+            className={`w-4/5 md:w-1/2 border border-black rounded px-2 py-1 ${errors.displayName ? 'border-red-700' : ''}`}
             {...register('displayName', { required: true })}
           />
         </div>
@@ -44,7 +44,7 @@ const Profile = () => {
           <input
             type="text"
             defaultValue={user!.photoURL!}
-            className="w-1/2 border border-black rounded px-2 py-1"
+            className="w-4/5 md:w-1/2 border border-black rounded px-2 py-1"
             {...register('photoURL', { required: false })}
           />
         </div>

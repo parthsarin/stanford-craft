@@ -1,4 +1,4 @@
-import { faChevronLeft, faChevronRight, faSignOut, faSmile, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faChevronLeft, faChevronRight, faRobot, faSignOut, faSmile, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useAuthUser } from "@react-query-firebase/auth";
 import { useNavigate } from "react-router-dom";
@@ -50,6 +50,16 @@ const Sidebar = () => {
             >
               <FontAwesomeIcon icon={faSmile} className={`${expanded && 'mr-2'} w-6 h-6`} />
               {expanded && <p className="text-lg">Testing</p>}
+            </button>
+          </li>
+
+          <li>
+            <button 
+              className="w-full p-2 flex flex-row items-center hover:bg-violet-600 rounded"
+              onClick={() => navigate('/dashboard/datamax')}
+            >
+              <FontAwesomeIcon icon={faRobot} className={`${expanded && 'mr-2'} w-6 h-6`} />
+              {expanded && <p className="text-lg">Datamax</p>}
             </button>
           </li>
 
