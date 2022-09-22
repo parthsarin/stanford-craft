@@ -1,4 +1,4 @@
-import { faChartArea, faChevronLeft, faChevronRight, faRobot, faSignOut, faSmile, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faChartArea, faChevronLeft, faChevronRight, faRobot, faSignOut, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useAuthUser } from "@react-query-firebase/auth";
 import { useNavigate } from "react-router-dom";
