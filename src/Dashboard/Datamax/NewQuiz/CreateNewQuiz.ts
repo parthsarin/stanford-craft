@@ -6,33 +6,70 @@ import {
   ResponseTemplate,
   DataElementTemplate
 } from '../DatamaxTypes';
+import {
+  getFirestore,
+  doc, getDoc, setDoc, arrayUnion
+} from 'firebase/firestore';
+import { getAuth } from "firebase/auth";
 
 /*
 My database template -- putting this here for now:
 
 users/
   uid/
-    datamax/
-      activeGames: [gid, gid, gid]
-      pastGames: [gid, gid, gid]
+    datamax:
+      activeQuizzes: [gid, gid, gid]
+      pastQuizzes: [gid, gid, gid]
 
-datamax/
-  activeGames/
-    gid/
-      joinCode: 
-      template: 
-  pastGames/
+datamax-active/
+  joinCode/
+    template: 
+
+datamax-past/
+  gid/
+    template:
 */
 
-export function createNewQuiz(data: FieldValues, questions: string[]) {
+export async function createNewQuiz(data: FieldValues, questions: string[]) {
   // 1. Generate QuizTemplate from data
   const qt = parseQuizTemplate(data, questions);
 
   // 2. Add some extra information
-  // 3. Push result to firebase
+  const joinCode = await generateQuizJoinCode();
 
-  console.log({...data, questions});
-  console.log(qt);
+  // 3. Push result to firebase
+  const auth = getAuth();
+  const uid = auth.currentUser?.uid;
+  if (!uid) return;
+
+  const db = getFirestore();
+  const docRef = doc(db, 'datamax-active', joinCode);
+  await setDoc(docRef, {
+    template: qt,
+    owner: uid
+  });
+
+  // 4. Add quiz to user's list of active quizzes
+  const userDoc = doc(db, 'users', uid);
+  await setDoc(userDoc, {
+    "datamax": {
+      activeQuizzes: arrayUnion(joinCode)
+    }
+  }, { merge: true });
+
+  return joinCode;
+}
+
+async function generateQuizJoinCode() {
+  while (true) {
+    const joinCode = Math.random().toString(36).substring(2, 8).toUpperCase();
+
+    const db = getFirestore();
+    const docRef = doc(db, 'datamax-active', joinCode);
+    const docSnapshot = await getDoc(docRef);
+
+    if (!docSnapshot.exists()) return joinCode;
+  }
 }
 
 function parseQuizTemplate(data: FieldValues, questions: string[]) {

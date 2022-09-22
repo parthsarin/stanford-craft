@@ -1,13 +1,16 @@
 import { faHammer, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { FieldValues, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import Loader from "../../../Generic/Loader";
+import { MySwal } from "../../../Generic/Notify";
 import { createNewQuiz } from "./CreateNewQuiz";
 import { generateUUID } from "./GenerateDefaults";
 import QuestionTemplate from "./QuestionTemplate";
 
 const NewQuiz = () => {
+  const [loading, setLoading] = useState(false);
   const { register, unregister, formState: { errors }, handleSubmit } = useForm();
   const navigate = useNavigate();
 
@@ -20,8 +23,25 @@ const NewQuiz = () => {
     setQuestions(newQuestions);
   }
 
+  const handleNewQuiz = (data: FieldValues) => {
+    setLoading(true);
+    createNewQuiz(data, Object.keys(questions))
+      .then(
+        (joinCode) => navigate(`/dashboard/datamax/quiz/${joinCode}`),
+      )
+      .catch((err) => {
+        setLoading(false)
+        MySwal.fire({
+          icon: "error",
+          title: "Error creating quiz",
+          text: err.message,
+        })
+      })
+  }
+
   return (
     <div className="p-4 flex flex-1 flex-col">
+      { loading && <Loader /> }
       <div className="w-4/5 lg:w-2/3 p-2 rounded bg-gray-200 mb-4">
         <button
           className="text-blue-600 hover:underline"
@@ -36,7 +56,7 @@ const NewQuiz = () => {
       </div>
       <h1 className="text-2xl mb-4">Create a new quiz</h1>
 
-      <form onSubmit={handleSubmit((data) => createNewQuiz(data, Object.keys(questions)))}>
+      <form onSubmit={handleSubmit(handleNewQuiz)}>
         <div className="flex flex-col mb-3">
           <label htmlFor="name" className="mb-2">
             Give your quiz a name
