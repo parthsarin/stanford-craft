@@ -8,7 +8,7 @@ import {
 } from '../DatamaxTypes';
 import {
   getFirestore,
-  doc, getDoc, setDoc, arrayUnion
+  doc, getDoc, setDoc, arrayUnion, serverTimestamp
 } from 'firebase/firestore';
 import { getAuth } from "firebase/auth";
 
@@ -46,7 +46,8 @@ export async function createNewQuiz(data: FieldValues, questions: string[]) {
   const docRef = doc(db, 'datamax-active', joinCode);
   await setDoc(docRef, {
     template: qt,
-    owner: uid
+    owner: uid,
+    createdAt: serverTimestamp(),
   });
 
   // 4. Add quiz to user's list of active quizzes

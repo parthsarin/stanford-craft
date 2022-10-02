@@ -1,3 +1,5 @@
+import { Timestamp } from "firebase/firestore";
+
 enum DataElementGenerator {
   UNIFORM = 'Uniform',
   NORMAL = 'Normal',
@@ -33,6 +35,12 @@ interface QuizTemplate {
   questions: QuestionTemplate[]
 }
 
+interface QuizPreviewCardProps {
+  quiz: QuizTemplate,
+  joinCode: string,
+  createdAt: Timestamp,
+}
+
 export {
   ResponseType,
   DataElementGenerator
@@ -41,5 +49,6 @@ export type {
   QuizTemplate,
   QuestionTemplate,
   DataElementTemplate,
-  ResponseTemplate
+  ResponseTemplate,
+  QuizPreviewCardProps,
 };
