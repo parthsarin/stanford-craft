@@ -19,13 +19,13 @@ const Home = () => (
       }}
     >
       <div className="rounded w-11/12 sm:w-5/6 md:w-2/3 lg:w-1/2 bg-white/50 border border-black p-5 sm:p-10 backdrop-blur-sm text-center m-5">
-        <h1 className="text-xl font-bold font-serif">Literacy in Artificial Intelligence</h1>
+        <h1 className="text-xl font-bold font-serif">Classroom-Ready AI Resources for Teachers (CRAFT)</h1>
         <p className="text-lg mb-3">A project from the Stanford Graduate School of Education</p>
         <div className="w-full border-t border-gray-500 mb-3"></div>
         <p className="text-lg mb-3">
-          We're building a curriculum to teach AI literacy to students in grades
-          6-12 and piloting that curriculum through a course in collaboration with
-          the <a href="https://edequitylab.org/" className="text-blue-600 hover:underline">National Educational Equity Lab</a> offered 
+          We're building resources to teach AI literacy to students in grades
+          6-12 and assembling them into a full curriculum that will be deployed
+          in a course with the <a href="https://edequitylab.org/" className="text-blue-600 hover:underline">National Educational Equity Lab</a> offered 
           in Fall 2023.
         </p>
         <div className="w-full mb-0">
@@ -45,10 +45,11 @@ const Home = () => (
           />
         </div>
         <div className="flex flex-col">
-          <IconBullet icon={faAtom} title="Fully customizable modules">
+          <IconBullet icon={faAtom} title="Customizable modules">
             <p className="text-lg">
-              Our curriculum is presented as a series of modules that teachers
+              These resources are presented as a series of modules that teachers
               can pick and choose from, to meet the needs of their classroom.
+              Use one activity, an entire unit, or anything in between.
             </p>
           </IconBullet>
           <IconBullet icon={faPalette} title="Interdisciplinary lesson plans">
@@ -60,8 +61,8 @@ const Home = () => (
           </IconBullet>
           <IconBullet icon={faRobot} title="Play with AI">
             <p className="text-lg">
-              The lessons use AI to teach about AI and emphasize a spirit of
-              play and exploration.
+              The resources emphasize a spirit of play, exploration, and joy 
+              to be honest and optimistic about the future of AI.
             </p>
           </IconBullet>
         </div>
