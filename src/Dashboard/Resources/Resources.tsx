@@ -20,6 +20,7 @@ const Resources = () => {
   return (
     <div className="flex-1 p-4">
      <h1 className="text-2xl">Resources</h1>
+     <div></div>
     </div>
   )
 }
