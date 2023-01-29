@@ -1,4 +1,4 @@
-import { faChartArea, faChevronLeft, faChevronRight, faRobot, faSignOut, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faChartArea, faChevronLeft, faChevronRight, faRobot, faSignOut, faUser, faBookmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useAuthUser } from "@react-query-firebase/auth";
 import { useNavigate } from "react-router-dom";
@@ -58,6 +58,15 @@ const Sidebar = () => {
             >
               <FontAwesomeIcon icon={faChartArea} className={`${expanded && 'mr-2'} w-6 h-6`} />
               {expanded && <p className="text-lg">Visualizer</p>}
+            </button>
+          </li>
+          <li>
+            <button 
+              className="w-full p-2 flex flex-row items-center hover:bg-violet-600 rounded"
+              onClick={() => navigate('/dashboard/resources')}
+            >
+              <FontAwesomeIcon icon={faBookmark} className={`${expanded && 'mr-2'} w-6 h-6`} />
+              {expanded && <p className="text-lg">Resources</p>}
             </button>
           </li>
 

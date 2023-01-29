@@ -9,6 +9,7 @@ import Home from '../Home';
 import Login from "../Auth/Login";
 import Dashboard from "../Dashboard";
 import Profile from "../Dashboard/Profile";
+import Resources from "../Dashboard/Resources";
 import NoMatch from "../NoMatch";
 
 import { QueryClient, QueryClientProvider } from "react-query";
@@ -26,6 +27,7 @@ const router = createBrowserRouter(
 
         <Route path="datamax" element={<Datamax />} />
         <Route path="datamax/new" element={<NewQuiz />} />
+        <Route path="resources" element={<Resources />} />   
       </Route>
       <Route path="*" element={<NoMatch />} />
     </>
