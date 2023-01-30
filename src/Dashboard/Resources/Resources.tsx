@@ -1,7 +1,6 @@
 import { useAuthUser } from "@react-query-firebase/auth";
 import { useNavigate } from "react-router-dom";
-import { getAuth, updateProfile } from "firebase/auth";
-import { useForm } from "react-hook-form";
+import { getAuth } from "firebase/auth";
 import { useEffect } from "react";
 
 import Card from '@mui/material/Card';
@@ -13,7 +12,6 @@ import Typography from '@mui/material/Typography';
 
 const Resources = () => {
   const { isLoading, data: user } = useAuthUser('user', getAuth());
-  const { register, handleSubmit, formState: { errors } } = useForm();
   const navigate = useNavigate();
   
   useEffect(() => {
