@@ -27,7 +27,7 @@ const Resources = () => {
     <div className="flex-1 p-4">
       <h1 className="text-2xl">Resources</h1>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-        <Card sx={{ maxWidth: 345 }}>
+        <Card sx={{ maxWidth: 345}}>
           <CardMedia
             sx={{ height: 140 }}
             image = {require('../../img/resources/squid-model.png')}
@@ -41,14 +41,14 @@ const Resources = () => {
               Description of the Squid Model
             </Typography>
           </CardContent>
-          <CardActions>
+          <CardActions style={{display:'flex', flexFlow:'row wrap'}}>
             <Button size="small" href = "https://www.npr.org/transcripts/660168325">Podcast</Button>
             <Button size="small" href = "https://docs.google.com/presentation/d/1nXczmIFcxCLnscFAj_XQyjbDm2Ze9qZ66kwsDRXNLmQ/edit#slide=id.p">Worksheet</Button>
             <Button size="small" href = "https://docs.google.com/document/d/17wKvHiUO0tWavwE5N8esn1GZEWfJTpoo7NxVcRpMOds/edit#bookmark=id.uek0uo6wl3z5">Curriculum</Button>
           </CardActions>
         </Card>
 
-        <Card sx={{ maxWidth: 345 }}>
+        <Card sx={{ maxWidth: 345}}>
           <CardMedia
             sx={{ height: 140 }}
             image = {require('../../img/resources/doxxing.png')}
@@ -66,7 +66,7 @@ const Resources = () => {
               explore how she does that.
             </Typography>
           </CardContent>
-          <CardActions>
+          <CardActions style={{display:'flex', flexFlow:'row wrap'}}>
             <Button size="small" href = "https://www.tiktok.com/@notkahnjunior/video/7160059039433411882">Video</Button>
             <Button size="small" href = "https://docs.google.com/presentation/d/1-nTWaRxu5CcavXLECDQ9h9xsjzBoe4SvNnRhreQkkAU/edit">Worksheet</Button>
             <Button size="small" href = "https://docs.google.com/document/d/17wKvHiUO0tWavwE5N8esn1GZEWfJTpoo7NxVcRpMOds/edit#bookmark=id.waii72s3q7a4">Curriculum</Button>
@@ -87,7 +87,7 @@ const Resources = () => {
               Description of the Internet Health Report
             </Typography>
           </CardContent>
-          <CardActions>
+          <CardActions style={{display:'flex', flexFlow:'row wrap'}}>
           <Button size="small" href = "https://2022.internethealthreport.org/facts/">Reading</Button>
             <Button size="small" href = "https://docs.google.com/presentation/d/1-nTWaRxu5CcavXLECDQ9h9xsjzBoe4SvNnRhreQkkAU/edit">Worksheet</Button>
             <Button size="small" href = "https://docs.google.com/document/d/17wKvHiUO0tWavwE5N8esn1GZEWfJTpoo7NxVcRpMOds/edit#bookmark=id.c8bu81asjfof">Curriculum</Button>
