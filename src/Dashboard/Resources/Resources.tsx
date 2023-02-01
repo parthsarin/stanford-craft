@@ -1,5 +1,4 @@
 import { useAuthUser } from "@react-query-firebase/auth";
-import { useNavigate } from "react-router-dom";
 import { getAuth } from "firebase/auth";
 import { useEffect } from "react";
 
@@ -11,18 +10,18 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
 const Resources = () => {
-  const { isLoading, data: user } = useAuthUser('user', getAuth());
-  const navigate = useNavigate();
+  const { isLoading, data: user } = useAuthUser(['user'], getAuth());  
   
   useEffect(() => {
-    if (!isLoading && !user) navigate('/login');
-  }, [user, isLoading, navigate]);
-  
-  if (isLoading) return null;
-  
-  // squid model: https://docs.google.com/presentation/d/1nXczmIFcxCLnscFAj_XQyjbDm2Ze9qZ66kwsDRXNLmQ/edit#slide=id.p
+    if (isLoading || !user) return;
 
-  // 
+    // (async () => {
+    //   const db = getFirestore();
+    //   const userRef = doc(db, 'users', user.uid);
+    //   const userDoc = await getDoc(userRef);
+    // })();
+  }, [isLoading, user]); 
+
   return (
     <div className="flex-1 p-4">
       <h1 className="text-2xl">Resources</h1>
