@@ -2,6 +2,7 @@
   "name": "stanford-craft",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://craft.stanford.edu/",
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
@@ -29,6 +30,7 @@
     "react-router-dom": "^6.4.0",
     "react-scripts": "5.0.1",
     "react-spinners": "^0.13.4",
+    "spa-http-server": "^0.9.0",
     "sweetalert2": "^11.4.33",
     "sweetalert2-react-content": "^5.0.3",
     "tailwindcss": "^3.1.8",
@@ -39,7 +41,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "test:dev": "react-scripts build && http-server build -p 3000 --push-state"
   },
   "eslintConfig": {
     "extends": [
