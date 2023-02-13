@@ -19,7 +19,7 @@ const Sidebar = () => {
   }, [setExpanded]);
 
   return (
-    <aside className="sm:w-fit bg-violet-500 text-white min-h-screen">
+    <aside className="sm:w-fit bg-violet-500 text-white" style={{minHeight: "97vh"}}>
       <div className="w-full h-full p-4">
         <ul className="space-y-2 flex flex-col h-full">
           <li>

@@ -1,3 +1,5 @@
+import "./GlobalFooter.css";
+
 const GlobalFooter = () => (
   <div className="su-global-footer">
     <div className="su-global-footer__container" title="Common Stanford resources">

@@ -1,0 +1,67 @@
+@font-face {
+  font-family: "Stanford";
+  src: url("https://www-media.stanford.edu/assets/fonts/stanford.woff") format('woff2'),
+    url("https://www-media.stanford.edu/assets/fonts/stanford.ttf") format('truetype');
+}
+
+.su-global-footer {
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  font-family: "Source Sans Pro", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-size: 1.9rem;
+  box-sizing: inherit;
+  -webkit-font-smoothing: antialiased;
+  color: #fff;
+  padding-top: 2.7rem;
+  padding-bottom: 2.7rem;
+  background-color: #b1040e;
+}
+
+.su-global-footer__container {
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  font-family: "Source Sans Pro", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-size: 1.9rem;
+  -webkit-font-smoothing: antialiased;
+  color: #fff;
+  box-sizing: inherit;
+  margin: 0 auto;
+  max-width: 1500px;
+  width: calc(100% - 200px);
+  display: flex;
+}
+
+.su-global-footer__brand {
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  font-family: "Source Sans Pro", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-size: 1.9rem;
+  -webkit-font-smoothing: antialiased;
+  color: #fff;
+  box-sizing: inherit;
+  padding-top: .5rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.su-logo {
+  -webkit-text-size-adjust: 100%;
+  text-align: center;
+  box-sizing: inherit;
+  background-color: rgba(0, 0, 0, 0);
+  display: inline-block;
+  font-family: Stanford, "Source Serif Pro", Georgia, Times, "Times New Roman", serif;
+  font-style: normal;
+  font-weight: 400;
+  font-variant: normal;
+  text-transform: none;
+  text-decoration: none;
+  line-height: .75;
+  transform: translateZ(0);
+  letter-spacing: 0;
+  font-feature-settings: "liga";
+  font-variant-ligatures: discretionary-ligatures;
+  -webkit-font-smoothing: antialiased;
+  color: #fff;
+  font-size: 3.4rem;
+}
