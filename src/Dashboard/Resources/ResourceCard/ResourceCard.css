@@ -1,0 +1,5 @@
+.resource-tags {
+  @apply inline-block bg-gray-200 rounded-full;
+  @apply px-3 py-1 mr-2 mb-2;
+  @apply text-sm font-semibold text-gray-700;
+}
