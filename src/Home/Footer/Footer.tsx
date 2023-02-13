@@ -48,9 +48,9 @@ const Footer = () => (
         />
       </div>
     </div>
-    <div className="w-full text-center text-gray-500 mt-8">
+    {/* <div className="w-full text-center text-gray-500 mt-8">
       <p>&copy; 2022 Stanford University, and its affiliates</p>
-    </div>
+    </div> */}
   </footer>
 );
 

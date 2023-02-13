@@ -16,6 +16,8 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import './App.css';
 import Datamax from "../Dashboard/Datamax";
 import NewQuiz from "../Dashboard/Datamax/NewQuiz";
+import IdentityBar from "../Generic/Brand/IdentityBar";
+import GlobalFooter from "../Generic/Brand/GlobalFooter";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -37,9 +39,13 @@ const router = createBrowserRouter(
 const queryClient = new QueryClient();
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <RouterProvider router={router} />
-  </QueryClientProvider>
+  <>
+    <IdentityBar />
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
+    <GlobalFooter />
+  </>
 );
 
 export default App;
