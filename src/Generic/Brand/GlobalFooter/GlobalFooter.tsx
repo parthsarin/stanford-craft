@@ -16,33 +16,21 @@ const GlobalFooter = () => (
             <li>
               <a href="https://www.stanford.edu">
                 Stanford Home
-                <span className="su-global-footer__link-a11y">
-                  (link is external)
-                </span>
               </a>
             </li>
             <li>
               <a href="https://visit.stanford.edu/plan/">
                 Maps &amp; Directions
-                <span className="su-global-footer__link-a11y">
-                  (link is external)
-                </span>
               </a>
             </li>
             <li>
               <a href="https://www.stanford.edu/search/">
                 Search Stanford
-                <span className="su-global-footer__link-a11y">
-                  (link is external)
-                </span>
               </a>
             </li>
             <li>
               <a href="https://emergency.stanford.edu">
                 Emergency Info
-                <span className="su-global-footer__link-a11y">
-                  (link is external)
-                </span>
               </a>
             </li>
           </ul>
@@ -53,9 +41,6 @@ const GlobalFooter = () => (
                 title="Terms of use for sites"
               >
                 Terms of Use
-                <span className="su-global-footer__link-a11y">
-                  (link is external)
-                </span>
               </a>
             </li>
             <li>
@@ -64,9 +49,6 @@ const GlobalFooter = () => (
                 title="Privacy and cookie policy"
               >
                 Privacy
-                <span className="su-global-footer__link-a11y">
-                  (link is external)
-                </span>
               </a>
             </li>
             <li>
@@ -75,9 +57,6 @@ const GlobalFooter = () => (
                 title="Report alleged copyright infringement"
               >
                 Copyright
-                <span className="su-global-footer__link-a11y">
-                  (link is external)
-                </span>
               </a>
             </li>
             <li>
@@ -86,9 +65,6 @@ const GlobalFooter = () => (
                 title="Ownership and use of Stanford trademarks and images"
               >
                 Trademarks
-                <span className="su-global-footer__link-a11y">
-                  (link is external)
-                </span>
               </a>
             </li>
             <li>
@@ -97,9 +73,6 @@ const GlobalFooter = () => (
                 title="Non-discrimination policy"
               >
                 Non-Discrimination
-                <span className="su-global-footer__link-a11y">
-                  (link is external)
-                </span>
               </a>
             </li>
             <li>
@@ -108,9 +81,6 @@ const GlobalFooter = () => (
                 title="Report web accessibility issues"
               >
                 Accessibility
-                <span className="su-global-footer__link-a11y">
-                  (link is external)
-                </span>
               </a>
             </li>
           </ul>

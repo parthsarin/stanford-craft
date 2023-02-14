@@ -8,12 +8,12 @@
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
   font-family: "Source Sans Pro", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-  font-size: 1.9rem;
+  font-size: 1.2rem;
   box-sizing: inherit;
   -webkit-font-smoothing: antialiased;
   color: #fff;
-  padding-top: 2.7rem;
-  padding-bottom: 2.7rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
   background-color: #b1040e;
 }
 
@@ -21,7 +21,7 @@
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
   font-family: "Source Sans Pro", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-  font-size: 1.9rem;
+  font-size: 1.2rem;
   -webkit-font-smoothing: antialiased;
   color: #fff;
   box-sizing: inherit;
@@ -35,13 +35,13 @@
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
   font-family: "Source Sans Pro", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-  font-size: 1.9rem;
+  font-size: 1.2rem;
   -webkit-font-smoothing: antialiased;
   color: #fff;
   box-sizing: inherit;
-  padding-top: .5rem;
+  padding-top: rem;
   text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: 0.3rem;
 }
 
 .su-logo {
@@ -63,5 +63,126 @@
   font-variant-ligatures: discretionary-ligatures;
   -webkit-font-smoothing: antialiased;
   color: #fff;
-  font-size: 3.4rem;
+  font-size: 2.2rem;
+}
+
+.su-global-footer__content {
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  font-family: "Source Sans Pro", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-size: 1.2rem;
+  -webkit-font-smoothing: antialiased;
+  color: #fff;
+  box-sizing: inherit;
+  -webkit-box-flex: 1;
+  flex-grow: 1;
+  padding-left: 4rem;
+}
+
+.su-global-footer__content nav {
+  -webkit-box-flex: 0;
+  flex: 0 0 auto;
+  -webkit-box-pack: center;
+  justify-content: center;
+  display: block;
+  margin-bottom: 0.6rem;
+}
+
+.su-global-footer__menu--global {
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  font-family: "Source Sans Pro", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color: #fff;
+  box-sizing: inherit;
+  margin: 0 0 1rem;
+  padding: 0;
+  list-style-type: none;
+  font-size: 1.1rem;
+}
+
+.su-global-footer__menu--global li {
+  -webkit-text-size-adjust: 100%;
+  font-family: "Source Sans Pro", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color: #fff;
+  list-style-type: none;
+  font-size: 1.1rem;
+  box-sizing: inherit;
+  margin: 0;
+  display: inline-block;
+  line-height: 1.1;
+  margin-right: 2.1rem;
+  padding: 0;
+  text-align: left;
+}
+
+.su-global-footer__menu--global li a {
+  -webkit-text-size-adjust: 100%;
+  font-family: "Source Sans Pro", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  list-style-type: none;
+  font-size: 1.1rem;
+  line-height: 1.1;
+  text-align: left;
+  box-sizing: inherit;
+  background-color: rgba(0, 0, 0, 0);
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+}
+
+.su-global-footer__menu--policy {
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  font-family: "Source Sans Pro", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color: #fff;
+  box-sizing: inherit;
+  margin: 0 0 1rem;
+  padding: 0;
+  list-style-type: none;
+  font-size: 0.9rem;
+}
+
+.su-global-footer__menu--policy li {
+  -webkit-text-size-adjust: 100%;
+  font-family: "Source Sans Pro", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color: #fff;
+  list-style-type: none;
+  font-size: 0.9rem;
+  box-sizing: inherit;
+  margin: 0;
+  display: inline-block;
+  line-height: 1.1;
+  margin-right: 2.1rem;
+  padding: 0;
+  text-align: left;
+}
+
+.su-global-footer__menu--policy li a {
+  -webkit-text-size-adjust: 100%;
+  font-family: "Source Sans Pro", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  list-style-type: none;
+  font-size: 0.9rem;
+  line-height: 1.1;
+  text-align: left;
+  box-sizing: inherit;
+  background-color: rgba(0, 0, 0, 0);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 400;
+}
+
+.su-global-footer__copyright {
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  font-family: "Source Sans Pro", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color: #fff;
+  box-sizing: inherit;
+  font-size: 0.7rem;
+  text-align: left;
 }
