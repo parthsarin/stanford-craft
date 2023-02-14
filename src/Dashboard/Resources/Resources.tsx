@@ -1,7 +1,9 @@
-import { Resource } from "./Resource";
+import { useState } from "react";
+import { Resource, matchResource } from "./Resource";
 import ResourceCard from "./ResourceCard/ResourceCard";
+import SearchBar from "./SearchBar";
 
-const resources: Resource[] = [
+const defaultResources: Resource[] = [
   {
     title: "Squid Model",
     description: "A model for understanding AI",
@@ -66,9 +68,19 @@ const resources: Resource[] = [
 ];
 
 const Resources = () => {
+  const [resources, setResources] = useState<Resource[]>(defaultResources);
+
+  const handleSearch = (search: string) => {
+    const filteredResources = defaultResources.filter(
+      (resource) => matchResource(resource, search)
+    );
+    setResources(filteredResources);
+  };
+
+
   return (
     <div className="flex-1 p-4">
-      <h1 className="text-2xl mb-4">Resources</h1>
+      <SearchBar onUpdate={handleSearch} />
       <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
         {
           resources.map((resource, i) => (
