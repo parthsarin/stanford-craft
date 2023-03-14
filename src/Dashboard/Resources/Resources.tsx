@@ -64,7 +64,27 @@ const defaultResources: Resource[] = [
       },
     ],
     tags: ["Unit 2", "reading", "worksheet"],
-  }
+  },
+  {
+    title: "Sentiment Analysis Hands-On",
+    description: "In this example, we have a collection of reviews from the movie rating site IMDB. Each review has the (lowercase) text that the critic left and a tag indicating whether it is positive or negative. You can enter a word and the notebook will calculate its sentiment based on the data provided above.",
+    img: require("../../img/resources/sentiment-analysis.png"),
+    subLinks: [
+      {
+        url: "https://observablehq.com/@craft/sentiment-analysis-example",
+        name: "Notebook",
+      },
+      {
+        url: "https://docs.google.com/presentation/d/18XQZmqr23Ps2ZwPwHvnYZSSHVv7enZ46G1qarKX2oMs/edit",
+        name: "Worksheet",
+      },
+      {
+        url: "https://docs.google.com/document/d/1lbF25Q6_I45NRSWzFW3ZbcIkTJ7zAfs638HOGthMK0A/edit#",
+        name: "Curriculum",
+      },
+    ],
+    tags: ["Unit 3", "hands-on", "worksheet"],
+  },
 ];
 
 const Resources = () => {
