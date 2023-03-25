@@ -1,10 +1,4 @@
 import { User as FirebaseUser } from "firebase/auth";
-import { 
-  getFirestore,
-  doc,
-  getDoc,
-  setDoc,
-} from "firebase/firestore";
 import { createContext } from "react";
 
 enum UserRole {
@@ -17,19 +11,12 @@ interface User extends FirebaseUser {
   role?: UserRole;
 }
 
-async function handleSignIn(user: User) {
-  // check to see if the user data is in the database
-  const db = getFirestore();
-  const userRef = doc(db, "users", user.uid);
-  const docSnap = await getDoc(userRef);
-
-  if (!docSnap.exists()) {
-    // if not, add the user to the database
-    setDoc(userRef, { ...user });
-  }
+interface UserContextPayload {
+  user: User | null;
+  setUser: (user: User | null) => void;
 }
 
-const UserContext = createContext<User | null>(null);
+const UserContext = createContext<UserContextPayload>({ user: null, setUser: () => {} });
+
 export default UserContext;
 export type { User };
-export { UserRole, handleSignIn };
