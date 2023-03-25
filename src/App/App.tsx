@@ -10,12 +10,14 @@ import Dashboard from "../Dashboard";
 import Resources from "../Dashboard/Resources";
 import NoMatch from "../NoMatch";
 
-import { QueryClient, QueryClientProvider } from "react-query";
 import './App.css';
 import Datamax from "../Dashboard/Datamax";
 import NewQuiz from "../Dashboard/Datamax/NewQuiz";
 import IdentityBar from "../Generic/Brand/IdentityBar";
 import GlobalFooter from "../Generic/Brand/GlobalFooter";
+import { useContext, useState } from "react";
+import { handleSignIn, User, UserContext } from "../Auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -31,16 +33,23 @@ const router = createBrowserRouter(
   )
 );
 
-const queryClient = new QueryClient();
+const App = () => {
+  const [user, setUser] = useState<User | null>(null);
 
-const App = () => (
-  <>
-    <IdentityBar />
-    <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
-    </QueryClientProvider>
-    <GlobalFooter />
-  </>
-);
+  onAuthStateChanged(getAuth(), (user) => {
+    setUser(user);
+    if (user) handleSignIn(user);
+  })
+
+  return (
+    <>
+      <UserContext.Provider value={ user }>
+        <IdentityBar />
+        <RouterProvider router={router} />
+        <GlobalFooter />
+      </UserContext.Provider>
+    </>
+  );
+}
 
 export default App;

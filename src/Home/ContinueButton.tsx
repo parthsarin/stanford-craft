@@ -12,7 +12,7 @@ const ContinueButton = () => {
         `}
       onClick={() => navigate("/dashboard/resources")}
     >
-      <FontAwesomeIcon icon={faDashboard} className="mr-2" /> Dashboard
+      <FontAwesomeIcon icon={faDashboard} className="mr-2" /> View the Resources
     </button>
   );
 }
