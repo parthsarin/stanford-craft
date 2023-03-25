@@ -45,7 +45,7 @@ const NewQuiz = () => {
       <div className="w-4/5 lg:w-2/3 p-2 rounded bg-gray-200 mb-4">
         <button
           className="text-blue-600 hover:underline"
-          onClick={() => navigate("/dashboard/datamax")}
+          onClick={() => navigate("/dash/datamax")}
         >
           Datamax
         </button>{" "}

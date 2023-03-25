@@ -1,5 +1,3 @@
-import coworkZoom from '../img/education/cowork-zoom.svg';
-
 import Footer from "./Footer";
 import IconBullet from "../Generic/IconBullet";
 import { faAtom, faChalkboardTeacher, faPalette } from "@fortawesome/free-solid-svg-icons";

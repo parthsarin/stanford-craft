@@ -15,15 +15,17 @@ import Datamax from "../Dashboard/Datamax";
 import NewQuiz from "../Dashboard/Datamax/NewQuiz";
 import IdentityBar from "../Generic/Brand/IdentityBar";
 import GlobalFooter from "../Generic/Brand/GlobalFooter";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { handleSignIn, User, UserContext } from "../Auth";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import ExternalLink from "../ExternalLink";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path="/" element={<Home />} />
-      <Route path="/dashboard" element={<Dashboard />}>
+      <Route path="/link/*" element={<ExternalLink />} />
+      <Route path="/dash" element={<Dashboard />}>
         <Route path="datamax" element={<Datamax />} />
         <Route path="datamax/new" element={<NewQuiz />} />
         <Route path="resources" element={<Resources />} />   

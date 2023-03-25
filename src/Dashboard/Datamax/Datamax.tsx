@@ -16,14 +16,14 @@ const Datamax = () => {
       <div className="flex flex-row my-2">
         <button
           className="btn-rose"
-          onClick={() => navigate("/dashboard/datamax/new")}
+          onClick={() => navigate("/dash/datamax/new")}
         >
           <FontAwesomeIcon icon={faPlus} className="mr-2" />
           New Quiz
         </button>
         <button
           className="btn-indigo"
-          onClick={() => navigate("/dashboard/datamax/join")}
+          onClick={() => navigate("/dash/datamax/join")}
         >
           <FontAwesomeIcon icon={faHand} className="mr-2" />
           Join Game

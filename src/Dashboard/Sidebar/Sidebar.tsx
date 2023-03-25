@@ -25,7 +25,7 @@ const Sidebar = () => {
           <li>
             <button 
               className="w-full p-2 flex flex-row items-center hover:bg-violet-600 rounded"
-              onClick={() => navigate('/dashboard/datamax')}
+              onClick={() => navigate('/dash/datamax')}
             >
               <FontAwesomeIcon icon={faRobot} className={`${expanded && 'mr-2'} w-6 h-6`} />
               {expanded && <p className="text-lg">Datamax</p>}
@@ -34,7 +34,7 @@ const Sidebar = () => {
           <li>
             <button 
               className="w-full p-2 flex flex-row items-center hover:bg-violet-600 rounded"
-              onClick={() => navigate('/dashboard/resources')}
+              onClick={() => navigate('/dash/resources')}
             >
               <FontAwesomeIcon icon={faBookmark} className={`${expanded && 'mr-2'} w-6 h-6`} />
               {expanded && <p className="text-lg">Resources</p>}

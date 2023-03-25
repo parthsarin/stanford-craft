@@ -31,7 +31,7 @@ const defaultResources: Resource[] = [
     img: require("../../img/resources/doxxing.png"),
     subLinks: [
       {
-        url: "https://www.tiktok.com/@notkahnjunior/video/7160059039433411882",
+        url: "/link/u2l3/cdoxx-intro.mp4",
         name: "Video",
       },
       {

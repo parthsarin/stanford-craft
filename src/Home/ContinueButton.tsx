@@ -10,7 +10,7 @@ const ContinueButton = () => {
       className={`rounded border border-fuchsia-700 bg-fuchsia-700 text-white
         px-3 py-2 hover:bg-fuchsia-800
         `}
-      onClick={() => navigate("/dashboard/resources")}
+      onClick={() => navigate("/dash/resources")}
     >
       <FontAwesomeIcon icon={faDashboard} className="mr-2" /> View the Resources
     </button>
