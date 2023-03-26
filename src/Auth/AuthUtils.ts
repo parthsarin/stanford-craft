@@ -27,6 +27,7 @@ async function handleSignIn(
   }
 
   setUser(user);
+  console.log('updated user state');
 }
 
 const generateUserUpdateHandler = 
@@ -36,10 +37,16 @@ const generateUserUpdateHandler =
   // signing out
   if (!user) return setUser(null);
 
+  // make a copy of the user object (just the important fields)
+  let pushToDb: any = {};
+  if (user.displayName) pushToDb.displayName = user.displayName;
+  if (user.photoURL) pushToDb.photoURL = user.photoURL;
+  if (user.email) pushToDb.email = user.email;
+
   // otherwise update the user and the database
   const db = getFirestore();
   const userRef = doc(db, "users", user.uid);
-  setDoc(userRef, { ...user }, { merge: true });
+  setDoc(userRef, { ...pushToDb }, { merge: true });
   setUser(user);
 }
 

@@ -18,7 +18,7 @@ import GlobalFooter from "../Generic/Brand/GlobalFooter";
 import ExternalLink from "../ExternalLink";
 import Profile from "../Dashboard/Profile";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   handleSignIn,
   generateUserUpdateHandler,
@@ -45,7 +45,12 @@ const router = createBrowserRouter(
 
 const App = () => {
   const [user, setUser] = useState<User | null>(null);
-  onAuthStateChanged(getAuth(), (user) => handleSignIn(user, setUser));
+  
+  useEffect(() => {
+    const auth = getAuth();
+    const unsubscribe = onAuthStateChanged(auth, (user) => handleSignIn(user, setUser));
+    return unsubscribe;
+  }, []);
 
   return (
     <>
