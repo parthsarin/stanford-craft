@@ -50,7 +50,7 @@ const generateUserUpdateHandler =
   setUser(user);
 }
 
-function signIn() {
+async function signIn() {
   const provider = new GoogleAuthProvider();
   const auth = getAuth();
   return signInWithPopup(auth, provider)

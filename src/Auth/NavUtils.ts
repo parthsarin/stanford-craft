@@ -20,12 +20,12 @@ function useProtectedNav() {
       backdrop: true,
       icon: "info",
       showCancelButton: true,
-      confirmButtonText: "Sign in with Google",
+      confirmButtonText: `Sign in with Google`,
       confirmButtonColor: "#4285f4",
       cancelButtonText: "Cancel",
-      html: `<p class="text-sm">You need to sign in to continue because this
-      resource requires backend functionality (e.g., database) so all users
-      are required to register for safety and data persistence.</p>`
+      html: `<p class="text-sm">This resource requires backend functionality 
+      (e.g., the database) so all users are required to sign in for safety and 
+      data persistence.</p>`
     })
     .then((result) => {
       if (!result.isConfirmed) return;

@@ -1,4 +1,12 @@
-import { faChevronLeft, faChevronRight, faRobot, faBookmark, faSignIn, faSignOut, faUser } from "@fortawesome/free-solid-svg-icons";
+import { 
+  faChevronLeft,
+  faChevronRight,
+  faRobot,
+  faSignIn,
+  faSignOut,
+  faUser,
+  faBook
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
@@ -88,7 +96,7 @@ const Sidebar = () => {
               onClick={() => navigate("/dash/resources")}
             >
               <FontAwesomeIcon
-                icon={faBookmark}
+                icon={faBook}
                 className={`${expanded && "mr-2"} w-6 h-6`}
               />
               {expanded && <p className="text-lg">Resources</p>}
