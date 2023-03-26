@@ -5,6 +5,7 @@ import {
   getDoc,
   setDoc,
 } from "firebase/firestore";
+import { MySwal } from "../Generic/Notify";
 import { User } from './UserContext';
 
 async function handleSignIn(
@@ -52,12 +53,41 @@ const generateUserUpdateHandler =
 function signIn() {
   const provider = new GoogleAuthProvider();
   const auth = getAuth();
-  signInWithPopup(auth, provider);
+  return signInWithPopup(auth, provider)
+    .then((result) => {
+      const user = result.user;
+      MySwal.fire({
+        title: `Signed in as ${user?.displayName}`,
+        icon: "success",
+        timer: 2500,
+        timerProgressBar: true,
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', MySwal.stopTimer)
+          toast.addEventListener('mouseleave', MySwal.resumeTimer)
+        }
+      });
+    });
 }
 
 function signOut() {
   const auth = getAuth();
   auth.signOut();
+  MySwal.fire({
+    title: "Signed out",
+    icon: "success",
+    timer: 2500,
+    timerProgressBar: true,
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    didOpen: (toast) => {
+      toast.addEventListener('mouseenter', MySwal.stopTimer)
+      toast.addEventListener('mouseleave', MySwal.resumeTimer)
+    }
+  });
 }
 
 export { handleSignIn, generateUserUpdateHandler, signIn, signOut };
