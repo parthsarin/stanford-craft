@@ -4,7 +4,9 @@ import Sidebar from "./Sidebar";
 const Dashboard = () => (
   <div className="flex flex-row">
     <Sidebar />
-    <Outlet />
+    <div style={{ minHeight: "97vh", marginLeft: "72px", width: "100%" }}>
+      <Outlet />
+    </div>
   </div>
 );
 

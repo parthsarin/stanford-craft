@@ -5,6 +5,8 @@ import { useEffect, useState, useContext } from "react";
 import { signIn, signOut, UserContext } from "../../Auth";
 
 const Sidebar = () => {
+  const [height, setHeight] = useState("calc(100% - 30px)");
+  const [isFixed, setFixed] = useState(false);
   const [expanded, setExpanded] = useState(true);
   const { user } = useContext(UserContext);
   const navigate = useNavigate();
@@ -20,10 +22,29 @@ const Sidebar = () => {
     if (ls && ls === 'false') setExpanded(false);
   }, [setExpanded]);
 
+  const handleScroll = () => {
+    // height of the identity bar is 30px
+    if (window.scrollY > 30) {
+      if (height !== "100%") setHeight("100%");
+      setFixed(true);
+    } else {
+      const d = 30 - window.scrollY;
+      setHeight(`calc(100% - ${d}px)`);
+      setFixed(false);
+    }
+  }
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  });
+
   return (
     <aside
-      className="sm:w-fit bg-violet-500 text-white"
-      style={{ minHeight: "97vh" }}
+      className={
+        `w-fit bg-violet-500 text-white
+        ${isFixed ? "fixed top-0" : "absolute"}`
+      }
+      style={{ height }}
     >
       <div className="w-full h-full p-4">
         <ul className="space-y-2 flex flex-col h-full">

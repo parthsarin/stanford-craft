@@ -27,7 +27,6 @@ async function handleSignIn(
   }
 
   setUser(user);
-  console.log('updated user state');
 }
 
 const generateUserUpdateHandler = 
