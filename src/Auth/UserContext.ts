@@ -11,6 +11,7 @@ interface User extends FirebaseUser {
   role?: UserRole;
   datamax?: {
     activeQuizzes: string[];
+    pastQuizzes: string[];
   }
 }
 

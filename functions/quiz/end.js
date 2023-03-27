@@ -33,6 +33,7 @@ function getFieldNames(template) {
 
 function getResponseData(responses, fieldNames) {
   const data = [];
+  let numResponses = 0;
   responses.forEach((snapshot) => {
     const response = snapshot.data();
     const name = response.name;
@@ -50,19 +51,22 @@ function getResponseData(responses, fieldNames) {
 
       data.push(questionResponse);
     }
+
+    numResponses++;
   })
-  return data;
+  return [data, numResponses];
 }
 
 module.exports.endQuiz = (quizDoc, responses) => {
   const data = quizDoc.data();
   const fieldNames = getFieldNames(data.template);
-  const responseData = getResponseData(responses, fieldNames);
+  const [responseData, numResponses] = getResponseData(responses, fieldNames);
 
   // update the quiz document
   quizDoc.ref.update({
     active: false,
     responses: responseData,
     csv: json2csv(responseData),
+    numResponses,
   });
 };

@@ -99,6 +99,8 @@ interface QuizDoc {
   createdAt: Timestamp,
   template: Quiz,
   active: boolean,
+  numResponses?: number,
+  csv?: string,
 }
 
 interface ResponsePayload {

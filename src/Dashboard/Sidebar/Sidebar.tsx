@@ -5,7 +5,8 @@ import {
   faSignIn,
   faSignOut,
   faUser,
-  faBook
+  faBook,
+  faChartLine,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
@@ -100,6 +101,18 @@ const Sidebar = () => {
                 className={`${expanded && "mr-2"} w-6 h-6`}
               />
               {expanded && <p className="text-lg">Resources</p>}
+            </button>
+          </li>
+          <li>
+            <button
+              className="w-full p-2 flex flex-row items-center hover:bg-violet-600 rounded"
+              onClick={() => navigate("/dash/analyze")}
+            >
+              <FontAwesomeIcon
+                icon={faChartLine}
+                className={`${expanded && "mr-2"} w-6 h-6`}
+              />
+              {expanded && <p className="text-lg">Analyze</p>}
             </button>
           </li>
 

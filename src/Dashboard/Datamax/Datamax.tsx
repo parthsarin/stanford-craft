@@ -7,7 +7,7 @@ import { UserContext } from "../../Auth";
 import { useProtectedNav } from "../../Auth/NavUtils";
 import { LoaderInline } from "../../Generic/Loader";
 import { MySwal } from "../../Generic/Notify";
-import { QuizDoc, QuizPreviewCardProps, QuizTemplate } from "./DatamaxTypes";
+import { QuizDoc, QuizPreviewCardProps } from "./DatamaxTypes";
 import QuizPreviewCard from "./QuizPreviewCard";
 
 const Datamax = () => {
