@@ -21,7 +21,12 @@ async function handleSignIn(
 
   if (!docSnap.exists()) {
     // if not, add the user to the database
-    setDoc(userRef, { ...user }, { merge: true });
+    // make a copy of the user object (just the important fields)
+    let pushToDb: any = {};
+    if (user.displayName) pushToDb.displayName = user.displayName;
+    if (user.photoURL) pushToDb.photoURL = user.photoURL;
+    if (user.email) pushToDb.email = user.email;
+    setDoc(userRef, { ...pushToDb }, { merge: true });
   } else {
     // if so, update the data based on what's in the database
     user = { ...user, ...docSnap.data() };

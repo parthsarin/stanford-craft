@@ -37,7 +37,7 @@ interface QuizTemplate {
 }
 
 interface QuizPreviewCardProps {
-  quiz: QuizTemplate,
+  quiz: QuizDoc,
   joinCode: string,
   createdAt: Timestamp,
 }
@@ -97,7 +97,8 @@ interface QuizDoc {
   joinCode: string,
   owner: string,
   createdAt: Timestamp,
-  template: Quiz
+  template: Quiz,
+  active: boolean,
 }
 
 interface ResponsePayload {

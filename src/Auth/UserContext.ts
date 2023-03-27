@@ -9,6 +9,9 @@ enum UserRole {
 
 interface User extends FirebaseUser {
   role?: UserRole;
+  datamax?: {
+    activeQuizzes: string[];
+  }
 }
 
 interface UserContextPayload {

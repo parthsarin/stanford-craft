@@ -6,6 +6,8 @@ import App from './App';
 
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
+import { connectFunctionsEmulator, getFunctions } from 'firebase/functions';
+import { connectFirestoreEmulator, getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
   apiKey: "AIzaSyCDCTEbILAwX5OYe7xWEfKT87EEoK6cDjc",
@@ -20,8 +22,14 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 getAnalytics(app);
+const functions = getFunctions(app);
+const db = getFirestore();
 
-// Render
+if (window.location.hostname === 'localhost') {
+  connectFunctionsEmulator(functions, 'localhost', 5001);
+  connectFirestoreEmulator(db, 'localhost', 8080);
+}
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );

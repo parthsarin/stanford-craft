@@ -7,7 +7,7 @@ async function generateQuizJoinCode() {
     const joinCode = Math.random().toString(36).substring(2, 8).toUpperCase();
 
     const db = getFirestore();
-    const docRef = doc(db, 'datamax-active', joinCode);
+    const docRef = doc(db, 'datamax', joinCode);
     const docSnapshot = await getDoc(docRef);
 
     if (!docSnapshot.exists()) return joinCode;
@@ -58,10 +58,11 @@ export default async function createQuiz(quiz: QuizTemplate) {
   if (!uid) return;
 
   const db = getFirestore();
-  const docRef = doc(db, 'datamax-active', joinCode);
+  const docRef = doc(db, 'datamax', joinCode);
   await setDoc(docRef, {
     template: qt,
     owner: uid,
+    active: true,
     createdAt: serverTimestamp(),
   });
 

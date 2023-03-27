@@ -7,7 +7,7 @@ import { UserContext } from "../../Auth";
 import { useProtectedNav } from "../../Auth/NavUtils";
 import { LoaderInline } from "../../Generic/Loader";
 import { MySwal } from "../../Generic/Notify";
-import { QuizPreviewCardProps, QuizTemplate } from "./DatamaxTypes";
+import { QuizDoc, QuizPreviewCardProps, QuizTemplate } from "./DatamaxTypes";
 import QuizPreviewCard from "./QuizPreviewCard";
 
 const Datamax = () => {
@@ -17,6 +17,9 @@ const Datamax = () => {
 
   const [quizzesLoaded, setQuizzesLoaded] = useState(false);
   const [activeQuizzes, setActiveQuizzes] = useState<QuizPreviewCardProps[]>(
+    []
+  );
+  const [pastQuizzes, setPastQuizzes] = useState<QuizPreviewCardProps[]>(
     []
   );
 
@@ -29,26 +32,38 @@ const Datamax = () => {
       const userDoc = await getDoc(userRef);
 
       // Get the active quizzes
-      const aqCodeList = userDoc.data()?.datamax.activeQuizzes || [];
+      const aqCodeList = userDoc.data()?.datamax?.activeQuizzes || [];
       const activeQuizzes = [];
       for (const code of aqCodeList) {
-        const quizRef = doc(db, "datamax-active", code);
+        const quizRef = doc(db, "datamax", code);
         const quizDoc = await getDoc(quizRef);
 
         activeQuizzes.push({
-          quiz: quizDoc.data()?.template as QuizTemplate,
+          quiz: quizDoc.data() as QuizDoc,
           joinCode: code,
           createdAt: quizDoc.data()?.createdAt,
         });
       }
       setActiveQuizzes(activeQuizzes);
 
-      // Todo: get past quizzes
-      // const pqCodeList = userDoc.data()?.datamax.pastQuizzes || [];
+      // get past quizzes in the same way
+      const pqCodeList = userDoc.data()?.datamax?.pastQuizzes || [];
+      const pastQuizzes = [];
+      for (const code of pqCodeList) {
+        const quizRef = doc(db, "datamax", code);
+        const quizDoc = await getDoc(quizRef);
+
+        pastQuizzes.push({
+          quiz: quizDoc.data() as QuizDoc,
+          joinCode: code,
+          createdAt: quizDoc.data()?.createdAt,
+        });
+      }
+      setPastQuizzes(pastQuizzes);
 
       setQuizzesLoaded(true);
     })();
-  }, [user, setActiveQuizzes]); 
+  }, [user, setActiveQuizzes, setPastQuizzes]); 
 
   const joinGame = () => {
     MySwal.fire({
@@ -91,32 +106,34 @@ const Datamax = () => {
           <FontAwesomeIcon icon={faPlus} className="mr-2" />
           New Quiz
         </button>
-        <button
-          className="btn-indigo"
-          onClick={joinGame}
-        >
+        <button className="btn-indigo" onClick={joinGame}>
           <FontAwesomeIcon icon={faHand} className="mr-2" />
           Join Game
         </button>
       </div>
 
-      {quizzesLoaded 
-      ? (
+      {quizzesLoaded ? (
         <>
           <div className="mt-6">
             <h2 className="text-xl mb-1">Active quizzes</h2>
             <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-3">
               {activeQuizzes.map((props, i) => (
-                <QuizPreviewCard {...props} key={`active-quiz-${i}`} />
+                <QuizPreviewCard {...props} key={props.joinCode} />
               ))}
             </div>
           </div>
           <div className="mt-2">
             <h2 className="text-xl mb-1">Past quizzes</h2>
+            <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-3">
+              {pastQuizzes.map((props, i) => (
+                <QuizPreviewCard {...props} key={props.joinCode} />
+              ))}
+            </div>
           </div>
         </>
-      ) : (user && <LoaderInline />)
-    }
+      ) : (
+        user && <LoaderInline />
+      )}
     </div>
   );
 }

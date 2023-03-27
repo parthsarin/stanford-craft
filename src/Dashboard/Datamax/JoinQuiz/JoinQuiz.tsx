@@ -16,7 +16,7 @@ const JoinQuiz = () => {
 
   const [quiz, setQuiz] = useState<QuizDoc | null>(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState("");
 
   // get the quiz information to make sure it exists
   useEffect(() => {
@@ -24,15 +24,18 @@ const JoinQuiz = () => {
 
     (async () => {
       const db = getFirestore();
-      const docRef = doc(db, "datamax-active", joinCode);
+      const docRef = doc(db, "datamax", joinCode);
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {
         const quizData = docSnap.data() as QuizDoc;
         setQuiz(quizData);
         setLoading(false);
+
+        if (!quizData.active)
+          setError("The quiz you are trying to join is not active.");
       } else {
-        setError(true);
+        setError("The quiz you are trying to join does not exist.");
       }
 
     })();
@@ -41,7 +44,7 @@ const JoinQuiz = () => {
   if (error) {
     MySwal.fire({
       title: "Error",
-      text: "The quiz you are trying to join does not exist.",
+      text: error,
       icon: "error"
     })
       .then(() => navigate('/dash/datamax'));

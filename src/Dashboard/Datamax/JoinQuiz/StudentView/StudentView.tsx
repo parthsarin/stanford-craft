@@ -89,7 +89,7 @@ const StudentView = ({ joinCode }: Params) => {
     // write the response to the database
     const db = getFirestore();
     const docId = user?.uid || generateUUID();
-    const docRef = doc(db, "datamax-active", joinCode, "responses", docId);
+    const docRef = doc(db, "datamax", joinCode, "responses", docId);
 
     // write the response to the database
     setDoc(docRef, { response: responsePayload, name: responses.name })
@@ -130,7 +130,7 @@ const StudentView = ({ joinCode }: Params) => {
             <input
               type="text"
               name="displayName"
-              value={responses.name}
+              value={responses.name ? responses.name : ""}
               className="w-full p-2 rounded rounded-md bg-slate-500 text-white"
               onChange={(e) => setResponses({ ...responses, name: e.target.value })}
               disabled={user ? true : false}
@@ -139,7 +139,10 @@ const StudentView = ({ joinCode }: Params) => {
           {
             quiz.questions.map((question) => (
               <div key={question.id} className="col-span-3 mb-6 bg-slate-100 text-black p-3 rounded rounded-md">
-                <Question question={question} onChange={(r) => setResponses({ ...responses, [question.id]: r })} />
+                <Question 
+                  question={question} 
+                  onChange={(r) => setResponses({ ...responses, [question.id]: r })} 
+                />
               </div>
             ))
           }
