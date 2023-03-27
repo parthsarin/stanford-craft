@@ -100,6 +100,20 @@ interface QuizDoc {
   template: Quiz
 }
 
+interface ResponsePayload {
+  [k: string]: {
+    dataElementValues: {
+      [k: string]: number;
+    }
+    response: string;
+  }
+}
+
+interface Response {
+  name: string,
+  response: ResponsePayload
+}
+
 export {
   ResponseType,
   DataElementGenerator,
@@ -117,4 +131,6 @@ export type {
   Question,
   DataElement,
   QuizDoc,
+  ResponsePayload,
+  Response,
 };

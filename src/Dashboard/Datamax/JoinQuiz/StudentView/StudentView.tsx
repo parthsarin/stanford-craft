@@ -1,6 +1,6 @@
 import { FormEvent, useContext, useEffect, useState } from "react";
 import Loader from "../../../../Generic/Loader";
-import { Quiz } from "../../DatamaxTypes";
+import { Quiz, ResponsePayload } from "../../DatamaxTypes";
 import { getFunctions, httpsCallable } from "firebase/functions";
 import { UserContext } from "../../../../Auth";
 import Question from "./Question";
@@ -15,15 +15,6 @@ interface Params {
 interface QuizResponse {
   name: string;
   responses: { [k: string]: string };
-}
-
-interface ResponsePayload {
-  [k: string]: {
-    dataElementValues: {
-      [k: string]: number;
-    }
-    response: string;
-  }
 }
 
 const StudentView = ({ joinCode }: Params) => {

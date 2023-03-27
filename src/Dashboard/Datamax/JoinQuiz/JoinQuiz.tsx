@@ -4,7 +4,6 @@ import { useNavigate, useParams } from "react-router-dom"
 import { UserContext } from "../../../Auth";
 import Loader from "../../../Generic/Loader";
 import { MySwal } from "../../../Generic/Notify";
-import NoMatch from "../../../NoMatch";
 import { QuizDoc } from "../DatamaxTypes";
 import StudentView from "./StudentView";
 import TeacherView from "./TeacherView";
@@ -49,7 +48,9 @@ const JoinQuiz = () => {
     return null;
   }
   if (loading || !joinCode) return <Loader />;
-  if (user?.uid === quiz?.owner) return <TeacherView joinCode={joinCode} />;
+  if (quiz && user && user.uid === quiz.owner) 
+    return <TeacherView joinCode={joinCode} quiz={quiz} />;
+
   return <StudentView joinCode={joinCode} />;
 }
 
