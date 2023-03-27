@@ -1,11 +1,79 @@
 import { faHand, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { doc, getDoc, getFirestore } from "firebase/firestore";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../Auth";
 import { useProtectedNav } from "../../Auth/NavUtils";
+import { LoaderInline } from "../../Generic/Loader";
+import { MySwal } from "../../Generic/Notify";
+import { QuizPreviewCardProps, QuizTemplate } from "./DatamaxTypes";
+import QuizPreviewCard from "./QuizPreviewCard";
 
 const Datamax = () => {
   const navigate = useNavigate();
   const protectedNav = useProtectedNav();
+  const { user } = useContext(UserContext);
+
+  const [quizzesLoaded, setQuizzesLoaded] = useState(false);
+  const [activeQuizzes, setActiveQuizzes] = useState<QuizPreviewCardProps[]>(
+    []
+  );
+
+  useEffect(() => {
+    if (!user) return;
+
+    (async () => {
+      const db = getFirestore();
+      const userRef = doc(db, "users", user.uid);
+      const userDoc = await getDoc(userRef);
+
+      // Get the active quizzes
+      const aqCodeList = userDoc.data()?.datamax.activeQuizzes || [];
+      const activeQuizzes = [];
+      for (const code of aqCodeList) {
+        const quizRef = doc(db, "datamax-active", code);
+        const quizDoc = await getDoc(quizRef);
+
+        activeQuizzes.push({
+          quiz: quizDoc.data()?.template as QuizTemplate,
+          joinCode: code,
+          createdAt: quizDoc.data()?.createdAt,
+        });
+      }
+      setActiveQuizzes(activeQuizzes);
+
+      // Todo: get past quizzes
+      // const pqCodeList = userDoc.data()?.datamax.pastQuizzes || [];
+
+      setQuizzesLoaded(true);
+    })();
+  }, [user, setActiveQuizzes]); 
+
+  const joinGame = () => {
+    MySwal.fire({
+      title: "Join a game",
+      input: "text",
+      inputLabel: "Enter the game code",
+      inputPlaceholder: "ABCDEF",
+      inputAttributes: {
+        autocapitalize: "on",
+      },
+      showCancelButton: true,
+      confirmButtonText: "Join",
+      showLoaderOnConfirm: true,
+    })
+      .then((result) => {
+        if (result.isConfirmed) {
+          return result.value;
+        }
+      })
+      .then((code) => {
+        if (code) {
+          navigate(`/dash/datamax/join/${code.toUpperCase()}`);
+        }
+      })
+  }
 
   return (
     <div className="p-4">
@@ -25,12 +93,30 @@ const Datamax = () => {
         </button>
         <button
           className="btn-indigo"
-          onClick={() => navigate("/dash/datamax/join")}
+          onClick={joinGame}
         >
           <FontAwesomeIcon icon={faHand} className="mr-2" />
           Join Game
         </button>
       </div>
+
+      {quizzesLoaded 
+      ? (
+        <>
+          <div className="mt-6">
+            <h2 className="text-xl mb-1">Active quizzes</h2>
+            <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-3">
+              {activeQuizzes.map((props, i) => (
+                <QuizPreviewCard {...props} key={`active-quiz-${i}`} />
+              ))}
+            </div>
+          </div>
+          <div className="mt-2">
+            <h2 className="text-xl mb-1">Past quizzes</h2>
+          </div>
+        </>
+      ) : (user && <LoaderInline />)
+    }
     </div>
   );
 }
