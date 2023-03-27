@@ -1,4 +1,4 @@
-import { faCopy, faDatabase, faXmarkCircle } from "@fortawesome/free-solid-svg-icons";
+import { faCopy, faDatabase, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { MouseEvent } from "react";
 import { generateUUID } from "../../../../Generic/UUID";
@@ -49,17 +49,6 @@ const Question = ({ data, onDelete, onUpdate, onDuplicate }: QuestionProps) => {
 
   return (
     <div className="relative w-4/5 lg:w-1/2 rounded border border-black p-2 mb-3 z-0">
-      {/* delete button */}
-      <button
-        className="text-xl absolute right-0 top-0 -translate-y-3 translate-x-2"
-        aria-label={"delete question"}
-        onClick={onDelete}
-      >
-        <FontAwesomeIcon
-          icon={faXmarkCircle}
-          className="bg-white rounded-full"
-        />
-      </button>
       {/* question title */}
       <input
         type="text"
@@ -79,26 +68,40 @@ const Question = ({ data, onDelete, onUpdate, onDuplicate }: QuestionProps) => {
         />
       ))}
 
-      {/* add data element */}
-      <button
-        className="flex flex-row w-full rounded border border-black border-dashed p-2 justify-center items-center text-xl hover:bg-gray-100"
-        onClick={addDataElement}
-      >
-        <FontAwesomeIcon icon={faDatabase} className="mr-2" />
-        Add Data Element
-      </button>
 
       {/* response */}
       <Response data={data.response} onUpdate={updateResponse} />
 
-      {/* duplicate button */}
-      <div className="flex flex-row w-full justify-end">
+      {/* delete and duplicate button */}
+      <div className="mt-4 flex flex-row w-full justify-around space-x-2">
         <button
-          className="px-3 py-2 bg-orange-300 rounded rounded-md border"
-          onClick={(e) => {e.preventDefault(); e.stopPropagation(); onDuplicate();}}
+          className="px-3 py-2 hover:bg-blue-400 bg-blue-300 rounded rounded-md border"
+          onClick={addDataElement}
+        >
+          <FontAwesomeIcon icon={faDatabase} className="mr-2" />
+          Add data element
+        </button>
+        <button
+          className="px-3 py-2 hover:bg-orange-400 bg-orange-300 rounded rounded-md border"
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            onDuplicate();
+          }}
         >
           <FontAwesomeIcon icon={faCopy} className="mr-2" />
           Duplicate
+        </button>
+        <button
+          className="px-3 py-2 hover:bg-red-400 bg-red-300 rounded rounded-md border"
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            onDelete();
+          }}
+        >
+          <FontAwesomeIcon icon={faTrash} className="mr-2" />
+          Delete
         </button>
       </div>
     </div>
