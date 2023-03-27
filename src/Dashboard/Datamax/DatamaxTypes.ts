@@ -69,6 +69,37 @@ function generateBlankDataElement(): DataElementTemplate {
   };
 }
 
+interface DataElement {
+  name: string,
+  generator: DataElementGenerator,
+  min?: number,
+  max?: number,
+  mean?: number,
+  std?: number,
+  round: number,
+  value: number,
+  id: string,
+}
+
+interface Question {
+  prompt: string;
+  dataElements: DataElement[];
+  response: ResponseTemplate;
+  id: string;
+}
+
+interface Quiz {
+  name: string,
+  questions: Question[]
+}
+
+interface QuizDoc {
+  joinCode: string,
+  owner: string,
+  createdAt: Timestamp,
+  template: Quiz
+}
+
 export {
   ResponseType,
   DataElementGenerator,
@@ -82,4 +113,8 @@ export type {
   DataElementTemplate,
   ResponseTemplate,
   QuizPreviewCardProps,
+  Quiz,
+  Question,
+  DataElement,
+  QuizDoc,
 };

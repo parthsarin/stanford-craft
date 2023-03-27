@@ -15,7 +15,7 @@ import { signIn, signOut, UserContext } from "../../Auth";
 const Sidebar = () => {
   const [height, setHeight] = useState("calc(100% - 30px)");
   const [isFixed, setFixed] = useState(false);
-  const [expanded, setExpanded] = useState(true);
+  const [expanded, setExpanded] = useState(false);
   const { user } = useContext(UserContext);
   const navigate = useNavigate();
 

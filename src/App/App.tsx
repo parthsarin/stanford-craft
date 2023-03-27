@@ -26,6 +26,7 @@ import {
   UserContext,
 } from "../Auth";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import JoinQuiz from "../Dashboard/Datamax/JoinQuiz";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -36,6 +37,7 @@ const router = createBrowserRouter(
         <Route path="profile" element={<Profile />} />
         <Route path="datamax" element={<Datamax />} />
         <Route path="datamax/new" element={<NewQuiz />} />
+        <Route path="datamax/quiz/:joinCode" element={<JoinQuiz />} />
         <Route path="resources" element={<Resources />} />   
       </Route>
       <Route path="*" element={<NoMatch />} />
