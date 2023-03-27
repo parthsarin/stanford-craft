@@ -11,7 +11,8 @@ interface DataElementTemplate {
   min?: number,
   max?: number,
   mean?: number,
-  std?: number
+  std?: number,
+  round?: number,
 }
 
 enum ResponseType {
@@ -26,13 +27,13 @@ interface ResponseTemplate {
 
 interface QuestionTemplate {
   prompt: string;
-  dataElements: DataElementTemplate[];
+  dataElements: { [key: string]: DataElementTemplate };
   response: ResponseTemplate;
 }
 
 interface QuizTemplate {
   name: string,
-  questions: QuestionTemplate[]
+  questions: { [key: string]: QuestionTemplate }
 }
 
 interface QuizPreviewCardProps {
@@ -41,9 +42,39 @@ interface QuizPreviewCardProps {
   createdAt: Timestamp,
 }
 
+function generateBlankQuiz(): QuizTemplate {
+  return {
+    name: '',
+    questions: {},
+  };
+}
+
+function generateBlankQuestion(): QuestionTemplate {
+  return {
+    prompt: '',
+    dataElements: {},
+    response: {
+      type: ResponseType.SHORT_ANSWER,
+    },
+  };
+}
+
+function generateBlankDataElement(): DataElementTemplate {
+  return {
+    name: '',
+    generator: DataElementGenerator.UNIFORM,
+    min: 0,
+    max: 10,
+    round: 2
+  };
+}
+
 export {
   ResponseType,
-  DataElementGenerator
+  DataElementGenerator,
+  generateBlankQuiz,
+  generateBlankQuestion,
+  generateBlankDataElement,
 }
 export type { 
   QuizTemplate,

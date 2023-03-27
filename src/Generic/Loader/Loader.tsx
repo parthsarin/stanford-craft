@@ -1,7 +1,7 @@
 import { MoonLoader } from "react-spinners";
 
 const Loader = () => (
-  <div className="z-50 w-full h-full absolute top-0 left-0 bg-white/50">
+  <div className="z-50 w-full h-full fixed top-0 left-0 bg-white/50">
     <div className="flex justify-center items-center w-full h-full">
       <MoonLoader size={80} />
     </div>
