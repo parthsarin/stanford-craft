@@ -22,7 +22,6 @@ const TeacherView = ({ joinCode, quiz }: Params) => {
         const id = change.doc.id;
         const type = change.type;
         const data = change.doc.data() as QuizResponse;
-        console.log(change);
 
         if (type === "added" || type === "modified") {
           setResponses((prev) => ({ ...prev, [id]: data }));

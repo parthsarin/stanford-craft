@@ -10,6 +10,7 @@ const UniformPrompt = ({ data, onUpdate }: DistributionParameterPromptProps) => 
     with minimum{" "}
     <input
       type="number"
+      step="0.1"
       className={`w-20 mt-1 px-2 py-1 border rounded`}
       value={data.min === undefined ? "" : data.min}
       onChange={(e) => onUpdate({ min: parseFloat(e.target.value === "" ? "0" : e.target.value) })}
@@ -17,6 +18,7 @@ const UniformPrompt = ({ data, onUpdate }: DistributionParameterPromptProps) => 
     and maximum{" "}
     <input
       type="number"
+      step="0.1"
       className={`w-20 mt-1 px-2 py-1 mr-1 border rounded `}
       value={data.max === undefined ? "" : data.max}
       onChange={(e) => onUpdate({ max: parseFloat(e.target.value === "" ? "0" : e.target.value) })}
@@ -24,6 +26,7 @@ const UniformPrompt = ({ data, onUpdate }: DistributionParameterPromptProps) => 
     rounded to{" "}
     <input
       type="number"
+      step="0.1"
       className={`w-20 mt-1 px-2 py-1 mr-1 border rounded `}
       value={data.round === undefined ? "" : data.round}
       onChange={(e) => onUpdate({ round: parseFloat(e.target.value === "" ? "0" : e.target.value) })}
@@ -37,6 +40,7 @@ const NormalPrompt = ({ data, onUpdate }: DistributionParameterPromptProps) => (
     with mean{" "}
     <input
       type="number"
+      step="0.1"
       className={`w-20 mt-1 px-2 py-1 border rounded`}
       value={data.mean === undefined ? "" : data.mean}
       onChange={(e) => onUpdate({ mean: parseFloat(e.target.value === "" ? "0" : e.target.value) })}
@@ -44,6 +48,7 @@ const NormalPrompt = ({ data, onUpdate }: DistributionParameterPromptProps) => (
     and standard deviation{" "}
     <input
       type="number"
+      step="0.1"
       min={0}
       className={`w-20 mt-1 px-2 py-1 mr-1 border rounded`}
       value={data.std === undefined ? "" : data.std}
@@ -52,6 +57,7 @@ const NormalPrompt = ({ data, onUpdate }: DistributionParameterPromptProps) => (
     rounded to{" "}
     <input
       type="number"
+      step="0.1"
       className={`w-20 mt-1 px-2 py-1 mr-1 border rounded `}
       value={data.round === undefined ? "" : data.round}
       onChange={(e) => onUpdate({ round: parseFloat(e.target.value === "" ? "0" : e.target.value) })}

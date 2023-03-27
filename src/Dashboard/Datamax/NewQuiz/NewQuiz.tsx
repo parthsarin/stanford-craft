@@ -43,6 +43,12 @@ const NewQuiz = () => {
     setQuiz({ ...quiz, questions: newQuestions });
   }
 
+  const duplicateQuestion = (questionKey: string) => () => {
+    const newQuestions = {...quiz.questions};
+    newQuestions[generateUUID()] = {...quiz.questions[questionKey]};
+    setQuiz({ ...quiz, questions: newQuestions });
+  }
+
   // the updateQuestion is passed to the child Question component
   const updateQuestion = (questionKey: string) => (data: QuestionTemplate) => {
     const newQuestions = {...quiz.questions};
@@ -58,7 +64,7 @@ const NewQuiz = () => {
     setLoading(true);
     createQuiz(quiz)
       .then(
-        (joinCode) => navigate(`/dashboard/datamax/quiz/${joinCode}`),
+        (joinCode) => navigate(`/dash/datamax/quiz/${joinCode}`),
       )
       .catch((err) => {
         setLoading(false);
@@ -109,6 +115,7 @@ const NewQuiz = () => {
               data={quiz.questions[questionKey]}
               onDelete={deleteQuestion(questionKey)}
               onUpdate={updateQuestion(questionKey)}
+              onDuplicate={duplicateQuestion(questionKey)}
             />
           ))
         }

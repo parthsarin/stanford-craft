@@ -1,4 +1,4 @@
-import { faDatabase, faXmarkCircle } from "@fortawesome/free-solid-svg-icons";
+import { faCopy, faDatabase, faXmarkCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { MouseEvent } from "react";
 import { generateUUID } from "../../../../Generic/UUID";
@@ -15,9 +15,10 @@ interface QuestionProps {
   data: QuestionTemplate;
   onDelete: () => void;
   onUpdate: (data: QuestionTemplate) => void;
+  onDuplicate: () => void;
 }
 
-const Question = ({ data, onDelete, onUpdate }: QuestionProps) => {
+const Question = ({ data, onDelete, onUpdate, onDuplicate }: QuestionProps) => {
   // data elements helper functions
   const addDataElement = (e: MouseEvent) => {
     e.preventDefault();
@@ -89,6 +90,17 @@ const Question = ({ data, onDelete, onUpdate }: QuestionProps) => {
 
       {/* response */}
       <Response data={data.response} onUpdate={updateResponse} />
+
+      {/* duplicate button */}
+      <div className="flex flex-row w-full justify-end">
+        <button
+          className="px-3 py-2 bg-orange-300 rounded rounded-md border"
+          onClick={(e) => {e.preventDefault(); e.stopPropagation(); onDuplicate();}}
+        >
+          <FontAwesomeIcon icon={faCopy} className="mr-2" />
+          Duplicate
+        </button>
+      </div>
     </div>
   );
 }
