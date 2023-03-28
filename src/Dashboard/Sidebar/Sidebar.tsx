@@ -7,6 +7,7 @@ import {
   faUser,
   faBook,
   faChartLine,
+  faQuoteLeft,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -111,6 +112,9 @@ const Sidebar = () => {
           </SidebarButton>
 
           <li className="flex-1"></li>
+          <SidebarButton text={"Credits"} path={"/dash/credits"} expanded={expanded}>
+            <FontAwesomeIcon icon={faQuoteLeft} className={`${expanded && "mr-2"} w-6 h-6`} />
+          </SidebarButton>
           <li>
             <button
               className="w-full p-2 flex flex-row items-center hover:bg-violet-600 rounded"

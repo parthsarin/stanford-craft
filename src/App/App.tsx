@@ -29,6 +29,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import JoinQuiz from "../Dashboard/Datamax/JoinQuiz";
 import Analyze from "../Dashboard/Analyze";
 import AnalyzeQuiz from "../Dashboard/Analyze/AnalyzeQuiz";
+import Credits from "../Dashboard/Credits";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -44,6 +45,7 @@ const router = createBrowserRouter(
           <Route path=":joinCode" element={<AnalyzeQuiz />} />
         </Route>
         <Route path="resources" element={<Resources />} />   
+        <Route path="credits" element={<Credits />} />   
       </Route>
       <Route path="*" element={<NoMatch />} />
     </>
