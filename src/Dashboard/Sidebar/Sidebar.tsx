@@ -9,9 +9,10 @@ import {
   faChartLine,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
 import { signIn, signOut, UserContext } from "../../Auth";
+import SidebarButton from "./SidebarButton";
 
 const Sidebar = () => {
   const [height, setHeight] = useState("calc(100% - 30px)");
@@ -20,6 +21,7 @@ const Sidebar = () => {
   const { user } = useContext(UserContext);
   const navigate = useNavigate();
 
+  // sidebar expand/collapse effect
   const toggleExpanded = () => {
     setExpanded(!expanded);
     localStorage.setItem('AILitSidebarExpanded', JSON.stringify(!expanded));
@@ -31,6 +33,7 @@ const Sidebar = () => {
     if (ls && ls === 'false') setExpanded(false);
   }, [setExpanded]);
 
+  // sidebar scrolling effect
   const handleScroll = () => {
     // height of the identity bar is 30px
     if (window.scrollY > 30) {
@@ -42,6 +45,7 @@ const Sidebar = () => {
       setFixed(false);
     }
   }
+
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -49,72 +53,62 @@ const Sidebar = () => {
 
   return (
     <aside
-      className={
-        `w-fit bg-violet-500 text-white
-        ${isFixed ? "fixed top-0" : "absolute"}`
-      }
+      className={`w-fit bg-violet-500 text-white
+        ${isFixed ? "fixed top-0" : "absolute"}`}
       style={{ height }}
     >
       <div className="w-full h-full p-4">
         <ul className="space-y-2 flex flex-col h-full">
           {user && (
-            <li>
-              <button
-                className="w-full p-2 flex flex-row items-center hover:bg-violet-600 rounded"
-                onClick={() => navigate("/dash/profile")}
-              >
-                {
-                  user.photoURL
-                  ? (<img
-                      src={user.photoURL}
-                      alt={user.displayName ? user.displayName : "User"}
-                      className={`${expanded && "mr-2"} w-6 h-6 rounded-full`}
-                    />)
-                  : (<FontAwesomeIcon
-                      icon={faUser}
-                      className={`${expanded && "mr-2"} w-6 h-6`}
-                    />)
-                }
-                {expanded && <p className="text-lg">Profile</p>}
-              </button>
-            </li>
+            <SidebarButton
+              text={"Profile"}
+              path={"/dash/profile"}
+              expanded={expanded}
+            >
+              {user.photoURL ? (
+                <img
+                  src={user.photoURL}
+                  alt={user.displayName ? user.displayName : "User"}
+                  className={`${expanded && "mr-2"} w-6 h-6 rounded-full`}
+                />
+              ) : (
+                <FontAwesomeIcon
+                  icon={faUser}
+                  className={`${expanded && "mr-2"} w-6 h-6`}
+                />
+              )}
+            </SidebarButton>
           )}
-          <li>
-            <button
-              className="w-full p-2 flex flex-row items-center hover:bg-violet-600 rounded"
-              onClick={() => navigate("/dash/datamax")}
-            >
-              <FontAwesomeIcon
-                icon={faRobot}
-                className={`${expanded && "mr-2"} w-6 h-6`}
-              />
-              {expanded && <p className="text-lg">Datamax</p>}
-            </button>
-          </li>
-          <li>
-            <button
-              className="w-full p-2 flex flex-row items-center hover:bg-violet-600 rounded"
-              onClick={() => navigate("/dash/resources")}
-            >
-              <FontAwesomeIcon
-                icon={faBook}
-                className={`${expanded && "mr-2"} w-6 h-6`}
-              />
-              {expanded && <p className="text-lg">Resources</p>}
-            </button>
-          </li>
-          <li>
-            <button
-              className="w-full p-2 flex flex-row items-center hover:bg-violet-600 rounded"
-              onClick={() => navigate("/dash/analyze")}
-            >
-              <FontAwesomeIcon
-                icon={faChartLine}
-                className={`${expanded && "mr-2"} w-6 h-6`}
-              />
-              {expanded && <p className="text-lg">Analyze</p>}
-            </button>
-          </li>
+          <SidebarButton
+            text={"Datamax"}
+            path={"/dash/datamax"}
+            expanded={expanded}
+          >
+            <FontAwesomeIcon
+              icon={faRobot}
+              className={`${expanded && "mr-2"} w-6 h-6`}
+            />
+          </SidebarButton>
+          <SidebarButton
+            text={"Resources"}
+            path={"/dash/resources"}
+            expanded={expanded}
+          >
+            <FontAwesomeIcon
+              icon={faBook}
+              className={`${expanded && "mr-2"} w-6 h-6`}
+            />
+          </SidebarButton>
+          <SidebarButton
+            text={"Analyze"}
+            path={"/dash/analyze"}
+            expanded={expanded}
+          >
+            <FontAwesomeIcon
+              icon={faChartLine}
+              className={`${expanded && "mr-2"} w-6 h-6`}
+            />
+          </SidebarButton>
 
           <li className="flex-1"></li>
           <li>
