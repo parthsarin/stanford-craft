@@ -13,7 +13,7 @@ const SidebarButton = ({ path, text, children, expanded }: Props) => {
   // set the active link
   const loc = useLocation();
   const getActiveClass = (path: string) => {
-    if (loc.pathname === path) return "bg-violet-600";
+    if (loc.pathname.startsWith(path)) return "bg-violet-600";
     return "hover:bg-violet-600";
   };
   

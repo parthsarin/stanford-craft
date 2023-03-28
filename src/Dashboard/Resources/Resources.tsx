@@ -101,7 +101,7 @@ const Resources = () => {
   return (
     <div className="flex-1 p-4">
       <SearchBar onUpdate={handleSearch} />
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-3">
         {
           resources.map((resource, i) => (
             <ResourceCard key={i} resource={resource} />

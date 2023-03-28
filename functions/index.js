@@ -34,12 +34,10 @@ exports.endQuiz = functions.https.onCall(async (data, context) => {
 
   // update the user's document to put the quiz in the "completed" state
   const userDoc = db.collection('users').doc(context.auth.uid);
-  userDoc.update({
-    datamax: {
-      activeQuizzes: FieldValue.arrayRemove(joinCode),
-      pastQuizzes: FieldValue.arrayUnion(joinCode)
-    }
-  }, { merge: true });
+  await userDoc.update({
+    "datamax.activeQuizzes": FieldValue.arrayRemove(joinCode),
+    "datamax.pastQuizzes": FieldValue.arrayUnion(joinCode)
+  });
 
 
   return {

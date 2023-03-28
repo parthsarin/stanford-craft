@@ -10,7 +10,7 @@ import {
   faQuoteLeft,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
 import { signIn, signOut, UserContext } from "../../Auth";
 import SidebarButton from "./SidebarButton";
