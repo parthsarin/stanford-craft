@@ -1,15 +1,16 @@
 import { FormEvent, useContext, useEffect, useState } from "react";
 import Loader from "../../../../Generic/Loader";
-import { Quiz, ResponsePayload } from "../../DatamaxTypes";
-import { getFunctions, httpsCallable } from "firebase/functions";
+import { Quiz, QuizDoc, ResponsePayload } from "../../DatamaxTypes";
 import { UserContext } from "../../../../Auth";
 import Question from "./Question";
 import { doc, getFirestore, setDoc } from "firebase/firestore";
 import { generateUUID } from "../../../../Generic/UUID";
 import { MySwal } from "../../../../Generic/Notify";
+import generateFromTemplate from "./GenerateQuiz";
 
 interface Params {
   joinCode: string;
+  quiz: QuizDoc;
 }
 
 interface QuizResponse {
@@ -17,31 +18,17 @@ interface QuizResponse {
   responses: { [k: string]: string };
 }
 
-const StudentView = ({ joinCode }: Params) => {
+const StudentView = ({ joinCode, quiz }: Params) => {
   const { user } = useContext(UserContext);
-  const [quiz, setQuiz] = useState<Quiz | null>(null);
+  const [filledTemplate, setFilledTemplate] = useState<Quiz | null>(null);
   const [responses, setResponses] = useState<QuizResponse['responses']>({});
   const [submitted, setSubmitted] = useState(false);
 
   // generate a copy of the quiz
   useEffect(() => {
-    if (quiz) return;
-
-    (async () => {
-      const functions = getFunctions();
-      const generateQuiz = httpsCallable(functions, "generateQuiz");
-      const result = await generateQuiz({ joinCode });
-      const data: any = result.data;
-
-      const quiz = data.quiz as Quiz;
-      setQuiz(quiz as Quiz);
-
-      // set the responses object
-      let responses: QuizResponse['responses'] = {};
-      quiz.questions.forEach((q) => responses[q.id] = "");
-      setResponses(responses);
-    })();
-  }, [quiz, joinCode, setQuiz]);
+    if (filledTemplate) return;
+    setFilledTemplate(generateFromTemplate(quiz.template));
+  }, [filledTemplate, quiz.template]);
 
   // add the user's name to the responses object
   useEffect(() => {
@@ -58,7 +45,7 @@ const StudentView = ({ joinCode }: Params) => {
     let responsePayload: ResponsePayload = {};
     let invalidQuestions: string[] = [];
     let valid = true;
-    quiz?.questions.forEach((q) => {
+    filledTemplate?.questions.forEach((q) => {
       // is there a response?
       if (!responses[q.id]) {
         invalidQuestions.push(`"${q.prompt}"`);
@@ -112,12 +99,12 @@ const StudentView = ({ joinCode }: Params) => {
   if (!quiz) return <Loader />;
   if (submitted) return (
     <div className="p-4 w-full lg:w-2/3">
-      <h1 className="text-2xl mb-2">🎉 Submitted "{quiz.name}"!</h1>
+      <h1 className="text-2xl mb-2">🎉 Submitted "{quiz.template.name}"!</h1>
     </div> 
   )
   return (
     <div className="p-4 w-full lg:w-2/3">
-      <h1 className="text-2xl mb-2">{quiz.name}</h1>
+      <h1 className="text-2xl mb-2">{quiz.template.name}</h1>
       <form
         className="flex flex-col bg-slate-600 text-white rounded rounded-md w-full p-4"
         onSubmit={submitQuiz}
@@ -137,7 +124,7 @@ const StudentView = ({ joinCode }: Params) => {
             />
           </div>
           {
-            quiz.questions.map((question) => (
+            quiz.template.questions.map((question) => (
               <div key={question.id} className="col-span-3 mb-6 bg-slate-100 text-black p-3 rounded rounded-md">
                 <Question 
                   question={question} 

@@ -50,11 +50,11 @@ const JoinQuiz = () => {
       .then(() => navigate('/dash/datamax'));
     return null;
   }
-  if (loading || !joinCode) return <Loader />;
-  if (quiz && user && user.uid === quiz.owner) 
+  if (loading || !joinCode || !quiz) return <Loader />;
+  if (user && user.uid === quiz.owner) 
     return <TeacherView joinCode={joinCode} quiz={quiz} />;
 
-  return <StudentView joinCode={joinCode} />;
+  return <StudentView joinCode={joinCode} quiz={quiz} />;
 }
 
 export default JoinQuiz;

@@ -1,30 +1,9 @@
 const functions = require("firebase-functions");
 const { getFirestore, FieldValue } = require("firebase-admin/firestore");
-const { generateFromTemplate, endQuiz } = require("./quiz");
+const { endQuiz } = require("./quiz");
 
 const { initializeApp } = require('firebase-admin/app');
 initializeApp();
-
-exports.generateQuiz = functions.https.onCall(async (data, context) => {
-  if (!data || !data.joinCode) {
-    throw new functions.https.HttpsError('invalid-argument', 'Quiz join code is required');
-  }
-  const joinCode = data.joinCode;
-
-  // get the template from the database
-  const db = getFirestore();
-  const doc = await db.collection('datamax').doc(joinCode).get();
-  if (!doc.exists) {
-    throw new functions.https.HttpsError('not-found', 'No such document!');
-  }
-
-  // generate a new quiz from this template
-  const template = doc.data().template;
-  functions.logger.log(`template data for ${joinCode}`, template);
-  return {
-    quiz: generateFromTemplate(template)
-  };
-});
 
 exports.endQuiz = functions.https.onCall(async (data, context) => {
   if (!data || !data.joinCode) {
