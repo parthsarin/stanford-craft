@@ -1,4 +1,4 @@
-import { faDownload } from "@fortawesome/free-solid-svg-icons";
+import { faChevronLeft, faDownload } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { doc, getDoc, getFirestore } from "firebase/firestore";
 import { useEffect, useState } from "react";
@@ -17,8 +17,9 @@ const AnalyzeQuiz = () => {
     if (!joinCode) return;
 
     (async () => {
+      const code = joinCode.toUpperCase();
       const db = getFirestore();
-      const quizRef = doc(db, "datamax", joinCode);
+      const quizRef = doc(db, "datamax", code);
       const quizDoc = await getDoc(quizRef);
 
       if (quizDoc.exists())
@@ -26,7 +27,7 @@ const AnalyzeQuiz = () => {
       else {
         MySwal.fire({
           title: "Quiz not found",
-          text: "The quiz you are trying to analyze does not exist",
+          text: `I couldn't find a quiz with the code "${code}". Please try again.`,
           icon: "error",
         })
         .then(() => navigate('/dash/analyze'))
@@ -56,7 +57,7 @@ const AnalyzeQuiz = () => {
         <li>Join code: {joinCode}</li>
         {quiz.numResponses && <li>Number of responses: {quiz.numResponses}</li>}
       </ul>
-      <div className="mt-2 flex flex-row">
+      <div className="mt-2 flex flex-row space-x-2">
         <button
           className="py-2 px-4 rounded rounded-md bg-blue-600 hover:bg-blue-700 text-white"
           onClick={downloadCSV}
@@ -65,6 +66,13 @@ const AnalyzeQuiz = () => {
           Download CSV
         </button>
       </div>
+      <button
+        className="mt-6 py-2 px-4 rounded rounded-md bg-red-600 hover:bg-red-700 text-white"
+        onClick={() => navigate('/dash/analyze')}
+      >
+        <FontAwesomeIcon icon={faChevronLeft} className="mr-2" />
+        Select a different quiz
+      </button>
     </div>
   );
 }

@@ -48,6 +48,8 @@ const SelectQuiz = () => {
     setSuggestions(Object.fromEntries(matches));
   }
 
+  const handleChoice = () => navigate(`/dash/analyze/${searchTerm}`);
+
   return (
     <div className="flex flex-row items-start justify-start w-4/5 relative mt-4">
       <input
@@ -56,6 +58,10 @@ const SelectQuiz = () => {
         placeholder="Search for a game you created"
         onFocus={() => setShowSuggestions(true)}
         onBlur={() => setShowSuggestions(false)}
+        onKeyDown={(e) => {
+          if (e.key === "Enter")
+            handleChoice();
+        }}
         value={searchTerm}
         onChange={handleType}
       />
@@ -86,7 +92,7 @@ const SelectQuiz = () => {
       </div>
       <button 
         className="ml-6 px-3 py-1 text-lg bg-red-600 text-white hover:bg-red-700 rounded rounded-md"
-        onClick={() => navigate(`/dash/analyze/${searchTerm}`)}
+        onClick={handleChoice}
       >
         <FontAwesomeIcon
           icon={faChartLine}

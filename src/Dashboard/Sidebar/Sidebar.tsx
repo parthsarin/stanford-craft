@@ -54,7 +54,7 @@ const Sidebar = () => {
 
   return (
     <aside
-      className={`w-fit bg-violet-500 text-white
+      className={`w-fit bg-violet-500 text-white z-10
         ${isFixed ? "fixed top-0" : "absolute"}`}
       style={{ height }}
     >
