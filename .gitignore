@@ -23,5 +23,6 @@ yarn-debug.log*
 yarn-error.log*
 firestore-debug.log*
 firebase-debug.log*
+ui-debug.log*
 *-debug.log*
 .firebase.bak
