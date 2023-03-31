@@ -37,7 +37,9 @@ const Credits = () => {
         The resources and layout of this site have been through several rounds
         of iteration, including feedback from the Stanford CRAFT team and the
         cohort of Artificial Intelligence Co-Design Fellows (also known as
-        teacher partners).
+        teacher partners). The cohort of fellows includes: Shane Andrus, Rodger
+        Brown, Jesse Bustos, David Dobervich, Alison Ence, Honore Haughton,
+        Lindsay Humphrey, Danielle Martin, and Soo Shin.
       </p>
       <p className="mt-2">
         The broader CRAFT team (including researchers, software developers, and
