@@ -1,3 +1,4 @@
+import codesignGroup from "../../img/codesign-group.png";
 import Citation from "./Citation";
 
 const Credits = () => {
@@ -41,6 +42,14 @@ const Credits = () => {
         Brown, Jesse Bustos, David Dobervich, Alison Ence, Honore Haughton,
         Lindsay Humphrey, Danielle Martin, and Soo Shin.
       </p>
+      <div className="flex flex-col w-full items-center mt-4 mb-4">
+        <img
+          className="w-2/3 rounded rounded-md"
+          src={codesignGroup}
+          alt="Cohort of AI Co-Design Fellows"
+        />
+        <p className="mt-1 italic">A group of the AI Co-Design Fellows at the end of one of our meetings</p>
+      </div>
       <p className="mt-2">
         The broader CRAFT team (including researchers, software developers, and
         curriculum developers) includes Anika Fuloria, Benji Xie, Christine
