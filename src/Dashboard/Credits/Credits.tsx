@@ -60,6 +60,13 @@ const Credits = () => {
       <h2 className="text-xl mt-4">How to cite</h2>
       <h2 className="text-xl mt-4">Affiliated work</h2>
       <ul className="list-inside">
+      {/*
+        <Citation>
+          Lee, V. R., Sarin, P., Wolf, J., & Xie, B. (2023/to appear). 
+          CRAFT-work: An Integrative Co-Design Approach for Designing High 
+          School AI Literacy Resources. In ACM. New York, NY, USA. ACM.
+        </Citation>
+      */}
         <Citation>
           Lee, V. R., Sarin, P., Sieh, I., & Fuloria, A. (2023/to appear).
           Addressing the Data Set Dilemma with Personally Relevant Data
