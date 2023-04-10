@@ -30,11 +30,13 @@ import JoinQuiz from "../Dashboard/Datamax/JoinQuiz";
 import Analyze from "../Dashboard/Analyze";
 import AnalyzeQuiz from "../Dashboard/Analyze/AnalyzeQuiz";
 import Credits from "../Dashboard/Credits";
+import JobPosting from "../JobPosting";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path="/" element={<Home />} />
+      <Route path="/jobs" element={<JobPosting />} />
       <Route path="/link/*" element={<ExternalLink />} />
       <Route path="/dash" element={<Dashboard />}>
         <Route path="profile" element={<Profile />} />

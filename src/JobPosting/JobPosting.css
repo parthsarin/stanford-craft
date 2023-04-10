@@ -1,0 +1,43 @@
+#jobs a {
+  @apply text-blue-600;
+  @apply underline underline-offset-1;
+}
+
+#jobs a:hover {
+  @apply text-blue-800;
+}
+
+#jobs h1 {
+  @apply text-2xl mb-4 mt-6;
+}
+
+#jobs h2 {
+  @apply text-xl mb-2 mt-6;
+}
+
+#jobs p {
+  @apply mb-2;
+}
+
+#jobs ul {
+  @apply list-disc ml-10 mt-2 mb-2;
+}
+
+#jobs .divider {
+  @apply border border-t border-gray-600 mt-8 mb-8 w-4/5 mx-auto;
+}
+
+#jobs .container {
+  @apply mx-auto w-full md:w-4/5 lg:w-2/3;
+}
+
+#jobs .coord-grid {
+  @apply grid grid-cols-1 md:grid-cols-3 w-full xl:w-4/5 mx-auto;
+  @apply mt-8 mb-8;
+  @apply gap-x-8;
+}
+
+#jobs .coord-grid > div {
+  @apply p-4 rounded rounded-md flex flex-col;
+  @apply border border-black;
+}

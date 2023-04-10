@@ -11,7 +11,7 @@ const GlobalFooter = () => (
         </a>
       </div>
       <div className="su-global-footer__content">
-        <nav aria-label="global footer menu">
+        <nav>
           <ul className="su-global-footer__menu su-global-footer__menu--global">
             <li>
               <a href="https://www.stanford.edu">
