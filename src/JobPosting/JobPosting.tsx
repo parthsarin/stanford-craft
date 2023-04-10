@@ -23,13 +23,7 @@ const JobPosting = () => (
         <p className="text-lg">
           We're building resources to teach AI literacies for high school and
           college instructors and assembling them into a full curriculum that
-          will be deployed in a course with the{" "}
-          <a
-            href="https://edequitylab.org/"
-            className="text-blue-600 hover:underline"
-          >
-            National Educational Equity Lab
-          </a>{" "}
+          will be deployed in a course with the National Educational Equity Lab
           offered in Fall 2023.
         </p>
       </div>
@@ -399,7 +393,7 @@ const JobPosting = () => (
             onClick={() => {
               window.location.href = "https://forms.gle/ihaV9NGFGip9dFGj8";
             }}
-            className="bg-emerald-600 hover:bg-emerald-800 text-xl text-white py-2 px-4 rounded w-full mt-6"
+            className="bg-emerald-700 hover:bg-emerald-900 text-xl text-white py-2 px-4 rounded w-full mt-6"
           >
             Apply here for the teaching fellow role!
           </button>
