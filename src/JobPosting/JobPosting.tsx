@@ -13,9 +13,9 @@ const JobPosting = () => (
       }}
     >
       <div className="rounded w-11/12 sm:w-5/6 md:w-2/3 lg:w-1/2 bg-white/50 border border-black p-5 sm:p-10 backdrop-blur-sm text-center m-5">
-        <h1 className="text-xl font-bold font-serif">
+        <p className="text-xl font-bold font-serif">
           Curricular Resources about AI for Teaching (CRAFT)
-        </h1>
+        </p>
         <p className="text-lg mb-3">
           A project from the Stanford Graduate School of Education
         </p>
@@ -30,8 +30,10 @@ const JobPosting = () => (
     </div>
     <div id="jobs" className="p-4 min-h-screen text-md w-full">
       <div className="container">
-        <h1 className="mt-0">Join our team!</h1>
-        <h2>CS XXE: The AI Toolbox: An Everyday Guide | Spring-Fall 2023</h2>
+        <h1 className="mt-0">Join our teaching team!</h1>
+        <p className="italic">
+          CS XXE: The AI Toolbox: An Everyday Guide | Spring-Fall 2023
+        </p>
         <p>
           In partnership with the{" "}
           <a href="https://edequitylab.org/">National Education Equity Lab</a>,
@@ -83,8 +85,8 @@ const JobPosting = () => (
       </div>
       <div className="divider"></div>
       <div className="container">
-        <h1>Coordinator</h1>
-        <h2>Role details</h2>
+        <h2>Coordinator</h2>
+        <h3>Role details</h3>
         <p>
           We are currently recruiting two coordinators who will recruit and
           coach Teaching Fellows (similar to Teaching Assistants or Section
@@ -104,7 +106,7 @@ const JobPosting = () => (
           addition to general responsibilities, each of the coordinators will
           have a specialized role:
         </p>
-        <h2>General Responsibilities:</h2>
+        <h3>General Responsibilities:</h3>
         <ul>
           <li>Hire and train ~ 6 Teaching Fellows (TFs)</li>
           <li>
@@ -120,7 +122,7 @@ const JobPosting = () => (
             integrity issues.
           </li>
         </ul>
-        <h2>General Skills and Experiences:</h2>
+        <h3>General Skills and Experiences:</h3>
         <ul>
           <li>Teaching experience with youth and/or in a university setting</li>
           <li>Experience building, implementing, or critiquing AI systems</li>
@@ -136,10 +138,10 @@ const JobPosting = () => (
             no longer accepting applications
           </span>
           <div>
-            <h2 style={{ marginTop: 0 }}>Teacher Coordinator</h2>
-            <h3>
+            <h3 style={{ marginTop: 0 }}>Teacher Coordinator</h3>
+            <h4>
               <em>Responsibilities:</em>
-            </h3>
+            </h4>
             <ul>
               <li>
                 Design and facilitate on-boarding for high school teachers
@@ -162,13 +164,16 @@ const JobPosting = () => (
             <h3>
               <em>Ideal experience:</em>
             </h3>
+            <ul>
+              <li>High school teaching experience</li>
+            </ul>
           </div>
         </div>
         <div>
-          <h2 style={{ marginTop: 0 }}>Course Coordinator</h2>
-          <h3>
+          <h3 style={{ marginTop: 0 }}>Course Coordinator</h3>
+          <h4>
             <em>Responsibilities:</em>
-          </h3>
+          </h4>
           <ul>
             <li>Co-manage overall course content</li>
             <li>
@@ -194,10 +199,10 @@ const JobPosting = () => (
           </ul>
         </div>
         <div>
-          <h2 style={{ marginTop: 0 }}>Teaching Fellow Coordinator</h2>
-          <h3>
+          <h3 style={{ marginTop: 0 }}>Teaching Fellow Coordinator</h3>
+          <h4>
             <em>Responsibilities:</em>
-          </h3>
+          </h4>
           <ul>
             <li>Design and facilitate Teaching Fellow pre-course training</li>
             <li>Lead weekly TF information and support sessions</li>
@@ -224,7 +229,7 @@ const JobPosting = () => (
         </div>
       </div>
       <div className="container">
-        <h2>Expected time commitment</h2>
+        <h3>Expected time commitment</h3>
         <ul>
           <li>
             <strong>April - May:</strong>
@@ -252,7 +257,7 @@ const JobPosting = () => (
             preparation, grading, etc.&nbsp;
           </li>
         </ul>
-        <h2>Compensation</h2>
+        <h3>Compensation</h3>
         <p>
           Coordinators will be paid $30/hour and will need to be eligible to
           work in the US. This position does not come with tuition support. The
@@ -278,10 +283,10 @@ const JobPosting = () => (
       </div>
       <div className="divider"></div>
       <div className="container">
-        <h1>Teaching Fellow</h1>
-        <h2>Hours and Dates</h2>
+        <h2>Teaching Fellow</h2>
+        <h3>Hours and Dates</h3>
         <p>Up to 10-12* hours/week; August 15, 2023 - January 15, 2024</p>
-        <h2>Role details</h2>
+        <h3>Role details</h3>
         <p>
           We are currently recruiting six Teaching Fellows who will deliver the
           AI course material to high school students in weekly section meetings,
@@ -360,7 +365,7 @@ const JobPosting = () => (
             Experience with title 1 high school students would be beneficial
           </li>
         </ul>
-        <h2>Expected time commitment</h2>
+        <h3>Expected time commitment</h3>
         <ul>
           <li>
             <strong>August - Sept:</strong> <em>1-10 hours/week</em>, including
@@ -378,7 +383,7 @@ const JobPosting = () => (
             including grading and wrap up of course.&nbsp;&nbsp;
           </li>
         </ul>
-        <h2>Compensation</h2>
+        <h3>Compensation</h3>
         <p>
           Teaching Fellows will be paid $25/hour and will need to be eligible to
           work in the US. This position does not come with tuition support. The
@@ -398,7 +403,8 @@ const JobPosting = () => (
             Apply here for the teaching fellow role!
           </button>
           <span className="text-emerald-800 italic mt-2">
-            Applications will be accepted on a rolling basis through the end of April
+            Applications will be accepted on a rolling basis through the end of
+            April
           </span>
         </div>
       </div>
