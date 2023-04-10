@@ -42,7 +42,7 @@ const Home = () => (
       </div>
     </div>
     <div className={`w-full px-6 sm:px-16 md:px-32 lg:px-64 py-8`}>
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col">
         <p className="text-lg mb-6 w-full">
           CRAFT is an initiative in collaboration with the Graduate School of
           Education, Institute for Human-Centered AI, and Stanford Digital
@@ -58,8 +58,8 @@ const Home = () => (
           <p className="text-lg">
             These tools contextualize AI in multiple disciplines like art, math,
             english, and history, so that teachers across the school can use
-            them. Currently, the resources focus on English,
-            Art, Politics and Civics, and Mathematics.
+            them. Currently, the resources focus on English, Art, Politics and
+            Civics, and Mathematics.
           </p>
         </IconBullet>
         <IconBullet
@@ -86,7 +86,9 @@ const Home = () => (
           </p>
         </IconBullet>
         <div className="w-full border-t border-gray-500 mb-6"></div>
-        <h2 className="text-4xl font-serif mb-3">EUs and EQs</h2>
+        <div className="flex flex-row justify-center">
+          <h2 className="text-4xl font-serif mb-3">EUs and EQs</h2>
+        </div>
         <p className="text-lg mb-3 w-full">
           These resources center the following enduring understandings (EUs) and
           essential questions (EQs):
