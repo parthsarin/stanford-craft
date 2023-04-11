@@ -10,14 +10,10 @@ import {
   faQuoteLeft,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
 import { signIn, signOut, UserContext } from "../../Auth";
 import SidebarButton from "./SidebarButton";
-
-const hideSidebarPaths = [
-  "/dash/datamax/quiz/",
-]
 
 const Sidebar = () => {
   const [height, setHeight] = useState("calc(100% - 30px)");
@@ -25,7 +21,6 @@ const Sidebar = () => {
   const [expanded, setExpanded] = useState(false);
   const { user } = useContext(UserContext);
   const navigate = useNavigate();
-  const loc = useLocation();
 
   // sidebar expand/collapse effect
   const toggleExpanded = () => {
@@ -56,9 +51,6 @@ const Sidebar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   });
-
-  const hideSidebar = hideSidebarPaths.some(path => loc.pathname.startsWith(path));
-  if (hideSidebar && (!user)) return null;
 
   return (
     <aside
