@@ -161,9 +161,9 @@ const JobPosting = () => (
                 relationships
               </li>
             </ul>
-            <h3>
+            <h4>
               <em>Ideal experience:</em>
-            </h3>
+            </h4>
             <ul>
               <li>High school teaching experience</li>
             </ul>
@@ -189,9 +189,9 @@ const JobPosting = () => (
               sections are on track
             </li>
           </ul>
-          <h3>
+          <h4>
             <em>Ideal experience:</em>
-          </h3>
+          </h4>
           <ul>
             <li>Strong knowledge of AI systems, applications, and impacts</li>
             <li>Use of Canvas, ideally from an instructional role</li>
@@ -217,9 +217,9 @@ const JobPosting = () => (
             </li>
             <li>Provide support and counseling to TFs</li>
           </ul>
-          <h3>
+          <h4>
             <em>Ideal experience:</em>
-          </h3>
+          </h4>
           <ul>
             <li>
               Teaching Assistantship (TAing) or Section Leading (SLing)
