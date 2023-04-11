@@ -85,7 +85,7 @@ const Datamax = () => {
       })
       .then((code) => {
         if (code) {
-          navigate(`/dash/datamax/join/${code.toUpperCase()}`);
+          navigate(`/dash/datamax/quiz/${code.toUpperCase()}`);
         }
       })
   }
