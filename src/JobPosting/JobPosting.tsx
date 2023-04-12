@@ -3,7 +3,7 @@ import './JobPosting.css';
 
 const JobPosting = () => (
   <>
-    <div
+    <header
       className="w-full flex items-center justify-center"
       style={{
         backgroundImage: `url(${getBackground()})`,
@@ -27,8 +27,8 @@ const JobPosting = () => (
           offered in Fall 2023.
         </p>
       </div>
-    </div>
-    <div id="jobs" className="p-4 min-h-screen text-md w-full">
+    </header>
+    <main id="jobs" className="p-4 min-h-screen text-md w-full">
       <div className="container">
         <h1 className="mt-0">Join our teaching team!</h1>
         <p className="italic">
@@ -307,47 +307,54 @@ const JobPosting = () => (
             school teacher) a one hour-long required discussion section. (There
             may be additional live office hours, depending on the needs of
             students.)
+            <ul>
+              <li>
+                Sections will have a student teacher ratio as close to 10-15:1
+                as possible
+              </li>
+              <li>
+                Sections will be held during the school day in various time
+                zones across the U.S., from Hawaii time to Eastern time.
+                We&rsquo;ll do our best to schedule Section Leaders based on
+                your availability.
+              </li>
+            </ul>
           </li>
-          <ul>
-            <li>
-              Sections will have a student teacher ratio as close to 10-15:1 as
-              possible
-            </li>
-            <li>
-              Sections will be held during the school day in various time zones
-              across the U.S., from Hawaii time to Eastern time. We&rsquo;ll do
-              our best to schedule Section Leaders based on your availability.
-            </li>
-          </ul>
-          <li>Expected time commitment is approximately 10 hours per week</li>
-          <ul>
-            <li>Weekly 30-minute staff meetings</li>
-            <li>Teaching a 1-hour weekly section</li>
-            <li>Preparing for section</li>
-            <li>Hosting 1-hour office hours</li>
-            <li>Meeting with your high school teacher partner</li>
-            <li>Grading student work</li>
-            <li>Escalating administrative problems to TF Coordinators</li>
-          </ul>
-          <li>Things NOT expected of TFs</li>
-          <ul>
-            <li>Resolving administrative issues with schools and students</li>
-            <li>Scheduling sections, exams, or other logistics</li>
-          </ul>
-          <li>Online Professional Learning</li>
-          <ul>
-            <li>
-              Pre-Course Professional Learning: Attending PLE that will prepare
-              you for navigating your interactions with the students and high
-              school teachers as well as course material and structure
-              preparation.
-            </li>
-            <li>
-              During-Course Coaching: Weekly staff meetings with Section Leader
-              Coordinators to discuss section materials and teaching
-              strategies.&nbsp;
-            </li>
-          </ul>
+          <li>
+            Expected time commitment is approximately 10 hours per week
+            <ul>
+              <li>Weekly 30-minute staff meetings</li>
+              <li>Teaching a 1-hour weekly section</li>
+              <li>Preparing for section</li>
+              <li>Hosting 1-hour office hours</li>
+              <li>Meeting with your high school teacher partner</li>
+              <li>Grading student work</li>
+              <li>Escalating administrative problems to TF Coordinators</li>
+            </ul>
+          </li>
+          <li>
+            Things NOT expected of TFs
+            <ul>
+              <li>Resolving administrative issues with schools and students</li>
+              <li>Scheduling sections, exams, or other logistics</li>
+            </ul>
+          </li>
+          <li>
+            Online Professional Learning
+            <ul>
+              <li>
+                Pre-Course Professional Learning: Attending PLE that will
+                prepare you for navigating your interactions with the students
+                and high school teachers as well as course material and
+                structure preparation.
+              </li>
+              <li>
+                During-Course Coaching: Weekly staff meetings with Section
+                Leader Coordinators to discuss section materials and teaching
+                strategies.&nbsp;
+              </li>
+            </ul>
+          </li>
         </ul>
         <p>
           <em>Skills and experiences:</em>
@@ -408,7 +415,7 @@ const JobPosting = () => (
           </span>
         </div>
       </div>
-    </div>
+    </main>
   </>
 );
 

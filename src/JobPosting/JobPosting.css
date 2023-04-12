@@ -38,7 +38,7 @@
 #jobs .coord-grid {
   @apply grid grid-cols-1 md:grid-cols-3 w-full xl:w-4/5 mx-auto;
   @apply mt-8 mb-8;
-  @apply gap-x-8;
+  @apply gap-x-8 gap-y-8;
 }
 
 #jobs .coord-grid > div {

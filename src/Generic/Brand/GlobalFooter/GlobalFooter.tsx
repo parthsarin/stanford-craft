@@ -1,7 +1,7 @@
 import "./GlobalFooter.css";
 
 const GlobalFooter = () => (
-  <div className="su-global-footer">
+  <footer className="su-global-footer">
     <div className="su-global-footer__container" title="Common Stanford resources">
       <div className="su-global-footer__brand">
         <a className="su-logo" href="https://www.stanford.edu">
@@ -91,7 +91,7 @@ const GlobalFooter = () => (
         </div>
       </div>
     </div>
-  </div>
+  </footer>
 );
 
 export default GlobalFooter;
