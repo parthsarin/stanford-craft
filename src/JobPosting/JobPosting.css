@@ -1,9 +1,9 @@
-#jobs a {
+#jobs a, #jobs .link {
   @apply text-blue-600;
   @apply underline underline-offset-1;
 }
 
-#jobs a:hover {
+#jobs a:hover, #jobs .link:hover {
   @apply text-blue-800;
 }
 
