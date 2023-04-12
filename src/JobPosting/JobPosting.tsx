@@ -288,8 +288,8 @@ const JobPosting = () => {
               Apply here for the coordinator role!
             </button>
             <span className="text-purple-800 italic mt-2">
-              Applications will be accepted on a rolling basis through April 15th,
-              2023
+              Applications will be accepted on a rolling basis through the end of
+              April
             </span>
           </div>
         </div>
