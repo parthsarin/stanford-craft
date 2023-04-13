@@ -90,7 +90,7 @@ const JobPosting = () => {
             We are currently recruiting for two positions. Click on either link to scroll to the posting:
             <ul>
               <li><button className="link" onClick={scrollToId('coordinator')}>Coordinator</button></li>
-              <li><button className="link" onClick={scrollToId('teaching-fellow')}>Teaching fellow</button></li>
+              <li><button className="link" onClick={scrollToId('section-leader')}>Section leader</button></li>
             </ul>
             The listings for both jobs are below.
           </p>
@@ -101,12 +101,12 @@ const JobPosting = () => {
           <h3>Role details</h3>
           <p>
             We are currently recruiting two coordinators who will recruit and
-            coach Teaching Fellows (similar to Teaching Assistants or Section
-            Leaders) to support roughly 150 high school students who will take the
+            coach Section Leaders (similar to Teaching Assistants) to support 
+            roughly 150 high school students who will take the
             course from up to 6 high schools around the US. Building on the
             teaching model of{" "}
             <a href="https://codeinplace.stanford.edu/">Code in Place</a>, these
-            Teaching Fellows will collaborate with a high school teacher to
+            Section Leaders will collaborate with a high school teacher to
             facilitate each high school classroom as a &ldquo;section&rdquo; of
             the course, offering collegial support and community similar to that
             of a Stanford course on campus.&nbsp;
@@ -120,7 +120,7 @@ const JobPosting = () => {
           </p>
           <h3>General Responsibilities:</h3>
           <ul>
-            <li>Hire and train ~ 6 Teaching Fellows (TFs)</li>
+            <li>Hire and train ~ 6 Section Leaders (SLs)</li>
             <li>
               Develop and prepare for the course by meeting&nbsp; weekly (1 hour)
               with Parth Sarin and the Stanford Digital Education (SDE) team
@@ -129,7 +129,7 @@ const JobPosting = () => {
               Collaborate with the teaching team to ensure the course operates
               smoothly. This could include tasks like developing course systems
               and tools, making logistical decisions about the course timeline and
-              policies, lead or support teacher and TF training, taking on
+              policies, lead or support teacher and SL training, taking on
               overflow grading responsibilities, or helping to resolve academic
               integrity issues.
             </li>
@@ -169,7 +169,7 @@ const JobPosting = () => {
                   course materials
                 </li>
                 <li>
-                  Support the development of productive TF and teacher
+                  Support the development of productive SL and teacher
                   relationships
                 </li>
               </ul>
@@ -189,7 +189,7 @@ const JobPosting = () => {
             <ul>
               <li>Co-manage overall course content</li>
               <li>
-                Lead adaptation of materials for teacher- and TF-specific needs
+                Lead adaptation of materials for teacher- and SL-specific needs
                 with the teaching team
               </li>
               <li>Develop and maintain Canvas course&nbsp;</li>
@@ -211,15 +211,15 @@ const JobPosting = () => {
             </ul>
           </div>
           <div>
-            <h3 style={{ marginTop: 0 }}>Teaching Fellow Coordinator</h3>
+            <h3 style={{ marginTop: 0 }}>Section Leader Coordinator</h3>
             <h4>
               <em>Responsibilities:</em>
             </h4>
             <ul>
-              <li>Design and facilitate Teaching Fellow pre-course training</li>
-              <li>Lead weekly TF information and support sessions</li>
+              <li>Design and facilitate Section Leader pre-course training</li>
+              <li>Lead weekly SL information and support sessions</li>
               <li>
-                Help course coordinator adapt weekly lesson plans for TFs from
+                Help course coordinator adapt weekly lesson plans for SLs from
                 course materials
               </li>
               <li>
@@ -227,7 +227,7 @@ const JobPosting = () => {
                 <a href="https://edequitylab.org/">Ed Equity Lab</a> to monitor
                 section progress and ensure sections are on track
               </li>
-              <li>Provide support and counseling to TFs</li>
+              <li>Provide support and counseling to SLs</li>
             </ul>
             <h4>
               <em>Ideal experience:</em>
@@ -245,7 +245,7 @@ const JobPosting = () => {
           <ul>
             <li>
               <strong>April - May:</strong>
-              <em> 1-5 hours/week,</em> including meeting as a group, hiring TFs,
+              <em> 1-5 hours/week,</em> including meeting as a group, hiring SLs,
               and preparing course materials
             </li>
             <li>
@@ -255,17 +255,17 @@ const JobPosting = () => {
             </li>
             <li>
               <strong>Sept:</strong> <em>5-10 hours/week</em>, including meeting
-              weekly with teaching team to prepare for course, prepare TFs and
+              weekly with teaching team to prepare for course, prepare SLs and
               high school teacher training, and set up course systems.
-              Additionally, facilitate 5-hour training for TFs and 2-hour
+              Additionally, facilitate 5-hour training for SLs and 2-hour
               on-boarding for high school teachers
             </li>
             <li>
               <strong>Sept - Jan:</strong> <em>10-15 hours/week</em>, including
               meeting weekly with the teaching team and additional 1
               hour/bi-weekly meetings with teachers or 30 min/week mentoring
-              meeting with TFs (depending on role), 30 min/week all-TF meetings,
-              TF coordination, tech troubleshooting and improvements, section
+              meeting with SLs (depending on role), 30 min/week all-SL meetings,
+              SL coordination, tech troubleshooting and improvements, section
               preparation, grading, etc.&nbsp;
             </li>
           </ul>
@@ -295,18 +295,18 @@ const JobPosting = () => {
         </div>
         <div className="divider"></div>
         <div className="container">
-          <h2 id="teaching-fellow">Teaching Fellow</h2>
+          <h2 id="section-leader">Section Leader</h2>
           <h3>Hours and Dates</h3>
           <p>Up to 10-12* hours/week; August 15, 2023 - January 15, 2024</p>
           <h3>Role details</h3>
           <p>
-            We are currently recruiting six Teaching Fellows who will deliver the
+            We are currently recruiting six Section Leaders who will deliver the
             AI course material to high school students in weekly section meetings,
             support students through the course, and prepare students for
             college-level courses. Enrollment for the Equity Lab course will be
             about 150 high school students from across the country. There will be
-            about 10-15 students assigned to each TF (Teaching Fellow), with the
-            possibility of multiple TFs being paired to support larger courses.
+            about 10-15 students assigned to each SL (Section Leader), with the
+            possibility of multiple SLs being paired to support larger courses.
             Professional learning and lesson plan guidance will be provided all
             along the way.&nbsp;
           </p>
@@ -341,11 +341,11 @@ const JobPosting = () => {
                 <li>Hosting 1-hour office hours</li>
                 <li>Meeting with your high school teacher partner</li>
                 <li>Grading student work</li>
-                <li>Escalating administrative problems to TF Coordinators</li>
+                <li>Escalating administrative problems to SL Coordinators</li>
               </ul>
             </li>
             <li>
-              Things NOT expected of TFs
+              Things NOT expected of SLs
               <ul>
                 <li>Resolving administrative issues with schools and students</li>
                 <li>Scheduling sections, exams, or other logistics</li>
@@ -404,10 +404,10 @@ const JobPosting = () => {
           </ul>
           <h3>Compensation</h3>
           <p>
-            Teaching Fellows will be paid $25/hour and will need to be eligible to
+            Section Leaders will be paid $25/hour and will need to be eligible to
             work in the US. This position does not come with tuition support. The
             work location will be remote, but we do have some limited office
-            spaces for drop down work on campus if needed. TFs will need to
+            spaces for drop down work on campus if needed. SLs will need to
             complete a background check, get an I9 form verified in-person in
             their current location, and complete mandated reporter training (~30
             mins).
@@ -419,7 +419,7 @@ const JobPosting = () => {
               }}
               className="bg-emerald-700 hover:bg-emerald-900 text-xl text-white py-2 px-4 rounded w-full mt-6"
             >
-              Apply here for the teaching fellow role!
+              Apply here for the section leader role!
             </button>
             <span className="text-emerald-800 italic mt-2">
               Applications will be accepted on a rolling basis through the end of
