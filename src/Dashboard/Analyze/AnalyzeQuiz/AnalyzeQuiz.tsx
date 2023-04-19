@@ -1,4 +1,4 @@
-import { faChevronLeft, faDownload } from "@fortawesome/free-solid-svg-icons";
+import { faChevronLeft, faDownload, faChartLine } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { doc, getDoc, getFirestore } from "firebase/firestore";
 import { useEffect, useState } from "react";
@@ -75,7 +75,7 @@ const AnalyzeQuiz = () => {
           className="py-2 px-4 rounded rounded-md bg-green-600 hover:bg-green-700 text-white"
           onClick={explore}
         >
-          <FontAwesomeIcon icon={faDownload} className="mr-2" />
+          <FontAwesomeIcon icon={faChartLine} className="mr-2" />
           Explore 
         </button>
       </div>
