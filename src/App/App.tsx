@@ -46,8 +46,8 @@ const router = createBrowserRouter(
         <Route path="datamax/quiz/:joinCode" element={<JoinQuiz />} />
         <Route path="analyze" element={<Analyze />}>
           <Route path=":joinCode" element={<AnalyzeQuiz />} />
-          <Route path="explore/:joinCode" element={<ExploreQuiz />} />
         </Route>
+        <Route path="explore/:joinCode" element={<ExploreQuiz />} />
         <Route path="resources" element={<Resources />} />   
         <Route path="credits" element={<Credits />} />   
       </Route>

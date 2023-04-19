@@ -35,8 +35,10 @@ const AnalyzeQuiz = () => {
 
   if (!quiz) return <LoaderInline />;
   return (
-    <iframe title="Draw Decision Boundary Observable" width = "100%" height = "1000"
+    <div className = "ml-6 mt-3">
+      <iframe title="Draw Decision Boundary Observable" width = "100%" height = "1000"
       src="https://observablehq.com/embed/021fd59ef42a475a?cell=*"></iframe>
+    </div>
   );
 }
 

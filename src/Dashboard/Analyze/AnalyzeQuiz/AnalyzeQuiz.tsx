@@ -7,7 +7,7 @@ import { LoaderInline } from "../../../Generic/Loader";
 import { MySwal } from "../../../Generic/Notify";
 import { QuizDoc } from "../../Datamax/DatamaxTypes";
 
-const AnalyzeQuiz = () => {
+const ExploreQuiz = () => {
   const { joinCode } = useParams();
   const [quiz, setQuiz] = useState<QuizDoc | null>(null);
   const navigate = useNavigate();
@@ -51,7 +51,7 @@ const AnalyzeQuiz = () => {
   const explore = () => {
     if (!joinCode) return;
     const code = joinCode.toUpperCase();
-    navigate(`/dash/analyze/explore/${code}`);
+    navigate(`/dash/explore/${code}`);
   }
 
   if (!quiz) return <LoaderInline />;
@@ -93,4 +93,4 @@ const AnalyzeQuiz = () => {
   );
 }
 
-export default AnalyzeQuiz;
+export default ExploreQuiz;
