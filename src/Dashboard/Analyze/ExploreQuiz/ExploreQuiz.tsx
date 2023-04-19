@@ -1,3 +1,5 @@
+import { faDownload } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { doc, getDoc, getFirestore } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
@@ -46,16 +48,17 @@ const AnalyzeQuiz = () => {
     link.click();
   }
 
-  const explore = () => {
-    if (!joinCode) return;
-    const code = joinCode.toUpperCase();
-    navigate(`/dash/analyze/${code}`);
-  }
-
   if (!quiz) return <LoaderInline />;
   return (
     <div className="mt-4">
-      <iframe width="100%" height="500" src="https://observablehq.com/embed/021fd59ef42a475a?cell=*"></iframe>
+      <button
+          className="py-2 px-4 rounded rounded-md bg-blue-600 hover:bg-blue-700 text-white"
+          onClick={downloadCSV}
+        >
+          <FontAwesomeIcon icon={faDownload} className="mr-2" />
+          Download CSV
+        </button>
+      <iframe width="100%" height="100%" title="Draw Decision Boundary Observable" src="https://observablehq.com/embed/021fd59ef42a475a?cell=*"></iframe>
     </div>
   );
 }
