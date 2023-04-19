@@ -63,6 +63,9 @@ const AnalyzeQuiz = () => {
         <li>Join code: {joinCode}</li>
         {quiz.numResponses && <li>Number of responses: {quiz.numResponses}</li>}
       </ul>
+      <p className="text-sm mt-4 mb-4 italic">
+        Download CSV first, and press Explore -- you'll be uploading the CSV in future steps
+      </p>
       <div className="mt-2 flex flex-row space-x-2">
         <button
           className="py-2 px-4 rounded rounded-md bg-blue-600 hover:bg-blue-700 text-white"
