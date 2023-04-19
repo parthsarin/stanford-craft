@@ -1,5 +1,3 @@
-import { faChevronLeft, faDownload } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { doc, getDoc, getFirestore } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
@@ -51,41 +49,13 @@ const AnalyzeQuiz = () => {
   const explore = () => {
     if (!joinCode) return;
     const code = joinCode.toUpperCase();
-    navigate(`/dash/analyze/explore/${code}`);
+    navigate(`/dash/analyze/${code}`);
   }
 
   if (!quiz) return <LoaderInline />;
   return (
     <div className="mt-4">
-      <h2 className="text-xl">{quiz.template.name}</h2>
-      <ul className="text-sm list-disc ml-5 mt-2">
-        <li>Created on {quiz.createdAt.toDate().toLocaleDateString("en-US")}</li>
-        <li>Join code: {joinCode}</li>
-        {quiz.numResponses && <li>Number of responses: {quiz.numResponses}</li>}
-      </ul>
-      <div className="mt-2 flex flex-row space-x-2">
-        <button
-          className="py-2 px-4 rounded rounded-md bg-blue-600 hover:bg-blue-700 text-white"
-          onClick={downloadCSV}
-        >
-          <FontAwesomeIcon icon={faDownload} className="mr-2" />
-          Download CSV
-        </button>
-        <button
-          className="py-2 px-4 rounded rounded-md bg-green-600 hover:bg-green-700 text-white"
-          onClick={explore}
-        >
-          <FontAwesomeIcon icon={faDownload} className="mr-2" />
-          Explore 
-        </button>
-      </div>
-      <button
-        className="mt-6 py-2 px-4 rounded rounded-md bg-red-600 hover:bg-red-700 text-white"
-        onClick={() => navigate('/dash/analyze')}
-      >
-        <FontAwesomeIcon icon={faChevronLeft} className="mr-2" />
-        Select a different quiz
-      </button>
+      <iframe width="100%" height="500" src="https://observablehq.com/embed/021fd59ef42a475a?cell=*"></iframe>
     </div>
   );
 }
