@@ -16,7 +16,7 @@ interface DataElementProps {
 
 const DataElement = ({ data, onDelete, onUpdate }: DataElementProps) => {
   const [distribution, setDistribution] = useState(
-    DataElementGenerator.UNIFORM
+    data.generator
   );
 
   const deKey = generateUUID();
@@ -63,13 +63,17 @@ const DataElement = ({ data, onDelete, onUpdate }: DataElementProps) => {
           <input
             className={`w-30 px-2 py-1 border rounded`}
             value={data.name}
-            onChange={(e) => onUpdate({ ...data, name: e.target.value })}
+            onChange={(e) => {
+              e.preventDefault();
+              onUpdate({ ...data, name: e.target.value });
+            }}
           />{" "}
           from a{" "}
           <select
             className="w-30 px-2 py-1 mt-1 border rounded border-black"
             value={data.generator}
             onChange={(e) => {
+              e.preventDefault();
               onUpdate({ ...data, generator: e.target.value as DataElementGenerator });
               setDistribution(e.target.value as DataElementGenerator);
             }}
