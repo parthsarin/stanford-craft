@@ -22,13 +22,17 @@ const matchResource = (resource: Resource, query: string): boolean => {
   // query = query.toLowerCase();
   // query = '.*' + query.split('').join('.*') + '.*';
   
-  const regex = new RegExp(tokens.join('|'), 'gim');
+  for (let i = 0; i < tokens.length; i++) {
+    const token = new RegExp(tokens[i]);
 
-  const { title, description, subLinks, tags } = resource;
-  const names = subLinks.map((subLink) => subLink.name);
-  const all = [title, description, ...names, ...tags].join(' ').toLowerCase();
+    const { title, description, subLinks, tags } = resource;
+    const names = subLinks.map((subLink) => subLink.name);
+    const all = [title, description, ...names, ...tags].join(' ').toLowerCase();
 
-  return regex.test(all);
+    if (!token.test(all)) return false;
+  }
+
+  return true;
 }
 
 export type { Resource, ResourceSubLink };
