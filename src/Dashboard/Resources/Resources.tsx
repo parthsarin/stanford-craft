@@ -26,7 +26,7 @@ const defaultResources: Resource[] = [
         name: "Curriculum",
       }
     ],
-    tags: ["Unit 2", "worksheet", "video"],
+    tags: ["Unit 2: AI & You", "worksheet", "video"],
   },
   {
     title: "“What the world looks like to an algorithm” YouTube Video",
@@ -42,7 +42,7 @@ const defaultResources: Resource[] = [
         name: "Curriculum",
       },
     ],
-    tags: ["Unit 2", "video"],
+    tags: ["Unit 2: AI & You", "video"],
   },
   {
     title: "Gender Shades Video",
@@ -59,7 +59,7 @@ const defaultResources: Resource[] = [
         name: "Curriculum",
       },
     ],
-    tags: ["Unit 2", "video"],
+    tags: ["Unit 2: AI & You", "video"],
   },
   {
     title: "Squid Model",
@@ -79,7 +79,7 @@ const defaultResources: Resource[] = [
         name: "Curriculum",
       },
     ],
-    tags: ["Unit 2", "video", "worksheet"],
+    tags: ["Unit 2: AI & You", "video", "worksheet"],
   },
   {
     title: "Amazon AI Applications Exploration",
@@ -107,7 +107,91 @@ const defaultResources: Resource[] = [
         name: "Curriculum",
       },
     ],
-    tags: ["Unit 2", "guided exploration", "podcast", "reading", "worksheet"],
+    tags: ["Unit 2: AI & You", "guided exploration", "podcast", "reading", "worksheet"],
+  },
+  {
+    title: "How Computers See",
+    description: "This interactive and article demonstrates how computers see visual informations as pixels which inturn becomes numerical data that can be analyzed to find patterns. ",
+    img: "https://i.postimg.cc/mDDNrLws/Screenshot-2023-04-23-at-10-10-26-PM.png",
+    subLinks: [
+      {
+        url: "https://editor.p5js.org/Stanford/full/weOL1sHJ1",
+        name: "Interactive",
+      },
+      {
+        url: "https://dimensionality-reduction-293e465c2a3443e8941b016d.vercel.app/",
+        name: "Article",
+      },
+      {
+        url: "https://docs.google.com/presentation/d/1fzNSUxl1IAtXFDKczvJMlumns7xvUONwGOdR6mS_-i4/edit#slide=id.p",
+        name: "Worksheet",
+      },
+      {
+        url: "https://docs.google.com/document/d/1lbF25Q6_I45NRSWzFW3ZbcIkTJ7zAfs638HOGthMK0A/edit#bookmark=id.rdf2ltoefwha",
+        name: "Curriculum",
+      },
+    ],
+    tags: ["Unit 3: AI & Math", "interactive", "article", "worksheet", "art"],
+  },
+  {
+    title: "Gender and Age Bias in Coco Captions Dataset",
+    description: "This guided exploration takes students through a captions datasets and lets them add features like “caption_words_gender”, “caption_words_age”, “caption_words_attractive” to see if there is bias in the data. ",
+    img: "https://i.postimg.cc/tg4TxYVY/Screenshot-2023-04-23-at-10-15-36-PM.png",
+    subLinks: [
+      {
+        url: "https://knowyourdata-tfds.withgoogle.com/#dataset=coco_captions&tab=RELATIONS&relations=default_segment.cloud_vision.label.value,default_segment.coco_captions.captions_words_gendered_groups.value&draw=default_segment.coco_captions.objects_label.value,bbox,bbox&auto_draw=false",
+        name: "Coco Captions Dataset",
+      },
+      {
+        url: "https://docs.google.com/presentation/d/1fzNSUxl1IAtXFDKczvJMlumns7xvUONwGOdR6mS_-i4/edit#slide=id.p",
+        name: "Worksheet",
+      },
+      {
+        url: "https://docs.google.com/document/d/1lbF25Q6_I45NRSWzFW3ZbcIkTJ7zAfs638HOGthMK0A/edit#bookmark=id.phvesovriup7",
+        name: "Curriculum",
+      },
+    ],
+    tags: ["Unit 3: AI & Math", "bias", "dataset", "interactive", "guided exploration", "worksheet"],
+  },
+  {
+    title: "Whale Songs",
+    description: "This video and resultant website shows how AI can be used to analyze to analyze soundwaves of whales and find patterns by highlighting similar sounds. The curriculum and optional worksheet (linked in curriculum) discusses the benefits and drawbacks of turning whale songs into numerical data for analysis. ",
+    img: "https://i.postimg.cc/4yVFZvZM/maxresdefault.jpg",
+    subLinks: [
+      {
+        url: "https://www.youtube.com/watch?v=JE3-LkMqBfM&ab_channel=Google",
+        name: "Video: Whale Songs",
+      },
+      {
+        url: "https://docs.google.com/presentation/d/1fzNSUxl1IAtXFDKczvJMlumns7xvUONwGOdR6mS_-i4/edit#slide=id.p",
+        name: "Website: Whale Songs",
+      },
+      {
+        url: "https://docs.google.com/document/d/1lbF25Q6_I45NRSWzFW3ZbcIkTJ7zAfs638HOGthMK0A/edit#bookmark=id.psys7aio5rsu",
+        name: "Curriculum",
+      },
+    ],
+    tags: ["Unit 3: AI & Math", "video", "sound"],
+  },
+  {
+    title: "Sentiment Analysis Hands-On",
+    description: "In this example, we have a collection of reviews from the movie rating site IMDB. Each review has the (lowercase) text that the critic left and a tag indicating whether it is positive or negative. You can enter a word and the notebook will calculate its sentiment based on the data provided above.",
+    img: "https://i.postimg.cc/t4cGvNkj/sentiment-analysis.png",
+    subLinks: [
+      {
+        url: "https://observablehq.com/@craft/sentiment-analysis-example",
+        name: "Notebook",
+      },
+      {
+        url: "https://docs.google.com/presentation/d/18XQZmqr23Ps2ZwPwHvnYZSSHVv7enZ46G1qarKX2oMs/edit",
+        name: "Worksheet",
+      },
+      {
+        url: "https://docs.google.com/document/d/1lbF25Q6_I45NRSWzFW3ZbcIkTJ7zAfs638HOGthMK0A/edit#",
+        name: "Curriculum",
+      },
+    ],
+    tags: ["Unit 3: AI & Math", "hands-on", "worksheet"],
   },
   {
     title: "Learning to See: Gloomy Sunday",
@@ -127,7 +211,7 @@ const defaultResources: Resource[] = [
         name: "Curriculum",
       },
     ],
-    tags: ["Unit 4", "video", "generative ai", "generative adversarial network"],
+    tags: ["Unit 4: AI & Art", "video", "generative ai", "generative adversarial network"],
   },
   {
     title: "The DALL•E Prompt Book",
@@ -147,7 +231,7 @@ const defaultResources: Resource[] = [
         name: "Curriculum",
       },
     ],
-    tags: ["Unit 4", "dall-e", "generative art"],
+    tags: ["Unit 4: AI & Art", "dall-e", "generative art"],
   },
   {
     title: "Lexica",
@@ -167,7 +251,7 @@ const defaultResources: Resource[] = [
         name: "Curriculum",
       },
     ],
-    tags: ["Unit 3", "stable diffusion", "generative art","t-chart"],
+    tags: ["Unit 4: AI & Art", "stable diffusion", "generative art","t-chart"],
   },
   {
     title: "Vizcom",
@@ -187,7 +271,7 @@ const defaultResources: Resource[] = [
         name: "Curriculum",
       },
     ],
-    tags: ["Unit 4", "generative art", "ai assisted drawing", "t-chart"]
+    tags: ["Unit 4: AI & Art", "generative art", "ai assisted drawing", "t-chart"]
   },
   {
     title: "ChatGPT Debate",
@@ -211,27 +295,7 @@ const defaultResources: Resource[] = [
         name: "Curriculum",
       },
     ],
-    tags: ["Unit 4", "generative art", "dall-e", "chatgpt", "attribution", "ethics"],
-  },
-  {
-    title: "Sentiment Analysis Hands-On",
-    description: "In this example, we have a collection of reviews from the movie rating site IMDB. Each review has the (lowercase) text that the critic left and a tag indicating whether it is positive or negative. You can enter a word and the notebook will calculate its sentiment based on the data provided above.",
-    img: "https://i.postimg.cc/t4cGvNkj/sentiment-analysis.png",
-    subLinks: [
-      {
-        url: "https://observablehq.com/@craft/sentiment-analysis-example",
-        name: "Notebook",
-      },
-      {
-        url: "https://docs.google.com/presentation/d/18XQZmqr23Ps2ZwPwHvnYZSSHVv7enZ46G1qarKX2oMs/edit",
-        name: "Worksheet",
-      },
-      {
-        url: "https://docs.google.com/document/d/1lbF25Q6_I45NRSWzFW3ZbcIkTJ7zAfs638HOGthMK0A/edit#",
-        name: "Curriculum",
-      },
-    ],
-    tags: ["Unit 3", "hands-on", "worksheet"],
+    tags: ["Unit 4: AI & Art", "generative art", "dall-e", "chatgpt", "attribution", "ethics"],
   },
   {
     title: "AI Bias Explorer",
@@ -243,7 +307,7 @@ const defaultResources: Resource[] = [
         name: "Interactive",
       }
     ],
-    tags: ["Unit 5", "interactive"],
+    tags: ["Unit 5: Politics of AI", "interactive"],
   },
 ];
 
