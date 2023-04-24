@@ -29,7 +29,7 @@ const defaultResources: Resource[] = [
     tags: ["Unit 2", "worksheet", "video"],
   },
   {
-    title: "\“What the world looks like to an algorithm\” YouTube Video",
+    title: "“What the world looks like to an algorithm” YouTube Video",
     description: "A video discussing how an AI algorithm “sees” the world to recognize objects in photos. It discusses how humans and computers often attend to different features of objects when trying to recognize them.",
     img: "https://i.postimg.cc/BnS42Wrt/What-the-world-looks-like-to-an-algorithm.png",
     subLinks: [
@@ -47,7 +47,7 @@ const defaultResources: Resource[] = [
   {
     title: "Gender Shades Video",
     description:
-      'A video report on a study done on facial recognition software indicating that the algorithms that power the software were trained on white, male faces and weren\’t as good at recognizing others\’ faces.',
+      'A video report on a study done on facial recognition software indicating that the algorithms that power the software were trained on white, male faces and weren’t as good at recognizing others’ faces.',
     img: "https://i.postimg.cc/C1cFKwMj/Gender-shades.png",
     subLinks: [
       {
