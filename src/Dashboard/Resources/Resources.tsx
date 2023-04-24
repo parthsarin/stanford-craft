@@ -196,7 +196,7 @@ const defaultResources: Resource[] = [
   {
     title: "Learning to See: Gloomy Sunday",
     description: "Gloomy Sunday is a video showing how a Generative Adversarial Network (a \"GAN\") can re-interpret the image from your webcam in the context of its training data. In that way, it only \"sees\" what it it has been shown in the past.",
-    img: "https://i.postimg.cc/pVZ5nw06/bias-explorer.jpg",
+    img: "https://i.postimg.cc/fysDPh6G/gloomy-sunday.png",
     subLinks: [
       {
         url: "https://vimeo.com/260612034",
