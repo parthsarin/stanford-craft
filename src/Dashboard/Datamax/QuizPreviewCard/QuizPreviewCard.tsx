@@ -1,5 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { QuizPreviewCardProps } from "../DatamaxTypes";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faXmarkCircle } from "@fortawesome/free-solid-svg-icons";
+import { MySwal } from "../../../Generic/Notify";
+import { arrayRemove, deleteDoc, doc, getFirestore, updateDoc } from "firebase/firestore";
 
 const QuizPreviewCard = ({ quiz, joinCode, createdAt }: QuizPreviewCardProps) => {
   const navigate = useNavigate();
@@ -11,17 +15,56 @@ const QuizPreviewCard = ({ quiz, joinCode, createdAt }: QuizPreviewCardProps) =>
       navigate(`/dash/analyze/${joinCode}`);
   }
 
+  const handleDelete = () => {
+    MySwal.fire({
+      title: "Are you sure?",
+      text: "This action is irreversible.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        const db = getFirestore();
+        const quizDocRef = doc(db, "datamax", joinCode);
+        await deleteDoc(quizDocRef);
+
+        const userDocRef = doc(db, "users", quiz.owner);
+        await updateDoc(userDocRef, {
+          'datamax.activeQuizzes': arrayRemove(joinCode),
+          'datamax.pastQuizzes': arrayRemove(joinCode),
+        });
+
+        window.location.reload();
+      }
+    })
+  }
+
   const { template } = quiz;
 
   return (
-    <button 
-      className="border rounded border-black px-3 py-1 hover:bg-gray-100"
+    <div 
+      className="border rounded border-black px-3 py-1 hover:bg-gray-100 hover:cursor-pointer relative text-center z-0"
       onClick={onClick}
+      role="button"
     >
+      <button
+        className="text-xl absolute right-0 top-0 -translate-y-3 translate-x-2 z-10"
+        aria-label={"delete quiz"}
+        onClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          handleDelete();
+        }}
+      >
+        <FontAwesomeIcon
+          icon={faXmarkCircle}
+          className="bg-white rounded-full"
+        />
+      </button>
       <h2 className="text-lg">{template.name}</h2>
       <p className="text-sm italic mb-2">Join Code: {joinCode}</p>
       <p className="text-sm">Created on {createdAt.toDate().toLocaleDateString("en-US")}</p>
-    </button>
+    </div>
   )
 }
 
