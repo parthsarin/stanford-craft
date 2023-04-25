@@ -2,12 +2,12 @@ import { getBackground } from '../Generic/Background';
 import './JobPosting.css';
 
 const JobPosting = () => {
-  const scrollToId = (id: string) => () => {
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
-  }
+  // const scrollToId = (id: string) => () => {
+  //   const el = document.getElementById(id);
+  //   if (el) {
+  //     el.scrollIntoView({ behavior: 'smooth' });
+  //   }
+  // }
 
   return (
     <>
@@ -87,211 +87,9 @@ const JobPosting = () => {
           </p>
           <h2>Open roles</h2>
           <p>
-            We are currently recruiting for two positions. Click on either link to scroll to the posting:
-            <ul>
-              <li><button className="link" onClick={scrollToId('coordinator')}>Coordinator</button></li>
-              <li><button className="link" onClick={scrollToId('section-leader')}>Section leader</button></li>
-            </ul>
-            The listings for both jobs are below.
+            We are currently hiring section leaders for the course; the job
+            posting is below.
           </p>
-        </div>
-        <div className="divider"></div>
-        <div className="container">
-          <h2 id="coordinator">Coordinator</h2>
-          <h3>Role details</h3>
-          <p>
-            We are currently recruiting two coordinators who will recruit and
-            coach Section Leaders (similar to Teaching Assistants) to support 
-            roughly 150 high school students who will take the
-            course from up to 6 high schools around the US. Building on the
-            teaching model of{" "}
-            <a href="https://codeinplace.stanford.edu/">Code in Place</a>, these
-            Section Leaders will collaborate with a high school teacher to
-            facilitate each high school classroom as a &ldquo;section&rdquo; of
-            the course, offering collegial support and community similar to that
-            of a Stanford course on campus.&nbsp;
-          </p>
-          <p>
-            Coordinators will work with the course lecturer,{" "}
-            <a href="https://parthsarin.com/">Parth Sarin</a>, to manage and
-            coordinate the delivery of course material to high school students. In
-            addition to general responsibilities, each of the coordinators will
-            have a specialized role:
-          </p>
-          <h3>General Responsibilities:</h3>
-          <ul>
-            <li>Hire and train ~ 6 Section Leaders (SLs)</li>
-            <li>
-              Develop and prepare for the course by meeting&nbsp; weekly (1 hour)
-              with Parth Sarin and the Stanford Digital Education (SDE) team
-            </li>
-            <li>
-              Collaborate with the teaching team to ensure the course operates
-              smoothly. This could include tasks like developing course systems
-              and tools, making logistical decisions about the course timeline and
-              policies, lead or support teacher and SL training, taking on
-              overflow grading responsibilities, or helping to resolve academic
-              integrity issues.
-            </li>
-          </ul>
-          <h3>General Skills and Experiences:</h3>
-          <ul>
-            <li>Teaching experience with youth and/or in a university setting</li>
-            <li>Experience building, implementing, or critiquing AI systems</li>
-            <li>
-              Experience managing teams of people and collaborating across
-              multiple leaders
-            </li>
-          </ul>
-        </div>
-        <div className="coord-grid">
-          <div className="bg-gray-100 items-center">
-            <span className="text-red-700 italic mb-4">
-              no longer accepting applications
-            </span>
-            <div>
-              <h3 style={{ marginTop: 0 }}>Teacher Coordinator</h3>
-              <h4>
-                <em>Responsibilities:</em>
-              </h4>
-              <ul>
-                <li>
-                  Design and facilitate on-boarding for high school teachers
-                </li>
-                <li>
-                  Co-facilitate professional learning sessions with the{" "}
-                  <a href="https://cset.stanford.edu/">
-                    Center to Support Excellence in Teaching
-                  </a>
-                </li>
-                <li>
-                  Help Course Coordinator adapt teacher support resources from
-                  course materials
-                </li>
-                <li>
-                  Support the development of productive SL and teacher
-                  relationships
-                </li>
-              </ul>
-              <h4>
-                <em>Ideal experience:</em>
-              </h4>
-              <ul>
-                <li>High school teaching experience</li>
-              </ul>
-            </div>
-          </div>
-          <div>
-            <h3 style={{ marginTop: 0 }}>Course Coordinator</h3>
-            <h4>
-              <em>Responsibilities:</em>
-            </h4>
-            <ul>
-              <li>Co-manage overall course content</li>
-              <li>
-                Lead adaptation of materials for teacher- and SL-specific needs
-                with the teaching team
-              </li>
-              <li>Develop and maintain Canvas course&nbsp;</li>
-              <li>Prepare and distribute assignments, manage submissions</li>
-              <li>Design and manage feedback and grading processes</li>
-              <li>Offer assignment help webinars to students</li>
-              <li>
-                Work with teaching team to monitor school progress and ensure
-                sections are on track
-              </li>
-            </ul>
-            <h4>
-              <em>Ideal experience:</em>
-            </h4>
-            <ul>
-              <li>Strong knowledge of AI systems, applications, and impacts</li>
-              <li>Use of Canvas, ideally from an instructional role</li>
-              <li>(Head) Teaching Assistantship experience</li>
-            </ul>
-          </div>
-          <div>
-            <h3 style={{ marginTop: 0 }}>Section Leader Coordinator</h3>
-            <h4>
-              <em>Responsibilities:</em>
-            </h4>
-            <ul>
-              <li>Design and facilitate Section Leader pre-course training</li>
-              <li>Lead weekly SL information and support sessions</li>
-              <li>
-                Help course coordinator adapt weekly lesson plans for SLs from
-                course materials
-              </li>
-              <li>
-                Interface with{" "}
-                <a href="https://edequitylab.org/">Ed Equity Lab</a> to monitor
-                section progress and ensure sections are on track
-              </li>
-              <li>Provide support and counseling to SLs</li>
-            </ul>
-            <h4>
-              <em>Ideal experience:</em>
-            </h4>
-            <ul>
-              <li>
-                Teaching Assistantship (TAing) or Section Leading (SLing)
-                experience
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div className="container">
-          <h3>Expected time commitment</h3>
-          <ul>
-            <li>
-              <strong>April - May:</strong>
-              <em> 1-5 hours/week,</em> including meeting as a group, hiring SLs,
-              and preparing course materials
-            </li>
-            <li>
-              <strong>June - Aug: </strong>
-              <em>1-5 hours/week</em>, finalizing course content and preparing for
-              course launch
-            </li>
-            <li>
-              <strong>Sept:</strong> <em>5-10 hours/week</em>, including meeting
-              weekly with teaching team to prepare for course, prepare SLs and
-              high school teacher training, and set up course systems.
-              Additionally, facilitate 5-hour training for SLs and 2-hour
-              on-boarding for high school teachers
-            </li>
-            <li>
-              <strong>Sept - Jan:</strong> <em>10-15 hours/week</em>, including
-              meeting weekly with the teaching team and additional 1
-              hour/bi-weekly meetings with teachers or 30 min/week mentoring
-              meeting with SLs (depending on role), 30 min/week all-SL meetings,
-              SL coordination, tech troubleshooting and improvements, section
-              preparation, grading, etc.&nbsp;
-            </li>
-          </ul>
-          <h3>Compensation</h3>
-          <p>
-            Coordinators will be paid $30/hour and will need to be eligible to
-            work in the US. This position does not come with tuition support. The
-            work location will be remote, but we have limited office spaces for
-            drop in work on campus if needed. Coordinators will need to complete a
-            background check, get an I9 form verified in-person in their current
-            location, and complete mandated reporter training (~30 mins).&nbsp;
-          </p>
-          <div className="flex flex-col items-center">
-            <button
-              onClick={() => {
-                window.location.href = "https://forms.gle/XQ7pbYUViSc9nVcc6";
-              }}
-              className="bg-purple-600 hover:bg-purple-800 text-xl text-white py-2 px-4 rounded w-full mt-6"
-            >
-              Apply here for the coordinator role!
-            </button>
-            <span className="text-purple-800 italic mt-2">
-              Applications will be accepted on a rolling basis through the end of
-              April
-            </span>
-          </div>
         </div>
         <div className="divider"></div>
         <div className="container">
@@ -363,7 +161,7 @@ const JobPosting = () => {
                 <li>
                   During-Course Coaching: Weekly staff meetings with Section
                   Leader Coordinators to discuss section materials and teaching
-                  strategies.&nbsp;
+                  strategies.
                 </li>
               </ul>
             </li>
@@ -423,7 +221,7 @@ const JobPosting = () => {
             </button>
             <span className="text-emerald-800 italic mt-2">
               Applications will be accepted on a rolling basis through the end of
-              April
+              May
             </span>
           </div>
         </div>
