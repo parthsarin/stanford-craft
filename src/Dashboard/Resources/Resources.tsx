@@ -307,7 +307,7 @@ const defaultResources: Resource[] = [
         name: "Interactive",
       }
     ],
-    tags: ["Unit 5: Politics of AI", "interactive"],
+    tags: ["Unit 5: AI & Society", "interactive"],
   },
 ];
 
