@@ -323,9 +323,11 @@ const Resources = () => {
 
 
   return (
-    <div className="flex-1 p-4">
+    <div className="bg-gray-100">
+      <div className="flex-1 p-10">
+      <h1 className="text-4xl font-bold mb-10">Resources</h1>
       <SearchBar onUpdate={handleSearch} />
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 p-5">
         {
           resources.map((resource, i) => (
             <ResourceCard key={i} resource={resource} />
@@ -334,6 +336,8 @@ const Resources = () => {
       </div>
      
     </div>
+    </div>
+    
   )
 }
 
