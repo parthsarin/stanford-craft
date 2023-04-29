@@ -35,5 +35,15 @@ const matchResource = (resource: Resource, query: string): boolean => {
   return true;
 }
 
+const filterResource = (resource: Resource, selectedTags: string[]): boolean => {
+  const {tags } = resource;
+
+  if (selectedTags.length === 1) {
+    return true;
+  }
+
+  return tags.some(item => selectedTags.includes(item))
+}
+
 export type { Resource, ResourceSubLink };
-export { matchResource };
+export { matchResource, filterResource };
