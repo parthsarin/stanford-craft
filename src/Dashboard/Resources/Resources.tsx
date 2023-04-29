@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { Resource, matchResource } from "./Resource";
+import { Resource, matchResource, filterResource } from "./Resource";
 import ResourceCard from "./ResourceCard/ResourceCard";
 import SearchBar from "./SearchBar";
+import Filter from "./Filter";
 
 const defaultResources: Resource[] = [
   {
@@ -26,7 +27,7 @@ const defaultResources: Resource[] = [
         name: "Curriculum",
       }
     ],
-    tags: ["Unit 2: AI & You", "worksheet", "video"],
+    tags: ["Unit 2: AI & You", "Worksheet", "Video"],
   },
   {
     title: "“What the world looks like to an algorithm” YouTube Video",
@@ -42,7 +43,7 @@ const defaultResources: Resource[] = [
         name: "Curriculum",
       },
     ],
-    tags: ["Unit 2: AI & You", "video"],
+    tags: ["Unit 2: AI & You", "Video"],
   },
   {
     title: "Gender Shades Video",
@@ -59,7 +60,7 @@ const defaultResources: Resource[] = [
         name: "Curriculum",
       },
     ],
-    tags: ["Unit 2: AI & You", "video"],
+    tags: ["Unit 2: AI & You", "Video"],
   },
   {
     title: "Squid Model",
@@ -79,7 +80,7 @@ const defaultResources: Resource[] = [
         name: "Curriculum",
       },
     ],
-    tags: ["Unit 2: AI & You", "video", "worksheet"],
+    tags: ["Unit 2: AI & You", "Video", "Worksheet"],
   },
   {
     title: "Amazon AI Applications Exploration",
@@ -107,7 +108,7 @@ const defaultResources: Resource[] = [
         name: "Curriculum",
       },
     ],
-    tags: ["Unit 2: AI & You", "guided exploration", "podcast", "reading", "worksheet"],
+    tags: ["Unit 2: AI & You", "Guided Exploration", "Podcast", "Reading", "Worksheet"],
   },
   {
     title: "How Computers See",
@@ -131,7 +132,7 @@ const defaultResources: Resource[] = [
         name: "Curriculum",
       },
     ],
-    tags: ["Unit 3: AI & Math", "interactive", "article", "worksheet", "art"],
+    tags: ["Unit 3: AI & Math", "Interactive", "Article", "Worksheet", "Art"],
   },
   {
     title: "Gender and Age Bias in Coco Captions Dataset",
@@ -151,7 +152,7 @@ const defaultResources: Resource[] = [
         name: "Curriculum",
       },
     ],
-    tags: ["Unit 3: AI & Math", "bias", "dataset", "interactive", "guided exploration", "worksheet"],
+    tags: ["Unit 3: AI & Math", "Bias", "Dataset", "Interactive", "Guided Exploration", "Worksheet"],
   },
   {
     title: "Whale Songs",
@@ -171,7 +172,7 @@ const defaultResources: Resource[] = [
         name: "Curriculum",
       },
     ],
-    tags: ["Unit 3: AI & Math", "video", "sound"],
+    tags: ["Unit 3: AI & Math", "Video", "Sound"],
   },
   {
     title: "Sentiment Analysis Hands-On",
@@ -191,7 +192,7 @@ const defaultResources: Resource[] = [
         name: "Curriculum",
       },
     ],
-    tags: ["Unit 3: AI & Math", "hands-on", "worksheet"],
+    tags: ["Unit 3: AI & Math", "Hands-On", "Worksheet"],
   },
   {
     title: "Learning to See: Gloomy Sunday",
@@ -211,7 +212,7 @@ const defaultResources: Resource[] = [
         name: "Curriculum",
       },
     ],
-    tags: ["Unit 4: AI & Art", "video", "generative ai", "generative adversarial network"],
+    tags: ["Unit 4: AI & Art", "Video", "Generative AI", "Generative Adversarial Network"],
   },
   {
     title: "The DALL•E Prompt Book",
@@ -307,7 +308,7 @@ const defaultResources: Resource[] = [
         name: "Interactive",
       }
     ],
-    tags: ["Unit 5: AI & Society", "interactive"],
+    tags: ["Unit 5: AI & Society", "Interactive"],
   },
 ];
 
@@ -321,21 +322,38 @@ const Resources = () => {
     setResources(filteredResources);
   };
 
+  const handleFilter = (tags: string[]) => {
+    const filteredResources = defaultResources.filter(
+      (resource) => filterResource(resource, tags)
+    );
+    setResources(filteredResources);
+  };
+
 
   return (
     <div className="bg-gray-100">
       <div className="flex-1 p-10">
-      <h1 className="text-4xl font-bold mb-10">Resources</h1>
-      <SearchBar onUpdate={handleSearch} />
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 p-5">
-        {
-          resources.map((resource, i) => (
-            <ResourceCard key={i} resource={resource} />
-          ))
-        }
-      </div>
+        <h1 className="text-4xl font-bold mb-10">Resources</h1>
+        <div className="flex gap-8">
+          <div className="w-1/5 p-5 bg-violet-300 rounded-md">
+            <h2 className="text-2xl font-bold mb-3">Search</h2>
+            <SearchBar onUpdate={handleSearch} />
+
+            <h2 className="text-2xl font-bold mt-3 mb-3">Filter</h2>
+            <Filter onUpdate={handleFilter} />
+          </div>
+          
+          <div className="w-4/5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-5">
+            {
+              resources.map((resource, i) => (
+                <ResourceCard key={i} resource={resource} data-tags = {resource.tags} />
+              ))
+            }
+          </div>
+        </div>
+        
      
-    </div>
+      </div>
     </div>
     
   )
