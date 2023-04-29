@@ -38,7 +38,7 @@ const matchResource = (resource: Resource, query: string): boolean => {
 const filterResource = (resource: Resource, selectedTags: string[]): boolean => {
   const {tags } = resource;
 
-  if (selectedTags.length == 1) {
+  if (selectedTags.length === 1) {
     return true;
   }
 
