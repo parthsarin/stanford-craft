@@ -8,8 +8,7 @@ interface Props {
 const ResourceCard = ({ resource }: Props) => {
   const { title, description, img, subLinks, tags } = resource;
   return (
-    <div className="flex flex-col shadow-lg overflow-hidden rounded-md">
-      <img className="w-full" src={img} alt="" />
+    <div className="flex flex-col shadow-lg overflow-hidden rounded-md justify-start p-4 bg-white">
       <div className="p-3">
         <h2 className="text-lg font-bold text-gray-700">{title}</h2>
         <p className="text-gray-700 text-sm">{description}</p>
@@ -28,7 +27,6 @@ const ResourceCard = ({ resource }: Props) => {
           ))}
         </ul>
       </div>
-      <div className="flex-1"></div>
       <div className="p-3">
         {
           tags.map((tag) => (
@@ -36,6 +34,9 @@ const ResourceCard = ({ resource }: Props) => {
           ))
         }
       </div>
+
+      <img className="p-5 w-full h-64 object-cover mt-auto " src={img} alt="" />
+      
     </div>
   );
 };
