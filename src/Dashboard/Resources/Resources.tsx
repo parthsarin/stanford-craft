@@ -331,8 +331,7 @@ const Resources = () => {
 
 
   return (
-    <div className="bg-gray-100">
-      <div className="flex-1 p-10">
+      <div className="flex-1 p-8">
         <h1 className="text-4xl font-bold mb-10">Resources</h1>
         <div className="flex gap-8">
           <div className="w-1/5 p-5 bg-violet-300 rounded-md">
@@ -351,10 +350,7 @@ const Resources = () => {
             }
           </div>
         </div>
-        
-     
       </div>
-    </div>
     
   )
 }
