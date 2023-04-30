@@ -8,7 +8,7 @@ interface Props {
 const ResourceCard = ({ resource }: Props) => {
   const { title, description, img, subLinks, tags } = resource;
   return (
-    <div className="flex flex-col shadow-lg overflow-hidden rounded-md justify-start p-4 bg-white">
+    <div className="flex flex-col shadow-2xl overflow-hidden rounded-md justify-start p-4 bg-white">
       <div className="p-3">
         <h2 className="text-lg font-bold text-gray-700">{title}</h2>
         <p className="text-gray-700 text-sm">{description}</p>

@@ -3,13 +3,13 @@ import Citation from "./Citation";
 
 const Credits = () => {
   return (
-    <div className="p-4 w-full md:w-2/3">
-      <h1 className="text-2xl">Credits</h1>
+    <div className="p-8 w-full md:w-2/3">
+      <h1 className="text-4xl font-bold mb-10">Credits</h1>
       <p className="text-lg italic">
         Information for using these materials in research and practice
       </p>
 
-      <h2 className="text-xl mt-4">Website credits</h2>
+      <h2 className="text-xl mt-4 font-bold mb-5">Website credits</h2>
       <p className="mt-2">
         This website was created by researchers and student at Stanford
         University working in the{" "}
@@ -48,7 +48,9 @@ const Credits = () => {
           src={codesignGroup}
           alt="Cohort of AI Co-Design Fellows"
         />
-        <p className="mt-1 italic">A group of the AI Co-Design Fellows at the end of one of our meetings</p>
+        <p className="mt-1 italic">
+          A group of the AI Co-Design Fellows at the end of one of our meetings
+        </p>
       </div>
       <p className="mt-2">
         The broader CRAFT team (including researchers, software developers, and
@@ -57,10 +59,10 @@ const Credits = () => {
         Delaney.
       </p>
 
-      <h2 className="text-xl mt-4">How to cite</h2>
-      <h2 className="text-xl mt-4">Affiliated work</h2>
+      <h2 className="text-xl mt-4 font-bold mb-5">How to cite</h2>
+      <h2 className="text-xl mt-4 font-bold mb-5">Affiliated work</h2>
       <ul className="list-inside">
-      {/*
+        {/*
         <Citation>
           Lee, V. R., Sarin, P., Wolf, J., & Xie, B. (2023/to appear). 
           CRAFT-work: An Integrative Co-Design Approach for Designing High 
