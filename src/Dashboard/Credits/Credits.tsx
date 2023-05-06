@@ -27,8 +27,7 @@ const Credits = () => {
         <a
           className="text-blue-500 hover:text-blue-700 hover:underline"
           href="https://github.com/parthsarin/stanford-craft"
-          rel="noreferrer"
-          target="_blank"
+          rel="noreferrer" target="_blank"
         >
           https://github.com/parthsarin/stanford-craft
         </a>
@@ -60,15 +59,25 @@ const Credits = () => {
       </p>
 
       <h2 className="text-xl mt-4 font-bold mb-5">How to cite</h2>
+      <h2 className="text-xl mt-4 font-bold mb-5">Funding</h2>
+      <p>
+        The CRAFT team has received generous support from the following 
+        organizations, and we are very thankful for their support:
+        <ul className="list-disc ml-10 mt-2">
+          <li><a className="text-blue-500 hover:text-blue-700 hover:underline" rel="noreferrer" target="_blank" href="https://digitaleducation.stanford.edu/">Stanford Digital Education</a></li>
+          <li>The <a className="text-blue-500 hover:text-blue-700 hover:underline" rel="noreferrer" target="_blank" href="https://ethicsinsociety.stanford.edu/">McCoy Family Center for Ethics in Society</a></li>
+          <li>The <a className="text-blue-500 hover:text-blue-700 hover:underline" rel="noreferrer" target="_blank" href="https://hai.stanford.edu/">Instute for Human-Centered Artificial Intelligence</a> at Stanford University</li>
+          <li><a className="text-blue-500 hover:text-blue-700 hover:underline" rel="noreferrer" target="_blank" href="https://acceleratelearning.stanford.edu/">Stanford Accelerator for Learning</a></li>
+        </ul>
+      </p>
       <h2 className="text-xl mt-4 font-bold mb-5">Affiliated work</h2>
       <ul className="list-inside">
-        {/*
         <Citation>
-          Lee, V. R., Sarin, P., Wolf, J., & Xie, B. (2023/to appear). 
-          CRAFT-work: An Integrative Co-Design Approach for Designing High 
-          School AI Literacy Resources. In ACM. New York, NY, USA. ACM.
+          Lee, V.R., Sarin, P., Xie, B. & Wolf, J. CRAFT-work: An Integrative
+          Co-Design Approach for Designing High School AI Literacy Resources.
+          Paper presented at the CHI 2023 AI Literacy Workshop, Hamburg,
+          Germany.
         </Citation>
-      */}
         <Citation>
           Lee, V. R., Sarin, P., Sieh, I., & Fuloria, A. (2023/to appear).
           Addressing the Data Set Dilemma with Personally Relevant Data
@@ -82,6 +91,13 @@ const Credits = () => {
           Vahrenhold, K. Fisler, M. Hauswirth, & D. Franklin (Eds.), Proceedings
           of the 2022 ACM Conference on International Computing Education
           Research V.2 (pp. 35-36). ACM.
+        </Citation>
+        <Citation>
+          Delaney, V., Sarin, P., & Lee, V. R. (2023/to appear). Students’
+          Constructed Explanations for how Artificial Intelligence Generates
+          Recommendations in YouTube. To appear in Proceedings of the 17th
+          International Conference of the Learning Sciences - ICLS 2023.
+          Montreal, Canada: ISLS.
         </Citation>
       </ul>
     </div>
