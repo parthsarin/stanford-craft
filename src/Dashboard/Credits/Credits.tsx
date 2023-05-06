@@ -1,5 +1,10 @@
 import codesignGroup from "../../img/codesign-group.png";
+import salLogo from "../../img/sal-logo.png";
+import sdeLogo from "../../img/sde-logo.png";
+import mccoyLogo from "../../img/mccoy-logo.jpg";
+import haiLogo from "../../img/hai-logo.png";
 import Citation from "./Citation";
+import Funder from './Funder';
 
 const Credits = () => {
   return (
@@ -60,20 +65,37 @@ const Credits = () => {
 
       <h2 className="text-xl mt-4 font-bold mb-5">How to cite</h2>
       <h2 className="text-xl mt-4 font-bold mb-5">Funding</h2>
-      <p>
+      <p className="mb-4">
         The CRAFT team has received generous support from the following 
         organizations, and we are very thankful for their support:
-        <ul className="list-disc ml-10 mt-2">
-          <li><a className="text-blue-500 hover:text-blue-700 hover:underline" rel="noreferrer" target="_blank" href="https://digitaleducation.stanford.edu/">Stanford Digital Education</a></li>
-          <li>The <a className="text-blue-500 hover:text-blue-700 hover:underline" rel="noreferrer" target="_blank" href="https://ethicsinsociety.stanford.edu/">McCoy Family Center for Ethics in Society</a></li>
-          <li>The <a className="text-blue-500 hover:text-blue-700 hover:underline" rel="noreferrer" target="_blank" href="https://hai.stanford.edu/">Instute for Human-Centered Artificial Intelligence</a> at Stanford University</li>
-          <li><a className="text-blue-500 hover:text-blue-700 hover:underline" rel="noreferrer" target="_blank" href="https://acceleratelearning.stanford.edu/">Stanford Accelerator for Learning</a></li>
-        </ul>
       </p>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <Funder url="https://digitaleducation.stanford.edu/" name="Stanford Digital Education">
+          <img src={sdeLogo} className="max-h-48 " alt="Stanford Digital Education" />
+        </Funder>
+        <Funder
+          name="The McCoy Family Center for Ethics in Society"
+          url="https://ethicsinsociety.stanford.edu/"
+        >
+          <img src={mccoyLogo} className="max-h-48 rounded-md" alt="The McCoy Family Center for Ethics in Society" />
+        </Funder>
+        <Funder
+          name="The Institute for Human-Centered Artificial Intelligence"
+          url="https://hai.stanford.edu/"
+        >
+          <img src={haiLogo} className="max-h-48 " alt="The Institute for Human-Centered Artificial Intelligence" />
+        </Funder>
+        <Funder
+          name="Stanford Accelerator for Learning"
+          url="https://acceleratelearning.stanford.edu/"
+        >
+          <img src={salLogo} className="max-h-48 " alt="Stanford Accelerator for Learning" />
+        </Funder>
+      </div>
       <h2 className="text-xl mt-4 font-bold mb-5">Affiliated work</h2>
       <ul className="list-inside">
         <Citation>
-          Lee, V.R., Sarin, P., Xie, B. & Wolf, J. CRAFT-work: An Integrative
+          Lee, V. R., Sarin, P., Xie, B. & Wolf, J. CRAFT-work: An Integrative
           Co-Design Approach for Designing High School AI Literacy Resources.
           Paper presented at the CHI 2023 AI Literacy Workshop, Hamburg,
           Germany.
