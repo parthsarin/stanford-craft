@@ -376,7 +376,7 @@ const Resources = () => {
   return (
     <div className="flex-1 p-8">
       <h1 className="text-4xl font-bold mb-10">Resources</h1>
-      <div className="lg:flex lg:p-0 p-5 gap-6">
+      <div className="lg:flex p-0 gap-6">
         <div className="mb-6 lg:mb-0 lg:w-1/5 p-5 bg-violet-300 rounded-md">
           <h2 className="text-2xl font-bold mb-3">Search</h2>
           <SearchBar onUpdate={handleSearch} />
