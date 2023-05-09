@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 interface Props {
   onUpdate: (tags: string[]) => void;
 }
 
+let prevTags = [''];
+
 const Filter = ({ onUpdate }: Props) => {
-
   const [selectedTags, setSelectedTags] = useState(['']);
-
   const handleTagSelect = (tag: string) => {
     const isTagSelected = selectedTags.includes(tag);
 
@@ -19,7 +19,10 @@ const Filter = ({ onUpdate }: Props) => {
   };
 
   useEffect(() => {
-    onUpdate(selectedTags);
+    if (prevTags != selectedTags) {
+      prevTags = selectedTags;
+      onUpdate(selectedTags);
+    }
   });
 
   return (
