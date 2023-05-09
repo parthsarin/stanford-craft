@@ -1,5 +1,5 @@
 import { getFunctions, httpsCallable } from "firebase/functions";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 async function apiCall(prompt) {
   const functions = getFunctions();
@@ -8,23 +8,32 @@ async function apiCall(prompt) {
 }
 
 const PromptyGenerator = () => {
-  let temp = { text: "Hello Hello" };
+  let temp = { text: "" };
   const [res, setRes] = useState(temp);
-  useEffect(() => {
-    console.log("Effect;");
-    setRes({ text: "Loaded" });
-    async function fetchData() {
-      let res = await apiCall("How to celebrate life?");
-      console.log(res.data.response);
+  function generateFromAi(prompt) {
+    setRes({ text: "Loading. Please wait..." });
+    async function callOpenAi() {
+      let res = await apiCall(prompt);
+      return res;
+    }
+    callOpenAi().then((res) => {
+      console.log(res);
       let obj = { text: res.data.response };
       setRes(obj);
-    }
-    fetchData();
-  }, []);
+    });
+  }
   return (
     <>
       <div className="p-8">
         <h1 className="text-4xl font-bold mb-10">Prompty</h1>
+        <button
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          onClick={() => {
+            generateFromAi("How to celebrate life?");
+          }}
+        >
+          How to celebrate life?
+        </button>
         <p className="text-lg italic">{res.text}</p>
       </div>
     </>
