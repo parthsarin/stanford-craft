@@ -19,7 +19,7 @@ const Filter = ({ onUpdate }: Props) => {
   };
 
   useEffect(() => {
-    if (prevTags != selectedTags) {
+    if (prevTags !== selectedTags) {
       prevTags = selectedTags;
       onUpdate(selectedTags);
     }
