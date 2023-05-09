@@ -3,7 +3,9 @@ interface Resource {
   description: string;
   img: string;
   subLinks: ResourceSubLink[];
-  tags: string[];
+  unitTags: string[];
+  typeTags: string[];
+  miscTags: string[];
   rating?: number;
 }
 
@@ -25,9 +27,9 @@ const matchResource = (resource: Resource, query: string): boolean => {
   for (let i = 0; i < tokens.length; i++) {
     const token = new RegExp(tokens[i]);
 
-    const { title, description, subLinks, tags } = resource;
+    const { title, description, subLinks, unitTags, typeTags, miscTags } = resource;
     const names = subLinks.map((subLink) => subLink.name);
-    const all = [title, description, ...names, ...tags].join(' ').toLowerCase();
+    const all = [title, description, ...names, ...unitTags, typeTags, miscTags].join(' ').toLowerCase();
 
     if (!token.test(all)) return false;
   }
@@ -35,14 +37,23 @@ const matchResource = (resource: Resource, query: string): boolean => {
   return true;
 }
 
-const filterResource = (resource: Resource, selectedTags: string[]): boolean => {
-  const {tags } = resource;
+const filterResource = (resource: Resource, selectedTags: string[], count: {'unit': number, 'type': number}): boolean => {
+  const {unitTags, typeTags } = resource;
+  //const tags = unitTags.concat(typeTags, miscTags)
 
   if (selectedTags.length === 1) {
     return true;
   }
 
-  return tags.some(item => selectedTags.includes(item))
+  // unitTags has any thing in selected
+  // typeTags has anything in selected
+  // miscTags has anything in selected
+
+  // add OR AND logic 
+  return (
+    (unitTags.some(item => selectedTags.includes(item)) || count['unit'] == 0) &&
+    (typeTags.some(item => selectedTags.includes(item)) || count['type'] == 0)
+  )
 }
 
 export type { Resource, ResourceSubLink };
