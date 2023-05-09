@@ -1,5 +1,10 @@
 import codesignGroup from "../../img/codesign-group.png";
+import salLogo from "../../img/sal-logo.png";
+import sdeLogo from "../../img/sde-logo.png";
+import mccoyLogo from "../../img/mccoy-logo.jpg";
+import haiLogo from "../../img/hai-logo.png";
 import Citation from "./Citation";
+import Funder from './Funder';
 
 const Credits = () => {
   return (
@@ -27,8 +32,7 @@ const Credits = () => {
         <a
           className="text-blue-500 hover:text-blue-700 hover:underline"
           href="https://github.com/parthsarin/stanford-craft"
-          rel="noreferrer"
-          target="_blank"
+          rel="noreferrer" target="_blank"
         >
           https://github.com/parthsarin/stanford-craft
         </a>
@@ -60,15 +64,42 @@ const Credits = () => {
       </p>
 
       <h2 className="text-xl mt-4 font-bold mb-5">How to cite</h2>
+      <h2 className="text-xl mt-4 font-bold mb-5">Funding</h2>
+      <p className="mb-4">
+        The CRAFT team has received generous support from the following 
+        organizations, and we are very thankful for their support:
+      </p>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <Funder url="https://digitaleducation.stanford.edu/" name="Stanford Digital Education">
+          <img src={sdeLogo} className="max-h-48 " alt="Stanford Digital Education" />
+        </Funder>
+        <Funder
+          name="The McCoy Family Center for Ethics in Society"
+          url="https://ethicsinsociety.stanford.edu/"
+        >
+          <img src={mccoyLogo} className="max-h-48 rounded-md" alt="The McCoy Family Center for Ethics in Society" />
+        </Funder>
+        <Funder
+          name="The Institute for Human-Centered Artificial Intelligence"
+          url="https://hai.stanford.edu/"
+        >
+          <img src={haiLogo} className="max-h-48 " alt="The Institute for Human-Centered Artificial Intelligence" />
+        </Funder>
+        <Funder
+          name="Stanford Accelerator for Learning"
+          url="https://acceleratelearning.stanford.edu/"
+        >
+          <img src={salLogo} className="max-h-48 " alt="Stanford Accelerator for Learning" />
+        </Funder>
+      </div>
       <h2 className="text-xl mt-4 font-bold mb-5">Affiliated work</h2>
       <ul className="list-inside">
-        {/*
         <Citation>
-          Lee, V. R., Sarin, P., Wolf, J., & Xie, B. (2023/to appear). 
-          CRAFT-work: An Integrative Co-Design Approach for Designing High 
-          School AI Literacy Resources. In ACM. New York, NY, USA. ACM.
+          Lee, V. R., Sarin, P., Xie, B. & Wolf, J. CRAFT-work: An Integrative
+          Co-Design Approach for Designing High School AI Literacy Resources.
+          Paper presented at the CHI 2023 AI Literacy Workshop, Hamburg,
+          Germany.
         </Citation>
-      */}
         <Citation>
           Lee, V. R., Sarin, P., Sieh, I., & Fuloria, A. (2023/to appear).
           Addressing the Data Set Dilemma with Personally Relevant Data
@@ -82,6 +113,13 @@ const Credits = () => {
           Vahrenhold, K. Fisler, M. Hauswirth, & D. Franklin (Eds.), Proceedings
           of the 2022 ACM Conference on International Computing Education
           Research V.2 (pp. 35-36). ACM.
+        </Citation>
+        <Citation>
+          Delaney, V., Sarin, P., & Lee, V. R. (2023/to appear). Students’
+          Constructed Explanations for how Artificial Intelligence Generates
+          Recommendations in YouTube. To appear in Proceedings of the 17th
+          International Conference of the Learning Sciences - ICLS 2023.
+          Montreal, Canada: ISLS.
         </Citation>
       </ul>
     </div>
