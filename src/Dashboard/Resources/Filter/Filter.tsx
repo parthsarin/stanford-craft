@@ -15,14 +15,14 @@ const Filter = ({ onUpdate }: Props) => {
 
     if (isTagSelected) {
       setSelectedTags(selectedTags.filter((t) => t !== tag));
-      if (tagClass === 'unit' || tagClass == 'type') {
+      if (tagClass === 'unit' || tagClass === 'type') {
         let newTagCount = selectedTagsCount;
         newTagCount[tagClass] -= 1;
         setSelectedTagsCount(newTagCount);
       }
     } else {
       setSelectedTags([...selectedTags, tag]);
-      if (tagClass === 'unit' || tagClass == 'type') {
+      if (tagClass === 'unit' || tagClass === 'type') {
         let newTagCount = selectedTagsCount;
         newTagCount[tagClass] += 1;
         setSelectedTagsCount(newTagCount);
