@@ -1,4 +1,4 @@
-import { 
+import {
   faChevronLeft,
   faChevronRight,
   faRobot,
@@ -8,6 +8,7 @@ import {
   faBook,
   faChartLine,
   faQuoteLeft,
+  faKeyboard,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
@@ -25,13 +26,13 @@ const Sidebar = () => {
   // sidebar expand/collapse effect
   const toggleExpanded = () => {
     setExpanded(!expanded);
-    localStorage.setItem('AILitSidebarExpanded', JSON.stringify(!expanded));
-  }
+    localStorage.setItem("AILitSidebarExpanded", JSON.stringify(!expanded));
+  };
 
   useEffect(() => {
-    const ls = localStorage.getItem('AILitSidebarExpanded');
-    if (ls && ls === 'true') setExpanded(true);
-    if (ls && ls === 'false') setExpanded(false);
+    const ls = localStorage.getItem("AILitSidebarExpanded");
+    if (ls && ls === "true") setExpanded(true);
+    if (ls && ls === "false") setExpanded(false);
   }, [setExpanded]);
 
   // sidebar scrolling effect
@@ -45,11 +46,11 @@ const Sidebar = () => {
       setHeight(`calc(100% - ${d}px)`);
       setFixed(false);
     }
-  }
+  };
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   });
 
   return (
@@ -91,6 +92,16 @@ const Sidebar = () => {
             />
           </SidebarButton>
           <SidebarButton
+            text={"Prompty"}
+            path={"/dash/prompty"}
+            expanded={expanded}
+          >
+            <FontAwesomeIcon
+              icon={faKeyboard}
+              className={`${expanded && "mr-2"} w-6 h-6`}
+            />
+          </SidebarButton>
+          <SidebarButton
             text={"Resources"}
             path={"/dash/resources"}
             expanded={expanded}
@@ -112,8 +123,15 @@ const Sidebar = () => {
           </SidebarButton>
 
           <li className="flex-1"></li>
-          <SidebarButton text={"Credits"} path={"/dash/credits"} expanded={expanded}>
-            <FontAwesomeIcon icon={faQuoteLeft} className={`${expanded && "mr-2"} w-6 h-6`} />
+          <SidebarButton
+            text={"Credits"}
+            path={"/dash/credits"}
+            expanded={expanded}
+          >
+            <FontAwesomeIcon
+              icon={faQuoteLeft}
+              className={`${expanded && "mr-2"} w-6 h-6`}
+            />
           </SidebarButton>
           <li>
             <button

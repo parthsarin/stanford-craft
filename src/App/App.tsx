@@ -5,13 +5,14 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
-import Home from '../Home';
+import Home from "../Home";
 import Dashboard from "../Dashboard";
 import Resources from "../Dashboard/Resources";
 import NoMatch from "../NoMatch";
 
-import './App.css';
+import "./App.css";
 import Datamax from "../Dashboard/Datamax";
+import Prompty from "../Dashboard/Prompty";
 import NewQuiz from "../Dashboard/Datamax/NewQuiz";
 import IdentityBar from "../Generic/Brand/IdentityBar";
 import GlobalFooter from "../Generic/Brand/GlobalFooter";
@@ -48,8 +49,9 @@ const router = createBrowserRouter(
           <Route path=":joinCode" element={<AnalyzeQuiz />} />
         </Route>
         <Route path="explore/:joinCode" element={<ExploreQuiz />} />
-        <Route path="resources" element={<Resources />} />   
-        <Route path="credits" element={<Credits />} />   
+        <Route path="prompty" element={<Prompty />} />
+        <Route path="resources" element={<Resources />} />
+        <Route path="credits" element={<Credits />} />
       </Route>
       <Route path="*" element={<NoMatch />} />
     </>
@@ -58,22 +60,26 @@ const router = createBrowserRouter(
 
 const App = () => {
   const [user, setUser] = useState<User | null>(null);
-  
+
   useEffect(() => {
     const auth = getAuth();
-    const unsubscribe = onAuthStateChanged(auth, (user) => handleSignIn(user, setUser));
+    const unsubscribe = onAuthStateChanged(auth, (user) =>
+      handleSignIn(user, setUser)
+    );
     return unsubscribe;
   }, []);
 
   return (
     <>
-      <UserContext.Provider value={{ user, setUser: generateUserUpdateHandler(setUser) }}>
+      <UserContext.Provider
+        value={{ user, setUser: generateUserUpdateHandler(setUser) }}
+      >
         <IdentityBar />
         <RouterProvider router={router} />
         <GlobalFooter />
       </UserContext.Provider>
     </>
   );
-}
+};
 
 export default App;

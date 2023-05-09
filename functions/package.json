@@ -15,7 +15,8 @@
   "dependencies": {
     "firebase-admin": "^10.0.2",
     "firebase-functions": "^4.2.1",
-    "json2csv": "^6.0.0-alpha.2"
+    "json2csv": "^6.0.0-alpha.2",
+    "openai": "^3.2.1"
   },
   "devDependencies": {
     "firebase-functions-test": "^0.2.0"
