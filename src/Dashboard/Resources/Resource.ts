@@ -51,8 +51,8 @@ const filterResource = (resource: Resource, selectedTags: string[], count: {'uni
 
   // add OR AND logic 
   return (
-    (unitTags.some(item => selectedTags.includes(item)) || count['unit'] == 0) &&
-    (typeTags.some(item => selectedTags.includes(item)) || count['type'] == 0)
+    (unitTags.some(item => selectedTags.includes(item)) || count['unit'] === 0) &&
+    (typeTags.some(item => selectedTags.includes(item)) || count['type'] === 0)
   )
 }
 
