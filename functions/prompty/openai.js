@@ -14,6 +14,5 @@ module.exports.callOpenAi = async function (prompt) {
     stop: null,
     temperature: 0.7,
   });
-  console.log(completion.data.choices[0].text);
   return completion.data.choices[0].text;
 };
