@@ -44,12 +44,7 @@ const filterResource = (resource: Resource, selectedTags: string[], count: {'uni
   if (selectedTags.length === 1) {
     return true;
   }
-
-  // unitTags has any thing in selected
-  // typeTags has anything in selected
-  // miscTags has anything in selected
-
-  // add OR AND logic 
+  
   return (
     (unitTags.some(item => selectedTags.includes(item)) || count['unit'] === 0) &&
     (typeTags.some(item => selectedTags.includes(item)) || count['type'] === 0)
