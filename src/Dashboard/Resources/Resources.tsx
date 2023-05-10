@@ -381,18 +381,30 @@ const defaultResources: Resource[] = [
 
 const Resources = () => {
   const [resources, setResources] = useState<Resource[]>(defaultResources);
+  const [searchString, setSearchString] = useState('')
+  const [selectedTags, setSelectedTags] = useState(['']);
+  const [selectedTagsCount, setSelectedTagsCount] = useState({'unit': 0, 'type': 0})
 
   const handleSearch = (search: string) => {
-    const filteredResources = defaultResources.filter((resource) =>
+    let filteredResources = defaultResources.filter((resource) =>
       matchResource(resource, search)
     );
+    filteredResources = filteredResources.filter((resource) =>
+      filterResource(resource, selectedTags, selectedTagsCount)
+    );
+    setSearchString(search);
     setResources(filteredResources);
   };
 
   const handleFilter = (tags: string[], count: {'unit': number, 'type': number}) => {
-    const filteredResources = defaultResources.filter((resource) =>
+    let filteredResources = defaultResources.filter((resource) =>
       filterResource(resource, tags, count)
     );
+    filteredResources = filteredResources.filter((resource) =>
+      matchResource(resource, searchString)
+    );
+    setSelectedTags(tags);
+    setSelectedTagsCount(count);
     setResources(filteredResources);
   };
 
