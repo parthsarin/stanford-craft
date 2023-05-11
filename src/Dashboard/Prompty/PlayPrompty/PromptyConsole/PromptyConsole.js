@@ -30,7 +30,6 @@ const PromptyConsole = (props) => {
   );
 
   useEffect(() => {
-    loading !== true && console.log(instanceData.data());
     instanceData !== undefined && setPromptyInstanceData(instanceData.data());
   }, [instanceData]);
 
