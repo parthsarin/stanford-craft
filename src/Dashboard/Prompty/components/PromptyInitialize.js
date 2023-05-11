@@ -19,10 +19,10 @@ const PromptyInitialize = () => {
   const navigate = useNavigate();
   const joinPrompty = () => {
     MySwal.fire({
-      title: "Join a game",
+      title: "Start Prompty",
       input: "text",
-      inputLabel: "Enter the game code",
-      inputPlaceholder: "ABCDEF",
+      inputLabel: "Enter the Prompty code",
+      inputPlaceholder: "071295",
       inputAttributes: {
         autocapitalize: "on",
       },
@@ -44,7 +44,7 @@ const PromptyInitialize = () => {
 
   return (
     <>
-      <p>New Game</p>
+      <p>Experience and analyze prompting with Prompty!</p>
       <button
         className="mt-5 bg-red-600 hover:bg-red-700 disabled:bg-red-400  text-white font-bold py-2 px-4 rounded"
         onClick={() => {

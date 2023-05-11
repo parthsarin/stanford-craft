@@ -16,8 +16,10 @@ const PromptyConsole = (props) => {
   const [roleText, setRoleText] = useState("");
   const [contextText, setContextText] = useState("");
   const [taskText, setTaskText] = useState("");
-  const [loaderText, setLoaderText] = useState("");
+  const [loader, setLoader] = useState(false);
   const [promptyInstanceData, setPromptyInstanceData] = useState();
+  const [responseData, setResponseData] = useState([]);
+
   const navigate = useNavigate();
   const [instanceData, loading, error] = useDocument(
     doc(
@@ -33,11 +35,19 @@ const PromptyConsole = (props) => {
   );
 
   useEffect(() => {
-    instanceData !== undefined && setPromptyInstanceData(instanceData.data());
+    instanceData !== undefined && instanceDataFunctions();
+    function instanceDataFunctions() {
+      setPromptyInstanceData(instanceData.data());
+    }
   }, [instanceData]);
 
+  useEffect(() => {
+    promptyInstanceData?.generations !== undefined &&
+      setResponseData(promptyInstanceData.generations);
+  }, [promptyInstanceData]);
+
   function generateFromAi() {
-    setLoaderText("Loading... Please wait...");
+    setLoader(true);
     let prompt = roleText + " " + contextText + " " + taskText;
     async function callOpenAi() {
       let res = await apiCall(prompt);
@@ -50,13 +60,11 @@ const PromptyConsole = (props) => {
         task: taskText,
         response: res.data.response,
       };
-      setLoaderText("");
+      setLoader(false);
       let currentData;
       promptyInstanceData?.generations === undefined
         ? (currentData = [])
         : (currentData = promptyInstanceData?.generations);
-      console.log(promptyInstanceData?.generations);
-      console.log(currentData);
       saveAiResponseToFirestore([obj, ...currentData]);
     });
   }
@@ -86,56 +94,81 @@ const PromptyConsole = (props) => {
 
   return (
     <>
-      <div className="grid grid-cols-2 gap-8">
-        <div>
-          <p>{props.instruction}</p>
-          <Label for="role" title="Role" />
+      <div className="h-screen flex">
+        <div className="bg-slate-100 p-8 w-1/2">
+          <h1 className="text-4xl font-bold mb-10">Prompty</h1>
+          <p className="text-xl">{props.instruction}</p>
+          <Label for="role" title="Role" color="blue" />
           <textarea
             id="role"
             rows="2"
             className="block p-2.5 w-full rounded border-solid border-2 border-gray-300"
-            placeholder="Write your thoughts here..."
+            placeholder="Enter text here..."
             onInput={(e) => {
               setRoleText(e.target.value);
             }}
           ></textarea>
-          <Label for="context" title="Context" />
+          <Label for="context" title="Context" color="green" />
           <textarea
             id="context"
             rows="2"
             className="block p-2.5 w-full rounded border-solid border-2 border-gray-300"
-            placeholder="Write your thoughts here..."
+            placeholder="Enter text here..."
             onInput={(e) => {
               setContextText(e.target.value);
             }}
           ></textarea>
-          <Label for="task" title="Task" />
+          <Label for="task" title="Task" color="brown" />
           <textarea
             id="task"
             rows="2"
             className="block p-2.5 w-full rounded border-solid border-2 border-gray-300"
-            placeholder="Write your thoughts here..."
+            placeholder="Enter text here..."
             onInput={(e) => {
               setTaskText(e.target.value);
             }}
           ></textarea>
-          <button
-            className="mt-5 bg-red-600 hover:bg-red-700 disabled:bg-red-400  text-white font-bold py-2 px-4 rounded"
-            disabled={
-              roleText !== "" && contextText !== "" && taskText !== ""
-                ? false
-                : true
-            }
-            onClick={() => {
-              generateFromAi();
-            }}
-          >
-            Generate From AI
-          </button>
+          <div className="mt-5 grid grid-cols-2">
+            <div>
+              {/* Check for tries */}
+              {props.limit - responseData.length > 0 ? (
+                <button
+                  className="bg-red-600 hover:bg-red-700 disabled:bg-red-400  text-white font-bold py-2 px-4 rounded"
+                  disabled={
+                    roleText !== "" &&
+                    contextText !== "" &&
+                    taskText !== "" &&
+                    loader !== true
+                      ? false
+                      : true
+                  }
+                  onClick={() => {
+                    generateFromAi();
+                  }}
+                >
+                  Generate From AI
+                </button>
+              ) : (
+                <p>No more tries available!</p>
+              )}
+            </div>
+            <div>
+              <div className="float-right">
+                {" "}
+                <TryCounter
+                  availableTry={props.limit - responseData.length}
+                  usedTry={responseData.length}
+                />
+              </div>
+            </div>
+          </div>
         </div>
-        <div>
-          <p>{loaderText}</p>
-          <GeneratedResponses responses={promptyInstanceData?.generations} />
+        <div className="flex-1 flex overflow-hidden">
+          <div className="flex-1 bg-slate-200 p-8 overflow-y-scroll">
+            {loader && <p>Loading. Please wait...</p>}
+
+            <GeneratedResponses responses={responseData} />
+          </div>
         </div>
       </div>
     </>
@@ -149,26 +182,66 @@ const Label = (props) => {
     <>
       <label
         htmlFor={props.for}
-        className="block mt-4 mb-2 text-sm font-medium text-gray-900"
+        className="block mt-4 ml-2 text-sm font-medium text-gray-900"
       >
-        {props.title}
+        <span
+          className="rounded-t"
+          style={{
+            backgroundColor: props.color,
+            width: "70px",
+            display: "block",
+            textAlign: "center",
+            color: "white",
+          }}
+        >
+          {props.title}
+        </span>
       </label>
     </>
   );
 };
 
-const GeneratedResponses = (props) => {
-  const [responseData, setResponseData] = useState([]);
-  useEffect(() => {
-    props.responses !== undefined && setResponseData(props.responses);
-  }, [props]);
+const TryCounter = (props) => {
   return (
     <>
-      {responseData.map((data, i) => {
+      <span className="text-xl">Tries Available: </span>
+      {[...Array(props.usedTry)].map((e, i) => (
+        <span className="text-gray-400 text-2xl" key={i}>
+          ★
+        </span>
+      ))}
+      {[...Array(props.availableTry)].map((e, i) => (
+        <span className="text-orange-400 text-2xl" key={i}>
+          ★
+        </span>
+      ))}
+    </>
+  );
+};
+
+const GeneratedResponses = (props) => {
+  return (
+    <>
+      {props.responses.map((data, i) => {
         return (
-          <div key={i}>
-            <h4>Try {responseData.length - i}</h4>
-            <p>{data.role}</p>
+          <div key={i} className="shadow-lg p-4 rounded bg-white mb-4">
+            <h4 className="text-xl mb-2">Try {props.responses.length - i}</h4>
+            <p>
+              <span className="bg-blue-100 px-2 box-decoration-clone">
+                {data.role}
+              </span>
+            </p>
+            <p>
+              <span className="bg-green-100 px-2 box-decoration-clone">
+                {data.context}
+              </span>
+            </p>
+            <p>
+              <span className="bg-orange-100 px-2 box-decoration-clone">
+                {data.task}
+              </span>
+            </p>
+            <hr className="mt-4" />
             <p className="text-md whitespace-pre-wrap">{data.response}</p>
           </div>
         );

@@ -31,53 +31,56 @@ const PlayPrompty = () => {
     }
     return (
       <>
-        <form onSubmit={handleSubmit(saveUser)}>
-          <label
-            htmlFor="name"
-            className="block mt-4 mb-2 text-sm font-medium text-gray-900"
-          >
-            Name
-          </label>
-          <input
-            className="block p-2.5 w-96 rounded border-solid border-2 border-gray-300"
-            {...register("name", {
-              required: { value: true, message: "Name not entered!" },
-              maxLength: {
-                value: 80,
-                message: "Name should be less than 80 characters!",
-              },
-            })}
-          />
-          <label
-            htmlFor="email"
-            className="block mt-4 mb-2 text-sm font-medium text-gray-900"
-          >
-            Email
-          </label>
-          <input
-            className="block p-2.5 w-96 rounded border-solid border-2 border-gray-300"
-            {...register("email", {
-              required: { value: true, message: "Email not entered!" },
-              pattern: {
-                value: /^\S+@\S+$/i,
-                message: "Invalid Email Address",
-              },
-            })}
-          />
-          <ul className="list-disc list-outside ml-6 mt-2 text-red-500">
-            {errorArr.map((error, i) => {
-              return (
-                <>
-                  <li key={i}>{error.message}</li>
-                </>
-              );
-            })}
-          </ul>
-          <input
-            className="mt-5 bg-red-600 hover:bg-red-700 disabled:bg-red-400  text-white font-bold py-2 px-4 rounded"
-            type="submit"
-          />
-        </form>
+        <div className="p-8">
+          <h1 className="text-4xl font-bold mb-10">Prompty</h1>
+          <form onSubmit={handleSubmit(saveUser)}>
+            <label
+              htmlFor="name"
+              className="block mt-4 mb-2 text-sm font-medium text-gray-900"
+            >
+              Name
+            </label>
+            <input
+              className="block p-2.5 w-96 rounded border-solid border-2 border-gray-300"
+              {...register("name", {
+                required: { value: true, message: "Name not entered!" },
+                maxLength: {
+                  value: 80,
+                  message: "Name should be less than 80 characters!",
+                },
+              })}
+            />
+            <label
+              htmlFor="email"
+              className="block mt-4 mb-2 text-sm font-medium text-gray-900"
+            >
+              Email
+            </label>
+            <input
+              className="block p-2.5 w-96 rounded border-solid border-2 border-gray-300"
+              {...register("email", {
+                required: { value: true, message: "Email not entered!" },
+                pattern: {
+                  value: /^\S+@\S+$/i,
+                  message: "Invalid Email Address",
+                },
+              })}
+            />
+            <ul className="list-disc list-outside ml-6 mt-2 text-red-500">
+              {errorArr.map((error, i) => {
+                return (
+                  <>
+                    <li key={i}>{error.message}</li>
+                  </>
+                );
+              })}
+            </ul>
+            <input
+              className="mt-5 bg-red-600 hover:bg-red-700 disabled:bg-red-400  text-white font-bold py-2 px-4 rounded"
+              type="submit"
+            />
+          </form>
+        </div>
       </>
     );
   };
@@ -109,20 +112,17 @@ const PlayPrompty = () => {
   if (loading || !joinCode || !promptyData) return <Loader />;
   return (
     <>
-      <div className="p-8">
-        <h1 className="text-4xl font-bold mb-10">Prompty</h1>
-        {nickname === "" && identifier === "" ? (
-          <SetUser />
-        ) : (
-          <PromptyConsole
-            instanceCode={joinCode}
-            identifier={identifier}
-            instruction={promptyData.instruction}
-            limit={promptyData.tryLimit}
-            helpInstructions={promptyData.helpText}
-          />
-        )}
-      </div>
+      {nickname === "" && identifier === "" ? (
+        <SetUser />
+      ) : (
+        <PromptyConsole
+          instanceCode={joinCode}
+          identifier={identifier}
+          instruction={promptyData.instruction}
+          limit={promptyData.limit}
+          helpInstructions={promptyData.helpText}
+        />
+      )}
     </>
   );
 };
