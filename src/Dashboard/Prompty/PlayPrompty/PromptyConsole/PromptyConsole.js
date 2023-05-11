@@ -2,6 +2,9 @@ import { getFunctions, httpsCallable } from "firebase/functions";
 import { useState, useEffect } from "react";
 import { getFirestore, doc, setDoc } from "firebase/firestore";
 import { useDocument } from "react-firebase-hooks/firestore";
+import Loader from "../../../../Generic/Loader/Loader";
+import { MySwal } from "../../../../Generic/Notify";
+import { useNavigate } from "react-router-dom";
 
 async function apiCall(prompt) {
   const functions = getFunctions();
@@ -15,7 +18,7 @@ const PromptyConsole = (props) => {
   const [taskText, setTaskText] = useState("");
   const [loaderText, setLoaderText] = useState("");
   const [promptyInstanceData, setPromptyInstanceData] = useState();
-
+  const navigate = useNavigate();
   const [instanceData, loading, error] = useDocument(
     doc(
       getFirestore(),
@@ -69,6 +72,17 @@ const PromptyConsole = (props) => {
     );
     setDoc(docRef, { generations: data }, { merge: true });
   }
+
+  if (error) {
+    MySwal.fire({
+      title: "Error",
+      text: error,
+      icon: "error",
+    }).then(() => navigate("/dash/prompty"));
+    return null;
+  }
+
+  if (loading) return <Loader />;
 
   return (
     <>
