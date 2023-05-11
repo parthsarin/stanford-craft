@@ -1,15 +1,13 @@
 import PromptyConsole from "./PromptyConsole/PromptyConsole";
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { UserContext } from "../../../Auth";
 import Loader from "../../../Generic/Loader";
 import { MySwal } from "../../../Generic/Notify";
 import { useForm } from "react-hook-form";
 
 const PlayPrompty = () => {
   const { joinCode } = useParams();
-  const { user } = useContext(UserContext);
   const navigate = useNavigate();
   const [promptyData, setPromptyData] = useState(null);
   const [loading, setLoading] = useState(true);
