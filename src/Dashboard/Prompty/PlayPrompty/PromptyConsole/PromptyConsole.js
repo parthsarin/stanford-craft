@@ -154,7 +154,6 @@ const PromptyConsole = (props) => {
             </div>
             <div>
               <div className="float-right">
-                {" "}
                 <TryCounter
                   availableTry={props.limit - responseData.length}
                   usedTry={responseData.length}

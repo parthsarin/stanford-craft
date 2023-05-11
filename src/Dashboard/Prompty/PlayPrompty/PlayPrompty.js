@@ -119,7 +119,7 @@ const PlayPrompty = () => {
           instanceCode={joinCode}
           identifier={identifier}
           instruction={promptyData.instruction}
-          limit={promptyData.limit}
+          limit={promptyData.tryLimit}
           helpInstructions={promptyData.helpText}
         />
       )}
