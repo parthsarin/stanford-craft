@@ -3,7 +3,7 @@ import Loader from "../../../../Generic/Loader";
 import { Quiz, QuizDoc, ResponsePayload } from "../../DatamaxTypes";
 import { UserContext } from "../../../../Auth";
 import Question from "./Question";
-import { doc, getFirestore, setDoc } from "firebase/firestore";
+import { addDoc, collection, doc, getFirestore, setDoc } from "firebase/firestore";
 import { generateUUID } from "../../../../Generic/UUID";
 import { MySwal } from "../../../../Generic/Notify";
 import generateFromTemplate from "./GenerateQuiz";
@@ -75,11 +75,11 @@ const StudentView = ({ joinCode, quiz }: Params) => {
 
     // write the response to the database
     const db = getFirestore();
-    const docId = user?.uid || generateUUID();
-    const docRef = doc(db, "datamax", joinCode, "responses", docId);
+    const colRef = collection(db, "datamax", joinCode, "responses");
 
     // write the response to the database
-    setDoc(docRef, { response: responsePayload, name: responses.name })
+    addDoc(colRef, { response: responsePayload, name: responses.name })
+      .then(() => window.scrollTo(0, 0))
       .then(() => {
         MySwal.fire({
           title: "Quiz submitted",
@@ -91,7 +91,7 @@ const StudentView = ({ joinCode, quiz }: Params) => {
       .catch((err) => MySwal.fire({
         title: "Error submitting quiz",
         icon: "error",
-        text: "You can't submit the quiz twice",
+        text: "There was an error submitting your quiz.",
         footer: `${err}`
       }));
   };
@@ -100,6 +100,13 @@ const StudentView = ({ joinCode, quiz }: Params) => {
   if (submitted) return (
     <div className="p-4 w-full lg:w-2/3">
       <h1 className="text-2xl mb-2">🎉 Submitted "{quiz.template.name}"!</h1>
+      <button
+        onClick={() => window.location.reload()}
+        className="text-lg text-blue-500 hover:text-blue-600 underline"
+      >
+        Submit another response
+      </button>
+
     </div> 
   )
   return (
