@@ -33,6 +33,7 @@ interface QuestionTemplate {
 
 interface QuizTemplate {
   name: string,
+  upload: boolean,
   questions: { [key: string]: QuestionTemplate }
 }
 
@@ -45,6 +46,7 @@ interface QuizPreviewCardProps {
 function generateBlankQuiz(): QuizTemplate {
   return {
     name: '',
+    upload: false,
     questions: {},
   };
 }
