@@ -45,7 +45,8 @@ const NewQuiz = () => {
 
   const duplicateQuestion = (questionKey: string) => () => {
     const newQuestions = {...quiz.questions};
-    newQuestions[generateUUID()] = {...quiz.questions[questionKey]};
+    const newQuestion = JSON.parse(JSON.stringify(quiz.questions[questionKey]));
+    newQuestions[generateUUID()] = newQuestion;
     setQuiz({ ...quiz, questions: newQuestions });
   }
 
