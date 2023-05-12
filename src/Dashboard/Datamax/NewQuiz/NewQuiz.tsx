@@ -1,4 +1,4 @@
-import { FormEvent, useContext, useState } from "react";
+import { FormEvent, useContext, useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { faHammer, faPlus } from "@fortawesome/free-solid-svg-icons";
@@ -26,43 +26,9 @@ const NewQuiz = () => {
   const [loading, setLoading] = useState(false);
   const [quiz, setQuiz] = useState<QuizTemplate>(generateBlankQuiz());
 
-  // functions to handle adding/removing questions
-  const deleteQuestion = (questionKey: string) => () => {
-    let newQuestions = {...quiz.questions};
-    delete newQuestions[questionKey]
-
-    setQuiz({ ...quiz, questions: newQuestions });
-  }
-
-  const addQuestion = (e: FormEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-
-    const newQuestions = {...quiz.questions};
-    newQuestions[generateUUID()] = generateBlankQuestion();
-    setQuiz({ ...quiz, questions: newQuestions });
-  }
-
-  const duplicateQuestion = (questionKey: string) => () => {
-    const newQuestions = {...quiz.questions};
-    const newQuestion = JSON.parse(JSON.stringify(quiz.questions[questionKey]));
-    newQuestions[generateUUID()] = newQuestion;
-    setQuiz({ ...quiz, questions: newQuestions });
-  }
-
-  // the updateQuestion is passed to the child Question component
-  const updateQuestion = (questionKey: string) => (data: QuestionTemplate) => {
-    const newQuestions = {...quiz.questions};
-    newQuestions[questionKey] = data;
-    setQuiz({ ...quiz, questions: newQuestions });
-  };
-
-  // submit funciton
-  const handleNewQuiz = (e: FormEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-
-    setLoading(true);
+  // subscribe to the quizSubj$ to handle events
+  useEffect(() => {
+    if (!quiz.upload) return;
     createQuiz(quiz)
       .then(
         (joinCode) => navigate(`/dash/datamax/quiz/${joinCode}`),
@@ -75,7 +41,56 @@ const NewQuiz = () => {
           title: "Error creating quiz",
           text: err.message,
         })
-      })
+      });
+  }, [navigate, quiz]);
+
+  // functions to handle adding/removing questions
+  const deleteQuestion = (questionKey: string) => () => {
+    setQuiz((quiz) => {
+      let newQuestions = {...quiz.questions};
+      delete newQuestions[questionKey];
+
+      return ({ ...quiz, questions: newQuestions });
+    })
+  }
+
+  const addQuestion = (e: FormEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    setQuiz((quiz) => {
+      const newQuestions = {...quiz.questions};
+      newQuestions[generateUUID()] = generateBlankQuestion();
+      return ({ ...quiz, questions: newQuestions });
+    })
+  }
+
+  const duplicateQuestion = (questionKey: string) => () => {
+    setQuiz((quiz) => {
+      const newQuestions = {...quiz.questions};
+      const newQuestion = JSON.parse(JSON.stringify(quiz.questions[questionKey]));
+      newQuestions[generateUUID()] = newQuestion;
+
+      return ({ ...quiz, questions: newQuestions });
+    });
+  }
+
+  // the updateQuestion is passed to the child Question component
+  const updateQuestion = (questionKey: string) => (data: QuestionTemplate) => {
+    setQuiz((quiz) => {
+      const newQuestions = {...quiz.questions};
+      newQuestions[questionKey] = data;
+      return ({ ...quiz, questions: newQuestions });
+    });
+  };
+
+  // submit funciton
+  const handleNewQuiz = (e: FormEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    setLoading(true);
+    setQuiz(quiz => ({ ...quiz, upload: true }));
   }
 
   return (
