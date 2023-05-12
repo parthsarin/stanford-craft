@@ -27,8 +27,8 @@ const Credits = () => {
           DISTAL Lab
         </a>
         . Main contributors include the CRAFT developer team: Parth Sarin,
-        Isabel Sieh, and Anika Fuloria. You can find the source code for this
-        site and all included tools at{" "}
+        Isabel Sieh, Deepak Dennison, Raycelle Garcia, and Anika Fuloria. 
+        You can find the source code for this site and all included tools at{" "}
         <a
           className="text-blue-500 hover:text-blue-700 hover:underline"
           href="https://github.com/parthsarin/stanford-craft"

@@ -3,6 +3,8 @@ import { Resource, matchResource, filterResource } from "./Resource";
 import ResourceCard from "./ResourceCard/ResourceCard";
 import SearchBar from "./SearchBar";
 import Filter from "./Filter";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faWarning } from "@fortawesome/free-solid-svg-icons";
 
 const defaultResources: Resource[] = [
   {
@@ -376,6 +378,31 @@ const Resources = () => {
   return (
     <div className="flex-1 p-8">
       <h1 className="text-4xl font-bold mb-10">Resources</h1>
+      <div
+        className={`
+        rounded border border-black bg-orange-200 mb-10 px-4 py-3
+        flex flex-row space-x-4 items-center
+        `}
+      >
+        <div className="flex-col hidden md:flex">
+          <FontAwesomeIcon icon={faWarning} className="text-2xl" />
+        </div>
+        <div className="flex flex-col">
+          <h2 className="font-bold text-xl">These resources are in progress</h2>
+          <p className="text-lg">
+            Many of these resources are currently being developed and more
+            will be added soon. If you have any feedback or questions, you can
+            reach out to the CRAFT team at{" "}
+            <a
+              className="text-blue-500 hover:text-blue-700 hover:underline"
+              href="mailto:psarin@stanford.edu"
+            >
+              craft-comms@lists.stanford.edu
+            </a>
+            .
+          </p>
+        </div>
+      </div>
       <div className="lg:flex p-0 gap-6">
         <div className="mb-6 lg:mb-0 lg:w-1/5 p-5 bg-violet-300 rounded-md">
           <h2 className="text-2xl font-bold mb-3">Search</h2>

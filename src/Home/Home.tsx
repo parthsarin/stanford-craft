@@ -1,9 +1,9 @@
-import Footer from "./Footer";
 import IconBullet from "../Generic/IconBullet";
 import { faAtom, faChalkboardTeacher, faPalette } from "@fortawesome/free-solid-svg-icons";
 
 import { getBackground } from "../Generic/Background";
 import ContinueButton from './ContinueButton';
+import Footer from "./Footer/Footer";
 
 const Home = () => (
   <div className="home w-full">
