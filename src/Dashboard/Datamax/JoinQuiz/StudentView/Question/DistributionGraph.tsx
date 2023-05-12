@@ -70,7 +70,10 @@ const DistributionGraph = ({ value, min, max, mean, std, generator }: DataElemen
       ctx.fillText(`${max}`, width, height);
 
       // draw the value circle
-      if (!min || !max) return;
+      if (
+        (typeof min === 'undefined') 
+        || (typeof max === 'undefined')
+      ){ return; }
       const valueX = (value - min) / (max - min) * width;
       ctx.beginPath();
       ctx.arc(valueX, drawHeight, markerHeight/2, 0, 2 * Math.PI);
