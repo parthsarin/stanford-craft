@@ -3,8 +3,7 @@ import Loader from "../../../../Generic/Loader";
 import { Quiz, QuizDoc, ResponsePayload } from "../../DatamaxTypes";
 import { UserContext } from "../../../../Auth";
 import Question from "./Question";
-import { addDoc, collection, doc, getFirestore, setDoc } from "firebase/firestore";
-import { generateUUID } from "../../../../Generic/UUID";
+import { addDoc, collection, getFirestore } from "firebase/firestore";
 import { MySwal } from "../../../../Generic/Notify";
 import generateFromTemplate from "./GenerateQuiz";
 
