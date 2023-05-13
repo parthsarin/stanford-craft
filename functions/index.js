@@ -1,7 +1,8 @@
 const functions = require("firebase-functions");
 const { getFirestore, FieldValue } = require("firebase-admin/firestore");
 const { endQuiz } = require("./quiz");
-const { callOpenAi } = require("./prompty");
+const { openAiTextCompletion } = require("./prompty/textCompletionOpenAi");
+const { openAiModeration } = require("./prompty/moderationOpenAi");
 
 const { initializeApp } = require("firebase-admin/app");
 initializeApp();
@@ -59,6 +60,11 @@ exports.endQuiz = functions.https.onCall(async (data, context) => {
 });
 
 exports.generateAiResponse = functions.https.onCall(async (data, context) => {
-  let response = { success: true, response: await callOpenAi(data) };
+  let response = { success: true, response: await openAiTextCompletion(data) };
+  return response;
+});
+
+exports.moderatePrompt = functions.https.onCall(async (data, context) => {
+  let response = { success: true, response: await openAiModeration(data) };
   return response;
 });

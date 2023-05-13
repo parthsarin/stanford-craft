@@ -4,15 +4,16 @@ const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
-module.exports.callOpenAi = async function (prompt) {
+module.exports.openAiTextCompletion = async function (prompt) {
   const openai = new OpenAIApi(configuration);
   const completion = await openai.createCompletion({
     model: "text-davinci-003",
     prompt: prompt,
     max_tokens: 1024,
-    n: 1,
+    n: 3,
     stop: null,
     temperature: 0.7,
   });
+  console.log(completion.data.choices);
   return completion.data.choices[0].text;
 };

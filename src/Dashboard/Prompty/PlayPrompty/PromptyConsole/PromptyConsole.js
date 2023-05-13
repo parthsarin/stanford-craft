@@ -6,9 +6,15 @@ import Loader from "../../../../Generic/Loader/Loader";
 import { MySwal } from "../../../../Generic/Notify";
 import { useNavigate } from "react-router-dom";
 
-async function apiCall(prompt) {
+async function textCompletionApiCall(prompt) {
   const functions = getFunctions();
   const callOpenAi = httpsCallable(functions, "generateAiResponse");
+  return await callOpenAi(prompt);
+}
+
+async function moderationApiCall(prompt) {
+  const functions = getFunctions();
+  const callOpenAi = httpsCallable(functions, "moderatePrompt");
   return await callOpenAi(prompt);
 }
 
@@ -34,6 +40,8 @@ const PromptyConsole = (props) => {
     }
   );
 
+  // useEffect(()=>{console.log(user)},[])
+
   useEffect(() => {
     instanceData !== undefined && instanceDataFunctions();
     function instanceDataFunctions() {
@@ -46,26 +54,45 @@ const PromptyConsole = (props) => {
       setResponseData(promptyInstanceData.generations);
   }, [promptyInstanceData]);
 
-  function generateFromAi() {
+  function promptModerationCheck() {
     setLoader(true);
     let prompt = roleText + " " + contextText + " " + taskText;
-    async function callOpenAi() {
-      let res = await apiCall(prompt);
+    async function callOpenAiModeration() {
+      let res = await moderationApiCall(prompt);
       return res;
     }
-    callOpenAi().then((res) => {
-      let obj = {
-        role: roleText,
-        context: contextText,
-        task: taskText,
-        response: res.data.response,
-      };
-      setLoader(false);
-      let currentData;
-      promptyInstanceData?.generations === undefined
-        ? (currentData = [])
-        : (currentData = promptyInstanceData?.generations);
-      saveAiResponseToFirestore([obj, ...currentData]);
+
+    callOpenAiModeration().then((res) => {
+      console.log(res.data.response.flagged);
+      if (res.data.response.flagged === true) {
+        setLoader(false);
+        MySwal.fire({
+          title: "Inappropriate Prompt",
+          text: "The prompt entered is not aligned with CRAFT's Content Standards. Please revise your prompt and try again.",
+          icon: "warning",
+          footer:
+            "The prompt language cannot be sexual, violent, or promote hate.",
+        });
+      } else if (res.data.response.flagged === false) {
+        async function callOpenAiTextCompletion() {
+          let res = await textCompletionApiCall(prompt);
+          return res;
+        }
+        callOpenAiTextCompletion().then((res) => {
+          let obj = {
+            role: roleText,
+            context: contextText,
+            task: taskText,
+            response: res.data.response,
+          };
+          setLoader(false);
+          let currentData;
+          promptyInstanceData?.generations === undefined
+            ? (currentData = [])
+            : (currentData = promptyInstanceData?.generations);
+          saveAiResponseToFirestore([obj, ...currentData]);
+        });
+      }
     });
   }
 
@@ -143,7 +170,8 @@ const PromptyConsole = (props) => {
                       : true
                   }
                   onClick={() => {
-                    generateFromAi();
+                    // generateFromAi();
+                    promptModerationCheck();
                   }}
                 >
                   Generate From AI
@@ -154,10 +182,10 @@ const PromptyConsole = (props) => {
             </div>
             <div>
               <div className="float-right">
-                <TryCounter
+                {/* <TryCounter
                   availableTry={props.limit - responseData.length}
                   usedTry={responseData.length}
-                />
+                /> */}
               </div>
             </div>
           </div>
