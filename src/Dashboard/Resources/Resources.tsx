@@ -28,9 +28,11 @@ const defaultResources: Resource[] = [
         name: "Curriculum",
       },
     ],
-    unitTags: ["Unit 2: AI & You"],
-    typeTags: ["Worksheet", "Video"],
-    miscTags: []
+    tags: {
+      unit: ["Unit 2: AI & You"],
+      type: ["Worksheet", "Video"],
+      misc: []
+    }
   },
   {
     title: "“What the world looks like to an algorithm” YouTube Video",
@@ -47,9 +49,11 @@ const defaultResources: Resource[] = [
         name: "Curriculum",
       },
     ],
-    unitTags: ["Unit 2: AI & You"],
-    typeTags: ["Video"],
-    miscTags: []
+    tags: {
+      unit: ["Unit 2: AI & You"],
+      type: ["Video"],
+      misc: []
+    }
   },
   {
     title: "Gender Shades Video",
@@ -66,9 +70,11 @@ const defaultResources: Resource[] = [
         name: "Curriculum",
       },
     ],
-    unitTags: ["Unit 2: AI & You"],
-    typeTags: ["Video"],
-    miscTags: []
+    tags: {
+      unit: ["Unit 2: AI & You"],
+      type: ["Video"],
+      misc: []
+    }
   },
   {
     title: "Squid Model",
@@ -89,9 +95,11 @@ const defaultResources: Resource[] = [
         name: "Curriculum",
       },
     ],
-    unitTags: ["Unit 2: AI & You"],
-    typeTags: ["Video", "Worksheet"],
-    miscTags: []
+    tags: {
+      unit: ["Unit 2: AI & You"],
+      type: ["Video", "Worksheet"],
+      misc: []
+    }
   },
   {
     title: "Amazon AI Applications Exploration",
@@ -120,14 +128,16 @@ const defaultResources: Resource[] = [
         name: "Curriculum",
       },
     ],
-    unitTags: ["Unit 2: AI & You"],
-    typeTags: [
-      "Guided Exploration",
-      "Podcast",
-      "Reading",
-      "Worksheet",
-    ],
-    miscTags: []
+    tags: {
+      unit: ["Unit 2: AI & You"],
+      type: [
+        "Guided Exploration",
+        "Podcast",
+        "Reading",
+        "Worksheet",
+      ],
+      misc: []
+    }
   },
   {
     title: "How Computers See",
@@ -152,9 +162,11 @@ const defaultResources: Resource[] = [
         name: "Curriculum",
       },
     ],
-    unitTags: ["Unit 3: AI & Math"],
-    typeTags: ["Interactive", "Article", "Worksheet"],
-    miscTags: ["Art"],
+    tags: {
+      unit: ["Unit 3: AI & Math"],
+      type: ["Interactive", "Article", "Worksheet"],
+      misc: ["Art"],
+    }
   },
   {
     title: "Gender and Age Bias in Coco Captions Dataset",
@@ -175,14 +187,16 @@ const defaultResources: Resource[] = [
         name: "Curriculum",
       },
     ],
-    unitTags: ["Unit 3: AI & Math"],
-    miscTags: [
-      "Bias",
-      "Dataset"],
-    typeTags:["Interactive",
-      "Guided Exploration",
-      "Worksheet",
-    ],
+    tags: {
+      unit: ["Unit 3: AI & Math"],
+      misc: [
+        "Bias",
+        "Dataset"],
+      type:["Interactive",
+        "Guided Exploration",
+        "Worksheet",
+      ],
+    }
   },
   {
     title: "Whale Songs",
@@ -203,9 +217,11 @@ const defaultResources: Resource[] = [
         name: "Curriculum",
       },
     ],
-    unitTags: ["Unit 3: AI & Math"],
-    typeTags: ["Video"],
-    miscTags: ["Sound"],
+    tags: {
+      unit: ["Unit 3: AI & Math"],
+      type: ["Video"],
+      misc: ["Sound"],
+    }
   },
   {
     title: "Sentiment Analysis Hands-On",
@@ -226,9 +242,11 @@ const defaultResources: Resource[] = [
         name: "Curriculum",
       },
     ],
-    unitTags: ["Unit 3: AI & Math"],
-    miscTags: ["Hands-On"],
-    typeTags: ["Worksheet"],
+    tags: {
+      unit: ["Unit 3: AI & Math"],
+      misc: ["Hands-On"],
+      type: ["Worksheet"],
+    }
   },
   {
     title: "Learning to See: Gloomy Sunday",
@@ -249,12 +267,14 @@ const defaultResources: Resource[] = [
         name: "Curriculum",
       },
     ],
-    unitTags: [ "Unit 4: AI & Art"],
-    typeTags: ["Video"],
-    miscTags: [
-      "Generative AI",
-      "Generative Adversarial Network",
-    ],
+    tags: {
+      unit: [ "Unit 4: AI & Art"],
+      type: ["Video"],
+      misc: [
+        "Generative AI",
+        "Generative Adversarial Network",
+      ],
+    }
   },
   {
     title: "The DALL•E Prompt Book",
@@ -275,9 +295,11 @@ const defaultResources: Resource[] = [
         name: "Curriculum",
       },
     ],
-    unitTags: ["Unit 4: AI & Art"],
-    typeTags: [],
-    miscTags: ["dall-e", "generative art"],
+    tags: {  
+      unit: ["Unit 4: AI & Art"],
+      type: [],
+      misc: ["dall-e", "generative art"],
+    }
   },
   {
     title: "Lexica",
@@ -298,9 +320,11 @@ const defaultResources: Resource[] = [
         name: "Curriculum",
       },
     ],
-    unitTags: ["Unit 4: AI & Art"],
-    typeTags: ["stable diffusion"],
-    miscTags: ["generative art", "t-chart"],
+    tags: {
+      unit: ["Unit 4: AI & Art"],
+      type: ["stable diffusion"],
+      misc: ["generative art", "t-chart"],
+    }
   },
   {
     title: "Vizcom",
@@ -321,12 +345,14 @@ const defaultResources: Resource[] = [
         name: "Curriculum",
       },
     ],
-    unitTags: ["Unit 4: AI & Art"],
-    typeTags: [],
-    miscTags: ["generative art",
-      "ai assisted drawing",
-      "t-chart",
-    ],
+    tags: {
+      unit: ["Unit 4: AI & Art"],
+      type: [],
+      misc: ["generative art",
+        "ai assisted drawing",
+        "t-chart",
+      ],
+    }
   },
   {
     title: "ChatGPT Debate",
@@ -351,16 +377,18 @@ const defaultResources: Resource[] = [
         name: "Curriculum",
       },
     ],
-    unitTags: [
-      "Unit 4: AI & Art"],
-    typeTags: [],
-    miscTags: [
-      "generative art",
-      "dall-e",
-      "chatgpt",
-      "attribution",
-      "ethics",
-    ],
+    tags: {
+      unit: [
+        "Unit 4: AI & Art"],
+      type: [],
+      misc: [
+        "generative art",
+        "dall-e",
+        "chatgpt",
+        "attribution",
+        "ethics",
+      ],
+    }
   },
   {
     title: "AI Bias Explorer",
@@ -373,9 +401,11 @@ const defaultResources: Resource[] = [
         name: "Interactive",
       },
     ],
-    unitTags: ["Unit 5: AI & Society"],
-    typeTags: ["Interactive"],
-    miscTags: []
+    tags:  {
+      unit: ["Unit 5: AI & Society"],
+      type: ["Interactive"],
+      misc: []
+    }
   },
 ];
 
@@ -425,7 +455,7 @@ const Resources = () => {
             <ResourceCard
               key={i}
               resource={resource}
-              data-tags={resource.unitTags.concat(resource.typeTags, resource.miscTags)}
+              data-tags={resource.tags}
             />
           ))}
         </div>

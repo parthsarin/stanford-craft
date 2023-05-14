@@ -6,8 +6,11 @@ interface Props {
 }
 
 const ResourceCard = ({ resource }: Props) => {
-  const { title, description, img, subLinks, unitTags, typeTags, miscTags } = resource;
-  const tags = unitTags.concat(typeTags, miscTags)
+  const { title, description, img, subLinks, tags} = resource;
+  let allTags: string[] = []
+    for (const [key, value] of Object.entries(tags)) {
+      allTags = allTags.concat(value)
+    }
   return (
     <div className="flex flex-col shadow-2xl overflow-hidden rounded-md justify-start p-4 bg-white">
       <div className="p-3">
@@ -30,7 +33,7 @@ const ResourceCard = ({ resource }: Props) => {
       </div>
       <div className="p-3">
         {
-          tags.map((tag) => (
+          allTags.map((tag) => (
             <span key={tag} className="resource-tags">{tag}</span>
           ))
         }
