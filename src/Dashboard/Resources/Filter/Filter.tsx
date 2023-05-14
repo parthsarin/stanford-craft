@@ -4,9 +4,8 @@ interface Props {
   onUpdate: (tags: string[], count: {'unit': number, 'type': number}) => void;
 }
 
-let prevTags = [''];
-
 const Filter = ({ onUpdate }: Props) => {
+  const [prevTags, setPrevTags] = useState(['']);
   const [selectedTags, setSelectedTags] = useState(['']);
   const [selectedTagsCount, setSelectedTagsCount] = useState({'unit': 0, 'type': 0})
 
@@ -32,7 +31,7 @@ const Filter = ({ onUpdate }: Props) => {
 
   useEffect(() => {
     if (prevTags !== selectedTags) {
-      prevTags = selectedTags;
+      setPrevTags(selectedTags);
       onUpdate(selectedTags, selectedTagsCount);
     }
   });
