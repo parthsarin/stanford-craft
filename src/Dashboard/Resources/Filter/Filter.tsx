@@ -34,7 +34,7 @@ const Filter = ({ onUpdate }: Props) => {
       setPrevTags(selectedTags);
       onUpdate(selectedTags, selectedTagsCount);
     }
-  });
+  }, [prevTags, selectedTags, onUpdate, selectedTagsCount]);
 
   return (
     <ul className="mt-4">
