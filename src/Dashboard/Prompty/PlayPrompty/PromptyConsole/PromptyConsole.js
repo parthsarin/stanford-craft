@@ -293,11 +293,21 @@ const PromptyConsole = (props) => {
         </div>
         <div className="flex-1 flex overflow-hidden">
           <div className="flex-1 bg-slate-200 p-8 overflow-y-scroll">
-            <h2 className="font-bold text-2xl mb-4 text-slate-400">
-              Generated From AI
-            </h2>
             {loader && <p>Loading. Please wait...</p>}
-            <GeneratedResponses responses={responsesData} />
+            {responsesData.length === 0 ? (
+              <>
+                <p className="text-5xl p-4 font-thin text-center mt-[100px]">
+                  Enter your prompt and generate responses from AI.
+                </p>
+              </>
+            ) : (
+              <>
+                <h2 className="font-bold text-4xl mb-4 text-slate-400">
+                  Generated From AI
+                </h2>
+                <GeneratedResponses responses={responsesData} />
+              </>
+            )}
           </div>
         </div>
       </div>
