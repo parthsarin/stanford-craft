@@ -7,6 +7,7 @@ interface Props {
 const Filter = ({ onUpdate }: Props) => {
   const [prevTags, setPrevTags] = useState(['']);
   const [selectedTags, setSelectedTags] = useState(['']);
+  // TODO: modify code to not hard code unit and type
   const [selectedTagsCount, setSelectedTagsCount] = useState({'unit': 0, 'type': 0})
 
   const handleTagSelect = (checked: boolean, tag: string, tagClass: string|null) => {

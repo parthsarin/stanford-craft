@@ -413,7 +413,8 @@ const Resources = () => {
   const [resources, setResources] = useState<Resource[]>(defaultResources);
   const [searchString, setSearchString] = useState('')
   const [selectedTags, setSelectedTags] = useState(['']);
-  const [selectedTagsCount, setSelectedTagsCount] = useState({'unit': 0, 'type': 0})
+  // TODO: modify code to not hard code unit and type
+  const [selectedTagsCount, setSelectedTagsCount] = useState({'unit': 0, 'type': 0 })
 
   const handleSearch = (search: string) => {
     let filteredResources = defaultResources.filter((resource) =>

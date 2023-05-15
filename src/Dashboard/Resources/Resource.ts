@@ -32,8 +32,9 @@ const matchResource = (resource: Resource, query: string): boolean => {
     const names = subLinks.map((subLink) => subLink.name);
 
     let allTags: string[] = []
-    for (const [key, value] of Object.entries(tags)) {
-      allTags = allTags.concat(value)
+    // TODO: key is assigned a value but never used
+    for (const entry of Object.entries(tags)) {
+      allTags = allTags.concat(entry[1])
     }
 
     const all = [title, description, ...names, ...allTags].join(' ').toLowerCase();
@@ -45,9 +46,7 @@ const matchResource = (resource: Resource, query: string): boolean => {
 }
 
 const filterResource = (resource: Resource, selectedTags: string[], count: {[key: string]: number}): boolean => {
-  // TODO: change to tags
   const {tags} = resource;
-  //const tags = unitTags.concat(typeTags, miscTags)
 
   if (selectedTags.length === 1) {
     return true;
