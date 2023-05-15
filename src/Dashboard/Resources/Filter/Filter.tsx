@@ -1,28 +1,34 @@
 import { useState, useEffect } from 'react';
+import { tagNames } from '../Resource';
 
 interface Props {
-  onUpdate: (tags: string[], count: {'unit': number, 'type': number}) => void;
+  onUpdate: (tags: string[], count: {[key: string]: number}) => void;
 }
 
 const Filter = ({ onUpdate }: Props) => {
   const [prevTags, setPrevTags] = useState(['']);
   const [selectedTags, setSelectedTags] = useState(['']);
-  // TODO: modify code to not hard code unit and type
-  const [selectedTagsCount, setSelectedTagsCount] = useState({'unit': 0, 'type': 0})
+
+  // tagCount with format {tagName: 0}
+  const initTagCount : {[key: string]: number} = {}
+  for (var i = 0; i < tagNames.length; i++) {
+    initTagCount[tagNames[i]] = 0;
+  }
+  const [selectedTagsCount, setSelectedTagsCount] = useState(initTagCount)
 
   const handleTagSelect = (checked: boolean, tag: string, tagClass: string|null) => {
     const isTagSelected = !checked;
 
     if (isTagSelected) {
       setSelectedTags(selectedTags.filter((t) => t !== tag));
-      if (tagClass === 'unit' || tagClass === 'type') {
+      if (typeof tagClass === "string") {
         let newTagCount = selectedTagsCount;
         newTagCount[tagClass] -= 1;
         setSelectedTagsCount(newTagCount);
       }
     } else {
       setSelectedTags([...selectedTags, tag]);
-      if (tagClass === 'unit' || tagClass === 'type') {
+      if (typeof tagClass === "string") {
         let newTagCount = selectedTagsCount;
         newTagCount[tagClass] += 1;
         setSelectedTagsCount(newTagCount);

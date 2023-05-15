@@ -15,6 +15,8 @@ interface ResourceSubLink {
   url: string;
 }
 
+const tagNames = ['unit', 'type', 'misc']
+
 const matchResource = (resource: Resource, query: string): boolean => {
   const tokens = query
                   .toLowerCase()
@@ -32,7 +34,6 @@ const matchResource = (resource: Resource, query: string): boolean => {
     const names = subLinks.map((subLink) => subLink.name);
 
     let allTags: string[] = []
-    // TODO: key is assigned a value but never used
     for (const entry of Object.entries(tags)) {
       allTags = allTags.concat(entry[1])
     }
@@ -67,3 +68,4 @@ const filterResource = (resource: Resource, selectedTags: string[], count: {[key
 
 export type { Resource, ResourceSubLink };
 export { matchResource, filterResource };
+export {tagNames}
