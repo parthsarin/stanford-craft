@@ -15,5 +15,5 @@ module.exports.openAiTextCompletion = async function (prompt) {
     temperature: 0.7,
   });
   console.log(completion.data.choices);
-  return completion.data.choices[0].text;
+  return completion.data.choices;
 };

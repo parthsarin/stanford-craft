@@ -14,7 +14,6 @@ const PlayPrompty = () => {
   const [promptyData, setPromptyData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  console.log(user);
   useEffect(() => {
     if (!joinCode) return;
     (async () => {
@@ -22,7 +21,6 @@ const PlayPrompty = () => {
       const docRef = doc(db, "prompty", joinCode);
       const docSnap = await getDoc(docRef);
       const data = docSnap.data();
-      console.log(data);
       if (data !== undefined) {
         setPromptyData(data);
         setLoading(false);
