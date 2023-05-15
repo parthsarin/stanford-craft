@@ -8,9 +8,10 @@ interface Props {
 const ResourceCard = ({ resource }: Props) => {
   const { title, description, img, subLinks, tags} = resource;
   let allTags: string[] = []
-    for (const [key, value] of Object.entries(tags)) {
-      allTags = allTags.concat(value)
-    }
+  for (const entry of Object.entries(tags)) {
+    allTags = allTags.concat(entry[1])
+  }
+
   return (
     <div className="flex flex-col shadow-2xl overflow-hidden rounded-md justify-start p-4 bg-white">
       <div className="p-3">
