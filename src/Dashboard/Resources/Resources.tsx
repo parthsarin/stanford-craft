@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Resource, matchResource, filterResource } from "./Resource";
+import { Resource, matchResource, filterResource, tagNames } from "./Resource";
 import ResourceCard from "./ResourceCard/ResourceCard";
 import SearchBar from "./SearchBar";
 import Filter from "./Filter";
@@ -413,8 +413,13 @@ const Resources = () => {
   const [resources, setResources] = useState<Resource[]>(defaultResources);
   const [searchString, setSearchString] = useState('')
   const [selectedTags, setSelectedTags] = useState(['']);
-  // TODO: modify code to not hard code unit and type
-  const [selectedTagsCount, setSelectedTagsCount] = useState({'unit': 0, 'type': 0 })
+
+  // tagCount with format {tagName: 0}
+  const initTagCount : {[key: string]: number} = {}
+  for (var i = 0; i < tagNames.length; i++) {
+    initTagCount[tagNames[i]] = 0;
+  }
+  const [selectedTagsCount, setSelectedTagsCount] = useState({})
 
   const handleSearch = (search: string) => {
     let filteredResources = defaultResources.filter((resource) =>
@@ -427,7 +432,7 @@ const Resources = () => {
     setResources(filteredResources);
   };
 
-  const handleFilter = (tags: string[], count: {'unit': number, 'type': number}) => {
+  const handleFilter = (tags: string[], count: {[key: string]: number}) => {
     let filteredResources = defaultResources.filter((resource) =>
       filterResource(resource, tags, count)
     );
