@@ -24,10 +24,10 @@ const PromptyInitialize = () => {
 
   const validateAndJoinPrompty = () => {
     if (user) {
-      joinPrompty();
+      console.log(user);
+      joinPrompty(user);
       return;
     }
-
     // otherwise, open a modal to sign in
     MySwal.fire({
       title: "Please sign in to continue",
@@ -39,7 +39,7 @@ const PromptyInitialize = () => {
       cancelButtonText: "Cancel",
     }).then((result) => {
       if (!result.isConfirmed) return;
-      signIn().then(() => joinPrompty());
+      signIn().then(() => {});
     });
   };
   function createUserPromptyInstance(joinCode, uid, displayName) {
@@ -47,7 +47,7 @@ const PromptyInitialize = () => {
     let docRef = doc(db, "prompty", joinCode, "instances", uid);
     setDoc(docRef, { displayName: displayName }, { merge: true });
   }
-  const joinPrompty = () => {
+  const joinPrompty = (userDetails) => {
     MySwal.fire({
       title: "Start Prompty",
       input: "text",
@@ -62,7 +62,11 @@ const PromptyInitialize = () => {
       inputValidator: async (value) => {
         let validator = await checkInstance(value);
         if (validator === true) {
-          createUserPromptyInstance(value, user.uid, user.displayName);
+          createUserPromptyInstance(
+            value,
+            userDetails.uid,
+            userDetails.displayName
+          );
           navigate("/dash/prompty/" + value);
         } else {
           return "Code Invalid!";
