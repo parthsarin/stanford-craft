@@ -216,6 +216,7 @@ const PromptyConsole = (props) => {
               <Label for="role" title="Role" color="blue" />
               <textarea
                 id="role"
+                value={roleText}
                 rows="2"
                 className="block p-2.5 w-full rounded border-solid border-2 border-gray-300"
                 placeholder="Enter text here..."
@@ -226,6 +227,7 @@ const PromptyConsole = (props) => {
               <Label for="context" title="Context" color="green" />
               <textarea
                 id="context"
+                value={contextText}
                 rows="2"
                 className="block p-2.5 w-full rounded border-solid border-2 border-gray-300"
                 placeholder="Enter text here..."
@@ -236,6 +238,7 @@ const PromptyConsole = (props) => {
               <Label for="task" title="Task" color="brown" />
               <textarea
                 id="task"
+                value={taskText}
                 rows="2"
                 className="block p-2.5 w-full rounded border-solid border-2 border-gray-300"
                 placeholder="Enter text here..."
@@ -250,6 +253,7 @@ const PromptyConsole = (props) => {
               <Label for="openPrompt" title="Prompt" color="gray" />
               <textarea
                 id="openPrompt"
+                value={openPromptText}
                 rows="6"
                 className="block p-2.5 w-full rounded border-solid border-2 border-gray-300"
                 placeholder="Enter text here..."
@@ -276,6 +280,18 @@ const PromptyConsole = (props) => {
               ) : (
                 <p>No more tries available!</p>
               )}
+              {loader && (
+                <img
+                  style={{
+                    width: "40px",
+                    position: "relative",
+                    left: "170px",
+                    bottom: "40px",
+                  }}
+                  src="/loader.gif"
+                  alt="Loader Icon"
+                ></img>
+              )}
             </div>
             <div>
               <div className="float-right">
@@ -293,10 +309,18 @@ const PromptyConsole = (props) => {
         </div>
         <div className="flex-1 flex overflow-hidden">
           <div className="flex-1 bg-slate-200 p-8 overflow-y-scroll">
-            {loader && <p>Loading. Please wait...</p>}
+            {loader && (
+              <div className="text-center">
+                <img
+                  style={{ width: "40px", position: "relative", left: "50%" }}
+                  src="/loader.gif"
+                  alt="Loader Icon"
+                ></img>
+              </div>
+            )}
             {responsesData.length === 0 ? (
               <>
-                <p className="text-5xl p-4 font-thin text-center mt-[100px]">
+                <p className="text-5xl text-slate-400 p-4 font-thin text-center mt-[100px]">
                   Enter your prompt and generate responses from AI.
                 </p>
               </>
