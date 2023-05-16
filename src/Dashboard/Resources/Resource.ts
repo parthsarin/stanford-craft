@@ -3,7 +3,10 @@ interface Resource {
   description: string;
   img: string;
   subLinks: ResourceSubLink[];
-  tags: string[];
+  tags: {
+    unit: string[],
+    type: string[],
+    misc: string[]};
   rating?: number;
 }
 
@@ -11,6 +14,8 @@ interface ResourceSubLink {
   name: string;
   url: string;
 }
+
+const tagNames = ['unit', 'type', 'misc']
 
 const matchResource = (resource: Resource, query: string): boolean => {
   const tokens = query
@@ -25,9 +30,15 @@ const matchResource = (resource: Resource, query: string): boolean => {
   for (let i = 0; i < tokens.length; i++) {
     const token = new RegExp(tokens[i]);
 
-    const { title, description, subLinks, tags } = resource;
+    const { title, description, subLinks, tags} = resource;
     const names = subLinks.map((subLink) => subLink.name);
-    const all = [title, description, ...names, ...tags].join(' ').toLowerCase();
+
+    let allTags: string[] = []
+    for (const entry of Object.entries(tags)) {
+      allTags = allTags.concat(entry[1])
+    }
+
+    const all = [title, description, ...names, ...allTags].join(' ').toLowerCase();
 
     if (!token.test(all)) return false;
   }
@@ -35,15 +46,26 @@ const matchResource = (resource: Resource, query: string): boolean => {
   return true;
 }
 
-const filterResource = (resource: Resource, selectedTags: string[]): boolean => {
-  const {tags } = resource;
+const filterResource = (resource: Resource, selectedTags: string[], count: {[key: string]: number}): boolean => {
+  const {tags} = resource;
 
   if (selectedTags.length === 1) {
     return true;
   }
+  
+  // build true false
+  for (const [key, value] of Object.entries(tags)) {
+    if (key !== 'misc') {
+      let validCard = (value.some(item => selectedTags.includes(item)) || count[key] === 0)
+      if (!validCard) {
+        return false
+      }
+    }
+  }
 
-  return tags.some(item => selectedTags.includes(item))
+  return true;
 }
 
 export type { Resource, ResourceSubLink };
 export { matchResource, filterResource };
+export {tagNames}

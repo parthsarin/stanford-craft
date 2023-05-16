@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Resource, matchResource, filterResource } from "./Resource";
+import { Resource, matchResource, filterResource, tagNames } from "./Resource";
 import ResourceCard from "./ResourceCard/ResourceCard";
 import SearchBar from "./SearchBar";
 import Filter from "./Filter";
@@ -30,7 +30,11 @@ const defaultResources: Resource[] = [
         name: "Curriculum",
       },
     ],
-    tags: ["Unit 2: AI & You", "Worksheet", "Video"],
+    tags: {
+      unit: ["Unit 2: AI & You"],
+      type: ["Worksheet", "Video"],
+      misc: []
+    }
   },
   {
     title: "“What the world looks like to an algorithm” YouTube Video",
@@ -47,7 +51,11 @@ const defaultResources: Resource[] = [
         name: "Curriculum",
       },
     ],
-    tags: ["Unit 2: AI & You", "Video"],
+    tags: {
+      unit: ["Unit 2: AI & You"],
+      type: ["Video"],
+      misc: []
+    }
   },
   {
     title: "Gender Shades Video",
@@ -64,7 +72,11 @@ const defaultResources: Resource[] = [
         name: "Curriculum",
       },
     ],
-    tags: ["Unit 2: AI & You", "Video"],
+    tags: {
+      unit: ["Unit 2: AI & You"],
+      type: ["Video"],
+      misc: []
+    }
   },
   {
     title: "Squid Model",
@@ -85,7 +97,11 @@ const defaultResources: Resource[] = [
         name: "Curriculum",
       },
     ],
-    tags: ["Unit 2: AI & You", "Video", "Worksheet"],
+    tags: {
+      unit: ["Unit 2: AI & You"],
+      type: ["Video", "Worksheet"],
+      misc: []
+    }
   },
   {
     title: "Amazon AI Applications Exploration",
@@ -114,13 +130,16 @@ const defaultResources: Resource[] = [
         name: "Curriculum",
       },
     ],
-    tags: [
-      "Unit 2: AI & You",
-      "Guided Exploration",
-      "Podcast",
-      "Reading",
-      "Worksheet",
-    ],
+    tags: {
+      unit: ["Unit 2: AI & You"],
+      type: [
+        "Guided Exploration",
+        "Podcast",
+        "Reading",
+        "Worksheet",
+      ],
+      misc: []
+    }
   },
   {
     title: "How Computers See",
@@ -145,7 +164,11 @@ const defaultResources: Resource[] = [
         name: "Curriculum",
       },
     ],
-    tags: ["Unit 3: AI & Math", "Interactive", "Article", "Worksheet", "Art"],
+    tags: {
+      unit: ["Unit 3: AI & Math"],
+      type: ["Interactive", "Article", "Worksheet"],
+      misc: ["Art"],
+    }
   },
   {
     title: "Gender and Age Bias in Coco Captions Dataset",
@@ -166,14 +189,16 @@ const defaultResources: Resource[] = [
         name: "Curriculum",
       },
     ],
-    tags: [
-      "Unit 3: AI & Math",
-      "Bias",
-      "Dataset",
-      "Interactive",
-      "Guided Exploration",
-      "Worksheet",
-    ],
+    tags: {
+      unit: ["Unit 3: AI & Math"],
+      misc: [
+        "Bias",
+        "Dataset"],
+      type:["Interactive",
+        "Guided Exploration",
+        "Worksheet",
+      ],
+    }
   },
   {
     title: "Whale Songs",
@@ -194,7 +219,11 @@ const defaultResources: Resource[] = [
         name: "Curriculum",
       },
     ],
-    tags: ["Unit 3: AI & Math", "Video", "Sound"],
+    tags: {
+      unit: ["Unit 3: AI & Math"],
+      type: ["Video"],
+      misc: ["Sound"],
+    }
   },
   {
     title: "Sentiment Analysis Hands-On",
@@ -215,7 +244,11 @@ const defaultResources: Resource[] = [
         name: "Curriculum",
       },
     ],
-    tags: ["Unit 3: AI & Math", "Hands-On", "Worksheet"],
+    tags: {
+      unit: ["Unit 3: AI & Math"],
+      misc: ["Hands-On"],
+      type: ["Worksheet"],
+    }
   },
   {
     title: "Learning to See: Gloomy Sunday",
@@ -236,12 +269,14 @@ const defaultResources: Resource[] = [
         name: "Curriculum",
       },
     ],
-    tags: [
-      "Unit 4: AI & Art",
-      "Video",
-      "Generative AI",
-      "Generative Adversarial Network",
-    ],
+    tags: {
+      unit: [ "Unit 4: AI & Art"],
+      type: ["Video"],
+      misc: [
+        "Generative AI",
+        "Generative Adversarial Network",
+      ],
+    }
   },
   {
     title: "The DALL•E Prompt Book",
@@ -262,7 +297,11 @@ const defaultResources: Resource[] = [
         name: "Curriculum",
       },
     ],
-    tags: ["Unit 4: AI & Art", "dall-e", "generative art"],
+    tags: {  
+      unit: ["Unit 4: AI & Art"],
+      type: [],
+      misc: ["dall-e", "generative art"],
+    }
   },
   {
     title: "Lexica",
@@ -283,7 +322,11 @@ const defaultResources: Resource[] = [
         name: "Curriculum",
       },
     ],
-    tags: ["Unit 4: AI & Art", "stable diffusion", "generative art", "t-chart"],
+    tags: {
+      unit: ["Unit 4: AI & Art"],
+      type: ["stable diffusion"],
+      misc: ["generative art", "t-chart"],
+    }
   },
   {
     title: "Vizcom",
@@ -304,12 +347,14 @@ const defaultResources: Resource[] = [
         name: "Curriculum",
       },
     ],
-    tags: [
-      "Unit 4: AI & Art",
-      "generative art",
-      "ai assisted drawing",
-      "t-chart",
-    ],
+    tags: {
+      unit: ["Unit 4: AI & Art"],
+      type: [],
+      misc: ["generative art",
+        "ai assisted drawing",
+        "t-chart",
+      ],
+    }
   },
   {
     title: "ChatGPT Debate",
@@ -334,14 +379,18 @@ const defaultResources: Resource[] = [
         name: "Curriculum",
       },
     ],
-    tags: [
-      "Unit 4: AI & Art",
-      "generative art",
-      "dall-e",
-      "chatgpt",
-      "attribution",
-      "ethics",
-    ],
+    tags: {
+      unit: [
+        "Unit 4: AI & Art"],
+      type: [],
+      misc: [
+        "generative art",
+        "dall-e",
+        "chatgpt",
+        "attribution",
+        "ethics",
+      ],
+    }
   },
   {
     title: "AI Bias Explorer",
@@ -354,24 +403,46 @@ const defaultResources: Resource[] = [
         name: "Interactive",
       },
     ],
-    tags: ["Unit 5: AI & Society", "Interactive"],
+    tags:  {
+      unit: ["Unit 5: AI & Society"],
+      type: ["Interactive"],
+      misc: []
+    }
   },
 ];
 
 const Resources = () => {
   const [resources, setResources] = useState<Resource[]>(defaultResources);
+  const [searchString, setSearchString] = useState('')
+  const [selectedTags, setSelectedTags] = useState(['']);
+
+  // tagCount with format {tagName: 0}
+  const initTagCount : {[key: string]: number} = {}
+  for (var i = 0; i < tagNames.length; i++) {
+    initTagCount[tagNames[i]] = 0;
+  }
+  const [selectedTagsCount, setSelectedTagsCount] = useState({})
 
   const handleSearch = (search: string) => {
-    const filteredResources = defaultResources.filter((resource) =>
+    let filteredResources = defaultResources.filter((resource) =>
       matchResource(resource, search)
     );
+    filteredResources = filteredResources.filter((resource) =>
+      filterResource(resource, selectedTags, selectedTagsCount)
+    );
+    setSearchString(search);
     setResources(filteredResources);
   };
 
-  const handleFilter = (tags: string[]) => {
-    const filteredResources = defaultResources.filter((resource) =>
-      filterResource(resource, tags)
+  const handleFilter = (tags: string[], count: {[key: string]: number}) => {
+    let filteredResources = defaultResources.filter((resource) =>
+      filterResource(resource, tags, count)
     );
+    filteredResources = filteredResources.filter((resource) =>
+      matchResource(resource, searchString)
+    );
+    setSelectedTags(tags);
+    setSelectedTagsCount(count);
     setResources(filteredResources);
   };
 
