@@ -59,12 +59,27 @@ exports.endQuiz = functions.https.onCall(async (data, context) => {
   };
 });
 
-exports.generateAiResponse = functions.https.onCall(async (data, context) => {
-  let response = { success: true, response: await openAiTextCompletion(data) };
-  return response;
-});
+exports.generateAiResponse = functions
+  .region("us-central1")
+  .https.onCall(async (data, context) => {
+    try {
+      let response = {
+        success: true,
+        response: await openAiTextCompletion(data),
+      };
+      return response;
+    } catch (e) {
+      throw new functions.https.HttpsError("unknown", e);
+    }
+  });
 
-exports.moderatePrompt = functions.https.onCall(async (data, context) => {
-  let response = { success: true, response: await openAiModeration(data) };
-  return response;
-});
+exports.moderatePrompt = functions
+  .region("us-central1")
+  .https.onCall(async (data, context) => {
+    try {
+      let response = { success: true, response: await openAiModeration(data) };
+      return response;
+    } catch (e) {
+      throw new functions.https.HttpsError("unknown", e);
+    }
+  });

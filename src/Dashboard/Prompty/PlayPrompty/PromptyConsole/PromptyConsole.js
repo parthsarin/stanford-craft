@@ -99,60 +99,76 @@ const PromptyConsole = (props) => {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   function generateFromAi() {
-    setLoader(true);
-    let prompt = "";
-    if (promptScaffoldMode) {
-      prompt = roleText + " " + contextText + " " + taskText;
-    } else {
-      prompt = openPromptText;
-    }
-
-    async function callOpenAiModeration() {
-      let res = await moderationApiCall(prompt);
-      return res;
-    }
-
-    callOpenAiModeration().then((res) => {
-      if (res.data.response.flagged === true) {
-        setLoader(false);
-        MySwal.fire({
-          title: "Inappropriate Prompt",
-          text: "The prompt entered is not aligned with CRAFT's Content Standards. Please revise your prompt and try again.",
-          icon: "warning",
-          footer:
-            "The prompt language cannot be sexual, violent, or promote hate.",
-        });
-      } else if (res.data.response.flagged === false) {
-        async function callOpenAiTextCompletion() {
-          let res = await textCompletionApiCall(prompt);
-          return res;
-        }
-        callOpenAiTextCompletion().then((res) => {
-          let obj;
-          if (promptScaffoldMode) {
-            obj = {
-              scaffold: true,
-              role: roleText,
-              context: contextText,
-              task: taskText,
-              iterations: res.data.response,
-            };
-          } else {
-            obj = {
-              scaffold: false,
-              promptText: openPromptText,
-              iterations: res.data.response,
-            };
-          }
-
-          setLoader(false);
-          let currentData;
-          promptyInstanceData?.generations === undefined
-            ? (currentData = [])
-            : (currentData = promptyInstanceData?.generations);
-          saveAiResponseToFirestore([obj, ...currentData]);
-        });
+    try {
+      setLoader(true);
+      let prompt = "";
+      if (promptScaffoldMode) {
+        prompt = roleText + " " + contextText + " " + taskText;
+      } else {
+        prompt = openPromptText;
       }
+
+      async function callOpenAiModeration() {
+        let res = await moderationApiCall(prompt);
+        return res;
+      }
+
+      callOpenAiModeration()
+        .then((res) => {
+          if (res.data.response.flagged === true) {
+            setLoader(false);
+            MySwal.fire({
+              title: "Inappropriate Prompt",
+              text: "The prompt entered is not aligned with CRAFT's Content Standards. Please revise your prompt and try again.",
+              icon: "warning",
+              footer:
+                "The prompt language cannot be sexual, violent, or promote hate.",
+            });
+          } else if (res.data.response.flagged === false) {
+            async function callOpenAiTextCompletion() {
+              let res = await textCompletionApiCall(prompt);
+              return res;
+            }
+            callOpenAiTextCompletion()
+              .then((res) => {
+                let obj;
+                if (promptScaffoldMode) {
+                  obj = {
+                    scaffold: true,
+                    role: roleText,
+                    context: contextText,
+                    task: taskText,
+                    iterations: res.data.response,
+                  };
+                } else {
+                  obj = {
+                    scaffold: false,
+                    promptText: openPromptText,
+                    iterations: res.data.response,
+                  };
+                }
+
+                setLoader(false);
+                let currentData;
+                promptyInstanceData?.generations === undefined
+                  ? (currentData = [])
+                  : (currentData = promptyInstanceData?.generations);
+                saveAiResponseToFirestore([obj, ...currentData]);
+              })
+              .catch((e) => throwError(e));
+          }
+        })
+        .catch((e) => throwError(e));
+    } catch (e) {
+      throwError(e);
+    }
+  }
+
+  function throwError(e) {
+    MySwal.fire({
+      title: "Error",
+      text: e,
+      icon: "error",
     });
   }
 
