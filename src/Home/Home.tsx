@@ -4,6 +4,7 @@ import { faAtom, faChalkboardTeacher, faPalette } from "@fortawesome/free-solid-
 import { getBackground } from "../Generic/Background";
 import ContinueButton from './ContinueButton';
 import Footer from "./Footer/Footer";
+import { signUpForUpdates } from "../Dashboard/Contact/ContactUitls";
 
 const Home = () => (
   <div className="home w-full">
@@ -36,9 +37,34 @@ const Home = () => (
           </a>{" "}
           offered in Fall 2023.
         </p>
-        <div className="w-full mb-0">
+        <div className="w-full mb-0 mt-4">
           <ContinueButton />
         </div>
+      </div>
+    </div>
+    <div className={`w-full bg-gray-300 px-6 sm:px-16 md:px-32 lg:px-64 py-8 text-center`}>
+      <div className="flex flex-col items-center">
+        <p className="text-lg mb-3 w-full">
+          Want to receive updates about the project? Enter your email below!
+        </p>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          className={`
+          border border-gray-500 rounded px-3 py-2 mb-3 w-full
+          xl:w-3/4
+          `}
+          placeholder="Email address"
+        />
+        <button
+          className={`rounded border border-teal-700 bg-teal-700 text-white
+            px-3 py-2 hover:bg-teal-800 w-fit`}
+          // @ts-ignore
+          onClick={() => signUpForUpdates(document.getElementById("email").value)}
+        >
+          Sign me up!
+        </button>
       </div>
     </div>
     <div className={`w-full px-6 sm:px-16 md:px-32 lg:px-64 py-8`}>
