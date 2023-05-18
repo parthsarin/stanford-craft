@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../Auth";
 import { ScrollRestoration } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
