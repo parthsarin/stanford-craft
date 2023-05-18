@@ -1,31 +1,48 @@
+import "react-tippy/dist/tippy.css";
 import { useLocation, useNavigate } from "react-router-dom";
+import { Tooltip } from "react-tippy";
 
 interface Props {
-  path: string,
+  path?: string,
+  onClick?: () => void,
   text: string,
-  expanded: boolean,
   children: React.ReactNode,
 }
 
-const SidebarButton = ({ path, text, children, expanded }: Props) => {
+const SidebarButton = ({ path, onClick, text, children }: Props) => {
   const navigate = useNavigate();
   
   // set the active link
   const loc = useLocation();
-  const getActiveClass = (path: string) => {
-    if (loc.pathname.startsWith(path)) return "bg-violet-600";
-    return "hover:bg-violet-600";
-  };
+
+  let activeClass = "";
+  if (path && loc.pathname.startsWith(path) && path !== "/")
+    activeClass = "bg-violet-600";
+  else 
+    activeClass = "hover:bg-violet-600";
+
+  // if there's a path, use it, otherwise use the onClick
+  if (path) onClick = () => navigate(path);
   
   return (
     <li>
-      <button
-        className={`w-full p-2 flex flex-row items-center ${getActiveClass(path)} rounded`}
-        onClick={() => navigate(path)}
+      {/* @ts-ignore */}
+      <Tooltip
+        title={text}
+        position="right"
+        trigger="mouseenter"
+        arrow={true}
+        theme="light"
+        distance={10}
       >
-        {children}
-        {expanded && <p className="text-lg">{text}</p>}
-      </button>
+        <button
+          className={`w-full p-2 flex flex-row items-center ${activeClass} rounded`}
+          onClick={onClick}
+          aria-label={text}
+        >
+          {children}
+        </button>
+      </Tooltip>
     </li>
   );
 }

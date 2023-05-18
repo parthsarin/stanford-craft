@@ -39,7 +39,7 @@ function signUpForUpdates(email: string) {
   const docRef = doc(db, 'emailsForUpdates', email);
   setDoc(docRef, { email: email })
     .then(() => SignedUp.fire())
-    .catch((error) => SignedUp.fire())
+    .catch(() => SignedUp.fire())
 
 }
 

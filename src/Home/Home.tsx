@@ -5,6 +5,7 @@ import { getBackground } from "../Generic/Background";
 import ContinueButton from './ContinueButton';
 import Footer from "./Footer/Footer";
 import { signUpForUpdates } from "../Dashboard/Contact/ContactUitls";
+import { ScrollRestoration } from "react-router-dom";
 
 const Home = () => (
   <div className="home w-full">
@@ -149,6 +150,7 @@ const Home = () => (
       </div>
     </div>
     <Footer />
+    <ScrollRestoration />
   </div>
 );
 

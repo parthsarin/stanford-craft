@@ -32,6 +32,7 @@ import AnalyzeQuiz from "../Dashboard/Analyze/AnalyzeQuiz";
 import Credits from "../Dashboard/Credits";
 import JobPosting from "../JobPosting";
 import ExploreQuiz from "../Dashboard/Analyze/ExploreQuiz";
+import Contact from "../Dashboard/Contact";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -49,6 +50,7 @@ const router = createBrowserRouter(
         </Route>
         <Route path="explore/:joinCode" element={<ExploreQuiz />} />
         <Route path="resources" element={<Resources />} />   
+        <Route path="contact" element={<Contact />} />   
         <Route path="credits" element={<Credits />} />   
       </Route>
       <Route path="*" element={<NoMatch />} />

@@ -5,6 +5,7 @@ import SearchBar from "./SearchBar";
 import Filter from "./Filter";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWarning } from "@fortawesome/free-solid-svg-icons";
+import { ScrollRestoration } from "react-router-dom";
 
 const defaultResources: Resource[] = [
   {
@@ -493,6 +494,7 @@ const Resources = () => {
           ))}
         </div>
       </div>
+      <ScrollRestoration />
     </div>
   );
 };
