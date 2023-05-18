@@ -43,7 +43,16 @@ const Home = () => (
       </div>
     </div>
     <div className={`w-full bg-gray-300 px-6 sm:px-16 md:px-32 lg:px-64 py-8 text-center`}>
-      <div className="flex flex-col items-center">
+      <form 
+        className="flex flex-col items-center"
+        onSubmit={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+
+          // @ts-ignore
+          signUpForUpdates(document.getElementById("email").value);
+        }}
+      >
         <p className="text-lg mb-3 w-full">
           Want to receive updates about the project? Enter your email below!
         </p>
@@ -60,12 +69,10 @@ const Home = () => (
         <button
           className={`rounded border border-teal-700 bg-teal-700 text-white
             px-3 py-2 hover:bg-teal-800 w-fit`}
-          // @ts-ignore
-          onClick={() => signUpForUpdates(document.getElementById("email").value)}
         >
           Sign me up!
         </button>
-      </div>
+      </form>
     </div>
     <div className={`w-full px-6 sm:px-16 md:px-32 lg:px-64 py-8`}>
       <div className="flex flex-col">

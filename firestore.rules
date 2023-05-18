@@ -1,0 +1,55 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read, write: if false;
+    }
+    
+    match /datamax/{joinCode} {
+    	function isOwner() {
+      	return get(/databases/$(database)/documents/datamax/$(joinCode)).data.owner == request.auth.uid;
+      }
+      
+      function isActive() {
+      	return get(/databases/$(database)/documents/datamax/$(joinCode)).data.active == true;
+      }
+    
+    	allow create: if request.resource.data.owner == request.auth.uid;
+    	allow write: if isOwner(); // change the quiz template if you own it
+      allow read: if true; // anyone can read the quiz details
+      
+      match /responses {
+      	allow read: if isOwner();
+
+        match /{docId} {
+          function validateData() {
+            return request.resource.data.keys().hasAll(['name']);
+          }
+
+					// should be able to see student responses if you're the teacher
+					allow read, delete: if isOwner();
+          
+          // students can add resonses if they wrote their name and the quiz is active
+          allow create: if validateData() && isActive();
+        }
+      }
+    }
+    
+    match /users/{uid} {
+    	allow read, write: if request.auth.uid == uid;
+    }
+    
+    match /prompty/{gameid} {
+    	allow read, write: if true;
+    	
+      match /instances/{identifier} {
+        allow read, write: if true;
+      }
+    }
+    
+    // emails for updates
+    match /emailsForUpdates/{doc} {
+    	allow create: if true;
+    }
+  }
+}
