@@ -127,7 +127,7 @@ const PromptyConsole = (props) => {
           } else if (res.data.response.flagged === false) {
             async function callOpenAiTextCompletion() {
               let res = await textCompletionApiCall(
-                "Response should be suitable for students. No profanity allowed. Following is the prompt: \n" +
+                "Response should be suitable for young students. Strongly refrain from using any profanity, hate, or sexual references. Following is the prompt: \n" +
                   prompt
               );
               return res;
