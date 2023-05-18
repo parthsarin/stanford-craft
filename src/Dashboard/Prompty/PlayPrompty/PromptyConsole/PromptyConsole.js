@@ -108,11 +108,11 @@ const PromptyConsole = (props) => {
         prompt = openPromptText;
       }
 
+      //Prompt Moderation
       async function callOpenAiModeration() {
         let res = await moderationApiCall(prompt);
         return res;
       }
-
       callOpenAiModeration()
         .then((res) => {
           if (res.data.response.flagged === true) {
@@ -126,36 +126,94 @@ const PromptyConsole = (props) => {
             });
           } else if (res.data.response.flagged === false) {
             async function callOpenAiTextCompletion() {
-              let res = await textCompletionApiCall(prompt);
+              let res = await textCompletionApiCall(
+                "Response should be suitable for students. No profanity allowed. Following is the prompt: \n" +
+                  prompt
+              );
               return res;
             }
-            callOpenAiTextCompletion()
-              .then((res) => {
-                let obj;
-                if (promptScaffoldMode) {
-                  obj = {
-                    scaffold: true,
-                    role: roleText,
-                    context: contextText,
-                    task: taskText,
-                    iterations: res.data.response,
-                  };
-                } else {
-                  obj = {
-                    scaffold: false,
-                    promptText: openPromptText,
-                    iterations: res.data.response,
-                  };
-                }
 
-                setLoader(false);
-                let currentData;
-                promptyInstanceData?.generations === undefined
-                  ? (currentData = [])
-                  : (currentData = promptyInstanceData?.generations);
-                saveAiResponseToFirestore([obj, ...currentData]);
-              })
-              .catch((e) => throwError(e));
+            callOpenAiTextCompletion().then((res) => {
+              let obj;
+
+              let responsesData = res.data.response;
+              if (promptScaffoldMode) {
+                obj = {
+                  scaffold: true,
+                  role: roleText,
+                  context: contextText,
+                  task: taskText,
+                  iterations: responsesData,
+                };
+              } else {
+                obj = {
+                  scaffold: false,
+                  promptText: openPromptText,
+                  iterations: responsesData,
+                };
+              }
+
+              setLoader(false);
+              let currentData;
+              promptyInstanceData?.generations === undefined
+                ? (currentData = [])
+                : (currentData = promptyInstanceData?.generations);
+              saveAiResponseToFirestore([obj, ...currentData]);
+
+              // function concatResponses(arr) {
+              //   let res = "";
+              //   arr.forEach((element) => {
+              //     res += element.text;
+              //   });
+              //   return res;
+              // }
+
+              // async function callOpenAiModeration() {
+              //   let responseText = concatResponses(responsesData);
+              //   console.log(responseText);
+              //   let res = await moderationApiCall(responseText);
+              //   console.log(res);
+              //   return res;
+              // }
+              // callOpenAiModeration()
+              //   .then((res) => {
+              //     if (res.data.response.flagged === true) {
+              //       setLoader(false);
+              //       MySwal.fire({
+              //         title: "Inappropriate Prompt",
+              //         text: "The prompt entered is not aligned with CRAFT's Content Standards. Please revise your prompt and try again.",
+              //         icon: "warning",
+              //         footer:
+              //           "The prompt language cannot be sexual, violent, or promote hate.",
+              //       });
+              //     } else if (res.data.response.flagged === false) {
+              //       let obj;
+              //       if (promptScaffoldMode) {
+              //         obj = {
+              //           scaffold: true,
+              //           role: roleText,
+              //           context: contextText,
+              //           task: taskText,
+              //           iterations: responsesData,
+              //         };
+              //       } else {
+              //         obj = {
+              //           scaffold: false,
+              //           promptText: openPromptText,
+              //           iterations: responsesData,
+              //         };
+              //       }
+
+              //       setLoader(false);
+              //       let currentData;
+              //       promptyInstanceData?.generations === undefined
+              //         ? (currentData = [])
+              //         : (currentData = promptyInstanceData?.generations);
+              //       saveAiResponseToFirestore([obj, ...currentData]);
+              //     }
+              //   })
+              //   .catch((e) => throwError(e));
+            });
           }
         })
         .catch((e) => throwError(e));
