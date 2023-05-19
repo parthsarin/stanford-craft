@@ -1,12 +1,22 @@
 import { useContext, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom"
-import { Message } from "../../ContactUitls";
-import { arrayUnion, doc, getDoc, getFirestore, setDoc } from "firebase/firestore";
+import { useNavigate, useParams } from "react-router-dom";
+import { Message } from "../../ContactUtils";
+import {
+  arrayUnion,
+  doc,
+  getDoc,
+  getFirestore,
+  setDoc,
+} from "firebase/firestore";
 import { MySwal } from "../../../../Generic/Notify";
 import Loader from "../../../../Generic/Loader/Loader";
 import { UserContext } from "../../../../Auth";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronLeft, faPaperPlane, faTrash } from "@fortawesome/free-solid-svg-icons";
+import {
+  faChevronLeft,
+  faPaperPlane,
+  faTrash,
+} from "@fortawesome/free-solid-svg-icons";
 
 const ViewMessage = () => {
   const { user } = useContext(UserContext);
@@ -17,13 +27,13 @@ const ViewMessage = () => {
   useEffect(() => {
     if (!messageId) return;
     if (!user) return;
-    
+
     (async () => {
       const db = getFirestore();
 
       const docRef = doc(db, "messages", messageId);
       const docSnap = await getDoc(docRef);
-      
+
       if (docSnap.exists()) {
         setMessage({ id: docSnap.id, ...docSnap.data() } as Message);
         setDoc(docRef, { viewedBy: arrayUnion(user.uid) }, { merge: true });
@@ -33,12 +43,11 @@ const ViewMessage = () => {
           title: "Message not found",
           text: "The message you are looking for does not exist or has been deleted.",
           confirmButtonText: "Go back",
-        })
-        .then(() => navigate("/dash/contact"));
+        }).then(() => navigate("/dash/contact"));
       }
     })();
-  }, [messageId, user, navigate])
-  
+  }, [messageId, user, navigate]);
+
   if (!message) return <Loader />;
   const dateString = message.timestamp.toDate().toLocaleString("en-us", {
     weekday: "long",
@@ -69,7 +78,7 @@ const ViewMessage = () => {
       <div className="flex flex-row flex-wrap justify-left space-x-4 mt-10">
         <button
           className="bg-teal-600 hover:bg-teal-800 text-white py-2 px-4 rounded"
-          onClick={() => navigate('/dash/contact')}
+          onClick={() => navigate("/dash/contact")}
         >
           <FontAwesomeIcon icon={faChevronLeft} className="mr-2" />
           Back
@@ -84,13 +93,13 @@ const ViewMessage = () => {
               showCancelButton: true,
               confirmButtonText: "Yes, delete it!",
               cancelButtonText: "No, cancel",
-            })
-            .then((result) => {
+            }).then((result) => {
               if (result.isConfirmed) {
                 const db = getFirestore();
                 const docRef = doc(db, "messages", message.id);
-                setDoc(docRef, { visible: false }, { merge: true })
-                  .then(() => navigate("/dash/contact"));
+                setDoc(docRef, { visible: false }, { merge: true }).then(() =>
+                  navigate("/dash/contact")
+                );
               }
             });
           }}
@@ -106,7 +115,7 @@ const ViewMessage = () => {
 
             // open a mailto link with the subject re: {message.topic} and the body {message.message}
             window.open(
-              `mailto:${message.email}?subject=Re: ${message.topic}&body=%0A%0A%0A—%0AFrom: ${message.name} (${message.email})%0ADate: ${dateString}%0A%0A${msg}`,
+              `mailto:${message.email}?subject=Re: ${message.topic}&body=%0A%0A%0A—%0AFrom: ${message.name} (${message.email})%0ADate: ${dateString}%0A%0A${msg}`
             );
           }}
         >

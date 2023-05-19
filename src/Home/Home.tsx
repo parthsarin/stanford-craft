@@ -1,10 +1,14 @@
 import IconBullet from "../Generic/IconBullet";
-import { faAtom, faChalkboardTeacher, faPalette } from "@fortawesome/free-solid-svg-icons";
+import {
+  faAtom,
+  faChalkboardTeacher,
+  faPalette,
+} from "@fortawesome/free-solid-svg-icons";
 
 import { getBackground } from "../Generic/Background";
-import ContinueButton from './ContinueButton';
+import ContinueButton from "./ContinueButton";
 import Footer from "./Footer/Footer";
-import { signUpForUpdates } from "../Dashboard/Contact/ContactUitls";
+import { signUpForUpdates } from "../Dashboard/Contact/ContactUtils";
 import { ScrollRestoration } from "react-router-dom";
 
 const Home = () => (
@@ -43,8 +47,10 @@ const Home = () => (
         </div>
       </div>
     </div>
-    <div className={`w-full bg-gray-300 px-6 sm:px-16 md:px-32 lg:px-64 py-8 text-center`}>
-      <form 
+    <div
+      className={`w-full bg-gray-300 px-6 sm:px-16 md:px-32 lg:px-64 py-8 text-center`}
+    >
+      <form
         className="flex flex-col items-center"
         onSubmit={(e) => {
           e.preventDefault();

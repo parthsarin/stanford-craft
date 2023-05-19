@@ -1,9 +1,27 @@
 import { useCallback, useContext, useEffect, useState } from "react";
-import { Message } from "../ContactUitls";
-import { DocumentData, Query, QueryDocumentSnapshot, collection, endAt, endBefore, getDocs, getFirestore, limit, limitToLast, orderBy, query, startAfter, where } from "firebase/firestore";
+import { Message } from "../ContactUtils";
+import {
+  DocumentData,
+  Query,
+  QueryDocumentSnapshot,
+  collection,
+  endBefore,
+  getDocs,
+  getFirestore,
+  limit,
+  limitToLast,
+  orderBy,
+  query,
+  startAfter,
+  where,
+} from "firebase/firestore";
 import { UserContext } from "../../../Auth";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronLeft, faChevronRight, faCircle } from "@fortawesome/free-solid-svg-icons";
+import {
+  faChevronLeft,
+  faChevronRight,
+  faCircle,
+} from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 
 const NUM_PER_PAGE = 10;
@@ -13,29 +31,36 @@ const ViewMessages = () => {
   const navigate = useNavigate();
 
   const [messages, setMessages] = useState<Message[]>([]);
-  const [firstVisible, setFirstVisible] = useState<QueryDocumentSnapshot | null>(null);
-  const [lastVisible, setLastVisible] = useState<QueryDocumentSnapshot | null>(null);
+  const [firstVisible, setFirstVisible] =
+    useState<QueryDocumentSnapshot | null>(null);
+  const [lastVisible, setLastVisible] = useState<QueryDocumentSnapshot | null>(
+    null
+  );
   const [page, setPage] = useState(1);
 
-  const updateMessages = useCallback(async (q: Query<DocumentData>) => {
-    const docs = await getDocs(q);
-    setMessages(docs.docs.map(
-      (doc) => ({ id: doc.id, ...doc.data() }) as Message)
-    );
-    setLastVisible(docs.docs[docs.docs.length - 1]);
-    setFirstVisible(docs.docs[0]);
+  const updateMessages = useCallback(
+    async (q: Query<DocumentData>) => {
+      const docs = await getDocs(q);
+      setMessages(
+        docs.docs.map((doc) => ({ id: doc.id, ...doc.data() } as Message))
+      );
+      setLastVisible(docs.docs[docs.docs.length - 1]);
+      setFirstVisible(docs.docs[0]);
+    },
+    [setMessages, setLastVisible, setFirstVisible]
+  );
 
-  }, [setMessages, setLastVisible, setFirstVisible]);
-  
   useEffect(() => {
     const db = getFirestore();
-    
-    updateMessages(query(
-      collection(db, "messages"),
-      where('visible', '==', true),
-      orderBy("timestamp", "desc"),
-      limit(NUM_PER_PAGE)
-    ));
+
+    updateMessages(
+      query(
+        collection(db, "messages"),
+        where("visible", "==", true),
+        orderBy("timestamp", "desc"),
+        limit(NUM_PER_PAGE)
+      )
+    );
   }, [updateMessages]);
 
   const nextPage = () => {
@@ -43,30 +68,34 @@ const ViewMessages = () => {
 
     const db = getFirestore();
 
-    updateMessages(query(
-      collection(db, "messages"),
-      where('visible', '==', true),
-      orderBy("timestamp", "desc"),
-      startAfter(lastVisible),
-      limit(NUM_PER_PAGE)
-    ));
-    setPage(p => p + 1);
-  }
+    updateMessages(
+      query(
+        collection(db, "messages"),
+        where("visible", "==", true),
+        orderBy("timestamp", "desc"),
+        startAfter(lastVisible),
+        limit(NUM_PER_PAGE)
+      )
+    );
+    setPage((p) => p + 1);
+  };
 
   const prevPage = () => {
     if (!firstVisible) return;
 
     const db = getFirestore();
 
-    updateMessages(query(
-      collection(db, "messages"),
-      where('visible', '==', true),
-      orderBy("timestamp", "desc"),
-      endBefore(firstVisible),
-      limitToLast(NUM_PER_PAGE)
-    ));
-    setPage(p => p - 1);
-  }
+    updateMessages(
+      query(
+        collection(db, "messages"),
+        where("visible", "==", true),
+        orderBy("timestamp", "desc"),
+        endBefore(firstVisible),
+        limitToLast(NUM_PER_PAGE)
+      )
+    );
+    setPage((p) => p - 1);
+  };
 
   return (
     <div className="p-8 w-full md:w-2/3">
@@ -124,7 +153,11 @@ const ViewMessages = () => {
         <p className="text-center">Page {page}</p>
         <button
           className={`
-          ${messages.length < NUM_PER_PAGE ? "bg-gray-400" : "bg-blue-500 hover:bg-blue-700"} 
+          ${
+            messages.length < NUM_PER_PAGE
+              ? "bg-gray-400"
+              : "bg-blue-500 hover:bg-blue-700"
+          } 
           text-white py-2 px-4 rounded
           `}
           onClick={nextPage}
@@ -136,6 +169,6 @@ const ViewMessages = () => {
       </div>
     </div>
   );
-}
+};
 
 export default ViewMessages;

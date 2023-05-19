@@ -3,7 +3,7 @@ import { UserContext } from "../../../Auth";
 import { ScrollRestoration } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
-import { MessageTopic, sendMessage } from "../ContactUitls";
+import { MessageTopic, sendMessage } from "../ContactUtils";
 
 const SendMessage = () => {
   const { user } = useContext(UserContext);

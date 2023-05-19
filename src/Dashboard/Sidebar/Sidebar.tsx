@@ -1,13 +1,13 @@
-import { 
+import {
   faRobot,
   faSignIn,
   faSignOut,
   faUser,
   faBook,
   faChartLine,
-  faQuoteLeft,
   faEnvelope,
   faHome,
+  faInfoCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
@@ -32,11 +32,11 @@ const Sidebar = () => {
       setHeight(`calc(100% - ${d}px)`);
       setFixed(false);
     }
-  }
+  };
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   });
 
   return (
@@ -77,8 +77,8 @@ const Sidebar = () => {
           <SidebarButton text="Contact" path="/dash/contact">
             <FontAwesomeIcon icon={faEnvelope} className={`w-6 h-6`} />
           </SidebarButton>
-          <SidebarButton text="Credits" path="/dash/credits">
-            <FontAwesomeIcon icon={faQuoteLeft} className={`w-6 h-6`} />
+          <SidebarButton text="About" path="/dash/about">
+            <FontAwesomeIcon icon={faInfoCircle} className={`w-6 h-6`} />
           </SidebarButton>
           <SidebarButton
             text={user ? "Sign Out" : "Sign In"}
