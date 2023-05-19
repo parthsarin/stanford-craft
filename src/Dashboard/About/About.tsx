@@ -115,22 +115,6 @@ const About = () => {
         <li>Victoria Delaney, PhD Student in Mathematics Education</li>
       </ul>
 
-      <p className="mt-2">
-        The resources and layout of this site have been through several rounds
-        of iteration, including feedback from the Stanford CRAFT team and the
-        cohort of Artificial Intelligence Co-Design Fellows (also known as
-        teacher partners). The cohort of fellows includes: Shane Andrus, Rodger
-        Brown, Jesse Bustos, David Dobervich, Alison Ence, Honore Haughton,
-        Lindsay Humphrey, Danielle Martin, and Soo Shin.
-      </p>
-
-      <p className="mt-2">
-        The broader CRAFT team (including researchers, software developers, and
-        curriculum developers) includes Anika Fuloria, Benji Xie, Christine
-        Bywater, Isabel Sieh, Jacob Wolf, Parth Sarin, Victor Lee, and Victoria
-        Delaney.
-      </p>
-
       <h2 className="text-xl mt-4 font-bold mb-5">
         Financial Support and Sponsorship
       </h2>
