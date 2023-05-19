@@ -51,5 +51,15 @@ service cloud.firestore {
     match /emailsForUpdates/{doc} {
     	allow create: if true;
     }
+
+    // send a message
+    match /messages/{messageId} {
+      function isAdmin() {
+        return get(/databases/$(database)/documents/users/$(request.auth.uid)).data.admin == true;
+      }
+
+      allow create: if true;
+      allow read, write: if isAdmin();
+    }
   }
 }
