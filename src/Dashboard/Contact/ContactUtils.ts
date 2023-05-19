@@ -88,7 +88,7 @@ function sendMessage(
   }
 
   // validate email
-  if (!isValidEmail(email)) {
+  if (email && !isValidEmail(email)) {
     MySwal.fire({
       icon: "error",
       title: "Invalid email address",

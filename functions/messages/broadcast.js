@@ -19,7 +19,7 @@ const FUNDRAISING_TEAM = [
   "psarin@stanford.edu",
 ];
 
-const NEED_TO_KNOW = {
+let NEED_TO_KNOW = {
   "Report a bug": [...DEV_TEAM],
   "Request a feature": [
     ...DEV_TEAM,
@@ -31,6 +31,17 @@ const NEED_TO_KNOW = {
   "Make a gift to the project": [...FUNDRAISING_TEAM],
   "Other (please specify)": ["vrlee@stanford.edu"],
 };
+
+if (process.env.FUNCTIONS_EMULATOR) {
+  NEED_TO_KNOW = {
+    "Report a bug": ["psarin@stanford.edu"],
+    "Request a feature": ["psarin@stanford.edu"],
+    "Media inquiry": ["psarin@stanford.edu"],
+    "Partnership inquiry": ["psarin@stanford.edu"],
+    "Make a gift to the project": ["psarin@stanford.edu"],
+    "Other (please specify)": ["psarin@stanford.edu"],
+  };
+}
 
 module.exports.broadcastMessage = (db, event) => {
   const data = event.data.data();
