@@ -29,6 +29,7 @@ enum MessageTopic {
   Feature = "Request a feature",
   Media = "Media inquiry",
   Partnership = "Partnership inquiry",
+  Funding = "Make a gift to the project",
   Other = "Other (please specify)",
 }
 
