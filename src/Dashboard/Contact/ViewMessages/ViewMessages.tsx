@@ -1,6 +1,6 @@
 import { useCallback, useContext, useEffect, useState } from "react";
 import { Message } from "../ContactUitls";
-import { DocumentData, Query, QueryDocumentSnapshot, collection, endBefore, getDocs, getFirestore, limit, orderBy, query, startAfter, where } from "firebase/firestore";
+import { DocumentData, Query, QueryDocumentSnapshot, collection, endAt, endBefore, getDocs, getFirestore, limit, limitToLast, orderBy, query, startAfter, where } from "firebase/firestore";
 import { UserContext } from "../../../Auth";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft, faChevronRight, faCircle } from "@fortawesome/free-solid-svg-icons";
@@ -24,11 +24,12 @@ const ViewMessages = () => {
     );
     setLastVisible(docs.docs[docs.docs.length - 1]);
     setFirstVisible(docs.docs[0]);
-  }, [setMessages, setLastVisible, setFirstVisible]);
 
+  }, [setMessages, setLastVisible, setFirstVisible]);
+  
   useEffect(() => {
     const db = getFirestore();
-
+    
     updateMessages(query(
       collection(db, "messages"),
       where('visible', '==', true),
@@ -49,6 +50,7 @@ const ViewMessages = () => {
       startAfter(lastVisible),
       limit(NUM_PER_PAGE)
     ));
+    setPage(p => p + 1);
   }
 
   const prevPage = () => {
@@ -61,8 +63,9 @@ const ViewMessages = () => {
       where('visible', '==', true),
       orderBy("timestamp", "desc"),
       endBefore(firstVisible),
-      limit(NUM_PER_PAGE)
+      limitToLast(NUM_PER_PAGE)
     ));
+    setPage(p => p - 1);
   }
 
   return (
