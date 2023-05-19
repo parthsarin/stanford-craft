@@ -1,5 +1,13 @@
 {
   "projects": {
     "default": "ai-lit"
+  },
+  "targets": {},
+  "etags": {
+    "ai-lit": {
+      "extensionInstances": {
+        "firestore-send-email": "dd7d26567a2b05ced32b777d4796e070a23555064f7d363fde021defcd74193e"
+      }
+    }
   }
 }
