@@ -10,6 +10,7 @@ import ContinueButton from "./ContinueButton";
 import Footer from "./Footer/Footer";
 import { signUpForUpdates } from "../Dashboard/Contact/ContactUtils";
 import { ScrollRestoration } from "react-router-dom";
+import { getAnalytics, logEvent } from "firebase/analytics";
 
 const Home = () => (
   <div className="home w-full">
@@ -58,6 +59,7 @@ const Home = () => (
 
           // @ts-ignore
           signUpForUpdates(document.getElementById("email").value);
+          logEvent(getAnalytics(), "sign_up_for_updates");
         }}
       >
         <p className="text-lg mb-3 w-full">
