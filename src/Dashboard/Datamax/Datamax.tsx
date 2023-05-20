@@ -2,7 +2,7 @@ import { faHand, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { doc, getDoc, getFirestore } from "firebase/firestore";
 import { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { ScrollRestoration, useNavigate } from "react-router-dom";
 import { UserContext } from "../../Auth";
 import { useProtectedNav } from "../../Auth/NavUtils";
 import { LoaderInline } from "../../Generic/Loader";
@@ -135,6 +135,7 @@ const Datamax = () => {
       ) : (
         user && <LoaderInline />
       )}
+      <ScrollRestoration />
     </div>
   );
 }

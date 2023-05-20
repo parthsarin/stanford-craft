@@ -1,6 +1,6 @@
-import { faStopwatch, faXmarkCircle } from "@fortawesome/free-solid-svg-icons";
+import { faStopwatch, faTrash, faXmarkCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { collection, deleteDoc, doc, getFirestore, onSnapshot, query } from "firebase/firestore";
+import { arrayRemove, collection, deleteDoc, doc, getFirestore, onSnapshot, query, updateDoc } from "firebase/firestore";
 import { getFunctions, httpsCallable } from "firebase/functions";
 import { useEffect, useState } from "react";
 import QRCode from "react-qr-code";
@@ -81,7 +81,31 @@ const TeacherView = ({ joinCode, quiz }: Params) => {
     if (data.success) {
       navigate("/dash/datamax");
     }
-  }
+  };
+
+  const handleDeleteQuiz = () => {
+    MySwal.fire({
+      title: "Are you sure?",
+      text: "This action is irreversible.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        const db = getFirestore();
+        const quizDocRef = doc(db, "datamax", joinCode);
+        await deleteDoc(quizDocRef);
+
+        const userDocRef = doc(db, "users", quiz.owner);
+        await updateDoc(userDocRef, {
+          "datamax.activeQuizzes": arrayRemove(joinCode),
+          "datamax.pastQuizzes": arrayRemove(joinCode),
+        });
+
+        navigate("/dash/datamax");
+      }
+    });
+  };
 
   return (
     <div className="p-4 w-full lg:w-2/3">
@@ -122,7 +146,7 @@ const TeacherView = ({ joinCode, quiz }: Params) => {
           <h2 className="text-xl mb-2">Actions</h2>
           <div className="flex flex-row">
             <button
-              className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded rounded-md"
+              className="bg-teal-600 hover:bg-teal-700 text-white px-4 py-2 mr-2 rounded rounded-md"
               onClick={handleEndQuiz}
             >
               <FontAwesomeIcon
@@ -131,6 +155,17 @@ const TeacherView = ({ joinCode, quiz }: Params) => {
                 aria-hidden="true"
               />
               End Quiz
+            </button>
+            <button
+              className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded rounded-md"
+              onClick={handleDeleteQuiz}
+            >
+              <FontAwesomeIcon
+                icon={faTrash}
+                className="mr-2"
+                aria-hidden="true"
+              />
+              Delete Quiz
             </button>
           </div>
         </div>

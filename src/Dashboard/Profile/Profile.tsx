@@ -3,6 +3,7 @@ import { UserContext } from "../../Auth";
 import Loader from "../../Generic/Loader";
 import { MySwal } from "../../Generic/Notify";
 import PhotoSelector from "./PhotoSelector";
+import { ScrollRestoration } from "react-router-dom";
 
 const Profile = () => {
   const { user, setUser } = useContext(UserContext);
@@ -91,6 +92,7 @@ const Profile = () => {
             Update Profile
           </button>
       </form>
+      <ScrollRestoration />
     </div>
   );
 }

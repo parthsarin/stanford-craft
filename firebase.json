@@ -22,5 +22,12 @@
       "enabled": true
     },
     "singleProjectMode": true
+  },
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
+  "extensions": {
+    "firestore-send-email": "firebase/firestore-send-email@0.1.25"
   }
 }

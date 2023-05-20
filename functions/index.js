@@ -1,5 +1,11 @@
 const functions = require("firebase-functions");
 const { getFirestore, FieldValue } = require("firebase-admin/firestore");
+
+// Upgrading to v2!
+const { onDocumentCreated } = require("firebase-functions/v2/firestore");
+
+// Modules
+const { broadcastMessage } = require("./messages");
 const { endQuiz } = require("./quiz");
 const { openAiTextCompletion } = require("./prompty/textCompletionOpenAi");
 const { openAiModeration } = require("./prompty/moderationOpenAi");
@@ -58,6 +64,14 @@ exports.endQuiz = functions.https.onCall(async (data, context) => {
     success: true,
   };
 });
+
+exports.broadcastMessage = onDocumentCreated(
+  "messages/{messageId}",
+  (event) => {
+    const db = getFirestore();
+    broadcastMessage(db, event);
+  }
+);
 
 exports.generateAiResponse = functions
   .region("us-central1")

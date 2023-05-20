@@ -8,11 +8,11 @@ const ContinueButton = () => {
   return (
     <button
       className={`rounded border border-fuchsia-700 bg-fuchsia-700 text-white
-        px-3 py-2 hover:bg-fuchsia-800
+        px-3 py-2 hover:bg-fuchsia-800 w-full text-xl
         `}
       onClick={() => navigate("/dash/resources")}
     >
-      <FontAwesomeIcon icon={faDashboard} className="mr-2" /> View the Resources
+      <FontAwesomeIcon icon={faDashboard} className="mr-2" /> View the Curricular Resources
     </button>
   );
 }

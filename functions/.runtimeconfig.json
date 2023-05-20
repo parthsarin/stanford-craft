@@ -1,0 +1,7 @@
+{
+  "firebase": {
+    "projectId": "ai-lit",
+    "storageBucket": "ai-lit.appspot.com",
+    "locationId": "us-central"
+  }
+}

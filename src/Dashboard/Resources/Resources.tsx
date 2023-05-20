@@ -1,381 +1,82 @@
-import { useState } from "react";
-import { Resource, matchResource, filterResource } from "./Resource";
+import { useState, useContext } from "react";
+import { Resource, matchResource, filterResource, tagNames } from "./Resource";
 import ResourceCard from "./ResourceCard/ResourceCard";
 import SearchBar from "./SearchBar";
 import Filter from "./Filter";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faWarning } from "@fortawesome/free-solid-svg-icons";
+import { ScrollRestoration, useNavigate } from "react-router-dom";
+import { MessageTopic, sendMessage } from "../Contact/ContactUtils";
+import { UserContext } from "../../Auth";
+import { MySwal } from "../../Generic/Notify";
 
-const defaultResources: Resource[] = [
-  {
-    title: "AI Around You",
-    description:
-      "A video and worksheet to help students think about and apply the definitions of device, algorithm, and AI to things in their everyday life. In doing so, students can better distinguish what AI is amidst other technologies and will be better prepared to think about what role AI specifically plays in various applications. The teacher guide offers commentary",
-    img: "https://i.postimg.cc/N0dp0nX3/AI-Around-You.png",
-    subLinks: [
-      {
-        url: "https://www.youtube.com/watch?v=oJC8VIDSx_Q",
-        name: "Video",
-      },
-      {
-        url: "https://docs.google.com/presentation/d/1IvYJWicXd2M-kn_MVEQlwl704MQYdwYibVamP0gnl3s",
-        name: "Worksheet",
-      },
-      {
-        url: "https://docs.google.com/presentation/d/1C7gVBSw-8H4R1oa-wlpSvkvCouf44z7TPOZJ2B-FSGY/edit#slide=id.p",
-        name: "Teacher Guide",
-      },
-      {
-        url: "https://docs.google.com/document/d/17wKvHiUO0tWavwE5N8esn1GZEWfJTpoo7NxVcRpMOds/edit#bookmark=id.e7u6eswa4d72",
-        name: "Curriculum",
-      },
-    ],
-    tags: ["Unit 2: AI & You", "Worksheet", "Video"],
-  },
-  {
-    title: "“What the world looks like to an algorithm” YouTube Video",
-    description:
-      "A video discussing how an AI algorithm “sees” the world to recognize objects in photos. It discusses how humans and computers often attend to different features of objects when trying to recognize them.",
-    img: "https://i.postimg.cc/BnS42Wrt/What-the-world-looks-like-to-an-algorithm.png",
-    subLinks: [
-      {
-        url: "https://www.youtube.com/watch?v=PwcuTCfSIyI",
-        name: "Video",
-      },
-      {
-        url: "https://docs.google.com/document/d/17wKvHiUO0tWavwE5N8esn1GZEWfJTpoo7NxVcRpMOds/edit#bookmark=id.e7u6eswa4d72",
-        name: "Curriculum",
-      },
-    ],
-    tags: ["Unit 2: AI & You", "Video"],
-  },
-  {
-    title: "Gender Shades Video",
-    description:
-      "A video report on a study done on facial recognition software indicating that the algorithms that power the software were trained on white, male faces and weren’t as good at recognizing others’ faces.",
-    img: "https://i.postimg.cc/C1cFKwMj/Gender-shades.png",
-    subLinks: [
-      {
-        url: "http://gendershades.org/",
-        name: "Video",
-      },
-      {
-        url: "https://docs.google.com/document/d/17wKvHiUO0tWavwE5N8esn1GZEWfJTpoo7NxVcRpMOds/edit#bookmark=id.e7u6eswa4d72",
-        name: "Curriculum",
-      },
-    ],
-    tags: ["Unit 2: AI & You", "Video"],
-  },
-  {
-    title: "Squid Model",
-    description:
-      "A framework for understanding the inputs, processes, and outputs of AI systems.",
-    img: "https://i.postimg.cc/bNt91rXN/Squid-model.png",
-    subLinks: [
-      {
-        url: "https://docs.google.com/presentation/d/1-cVwivICr-h-IQJDHcx-vU6pVE8poT7WioaVLvZ5IM4/edit#slide=id.p",
-        name: "Teacher Worksheet",
-      },
-      {
-        url: "https://docs.google.com/presentation/d/1nXczmIFcxCLnscFAj_XQyjbDm2Ze9qZ66kwsDRXNLmQ/edit",
-        name: "Worksheet",
-      },
-      {
-        url: "https://docs.google.com/document/d/17wKvHiUO0tWavwE5N8esn1GZEWfJTpoo7NxVcRpMOds/edit#bookmark=id.uek0uo6wl3z5",
-        name: "Curriculum",
-      },
-    ],
-    tags: ["Unit 2: AI & You", "Video", "Worksheet"],
-  },
-  {
-    title: "Amazon AI Applications Exploration",
-    description:
-      "A podcast and article that explore how Amazon uses AI in its delivery system and what factors it uses (and doesn't use) to implement this system.",
-    img: "https://i.postimg.cc/gJbVCtDF/Amazon-AI-Applications-Exploration.png",
-    subLinks: [
-      {
-        url: "https://www.npr.org/transcripts/660168325",
-        name: "Podcast",
-      },
-      {
-        url: "https://docs.google.com/presentation/u/0/d/17_HivwK7bRULppXXFGlpBX-xVHpCYBWBK_PLL59BGLY/edit",
-        name: "Podcast Listening Guide",
-      },
-      {
-        url: "https://docs.google.com/presentation/u/0/d/17ARIHSEdDFAJwUwUZxNUCaOY2JuSbp3821RlmW0LABQ/edit",
-        name: "Podcast Listening Guide Key",
-      },
-      {
-        url: "https://www.bloomberg.com/graphics/2016-amazon-same-day/",
-        name: "Article",
-      },
-      {
-        url: "https://docs.google.com/document/d/17wKvHiUO0tWavwE5N8esn1GZEWfJTpoo7NxVcRpMOds/edit#bookmark=id.uek0uo6wl3z5",
-        name: "Curriculum",
-      },
-    ],
-    tags: [
-      "Unit 2: AI & You",
-      "Guided Exploration",
-      "Podcast",
-      "Reading",
-      "Worksheet",
-    ],
-  },
-  {
-    title: "How Computers See",
-    description:
-      "This interactive and article demonstrates how computers see visual informations as pixels which inturn becomes numerical data that can be analyzed to find patterns. ",
-    img: "https://i.postimg.cc/mDDNrLws/Screenshot-2023-04-23-at-10-10-26-PM.png",
-    subLinks: [
-      {
-        url: "https://editor.p5js.org/Stanford/full/weOL1sHJ1",
-        name: "Interactive",
-      },
-      {
-        url: "https://dimensionality-reduction-293e465c2a3443e8941b016d.vercel.app/",
-        name: "Article",
-      },
-      {
-        url: "https://docs.google.com/presentation/d/1fzNSUxl1IAtXFDKczvJMlumns7xvUONwGOdR6mS_-i4/edit#slide=id.p",
-        name: "Worksheet",
-      },
-      {
-        url: "https://docs.google.com/document/d/1lbF25Q6_I45NRSWzFW3ZbcIkTJ7zAfs638HOGthMK0A/edit#bookmark=id.rdf2ltoefwha",
-        name: "Curriculum",
-      },
-    ],
-    tags: ["Unit 3: AI & Math", "Interactive", "Article", "Worksheet", "Art"],
-  },
-  {
-    title: "Gender and Age Bias in Coco Captions Dataset",
-    description:
-      "This guided exploration takes students through a captions datasets and lets them add features like “caption_words_gender”, “caption_words_age”, “caption_words_attractive” to see if there is bias in the data. ",
-    img: "https://i.postimg.cc/tg4TxYVY/Screenshot-2023-04-23-at-10-15-36-PM.png",
-    subLinks: [
-      {
-        url: "https://knowyourdata-tfds.withgoogle.com/#dataset=coco_captions&tab=RELATIONS&relations=default_segment.cloud_vision.label.value,default_segment.coco_captions.captions_words_gendered_groups.value&draw=default_segment.coco_captions.objects_label.value,bbox,bbox&auto_draw=false",
-        name: "Coco Captions Dataset",
-      },
-      {
-        url: "https://docs.google.com/presentation/d/1fzNSUxl1IAtXFDKczvJMlumns7xvUONwGOdR6mS_-i4/edit#slide=id.p",
-        name: "Worksheet",
-      },
-      {
-        url: "https://docs.google.com/document/d/1lbF25Q6_I45NRSWzFW3ZbcIkTJ7zAfs638HOGthMK0A/edit#bookmark=id.phvesovriup7",
-        name: "Curriculum",
-      },
-    ],
-    tags: [
-      "Unit 3: AI & Math",
-      "Bias",
-      "Dataset",
-      "Interactive",
-      "Guided Exploration",
-      "Worksheet",
-    ],
-  },
-  {
-    title: "Whale Songs",
-    description:
-      "This video and resultant website shows how AI can be used to analyze to analyze soundwaves of whales and find patterns by highlighting similar sounds. The curriculum and optional worksheet (linked in curriculum) discusses the benefits and drawbacks of turning whale songs into numerical data for analysis. ",
-    img: "https://i.postimg.cc/4yVFZvZM/maxresdefault.jpg",
-    subLinks: [
-      {
-        url: "https://www.youtube.com/watch?v=JE3-LkMqBfM&ab_channel=Google",
-        name: "Video: Whale Songs",
-      },
-      {
-        url: "https://docs.google.com/presentation/d/1fzNSUxl1IAtXFDKczvJMlumns7xvUONwGOdR6mS_-i4/edit#slide=id.p",
-        name: "Website: Whale Songs",
-      },
-      {
-        url: "https://docs.google.com/document/d/1lbF25Q6_I45NRSWzFW3ZbcIkTJ7zAfs638HOGthMK0A/edit#bookmark=id.psys7aio5rsu",
-        name: "Curriculum",
-      },
-    ],
-    tags: ["Unit 3: AI & Math", "Video", "Sound"],
-  },
-  {
-    title: "Sentiment Analysis Hands-On",
-    description:
-      "In this example, we have a collection of reviews from the movie rating site IMDB. Each review has the (lowercase) text that the critic left and a tag indicating whether it is positive or negative. You can enter a word and the notebook will calculate its sentiment based on the data provided above.",
-    img: "https://i.postimg.cc/t4cGvNkj/sentiment-analysis.png",
-    subLinks: [
-      {
-        url: "https://observablehq.com/@craft/sentiment-analysis-example",
-        name: "Notebook",
-      },
-      {
-        url: "https://docs.google.com/presentation/d/18XQZmqr23Ps2ZwPwHvnYZSSHVv7enZ46G1qarKX2oMs/edit",
-        name: "Worksheet",
-      },
-      {
-        url: "https://docs.google.com/document/d/1lbF25Q6_I45NRSWzFW3ZbcIkTJ7zAfs638HOGthMK0A/edit#",
-        name: "Curriculum",
-      },
-    ],
-    tags: ["Unit 3: AI & Math", "Hands-On", "Worksheet"],
-  },
-  {
-    title: "Learning to See: Gloomy Sunday",
-    description:
-      'Gloomy Sunday is a video showing how a Generative Adversarial Network (a "GAN") can re-interpret the image from your webcam in the context of its training data. In that way, it only "sees" what it it has been shown in the past.',
-    img: "https://i.postimg.cc/fysDPh6G/gloomy-sunday.png",
-    subLinks: [
-      {
-        url: "https://vimeo.com/260612034",
-        name: "Video",
-      },
-      {
-        url: "https://docs.google.com/presentation/d/1RysVqDTBKbpB-3-d6_nUxFxjjdOFEoiKIheEhaqef14/edit#slide=id.p",
-        name: "Video Organizer",
-      },
-      {
-        url: "https://docs.google.com/document/d/1J6C4aIqWZjl8i1H-GmPxVKZM7jpYgHJMfcPu6wHksXI/edit",
-        name: "Curriculum",
-      },
-    ],
-    tags: [
-      "Unit 4: AI & Art",
-      "Video",
-      "Generative AI",
-      "Generative Adversarial Network",
-    ],
-  },
-  {
-    title: "The DALL•E Prompt Book",
-    description:
-      "This book gives examples of prompts and breaks down how each word in the prompt tends to affect the output. It's a good way to get students thinking about how they can use AI models.",
-    img: "https://i.postimg.cc/dVmVzdzS/prompt-book.png",
-    subLinks: [
-      {
-        url: "https://pitch.com/v/tmd33y/6fb6f14b-10ef-48f3-a597-d4af7aa1c9c6",
-        name: "Prompt Book",
-      },
-      {
-        url: "https://docs.google.com/document/d/1J6C4aIqWZjl8i1H-GmPxVKZM7jpYgHJMfcPu6wHksXI/edit#bookmark=id.l9rmrsmq9v29",
-        name: "Activity",
-      },
-      {
-        url: "https://docs.google.com/document/d/1lbF25Q6_I45NRSWzFW3ZbcIkTJ7zAfs638HOGthMK0A/edit#",
-        name: "Curriculum",
-      },
-    ],
-    tags: ["Unit 4: AI & Art", "dall-e", "generative art"],
-  },
-  {
-    title: "Lexica",
-    description:
-      "Lexica is an online gallery of AI-generated art. Each example on the page also includes the prompt that was used to generate it.",
-    img: "https://i.postimg.cc/y6cxFwLH/lexica.png",
-    subLinks: [
-      {
-        url: "https://lexica.art/",
-        name: "Website",
-      },
-      {
-        url: "https://docs.google.com/presentation/d/1XqlGgAAB7IjVgzSe_E6EP0lhV4CqgvV7QMzkYFrftYc/edit#slide=id.p",
-        name: "T-Chart Activity",
-      },
-      {
-        url: "https://docs.google.com/document/d/1J6C4aIqWZjl8i1H-GmPxVKZM7jpYgHJMfcPu6wHksXI/edit",
-        name: "Curriculum",
-      },
-    ],
-    tags: ["Unit 4: AI & Art", "stable diffusion", "generative art", "t-chart"],
-  },
-  {
-    title: "Vizcom",
-    description:
-      "This app allows people to draw pictures assisted with artificial intelligence. So, they can make a sketch, describe what they're drawing, and the algorithm will complete the drawing. Then, they can keep building on what they created",
-    img: "https://i.postimg.cc/527wF63y/vizcom.png",
-    subLinks: [
-      {
-        url: "https://app.vizcom.ai/auth",
-        name: "Website",
-      },
-      {
-        url: "https://docs.google.com/presentation/d/1XqlGgAAB7IjVgzSe_E6EP0lhV4CqgvV7QMzkYFrftYc/edit#slide=id.p",
-        name: "T-Chart Activity",
-      },
-      {
-        url: "https://docs.google.com/document/d/1J6C4aIqWZjl8i1H-GmPxVKZM7jpYgHJMfcPu6wHksXI/edit",
-        name: "Curriculum",
-      },
-    ],
-    tags: [
-      "Unit 4: AI & Art",
-      "generative art",
-      "ai assisted drawing",
-      "t-chart",
-    ],
-  },
-  {
-    title: "ChatGPT Debate",
-    description:
-      "In this routine, students use ChatGPT as a debate partner — i.e., someone to have a short debate against. In this example, students debate about the topic of attribution of images created by DALL-E 2: is it right or wrong for DALL-E to be trained on publicly available images?",
-    img: "https://i.postimg.cc/RZMkZbs9/gpt-debate-routine.png",
-    subLinks: [
-      {
-        url: "https://docs.google.com/document/d/1J6C4aIqWZjl8i1H-GmPxVKZM7jpYgHJMfcPu6wHksXI/edit#bookmark=id.dxp7cvh0jvym",
-        name: "Lesson Plan",
-      },
-      {
-        url: "https://docs.google.com/presentation/d/11EZWyh5yefOoImax9huJOYMydxhnny5r0JE2EJdQ-gU/edit#slide=id.p",
-        name: "Sample Debate",
-      },
-      {
-        url: "https://www.engadget.com/dall-e-generative-ai-tracking-data-privacy-160034656.html",
-        name: "Attribution Reading",
-      },
-      {
-        url: "https://docs.google.com/document/d/1J6C4aIqWZjl8i1H-GmPxVKZM7jpYgHJMfcPu6wHksXI/edit#",
-        name: "Curriculum",
-      },
-    ],
-    tags: [
-      "Unit 4: AI & Art",
-      "generative art",
-      "dall-e",
-      "chatgpt",
-      "attribution",
-      "ethics",
-    ],
-  },
-  {
-    title: "AI Bias Explorer",
-    description:
-      "An interactive tool for exploring how text-to-image AI represent different professions and adjectives",
-    img: "https://i.postimg.cc/pVZ5nw06/bias-explorer.jpg",
-    subLinks: [
-      {
-        url: "https://huggingface.co/spaces/society-ethics/DiffusionBiasExplorer",
-        name: "Interactive",
-      },
-    ],
-    tags: ["Unit 5: AI & Society", "Interactive"],
-  },
-];
+const defaultResources = require("./resources.json") as Resource[];
 
 const Resources = () => {
   const [resources, setResources] = useState<Resource[]>(defaultResources);
+  const [searchString, setSearchString] = useState("");
+  const [selectedTags, setSelectedTags] = useState([""]);
+  const navigate = useNavigate();
+  const { user } = useContext(UserContext);
+
+  // tagCount with format {tagName: 0}
+  const initTagCount: { [key: string]: number } = {};
+  for (var i = 0; i < tagNames.length; i++) {
+    initTagCount[tagNames[i]] = 0;
+  }
+  const [selectedTagsCount, setSelectedTagsCount] = useState({});
 
   const handleSearch = (search: string) => {
-    const filteredResources = defaultResources.filter((resource) =>
+    let filteredResources = defaultResources.filter((resource) =>
       matchResource(resource, search)
     );
+    filteredResources = filteredResources.filter((resource) =>
+      filterResource(resource, selectedTags, selectedTagsCount)
+    );
+    setSearchString(search);
     setResources(filteredResources);
   };
 
-  const handleFilter = (tags: string[]) => {
-    const filteredResources = defaultResources.filter((resource) =>
-      filterResource(resource, tags)
+  const handleFilter = (tags: string[], count: { [key: string]: number }) => {
+    let filteredResources = defaultResources.filter((resource) =>
+      filterResource(resource, tags, count)
     );
+    filteredResources = filteredResources.filter((resource) =>
+      matchResource(resource, searchString)
+    );
+    setSelectedTags(tags);
+    setSelectedTagsCount(count);
     setResources(filteredResources);
   };
 
   return (
     <div className="flex-1 p-8">
       <h1 className="text-4xl font-bold mb-10">Resources</h1>
+      <div
+        className={`
+        rounded border border-black bg-orange-200 mb-10 px-4 py-3
+        flex flex-row space-x-4 items-center
+        `}
+      >
+        <div className="flex-col hidden md:flex">
+          <FontAwesomeIcon icon={faWarning} className="text-2xl" />
+        </div>
+        <div className="flex flex-col">
+          <h2 className="font-bold text-xl">These resources are in progress</h2>
+          <p className="text-lg">
+            Many of these resources are currently being developed and more will
+            be added soon. If you have any feedback or questions, you can reach
+            out to the CRAFT team through our{" "}
+            <button
+              className="text-blue-500 hover:text-blue-700 hover:underline"
+              onClick={() => navigate("/dash/contact")}
+            >
+              contact form
+            </button>
+            .
+          </p>
+        </div>
+      </div>
       <div className="lg:flex p-0 gap-6">
         <div className="mb-6 lg:mb-0 lg:w-1/5 p-5 bg-violet-300 rounded-md">
           <h2 className="text-2xl font-bold mb-3">Search</h2>
@@ -385,16 +86,91 @@ const Resources = () => {
           <Filter onUpdate={handleFilter} />
         </div>
 
-        <div className="lg:w-4/5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {resources.map((resource, i) => (
-            <ResourceCard
-              key={i}
-              resource={resource}
-              data-tags={resource.tags}
-            />
-          ))}
-        </div>
+        {resources.length === 0 ? (
+          <div className="lg:w-4/5">
+            <h2 className="text-2xl font-bold mb-3">
+              Not finding what you're looking for?
+            </h2>
+            <p className="text-lg">
+              We're continuously adding more resources. Add your request using
+              our{" "}
+              <button
+                className="text-blue-500 hover:text-blue-700 hover:underline"
+                onClick={() => navigate("/dash/contact")}
+              >
+                contact form
+              </button>{" "}
+              or click this button to log your search query and we'll try to
+              find a resource for you:
+            </p>
+            <button
+              className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded mt-3"
+              onClick={async () => {
+                if (!user || !user.email) {
+                  MySwal.fire({
+                    icon: "info",
+                    title: "Add more information?",
+                    text: "Would you like to add your email address to your request?",
+                    input: "email",
+                    inputPlaceholder: "Email address",
+                    showCancelButton: true,
+                    confirmButtonText: "Yes, add my email",
+                    cancelButtonText: "No, send it without my email",
+                  })
+                    .then((result) => {
+                      if (result.isConfirmed) {
+                        return result.value;
+                      } else {
+                        return null;
+                      }
+                    })
+                    .then((email) => {
+                      if (email) {
+                        sendMessage(
+                          user && user.displayName ? user.displayName : "",
+                          email,
+                          MessageTopic.Feature,
+                          `This message was triggered by a resource search for "${searchString}", which didn't yield any results`,
+                          () => {}
+                        );
+                      } else {
+                        sendMessage(
+                          user && user.displayName ? user.displayName : "",
+                          "",
+                          MessageTopic.Feature,
+                          `This message was triggered by a resource search for "${searchString}", which didn't yield any results`,
+                          () => {}
+                        );
+                      }
+                    });
+                  return;
+                }
+
+                sendMessage(
+                  user && user.displayName ? user.displayName : "",
+                  user && user.email ? user.email : "",
+                  MessageTopic.Feature,
+                  `This message was triggered by a resource search for "${searchString}", which didn't yield any results`,
+                  () => {}
+                );
+              }}
+            >
+              I'd like a resource for "{searchString}"
+            </button>
+          </div>
+        ) : (
+          <div className="lg:w-4/5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            {resources.map((resource, i) => (
+              <ResourceCard
+                key={i}
+                resource={resource}
+                data-tags={resource.tags}
+              />
+            ))}
+          </div>
+        )}
       </div>
+      <ScrollRestoration />
     </div>
   );
 };

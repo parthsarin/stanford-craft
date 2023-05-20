@@ -1,4 +1,4 @@
-import { Outlet, useOutlet } from "react-router-dom";
+import { Outlet, ScrollRestoration, useOutlet } from "react-router-dom";
 import SelectQuiz from "./SelectQuiz";
 
 const Analyze = () => {
@@ -15,6 +15,7 @@ const Analyze = () => {
         ? <Outlet />
         : <SelectQuiz />
       }
+      <ScrollRestoration />
     </div>
   ); 
 }

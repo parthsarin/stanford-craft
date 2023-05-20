@@ -22,6 +22,7 @@ async function generateQuizJoinCode() {
  */
 function flattenQuizForDatabase(quiz: QuizTemplate) {
   const quizForDatabase: any = { ...quiz };
+  delete quizForDatabase.upload;
 
   // flatten the question data
   const questions = Object.entries(quiz.questions).map(([key, value]) => {

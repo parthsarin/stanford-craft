@@ -2,13 +2,13 @@ import { User as FirebaseUser } from "firebase/auth";
 import { createContext } from "react";
 
 enum UserRole {
-  ADMIN = "ADMIN",
-  TEACHER = "TEACHER",
-  STUDENT = "STUDENT",
+  TEACHER = "teacher",
+  STUDENT = "studetn",
 }
 
 interface User extends FirebaseUser {
   role?: UserRole;
+  admin?: boolean;
   datamax?: {
     activeQuizzes: string[];
     pastQuizzes: string[];
