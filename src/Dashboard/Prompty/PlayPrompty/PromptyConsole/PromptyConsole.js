@@ -159,60 +159,6 @@ const PromptyConsole = (props) => {
                 ? (currentData = [])
                 : (currentData = promptyInstanceData?.generations);
               saveAiResponseToFirestore([obj, ...currentData]);
-
-              // function concatResponses(arr) {
-              //   let res = "";
-              //   arr.forEach((element) => {
-              //     res += element.text;
-              //   });
-              //   return res;
-              // }
-
-              // async function callOpenAiModeration() {
-              //   let responseText = concatResponses(responsesData);
-              //   console.log(responseText);
-              //   let res = await moderationApiCall(responseText);
-              //   console.log(res);
-              //   return res;
-              // }
-              // callOpenAiModeration()
-              //   .then((res) => {
-              //     if (res.data.response.flagged === true) {
-              //       setLoader(false);
-              //       MySwal.fire({
-              //         title: "Inappropriate Prompt",
-              //         text: "The prompt entered is not aligned with CRAFT's Content Standards. Please revise your prompt and try again.",
-              //         icon: "warning",
-              //         footer:
-              //           "The prompt language cannot be sexual, violent, or promote hate.",
-              //       });
-              //     } else if (res.data.response.flagged === false) {
-              //       let obj;
-              //       if (promptScaffoldMode) {
-              //         obj = {
-              //           scaffold: true,
-              //           role: roleText,
-              //           context: contextText,
-              //           task: taskText,
-              //           iterations: responsesData,
-              //         };
-              //       } else {
-              //         obj = {
-              //           scaffold: false,
-              //           promptText: openPromptText,
-              //           iterations: responsesData,
-              //         };
-              //       }
-
-              //       setLoader(false);
-              //       let currentData;
-              //       promptyInstanceData?.generations === undefined
-              //         ? (currentData = [])
-              //         : (currentData = promptyInstanceData?.generations);
-              //       saveAiResponseToFirestore([obj, ...currentData]);
-              //     }
-              //   })
-              //   .catch((e) => throwError(e));
             });
           }
         })
@@ -501,7 +447,7 @@ const GeneratedResponses = (props) => {
         </div>
         <>
           <p className="text-md whitespace-pre-wrap">
-            {props.iterations[selectedResponse].text.slice(2)}
+            {props.iterations[selectedResponse].text.slice(1)}
           </p>
         </>
       </>
