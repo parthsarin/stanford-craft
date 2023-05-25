@@ -4,6 +4,7 @@ import { ScrollRestoration } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { MessageTopic, sendMessage } from "../ContactUtils";
+import Select from "react-select";
 
 const SendMessage = () => {
   const { user } = useContext(UserContext);
@@ -76,23 +77,23 @@ const SendMessage = () => {
           Topic
         </label>
 
-        <select
-          name="messageType"
-          id="messageType"
-          className={`
-            border border-gray-500 rounded px-3 py-2 w-full
-            xl:w-3/4
-          `}
-          value={topic}
-          onChange={(e) => setTopic(e.target.value as MessageTopic)}
-        >
-          <option value=""></option>
-          {Object.values(MessageTopic).map((topic) => (
-            <option value={topic} key={topic}>
-              {topic}
-            </option>
-          ))}
-        </select>
+        <Select
+          className={`w-full xl:w-3/4`}
+          styles={{
+            control: (baseStyles, state) => ({
+              ...baseStyles,
+              borderColor: "black",
+              fontSize: "1.125rem",
+            }),
+          }}
+          options={Object.values(MessageTopic).map((topic) => ({
+            value: topic,
+            label: topic,
+          }))}
+          onChange={(e) => {
+            if (e) setTopic(e.value as MessageTopic);
+          }}
+        />
 
         <label htmlFor="message" className="text-lg mt-3 mb-2 w-full font-bold">
           Message
