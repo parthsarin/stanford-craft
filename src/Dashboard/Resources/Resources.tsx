@@ -6,9 +6,15 @@ import Filter from "./Filter";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWarning } from "@fortawesome/free-solid-svg-icons";
 import { ScrollRestoration, useNavigate } from "react-router-dom";
-import { MessageTopic, sendMessage } from "../Contact/ContactUtils";
 import { UserContext } from "../../Auth";
 import { MySwal } from "../../Generic/Notify";
+import {
+  arrayUnion,
+  doc,
+  getFirestore,
+  increment,
+  setDoc,
+} from "firebase/firestore";
 
 const defaultResources = require("./resources.json") as Resource[];
 
@@ -47,6 +53,50 @@ const Resources = () => {
     setSelectedTags(tags);
     setSelectedTagsCount(count);
     setResources(filteredResources);
+  };
+
+  const handleRequestResource = (name: string | null, email: string | null) => {
+    // should we add personal information?
+    let personalInfo = {};
+    if (!name) name = user && user.displayName ? user.displayName : "";
+    if (!email) email = user && user.email ? user.email : "";
+
+    if (name || email) {
+      personalInfo = {
+        requestedBy: arrayUnion({ name, email }),
+      };
+    }
+
+    // update the database
+    const db = getFirestore();
+    setDoc(doc(db, "requestResource", searchString), {
+      numRequests: increment(1),
+      ...personalInfo,
+    }, { merge: true })
+      .then(() => {
+        MySwal.fire({
+          icon: "success",
+          title: "Resource requested!",
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: false,
+        });
+      })
+      .catch((e) => {
+        console.log(e);
+        MySwal.fire({
+          icon: "error",
+          title: "Message failed to send",
+          text: "Please try again later",
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: false,
+        });
+      });
   };
 
   return (
@@ -124,35 +174,11 @@ const Resources = () => {
                         return null;
                       }
                     })
-                    .then((email) => {
-                      if (email) {
-                        sendMessage(
-                          user && user.displayName ? user.displayName : "",
-                          email,
-                          MessageTopic.Feature,
-                          `This message was triggered by a resource search for "${searchString}", which didn't yield any results`,
-                          () => {}
-                        );
-                      } else {
-                        sendMessage(
-                          user && user.displayName ? user.displayName : "",
-                          "",
-                          MessageTopic.Feature,
-                          `This message was triggered by a resource search for "${searchString}", which didn't yield any results`,
-                          () => {}
-                        );
-                      }
-                    });
+                    .then((email) => handleRequestResource(null, email));
                   return;
                 }
 
-                sendMessage(
-                  user && user.displayName ? user.displayName : "",
-                  user && user.email ? user.email : "",
-                  MessageTopic.Feature,
-                  `This message was triggered by a resource search for "${searchString}", which didn't yield any results`,
-                  () => {}
-                );
+                handleRequestResource(null, null);
               }}
             >
               I'd like a resource for "{searchString}"
