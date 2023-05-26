@@ -72,7 +72,7 @@ const ViewMessage = () => {
           <b>Date: </b>
           {dateString}
         </p>
-        <pre>{message.message}</pre>
+        <pre className="whitespace-pre-wrap font-sans">{message.message}</pre>
       </div>
 
       <div className="flex flex-row flex-wrap justify-left space-x-4 mt-10">
