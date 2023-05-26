@@ -78,6 +78,7 @@ const SendMessage = () => {
         </label>
 
         <Select
+          id={'messageType'}
           className={`w-full xl:w-3/4`}
           styles={{
             control: (baseStyles, state) => ({

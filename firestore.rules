@@ -61,5 +61,10 @@ service cloud.firestore {
       allow create: if true;
       allow read, write: if isAdmin();
     }
+
+    // request a resource
+    match /requestResource/{resourceSlug} {
+      allow create, update: if true;
+    }
   }
 }
