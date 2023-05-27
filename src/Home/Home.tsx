@@ -84,7 +84,7 @@ const Home = () => {
             logEvent(getAnalytics(), "sign_up_for_updates");
           }}
         >
-          <p className="type-1 mb-10 w-full">
+          <p className="type-0 mb-10 w-full">
             Want to receive updates about the project? Enter your email below!
           </p>
           <input
@@ -93,16 +93,11 @@ const Home = () => {
             id="email"
             className={`
           border rounded px-10 py-5 mb-10 w-full xl:w-3/4
-          type-1
+          type-0
           `}
             placeholder="Email address"
           />
-          <button
-            className={`rounded border border-palo-alto bg-palo-alto text-white
-            px-15 py-10 hover:bg-palo-alto-dark w-fit`}
-          >
-            Sign me up!
-          </button>
+          <button className={`btn-palo-alto`}>Sign me up!</button>
         </form>
       </div>
       <div className={`w-full px-12 sm:px-32 md:px-60 lg:px-216 py-40`}>
@@ -142,12 +137,11 @@ const Home = () => {
             title="Teachers know pedagogy, routines, and assessment strategies best"
           >
             <p>
-              Between November 2022 and May 2023, we'll be working with ten
-              teachers, representing nine disciplines, five states, and two
-              countries to design these resources. Their insights from group
-              discussions and classroom implementations shaped the content,
-              structure, and style of the resources—we are so very grateful for
-              their work.
+              Between November 2022 and May 2023, we worked with ten teachers,
+              representing nine disciplines, five states, and two countries to
+              design these resources. Their insights from group discussions and
+              classroom implementations shaped the content, structure, and style
+              of the resources—we are so very grateful for their work.
             </p>
           </IconBullet>
           <div className="w-full border-t border-gray-500 mb-20"></div>

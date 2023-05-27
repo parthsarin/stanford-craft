@@ -7,7 +7,7 @@ const SearchBar = ({ onUpdate }: Props) => {
     <input
       type="text"
       placeholder="🔎 search for resources"
-      className="input mb-8 w-full h-40 px-10 rounded border border-black focus:outline-none focus:border-fog"
+      className="input mb-8 w-full h-40 px-10 focus:outline-none focus:border-fog"
       onChange={(e) => onUpdate(e.target.value)}
       aria-label="Search for resources"
     />

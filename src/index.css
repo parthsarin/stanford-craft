@@ -22,6 +22,7 @@ body,
   font-display: swap;
 }
 
+/* Tooltips */
 .tippy-tooltip-content {
   @apply type-3 px-8 py-5;
 }
@@ -30,17 +31,15 @@ body,
   @apply m-0;
 }
 
-.btn-link {
-  color: #006cb8;
-  text-decoration: underline;
-  font-weight: 600;
+/* React-select */
+.select-container input,
+.select-container input:focus {
+  border: none;
+  outline: none;
+  box-shadow: none;
+  @apply ring-0;
 }
-
-.btn-link:hover,
-.btn-link:focus {
-  color: #2e2d29;
-}
-
+/* Overrides */
 li {
   margin: 0;
 }

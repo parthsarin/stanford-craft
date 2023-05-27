@@ -1,3 +1,16 @@
+/* Link styles */
+.btn-link {
+  color: #006cb8;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.btn-link:hover,
+.btn-link:focus {
+  color: #2e2d29;
+}
+
+/* Button styles */
 .btn-rose {
   @apply rounded border bg-digital-red text-white px-3 py-2;
   @apply hover:bg-digital-red-dark mr-10;
@@ -14,11 +27,6 @@
   @apply rounded border bg-plum text-white px-3 py-2;
   @apply hover:bg-plum-dark mr-10;
 }
-/* .btn-fuchsia {
-  @apply rounded border border-fuchsia-700 bg-fuchsia-700 text-white px-3 py-2;
-  @apply hover:bg-fuchsia-800 mr-10;
-} */
-
 .btn-digital-blue {
   @apply bg-digital-blue hover:bg-digital-blue-dark hover:underline;
   @apply text-white py-10 px-20;
