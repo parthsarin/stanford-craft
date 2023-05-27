@@ -20,7 +20,7 @@ const About = () => {
         collection will continue to grow. To find out more information or if you
         are interested in getting involved, please{" "}
         <button
-          className="text-blue-500 hover:text-blue-700 hover:underline"
+          className="text-digital-blue hover:text-digital-blue-dark hover:underline"
           onClick={() => navigate("/dash/contact")}
         >
           get in touch
@@ -47,7 +47,7 @@ const About = () => {
 
       <div className="flex flex-col w-full items-center mt-4 mb-4">
         <img
-          className="w-2/3 rounded rounded-md"
+          className="w-2/3 rounded"
           src={codesignGroup}
           alt="Cohort of AI Co-Design Fellows"
         />
@@ -59,7 +59,7 @@ const About = () => {
       <p>
         Interested in becoming a future co-design fellow?{" "}
         <button
-          className="text-blue-500 hover:text-blue-700 hover:underline"
+          className="text-digital-blue hover:text-digital-blue-dark hover:underline"
           onClick={() => navigate("/dash/contact")}
         >
           Contact us!
@@ -82,7 +82,7 @@ const About = () => {
       <p className="mt-2">
         You can find the source code for this site and all included tools at{" "}
         <a
-          className="text-blue-500 hover:text-blue-700 hover:underline"
+          className="text-digital-blue hover:text-digital-blue-dark hover:underline"
           href="https://github.com/parthsarin/stanford-craft"
           rel="noreferrer"
           target="_blank"

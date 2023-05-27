@@ -59,7 +59,7 @@ const ViewMessage = () => {
     <div className="p-8 w-full md:w-2/3">
       <h1 className="text-4xl font-bold mb-10">Message from {message.name}</h1>
 
-      <div className="w-full text-lg">
+      <div className="w-full type-1">
         <p>
           <b>From: </b>
           {message.name} ({message.email})

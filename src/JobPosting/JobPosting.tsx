@@ -1,5 +1,5 @@
-import { getBackground } from '../Generic/Background';
-import './JobPosting.css';
+import { getBackground } from "../Generic/Background";
+import "./JobPosting.css";
 
 const JobPosting = () => {
   // const scrollToId = (id: string) => () => {
@@ -24,15 +24,15 @@ const JobPosting = () => {
           <p className="text-xl font-bold font-serif">
             Curricular Resources about AI for Teaching (CRAFT)
           </p>
-          <p className="text-lg mb-3">
+          <p className="type-1 mb-3">
             A project from the Stanford Graduate School of Education
           </p>
           <div className="w-full border-t border-gray-500 mb-3"></div>
-          <p className="text-lg">
+          <p className="type-1">
             We're building resources to teach AI literacies for high school and
             college instructors and assembling them into a full curriculum that
-            will be deployed in a course with the National Educational Equity Lab
-            offered in Fall 2023.
+            will be deployed in a course with the National Educational Equity
+            Lab offered in Fall 2023.
           </p>
         </div>
       </header>
@@ -44,8 +44,8 @@ const JobPosting = () => {
           </p>
           <p>
             In partnership with the{" "}
-            <a href="https://edequitylab.org/">National Education Equity Lab</a>,
-            Stanford University is developing a course exploring Artificial
+            <a href="https://edequitylab.org/">National Education Equity Lab</a>
+            , Stanford University is developing a course exploring Artificial
             Intelligence (AI) and its impact on the world. This course will be
             offered for{" "}
             <a href="https://digitaleducation.stanford.edu/news/journey-college-more-low-income-high-schoolers-are-taking-digital-path-through-stanford">
@@ -58,8 +58,8 @@ const JobPosting = () => {
           <ul>
             <li>Fundamental processes and tools used in AI algorithms</li>
             <li>
-              Ethics, responsibility, and social justice in using, deploying, and
-              interacting with AI
+              Ethics, responsibility, and social justice in using, deploying,
+              and interacting with AI
             </li>
             <li>
               AI use in specific contexts like art, hiring and employment, and
@@ -77,13 +77,14 @@ const JobPosting = () => {
           <h2>Equal opportunity</h2>
           <p>
             Consistent with its obligations under the law, the University will
-            provide reasonable accommodation to any employee with a disability who
-            requires accommodation to perform the essential functions of his or
-            her job. Stanford is an equal employment opportunity and affirmative
-            action employer. All qualified applicants will receive consideration
-            for employment without regard to race, color, religion, sex, sexual
-            orientation, gender identity, national origin, disability, protected
-            veteran status, or any other characteristic protected by law.
+            provide reasonable accommodation to any employee with a disability
+            who requires accommodation to perform the essential functions of his
+            or her job. Stanford is an equal employment opportunity and
+            affirmative action employer. All qualified applicants will receive
+            consideration for employment without regard to race, color,
+            religion, sex, sexual orientation, gender identity, national origin,
+            disability, protected veteran status, or any other characteristic
+            protected by law.
           </p>
           <h2>Open roles</h2>
           <p>
@@ -99,14 +100,14 @@ const JobPosting = () => {
           <h3>Role details</h3>
           <p>
             We are currently recruiting six Section Leaders who will deliver the
-            AI course material to high school students in weekly section meetings,
-            support students through the course, and prepare students for
-            college-level courses. Enrollment for the Equity Lab course will be
-            about 150 high school students from across the country. There will be
-            about 10-15 students assigned to each SL (Section Leader), with the
-            possibility of multiple SLs being paired to support larger courses.
-            Professional learning and lesson plan guidance will be provided all
-            along the way.&nbsp;
+            AI course material to high school students in weekly section
+            meetings, support students through the course, and prepare students
+            for college-level courses. Enrollment for the Equity Lab course will
+            be about 150 high school students from across the country. There
+            will be about 10-15 students assigned to each SL (Section Leader),
+            with the possibility of multiple SLs being paired to support larger
+            courses. Professional learning and lesson plan guidance will be
+            provided all along the way.&nbsp;
           </p>
           <p>
             <em>Responsibilities:</em>
@@ -114,9 +115,9 @@ const JobPosting = () => {
           <ul>
             <li>
               Each week you&rsquo;ll be responsible for co-leading (with a high
-              school teacher) a one hour-long required discussion section. (There
-              may be additional live office hours, depending on the needs of
-              students.)
+              school teacher) a one hour-long required discussion section.
+              (There may be additional live office hours, depending on the needs
+              of students.)
               <ul>
                 <li>
                   Sections will have a student teacher ratio as close to 10-15:1
@@ -145,7 +146,9 @@ const JobPosting = () => {
             <li>
               Things NOT expected of SLs
               <ul>
-                <li>Resolving administrative issues with schools and students</li>
+                <li>
+                  Resolving administrative issues with schools and students
+                </li>
                 <li>Scheduling sections, exams, or other logistics</li>
               </ul>
             </li>
@@ -185,10 +188,11 @@ const JobPosting = () => {
           <h3>Expected time commitment</h3>
           <ul>
             <li>
-              <strong>August - Sept:</strong> <em>1-10 hours/week</em>, including
-              professional learning experience (5-6 hours), meetings with high
-              school teachers, familiarizing yourself with course materials,
-              assisting with some pre-course materials with the students.&nbsp;
+              <strong>August - Sept:</strong> <em>1-10 hours/week</em>,
+              including professional learning experience (5-6 hours), meetings
+              with high school teachers, familiarizing yourself with course
+              materials, assisting with some pre-course materials with the
+              students.&nbsp;
             </li>
             <li>
               <strong>Sept - Dec:</strong> <em>10-12 hours/week</em>, attending
@@ -202,9 +206,9 @@ const JobPosting = () => {
           </ul>
           <h3>Compensation</h3>
           <p>
-            Section Leaders will be paid $25/hour and will need to be eligible to
-            work in the US. This position does not come with tuition support. The
-            work location will be remote, but we do have some limited office
+            Section Leaders will be paid $25/hour and will need to be eligible
+            to work in the US. This position does not come with tuition support.
+            The work location will be remote, but we do have some limited office
             spaces for drop down work on campus if needed. SLs will need to
             complete a background check, get an I9 form verified in-person in
             their current location, and complete mandated reporter training (~30
@@ -220,14 +224,14 @@ const JobPosting = () => {
               Apply here for the section leader role!
             </button>
             <span className="text-emerald-800 italic mt-2">
-              Applications will be accepted on a rolling basis through the end of
-              May
+              Applications will be accepted on a rolling basis through the end
+              of May
             </span>
           </div>
         </div>
       </main>
     </>
   );
-}
+};
 
 export default JobPosting;

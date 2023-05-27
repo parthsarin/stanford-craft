@@ -3,17 +3,25 @@ import { QuizPreviewCardProps } from "../DatamaxTypes";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmarkCircle } from "@fortawesome/free-solid-svg-icons";
 import { MySwal } from "../../../Generic/Notify";
-import { arrayRemove, deleteDoc, doc, getFirestore, updateDoc } from "firebase/firestore";
+import {
+  arrayRemove,
+  deleteDoc,
+  doc,
+  getFirestore,
+  updateDoc,
+} from "firebase/firestore";
 
-const QuizPreviewCard = ({ quiz, joinCode, createdAt }: QuizPreviewCardProps) => {
+const QuizPreviewCard = ({
+  quiz,
+  joinCode,
+  createdAt,
+}: QuizPreviewCardProps) => {
   const navigate = useNavigate();
 
   const onClick = () => {
-    if (quiz.active)
-      navigate(`/dash/datamax/quiz/${joinCode}`);
-    else
-      navigate(`/dash/analyze/${joinCode}`);
-  }
+    if (quiz.active) navigate(`/dash/datamax/quiz/${joinCode}`);
+    else navigate(`/dash/analyze/${joinCode}`);
+  };
 
   const handleDelete = () => {
     MySwal.fire({
@@ -30,19 +38,19 @@ const QuizPreviewCard = ({ quiz, joinCode, createdAt }: QuizPreviewCardProps) =>
 
         const userDocRef = doc(db, "users", quiz.owner);
         await updateDoc(userDocRef, {
-          'datamax.activeQuizzes': arrayRemove(joinCode),
-          'datamax.pastQuizzes': arrayRemove(joinCode),
+          "datamax.activeQuizzes": arrayRemove(joinCode),
+          "datamax.pastQuizzes": arrayRemove(joinCode),
         });
 
         window.location.reload();
       }
-    })
-  }
+    });
+  };
 
   const { template } = quiz;
 
   return (
-    <div 
+    <div
       className="border rounded border-black px-3 py-1 hover:bg-gray-100 hover:cursor-pointer relative text-center z-0"
       onClick={onClick}
       role="button"
@@ -61,11 +69,13 @@ const QuizPreviewCard = ({ quiz, joinCode, createdAt }: QuizPreviewCardProps) =>
           className="bg-white rounded-full"
         />
       </button>
-      <h2 className="text-lg">{template.name}</h2>
-      <p className="text-sm italic mb-2">Join Code: {joinCode}</p>
-      <p className="text-sm">Created on {createdAt.toDate().toLocaleDateString("en-US")}</p>
+      <h2 className="type-1">{template.name}</h2>
+      <p className="type-0 italic mb-2">Join Code: {joinCode}</p>
+      <p className="type-0">
+        Created on {createdAt.toDate().toLocaleDateString("en-US")}
+      </p>
     </div>
-  )
-}
+  );
+};
 
 export default QuizPreviewCard;

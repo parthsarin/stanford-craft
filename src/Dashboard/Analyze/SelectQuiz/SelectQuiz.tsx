@@ -1,6 +1,13 @@
 import { faChartLine } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { collection, documentId, getDocs, getFirestore, query, where } from "firebase/firestore";
+import {
+  collection,
+  documentId,
+  getDocs,
+  getFirestore,
+  query,
+  where,
+} from "firebase/firestore";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../../Auth";
@@ -13,9 +20,13 @@ const SelectQuiz = () => {
   const navigate = useNavigate();
 
   const [searchTerm, setSearchTerm] = useState("");
-  const [pastQuizzes, setPastQuizzes] = useState<{[key: string]: QuizDoc}>({});
+  const [pastQuizzes, setPastQuizzes] = useState<{ [key: string]: QuizDoc }>(
+    {}
+  );
   const [showSuggestions, setShowSuggestions] = useState(false);
-  const [suggestions, setSuggestions] = useState<{[key: string]: QuizDoc}>({});
+  const [suggestions, setSuggestions] = useState<{ [key: string]: QuizDoc }>(
+    {}
+  );
 
   // get the quizzes that the user has initiated
   useEffect(() => {
@@ -25,12 +36,15 @@ const SelectQuiz = () => {
 
       const db = getFirestore();
       const dmax = collection(db, "datamax");
-      const q = query(dmax, where(documentId(), "in", user.datamax.pastQuizzes));
+      const q = query(
+        dmax,
+        where(documentId(), "in", user.datamax.pastQuizzes)
+      );
       const snapshot = await getDocs(q);
 
       let quizzes = {};
       snapshot.forEach((doc) => {
-        quizzes = {...quizzes, [doc.id]: doc.data()};
+        quizzes = { ...quizzes, [doc.id]: doc.data() };
       });
 
       setPastQuizzes(quizzes);
@@ -42,11 +56,11 @@ const SelectQuiz = () => {
     setSearchTerm(e.target.value);
 
     // apply the match function to the past quizzes
-    const matches = Object
-                      .entries(pastQuizzes)
-                      .filter(([joinCode, quiz]) => match(e.target.value, { ...quiz, joinCode }));
+    const matches = Object.entries(pastQuizzes).filter(([joinCode, quiz]) =>
+      match(e.target.value, { ...quiz, joinCode })
+    );
     setSuggestions(Object.fromEntries(matches));
-  }
+  };
 
   const handleChoice = () => navigate(`/dash/analyze/${searchTerm}`);
 
@@ -59,8 +73,7 @@ const SelectQuiz = () => {
         onFocus={() => setShowSuggestions(true)}
         onBlur={() => setShowSuggestions(false)}
         onKeyDown={(e) => {
-          if (e.key === "Enter")
-            handleChoice();
+          if (e.key === "Enter") handleChoice();
         }}
         value={searchTerm}
         onChange={handleType}
@@ -71,37 +84,38 @@ const SelectQuiz = () => {
         }`}
       >
         <ul aria-label="options">
-          {
-          Object.entries(suggestions)
+          {Object.entries(suggestions)
             .map(([joinCode, quiz]) => ({ ...quiz, joinCode }))
             .map((q) => (
               <li key={q.joinCode}>
-                <button onMouseDown={() => navigate(`/dash/analyze/${q.joinCode}`)}>
+                <button
+                  onMouseDown={() => navigate(`/dash/analyze/${q.joinCode}`)}
+                >
                   <p className="inline-block text-md">{q.template.name}</p>
-                  <p className="inline-block text-sm">
-                    {q.joinCode} ({q.createdAt.toDate().toLocaleDateString("en-US")})
+                  <p className="inline-block type-0">
+                    {q.joinCode} (
+                    {q.createdAt.toDate().toLocaleDateString("en-US")})
                   </p>
                 </button>
               </li>
-            ))
-          }
-          { Object.values(suggestions).length === 0 && (
-            <li className="px-3 py-1 text-lg">You don't own a quiz with that code (press "Analyze" to search the entire database)</li>
+            ))}
+          {Object.values(suggestions).length === 0 && (
+            <li className="px-3 py-1 type-1">
+              You don't own a quiz with that code (press "Analyze" to search the
+              entire database)
+            </li>
           )}
         </ul>
       </div>
-      <button 
-        className="ml-6 px-3 py-1 text-lg bg-red-600 text-white hover:bg-red-700 rounded rounded-md"
+      <button
+        className="ml-6 px-3 py-1 type-1 bg-red-600 text-white hover:bg-red-700 rounded"
         onClick={handleChoice}
       >
-        <FontAwesomeIcon
-          icon={faChartLine}
-          className="mr-2"
-        />
+        <FontAwesomeIcon icon={faChartLine} className="mr-2" />
         Analyze
       </button>
     </div>
   );
-}
+};
 
 export default SelectQuiz;

@@ -7,17 +7,13 @@ const Analyze = () => {
   return (
     <div className=" p-8">
       <h1 className="text-4xl font-bold mb-10">Analyze</h1>
-      <p className="text-lg italic">
+      <p className="type-1 italic">
         Analyze data generated with these resources or upload your own CSV file
       </p>
-      {
-        outlet
-        ? <Outlet />
-        : <SelectQuiz />
-      }
+      {outlet ? <Outlet /> : <SelectQuiz />}
       <ScrollRestoration />
     </div>
-  ); 
-}
+  );
+};
 
 export default Analyze;

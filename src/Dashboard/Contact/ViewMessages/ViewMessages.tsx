@@ -128,7 +128,10 @@ const ViewMessages = () => {
             >
               <td className="px-3 text-right text-xs">
                 {user && !message.viewedBy.includes(user.uid) && (
-                  <FontAwesomeIcon icon={faCircle} className="text-blue-600" />
+                  <FontAwesomeIcon
+                    icon={faCircle}
+                    className="text-digital-blue-dark"
+                  />
                 )}
               </td>
               <td className="px-6 py-4">{message.name}</td>
@@ -154,7 +157,7 @@ const ViewMessages = () => {
                     distance={10}
                   >
                     <button
-                      className="text-blue-600 hover:text-blue-800 text-xl"
+                      className="text-digital-blue-dark text-xl"
                       onClick={(e) => {
                         e.stopPropagation();
                         const db = getFirestore();
@@ -186,7 +189,7 @@ const ViewMessages = () => {
                     distance={10}
                   >
                     <button
-                      className="text-blue-600 hover:text-blue-800 text-xl"
+                      className="text-digital-blue-dark text-xl"
                       onClick={(e) => {
                         e.stopPropagation();
                         const db = getFirestore();

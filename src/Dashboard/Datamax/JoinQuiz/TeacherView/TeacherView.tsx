@@ -1,6 +1,19 @@
-import { faStopwatch, faTrash, faXmarkCircle } from "@fortawesome/free-solid-svg-icons";
+import {
+  faStopwatch,
+  faTrash,
+  faXmarkCircle,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { arrayRemove, collection, deleteDoc, doc, getFirestore, onSnapshot, query, updateDoc } from "firebase/firestore";
+import {
+  arrayRemove,
+  collection,
+  deleteDoc,
+  doc,
+  getFirestore,
+  onSnapshot,
+  query,
+  updateDoc,
+} from "firebase/firestore";
 import { getFunctions, httpsCallable } from "firebase/functions";
 import { useEffect, useState } from "react";
 import QRCode from "react-qr-code";
@@ -16,7 +29,9 @@ interface Params {
 
 const TeacherView = ({ joinCode, quiz }: Params) => {
   const [loading, setLoading] = useState(false);
-  const [responses, setResponses] = useState<{ [key: string]: QuizResponse }>({});
+  const [responses, setResponses] = useState<{ [key: string]: QuizResponse }>(
+    {}
+  );
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -55,13 +70,13 @@ const TeacherView = ({ joinCode, quiz }: Params) => {
         const docRef = doc(db, "datamax", joinCode, "responses", id);
         deleteDoc(docRef);
       }
-    })
-  }
+    });
+  };
 
   const handleEndQuiz = async () => {
     setLoading(true);
     const functions = getFunctions();
-    const endQuiz = httpsCallable(functions, 'endQuiz');
+    const endQuiz = httpsCallable(functions, "endQuiz");
 
     let res;
     try {
@@ -109,10 +124,10 @@ const TeacherView = ({ joinCode, quiz }: Params) => {
 
   return (
     <div className="p-4 w-full lg:w-2/3">
-      { loading && <Loader /> }
+      {loading && <Loader />}
       <h1 className="text-2xl mb-4">{quiz.template.name}</h1>
       <div className="flex flex-row justify-center">
-        <div className="flex flex-col items-center p-4 border rounded rounded-md border-black">
+        <div className="flex flex-col items-center p-4 border rounded border-black">
           <QRCode value={window.location.href} />
           <h2 className="text-xl mt-2">Join Code: {joinCode}</h2>
         </div>
@@ -125,7 +140,7 @@ const TeacherView = ({ joinCode, quiz }: Params) => {
           {Object.entries(responses).map(([id, response]) => (
             <div
               key={id}
-              className="relative text-center items-center py-3 border rounded rounded-md border-black"
+              className="relative text-center items-center py-3 border rounded border-black"
             >
               {/* delete button */}
               <button
@@ -138,7 +153,7 @@ const TeacherView = ({ joinCode, quiz }: Params) => {
                   className="bg-white rounded-full"
                 />
               </button>
-              <h3 className="text-lg">{response.name}</h3>
+              <h3 className="type-1">{response.name}</h3>
             </div>
           ))}
         </div>
@@ -146,7 +161,7 @@ const TeacherView = ({ joinCode, quiz }: Params) => {
           <h2 className="text-xl mb-2">Actions</h2>
           <div className="flex flex-row">
             <button
-              className="bg-teal-600 hover:bg-teal-700 text-white px-4 py-2 mr-2 rounded rounded-md"
+              className="bg-teal-600 hover:bg-teal-700 text-white px-4 py-2 mr-2 rounded"
               onClick={handleEndQuiz}
             >
               <FontAwesomeIcon
@@ -157,7 +172,7 @@ const TeacherView = ({ joinCode, quiz }: Params) => {
               End Quiz
             </button>
             <button
-              className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded rounded-md"
+              className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded"
               onClick={handleDeleteQuiz}
             >
               <FontAwesomeIcon

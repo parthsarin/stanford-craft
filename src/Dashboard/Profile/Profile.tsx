@@ -33,16 +33,15 @@ const Profile = () => {
     }
   };
 
-
   return (
     <div className="p-4 w-full md:w-2/3 xl:w-1/2">
       <h1 className="text-2xl mb-6">
         Welcome, {updateUser.displayName?.split(" ")[0]}! 👋🏽
       </h1>
 
-      <p className="text-lg mb-3">Update your information:</p>
-      <form 
-        className="flex flex-col bg-slate-600 text-white rounded rounded-md w-full p-4"
+      <p className="type-1 mb-3">Update your information:</p>
+      <form
+        className="flex flex-col bg-slate-600 text-white rounded w-full p-4"
         onSubmit={handleSubmit}
       >
         <div className="grid grid-cols-3">
@@ -54,7 +53,7 @@ const Profile = () => {
               type="text"
               name="displayName"
               value={updateUser.displayName ? updateUser.displayName : ""}
-              className="w-full p-2 rounded rounded-md bg-slate-500 text-white"
+              className="w-full p-2 rounded bg-slate-500 text-white"
               onChange={(e) =>
                 setUpdateUser({ ...updateUser, displayName: e.target.value })
               }
@@ -87,14 +86,14 @@ const Profile = () => {
 
         <button
           type="submit"
-          className="col-span-3 p-2 bg-violet-500 hover:bg-violet-600 rounded rounded-md font-bold"
+          className="col-span-3 p-2 bg-violet-500 hover:bg-violet-600 rounded font-bold"
         >
-            Update Profile
-          </button>
+          Update Profile
+        </button>
       </form>
       <ScrollRestoration />
     </div>
   );
-}
+};
 
 export default Profile;

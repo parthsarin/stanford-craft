@@ -30,7 +30,7 @@ const SendMessage = () => {
   return (
     <div className="p-8 w-full md:w-2/3">
       <h1 className="text-4xl font-bold mb-10">Get in touch</h1>
-      <p className="text-lg italic">Fill out this form to send us a message</p>
+      <p className="type-1 italic">Fill out this form to send us a message</p>
 
       <form
         className="flex flex-col items-start"
@@ -39,7 +39,7 @@ const SendMessage = () => {
           sendMessage(name, email, topic, message, clearData);
         }}
       >
-        <label htmlFor="name" className="text-lg mt-5 w-full font-bold">
+        <label htmlFor="name" className="type-1 mt-5 w-full font-bold">
           Name
         </label>
 
@@ -56,7 +56,7 @@ const SendMessage = () => {
           disabled={Boolean(user && user.displayName)}
         />
 
-        <label htmlFor="email" className="text-lg mt-3 w-full font-bold">
+        <label htmlFor="email" className="type-1 mt-3 w-full font-bold">
           Email
         </label>
 
@@ -73,12 +73,12 @@ const SendMessage = () => {
           disabled={Boolean(user && user.email)}
         />
 
-        <label htmlFor="messageType" className="text-lg mt-3 w-full font-bold">
+        <label htmlFor="messageType" className="type-1 mt-3 w-full font-bold">
           Topic
         </label>
 
         <Select
-          id={'messageType'}
+          id={"messageType"}
           className={`w-full xl:w-3/4`}
           styles={{
             control: (baseStyles, state) => ({
@@ -96,7 +96,7 @@ const SendMessage = () => {
           }}
         />
 
-        <label htmlFor="message" className="text-lg mt-3 mb-2 w-full font-bold">
+        <label htmlFor="message" className="type-1 mt-3 mb-2 w-full font-bold">
           Message
         </label>
 

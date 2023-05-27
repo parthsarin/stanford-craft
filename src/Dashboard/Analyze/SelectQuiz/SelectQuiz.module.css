@@ -13,14 +13,14 @@
 }
 
 .input {
-  @apply w-2/3 text-lg border border-black;
-  @apply rounded rounded-md px-3 py-1;
+  @apply w-2/3 type-1 border border-black;
+  @apply rounded px-3 py-1;
 }
 
 .dropdown {
   @apply w-2/3;
   @apply bg-white rounded divide-y;
-  @apply divide-gray-100 shadow dark:bg-gray-600;
+  @apply divide-fog shadow;
 
   position: absolute;
   left: 0;
@@ -29,7 +29,7 @@
 }
 
 .dropdown ul {
-  @apply py-1 text-sm text-gray-700 dark:text-gray-200;
+  @apply py-1 type-0 text-gray-700 dark:text-gray-200;
 }
 
 .dropdown ul li button {

@@ -2,11 +2,11 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { generateUUID } from "../../../../../Generic/UUID";
-import { DataElementGenerator, DataElementTemplate } from "../../../DatamaxTypes";
 import {
-  UniformPrompt,
-  NormalPrompt
-} from "./DistributionParameterPrompts";
+  DataElementGenerator,
+  DataElementTemplate,
+} from "../../../DatamaxTypes";
+import { UniformPrompt, NormalPrompt } from "./DistributionParameterPrompts";
 
 interface DataElementProps {
   data: DataElementTemplate;
@@ -15,17 +15,15 @@ interface DataElementProps {
 }
 
 const DataElement = ({ data, onDelete, onUpdate }: DataElementProps) => {
-  const [distribution, setDistribution] = useState(
-    data.generator
-  );
+  const [distribution, setDistribution] = useState(data.generator);
 
   const deKey = generateUUID();
 
   // updateDistribution allows the parameter prompt fields to inject values into
   // the data element which is then passed up to the parent component
   const updateDistribution = (params: any) => {
-    const newData: DataElementTemplate = { 
-      name: data.name, 
+    const newData: DataElementTemplate = {
+      name: data.name,
       generator: data.generator,
       round: data.round,
     };
@@ -40,8 +38,7 @@ const DataElement = ({ data, onDelete, onUpdate }: DataElementProps) => {
     }
 
     onUpdate({ ...newData, ...params } as DataElementTemplate);
-  }
-
+  };
 
   return (
     <div className="w-full flex flex-row mb-2">
@@ -58,7 +55,7 @@ const DataElement = ({ data, onDelete, onUpdate }: DataElementProps) => {
 
       {/* prompt for the data element */}
       <div className="flex-1">
-        <p className="text-lg">
+        <p className="type-1">
           Generate a field titled{" "}
           <input
             className={`w-30 px-2 py-1 border rounded`}
@@ -74,7 +71,10 @@ const DataElement = ({ data, onDelete, onUpdate }: DataElementProps) => {
             value={data.generator}
             onChange={(e) => {
               e.preventDefault();
-              onUpdate({ ...data, generator: e.target.value as DataElementGenerator });
+              onUpdate({
+                ...data,
+                generator: e.target.value as DataElementGenerator,
+              });
               setDistribution(e.target.value as DataElementGenerator);
             }}
           >
@@ -95,6 +95,6 @@ const DataElement = ({ data, onDelete, onUpdate }: DataElementProps) => {
       </div>
     </div>
   );
-}
+};
 
 export default DataElement;

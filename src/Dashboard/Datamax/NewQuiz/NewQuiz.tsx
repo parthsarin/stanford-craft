@@ -6,11 +6,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import Loader from "../../../Generic/Loader";
 
-import { 
-  generateBlankQuestion, 
-  generateBlankQuiz, 
+import {
+  generateBlankQuestion,
+  generateBlankQuiz,
   QuizTemplate,
-  QuestionTemplate
+  QuestionTemplate,
 } from "../DatamaxTypes";
 import { generateUUID } from "../../../Generic/UUID";
 import { UserContext } from "../../../Auth";
@@ -30,9 +30,7 @@ const NewQuiz = () => {
   useEffect(() => {
     if (!quiz.upload) return;
     createQuiz(quiz)
-      .then(
-        (joinCode) => navigate(`/dash/datamax/quiz/${joinCode}`),
-      )
+      .then((joinCode) => navigate(`/dash/datamax/quiz/${joinCode}`))
       .catch((err) => {
         setLoading(false);
         console.log(err);
@@ -40,47 +38,49 @@ const NewQuiz = () => {
           icon: "error",
           title: "Error creating quiz",
           text: err.message,
-        })
+        });
       });
   }, [navigate, quiz]);
 
   // functions to handle adding/removing questions
   const deleteQuestion = (questionKey: string) => () => {
     setQuiz((quiz) => {
-      let newQuestions = {...quiz.questions};
+      let newQuestions = { ...quiz.questions };
       delete newQuestions[questionKey];
 
-      return ({ ...quiz, questions: newQuestions });
-    })
-  }
+      return { ...quiz, questions: newQuestions };
+    });
+  };
 
   const addQuestion = (e: FormEvent) => {
     e.preventDefault();
     e.stopPropagation();
 
     setQuiz((quiz) => {
-      const newQuestions = {...quiz.questions};
+      const newQuestions = { ...quiz.questions };
       newQuestions[generateUUID()] = generateBlankQuestion();
-      return ({ ...quiz, questions: newQuestions });
-    })
-  }
+      return { ...quiz, questions: newQuestions };
+    });
+  };
 
   const duplicateQuestion = (questionKey: string) => () => {
     setQuiz((quiz) => {
-      const newQuestions = {...quiz.questions};
-      const newQuestion = JSON.parse(JSON.stringify(quiz.questions[questionKey]));
+      const newQuestions = { ...quiz.questions };
+      const newQuestion = JSON.parse(
+        JSON.stringify(quiz.questions[questionKey])
+      );
       newQuestions[generateUUID()] = newQuestion;
 
-      return ({ ...quiz, questions: newQuestions });
+      return { ...quiz, questions: newQuestions };
     });
-  }
+  };
 
   // the updateQuestion is passed to the child Question component
   const updateQuestion = (questionKey: string) => (data: QuestionTemplate) => {
     setQuiz((quiz) => {
-      const newQuestions = {...quiz.questions};
+      const newQuestions = { ...quiz.questions };
       newQuestions[questionKey] = data;
-      return ({ ...quiz, questions: newQuestions });
+      return { ...quiz, questions: newQuestions };
     });
   };
 
@@ -90,21 +90,24 @@ const NewQuiz = () => {
     e.stopPropagation();
 
     setLoading(true);
-    setQuiz(quiz => ({ ...quiz, upload: true }));
-  }
+    setQuiz((quiz) => ({ ...quiz, upload: true }));
+  };
 
   return (
     <div className="p-4 flex flex-1 flex-col">
-      { ((!user) || loading) && <Loader /> }
+      {(!user || loading) && <Loader />}
       <div className="w-4/5 lg:w-2/3 p-2 rounded bg-gray-200 mb-4">
         <button
-          className="text-blue-600 hover:underline"
+          className="text-digital-blue-dark hover:underline"
           onClick={() => navigate("/dash/datamax")}
         >
           Datamax
         </button>{" "}
         /{" "}
-        <button className="text-blue-600 hover:underline" onClick={() => {}}>
+        <button
+          className="text-digital-blue-dark hover:underline"
+          onClick={() => {}}
+        >
           New Quiz
         </button>
       </div>
@@ -117,24 +120,22 @@ const NewQuiz = () => {
           </label>
           <input
             type="text"
-            className="w-4/5 lg:w-1/2 rounded border text-lg px-2 py-1"
+            className="w-4/5 lg:w-1/2 rounded border type-1 px-2 py-1"
             placeholder="My awesome quiz"
             value={quiz.name}
             onChange={(e) => setQuiz({ ...quiz, name: e.target.value })}
           ></input>
         </div>
 
-        {
-          Object.keys(quiz.questions).map((questionKey) => (
-            <Question
-              key={questionKey}
-              data={quiz.questions[questionKey]}
-              onDelete={deleteQuestion(questionKey)}
-              onUpdate={updateQuestion(questionKey)}
-              onDuplicate={duplicateQuestion(questionKey)}
-            />
-          ))
-        }
+        {Object.keys(quiz.questions).map((questionKey) => (
+          <Question
+            key={questionKey}
+            data={quiz.questions[questionKey]}
+            onDelete={deleteQuestion(questionKey)}
+            onUpdate={updateQuestion(questionKey)}
+            onDuplicate={duplicateQuestion(questionKey)}
+          />
+        ))}
 
         <button
           className="flex flex-row w-4/5 lg:w-1/2 rounded border border-black border-dashed p-2 justify-center items-center text-xl hover:bg-gray-100"
@@ -151,6 +152,6 @@ const NewQuiz = () => {
       </form>
     </div>
   );
-}
+};
 
 export default NewQuiz;

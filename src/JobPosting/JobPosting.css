@@ -1,22 +1,24 @@
-#jobs a, #jobs .link {
-  @apply text-blue-600;
+#jobs a,
+#jobs .link {
+  @apply text-digital-blue;
   @apply underline underline-offset-1;
 }
 
-#jobs a:hover, #jobs .link:hover {
-  @apply text-blue-800;
+#jobs a:hover,
+#jobs .link:hover {
+  @apply text-stone;
 }
 
 #jobs h1 {
-  @apply text-2xl mb-4 mt-6;
+  @apply mb-4 mt-6;
 }
 
 #jobs h2 {
-  @apply text-2xl mb-4 mt-6;
+  @apply mb-4 mt-6;
 }
 
 #jobs h3 {
-  @apply text-xl mb-2 mt-6;
+  @apply mb-2 mt-6;
 }
 
 #jobs p {
@@ -28,7 +30,7 @@
 }
 
 #jobs .divider {
-  @apply border border-t border-gray-600 mt-8 mb-8 w-4/5 mx-auto;
+  @apply border border-t border-stone mt-8 mb-8 w-4/5 mx-auto;
 }
 
 #jobs .container {
@@ -38,10 +40,10 @@
 #jobs .coord-grid {
   @apply grid grid-cols-1 md:grid-cols-3 w-full xl:w-4/5 mx-auto;
   @apply mt-8 mb-8;
-  @apply gap-x-8 gap-y-8;
+  @apply gap-x-lg gap-y-lg;
 }
 
 #jobs .coord-grid > div {
-  @apply p-4 rounded rounded-md flex flex-col;
+  @apply p-4 rounded flex flex-col;
   @apply border border-black;
 }

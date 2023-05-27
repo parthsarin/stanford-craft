@@ -69,10 +69,14 @@ const Resources = () => {
 
     // update the database
     const db = getFirestore();
-    setDoc(doc(db, "requestResource", searchString), {
-      numRequests: increment(1),
-      ...personalInfo,
-    }, { merge: true })
+    setDoc(
+      doc(db, "requestResource", searchString),
+      {
+        numRequests: increment(1),
+        ...personalInfo,
+      },
+      { merge: true }
+    )
       .then(() => {
         MySwal.fire({
           icon: "success",
@@ -113,12 +117,12 @@ const Resources = () => {
         </div>
         <div className="flex flex-col">
           <h2 className="font-bold text-xl">These resources are in progress</h2>
-          <p className="text-lg">
+          <p className="type-1">
             Many of these resources are currently being developed and more will
             be added soon. If you have any feedback or questions, you can reach
             out to the CRAFT team through our{" "}
             <button
-              className="text-blue-500 hover:text-blue-700 hover:underline"
+              className="text-digital-blue hover:text-digital-blue-dark hover:underline"
               onClick={() => navigate("/dash/contact")}
             >
               contact form
@@ -141,11 +145,11 @@ const Resources = () => {
             <h2 className="text-2xl font-bold mb-3">
               Not finding what you're looking for?
             </h2>
-            <p className="text-lg">
+            <p className="type-1">
               We're continuously adding more resources. Add your request using
               our{" "}
               <button
-                className="text-blue-500 hover:text-blue-700 hover:underline"
+                className="text-digital-blue hover:text-digital-blue-dark hover:underline"
                 onClick={() => navigate("/dash/contact")}
               >
                 contact form

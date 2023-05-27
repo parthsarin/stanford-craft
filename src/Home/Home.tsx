@@ -27,17 +27,17 @@ const Home = () => (
         <h1 className="text-xl font-bold font-serif">
           Curricular Resources about AI for Teaching (CRAFT)
         </h1>
-        <p className="text-lg mb-3">
+        <p className="type-1 mb-3">
           A project from the Stanford Graduate School of Education
         </p>
         <div className="w-full border-t border-gray-500 mb-3"></div>
-        <p className="text-lg mb-3">
+        <p className="type-1 mb-3">
           We're building resources to teach AI literacies for high school and
           college instructors and assembling them into a full curriculum that
           will be deployed in a course with the{" "}
           <a
             href="https://edequitylab.org/"
-            className="text-blue-600 hover:underline"
+            className="text-digital-blue-dark hover:underline"
           >
             National Educational Equity Lab
           </a>{" "}
@@ -62,7 +62,7 @@ const Home = () => (
           logEvent(getAnalytics(), "sign_up_for_updates");
         }}
       >
-        <p className="text-lg mb-3 w-full">
+        <p className="type-1 mb-3 w-full">
           Want to receive updates about the project? Enter your email below!
         </p>
         <input
@@ -85,7 +85,7 @@ const Home = () => (
     </div>
     <div className={`w-full px-6 sm:px-16 md:px-32 lg:px-64 py-8`}>
       <div className="flex flex-col">
-        <p className="text-lg mb-6 w-full">
+        <p className="type-1 mb-6 w-full">
           CRAFT is an initiative in collaboration with the Graduate School of
           Education, Institute for Human-Centered AI, and Stanford Digital
           Education. We aim to provide support for teachers in high school and
@@ -97,7 +97,7 @@ const Home = () => (
           icon={faPalette}
           title="AI instruction is multidisciplinary"
         >
-          <p className="text-lg">
+          <p className="type-1">
             These tools contextualize AI in multiple disciplines like art, math,
             english, and history, so that teachers across the school can use
             them. Currently, the resources focus on English, Art, Politics and
@@ -108,7 +108,7 @@ const Home = () => (
           icon={faAtom}
           title="Teaching AI shouldn’t require a new class."
         >
-          <p className="text-lg">
+          <p className="type-1">
             These resources help facilitate instruction that’s intended to fit
             into the “nooks and crannies” of your time. They range from
             15-minute activities to full lessons and units. Grab what you need!
@@ -118,7 +118,7 @@ const Home = () => (
           icon={faChalkboardTeacher}
           title="Teachers know pedagogy, routines, and assessment strategies best."
         >
-          <p className="text-lg">
+          <p className="type-1">
             Between November 2022 and May 2023, we'll be working with ten
             teachers, representing nine disciplines, five states, and two
             countries to design these resources. Their insights from group
@@ -131,11 +131,11 @@ const Home = () => (
         <div className="flex flex-row justify-center">
           <h2 className="text-4xl font-serif mb-3">EUs and EQs</h2>
         </div>
-        <p className="text-lg mb-3 w-full">
+        <p className="type-1 mb-3 w-full">
           These resources center the following enduring understandings (EUs) and
           essential questions (EQs):
         </p>
-        <ol className="list-decimal ml-6 text-lg">
+        <ol className="list-decimal ml-6 type-1">
           <li className="mb-3">
             AI is involved in many different parts of our modern lives. Being
             “knowledgeable” about AI is not limited to being able to use math

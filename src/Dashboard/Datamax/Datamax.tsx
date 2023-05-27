@@ -19,9 +19,7 @@ const Datamax = () => {
   const [activeQuizzes, setActiveQuizzes] = useState<QuizPreviewCardProps[]>(
     []
   );
-  const [pastQuizzes, setPastQuizzes] = useState<QuizPreviewCardProps[]>(
-    []
-  );
+  const [pastQuizzes, setPastQuizzes] = useState<QuizPreviewCardProps[]>([]);
 
   useEffect(() => {
     if (!user) return;
@@ -63,7 +61,7 @@ const Datamax = () => {
 
       setQuizzesLoaded(true);
     })();
-  }, [user, setActiveQuizzes, setPastQuizzes]); 
+  }, [user, setActiveQuizzes, setPastQuizzes]);
 
   const joinGame = () => {
     MySwal.fire({
@@ -87,14 +85,13 @@ const Datamax = () => {
         if (code) {
           navigate(`/dash/datamax/quiz/${code.toUpperCase()}`);
         }
-      })
-  }
-
+      });
+  };
 
   return (
     <div className="p-8">
       <h1 className="text-4xl font-bold mb-10">Datamax</h1>
-      <p className="text-lg italic">
+      <p className="type-1 italic">
         Generate quizzes with random data elements and aggregate student
         responses in realtime
       </p>
@@ -138,6 +135,6 @@ const Datamax = () => {
       <ScrollRestoration />
     </div>
   );
-}
+};
 
 export default Datamax;

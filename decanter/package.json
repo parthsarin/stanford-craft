@@ -1,0 +1,52 @@
+{
+  "name": "decanter",
+  "description": "Design System Tailwind CSS Preset.",
+  "author": "Stanford Web Services",
+  "version": "7.0.0-rc.4",
+  "homepage": "https://github.com/SU-SWS/decanter",
+  "license": "GPL-3.0-or-later",
+  "keywords": [
+    "CSS",
+    "Decanter",
+    "Stanford",
+    "TailWind CSS"
+  ],
+  "main": "tailwind.config.js",
+  "scripts": {
+    "build": "tailwind -c tailwind.config.js -i src/css/index.css -o static/css/decanter.css --content static/*.html",
+    "watch": "tailwind -c tailwind.config.js -i src/css/index.css -o static/css/decanter.css --watch --content static/*.html",
+    "serve": "light-server -s static -w static/*.html",
+    "dev": "npm run watch && npm run serve",
+    "lint": "eslint './src'",
+    "lint:fix": "eslint './src'  --fix",
+    "version": "auto-changelog -p && git add CHANGELOG.md"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SU-SWS/decanter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SU-SWS/decanter/issues"
+  },
+  "dependencies": {
+    "@tailwindcss/aspect-ratio": "^0.4.2",
+    "@tailwindcss/forms": "^0.5.3",
+    "@tailwindcss/line-clamp": "^0.4.2",
+    "tailwindcss": "^3.3.1"
+  },
+  "devDependencies": {
+    "auto-changelog": "^2.2.1",
+    "autoprefixer": "^10.4.13",
+    "eslint": "^7.14",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-prettier": "^3.4.0",
+    "light-server": "^2.9.1",
+    "postcss": "^8.4.21",
+    "postcss-import": "^13.0.0",
+    "postcss-loader": "^4.0.0",
+    "postcss-nested": "^5.0.1",
+    "prettier": "^2.2.1"
+  }
+}
