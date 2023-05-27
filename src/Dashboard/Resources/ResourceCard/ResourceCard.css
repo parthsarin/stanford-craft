@@ -1,5 +1,5 @@
 .resource-tags {
-  @apply inline-block bg-plum-light rounded-full;
-  @apply px-3 py-1 mr-10 mb-2;
+  @apply inline-block bg-plum rounded-full text-white;
+  @apply px-12 py-8 mr-10 mb-5;
   @apply text-14 font-semibold;
 }

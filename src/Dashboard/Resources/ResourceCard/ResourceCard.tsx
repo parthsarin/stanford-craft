@@ -13,26 +13,21 @@ const ResourceCard = ({ resource }: Props) => {
   }
 
   return (
-    <div className="flex flex-col shadow-2xl overflow-hidden rounded-md justify-start p-4 bg-white">
+    <div className="flex flex-col shadow-xl overflow-hidden rounded justify-start p-20 bg-white">
       <div className="p-3">
-        <h2 className="type-1 font-bold text-black-70">{title}</h2>
-        <p className="text-black-70 type-0">{description}</p>
-        <ul className="list-disc ml-5 mt-2">
+        <h2 className="type-1 font-bold">{title}</h2>
+        <p className="text-black-70">{description}</p>
+        <ul className="list-disc ml-5 mt-2 mb-20">
           {subLinks.map((subLink) => (
-            <li key={subLink.url}>
-              <a
-                className="text-digital-blue hover:text-digital-blue-dark hover:underline"
-                href={subLink.url}
-                target="_blank"
-                rel="noreferrer"
-              >
+            <li key={subLink.url} className="m-0">
+              <a href={subLink.url} target="_blank" rel="noreferrer">
                 {subLink.name}
               </a>
             </li>
           ))}
         </ul>
       </div>
-      <div className="p-3">
+      <div className="p-5">
         {allTags.map((tag) => (
           <span key={tag} className="resource-tags">
             {tag}
@@ -40,7 +35,7 @@ const ResourceCard = ({ resource }: Props) => {
         ))}
       </div>
 
-      <img className="p-5 w-full h-64 object-cover mt-auto " src={img} alt="" />
+      <img className="p-5 w-full h-64 object-cover mt-auto" src={img} alt="" />
     </div>
   );
 };

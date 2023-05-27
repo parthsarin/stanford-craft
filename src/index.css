@@ -29,3 +29,14 @@ body,
 .arrow-regular {
   @apply m-0;
 }
+
+.btn-link {
+  color: #006cb8;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.btn-link:hover,
+.btn-link:focus {
+  color: #2e2d29;
+}

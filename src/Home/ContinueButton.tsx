@@ -7,9 +7,10 @@ const ContinueButton = () => {
 
   return (
     <button
-      className={`rounded border border-plum bg-plum text-white
-        px-10 py-8 hover:bg-plum-dark w-full type-0
-        `}
+      className="button w-full"
+      // className={`rounded border border-plum bg-plum text-white
+      //   px-10 py-8 hover:bg-plum-dark w-full type-0
+      //   `}
       onClick={() => navigate("/dash/resources")}
     >
       <FontAwesomeIcon icon={faDashboard} className="mr-10" /> View the

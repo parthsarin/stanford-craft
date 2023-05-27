@@ -105,24 +105,24 @@ const Resources = () => {
 
   return (
     <div className="flex-1 p-8">
-      <h1 className="text-4xl font-bold mb-10">Resources</h1>
+      <h1 className="mb-20">Resources</h1>
       <div
         className={`
-        rounded border border-black bg-orange-200 mb-10 px-4 py-3
-        flex flex-row space-x-4 items-center
+        rounded border border-black bg-poppy/40 text-black mb-20 px-20 py-15
+        flex flex-row space-x-0 md:space-x-20 items-center
         `}
       >
         <div className="flex-col hidden md:flex">
-          <FontAwesomeIcon icon={faWarning} className="text-2xl" />
+          <FontAwesomeIcon icon={faWarning} className="type-4" />
         </div>
         <div className="flex flex-col">
-          <h2 className="font-bold type-2">These resources are in progress</h2>
-          <p className="type-1">
+          <h2 className="type-1 mb-0">These resources are in progress</h2>
+          <p className="mb-0">
             Many of these resources are currently being developed and more will
             be added soon. If you have any feedback or questions, you can reach
             out to the CRAFT team through our{" "}
             <button
-              className="text-digital-blue hover:text-digital-blue-dark hover:underline"
+              className="btn-link"
               onClick={() => navigate("/dash/contact")}
             >
               contact form
@@ -131,25 +131,23 @@ const Resources = () => {
           </p>
         </div>
       </div>
-      <div className="lg:flex p-0 gap-6">
-        <div className="mb-6 lg:mb-0 lg:w-1/5 p-5 bg-violet-300 rounded-md">
-          <h2 className="text-2xl font-bold mb-3">Search</h2>
+      <div className="lg:flex p-0 gap-lg mt-20">
+        <div className="mb-12 lg:mb-0 lg:w-1/5 p-20 bg-plum/40 rounded">
+          <h2 className="type-2 mb-10">Search</h2>
           <SearchBar onUpdate={handleSearch} />
 
-          <h2 className="text-2xl font-bold mt-3 mb-3">Filter</h2>
+          <h2 className="type-2 mt-30 mb-10">Filter</h2>
           <Filter onUpdate={handleFilter} />
         </div>
 
         {resources.length === 0 ? (
           <div className="lg:w-4/5">
-            <h2 className="text-2xl font-bold mb-3">
-              Not finding what you're looking for?
-            </h2>
-            <p className="type-1">
+            <h2 className="type-1">Not finding what you're looking for?</h2>
+            <p>
               We're continuously adding more resources. Add your request using
               our{" "}
               <button
-                className="text-digital-blue hover:text-digital-blue-dark hover:underline"
+                className="btn-link"
                 onClick={() => navigate("/dash/contact")}
               >
                 contact form
@@ -158,7 +156,7 @@ const Resources = () => {
               find a resource for you:
             </p>
             <button
-              className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded mt-3"
+              className="button"
               onClick={async () => {
                 if (!user || !user.email) {
                   MySwal.fire({
@@ -189,7 +187,7 @@ const Resources = () => {
             </button>
           </div>
         ) : (
-          <div className="lg:w-4/5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          <div className="lg:w-4/5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-lg">
             {resources.map((resource, i) => (
               <ResourceCard
                 key={i}
