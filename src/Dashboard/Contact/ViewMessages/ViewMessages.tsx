@@ -248,11 +248,13 @@ const ViewMessages = () => {
         </span>
         <button
           className={`
-          ${page == Math.ceil(numMessages / NUM_PER_PAGE) ? "bg-black-40" : ""} 
+          ${
+            page === Math.ceil(numMessages / NUM_PER_PAGE) ? "bg-black-40" : ""
+          } 
           button
           `}
           onClick={nextPage}
-          disabled={page == Math.ceil(numMessages / NUM_PER_PAGE)}
+          disabled={page === Math.ceil(numMessages / NUM_PER_PAGE)}
         >
           Next
           <FontAwesomeIcon icon={faChevronRight} className="ml-10" />

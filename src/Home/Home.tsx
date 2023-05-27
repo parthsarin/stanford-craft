@@ -4,14 +4,12 @@ import {
   faChalkboardTeacher,
   faPalette,
   faBook,
-  faPaperPlane,
   faInfoCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
 
 import { getBackground } from "../Generic/Background";
-import ContinueButton from "./ContinueButton";
 import Footer from "./Footer/Footer";
 import { signUpForUpdates } from "../Dashboard/Contact/ContactUtils";
 import { ScrollRestoration } from "react-router-dom";
