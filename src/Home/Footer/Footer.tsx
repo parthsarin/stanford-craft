@@ -4,7 +4,7 @@ import salLogo from "../../img/sal-logo.png";
 import sdeLogo from "../../img/sde-logo.png";
 
 const Footer = () => (
-  <footer className="w-full bg-black-30 px-12 py-6">
+  <footer className="w-full bg-black-20 px-40 py-30">
     <div
       className={`
       mt-5 md:mt-0 flex flex-wrap flex-row w-full
@@ -15,25 +15,25 @@ const Footer = () => (
         src={sdeLogo}
         alt="Stanford Digital Education Logo"
         loading="lazy"
-        className="h-20 mb-4 mr-4"
+        className="h-70 mb-15 mr-15"
       />
       <img
         src={gseLogo}
         alt="Stanford GSE Logo"
         loading="lazy"
-        className="h-12 mb-4 mr-4"
+        className="h-24 mb-15 mr-15"
       />
       <img
         src={haiLogo}
         alt="Stanford HAI Logo"
         loading="lazy"
-        className="h-16 mb-4 mr-4"
+        className="h-60 mb-15 mr-15"
       />
       <img
         src={salLogo}
         alt="Stanford Accelerator for Learning Logo"
         loading="lazy"
-        className="h-40 mb-4 mr-4"
+        className="h-140 mb-15 mr-15"
       />
     </div>
   </footer>

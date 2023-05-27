@@ -80,7 +80,7 @@ const ViewMessage = () => {
           className="bg-teal-600 hover:bg-teal-800 text-white py-2 px-4 rounded"
           onClick={() => navigate("/dash/contact")}
         >
-          <FontAwesomeIcon icon={faChevronLeft} className="mr-2" />
+          <FontAwesomeIcon icon={faChevronLeft} className="mr-10" />
           Back
         </button>
         <button
@@ -104,7 +104,7 @@ const ViewMessage = () => {
             });
           }}
         >
-          <FontAwesomeIcon icon={faTrash} className="mr-2" />
+          <FontAwesomeIcon icon={faTrash} className="mr-10" />
           Delete
         </button>
         <button
@@ -119,7 +119,7 @@ const ViewMessage = () => {
             );
           }}
         >
-          <FontAwesomeIcon icon={faPaperPlane} className="mr-2" />
+          <FontAwesomeIcon icon={faPaperPlane} className="mr-10" />
           Reply
         </button>
       </div>

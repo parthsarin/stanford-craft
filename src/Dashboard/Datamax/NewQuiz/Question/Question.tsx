@@ -77,7 +77,7 @@ const Question = ({ data, onDelete, onUpdate, onDuplicate }: QuestionProps) => {
           className="px-3 py-2 hover:bg-blue-400 bg-blue-300 rounded border"
           onClick={addDataElement}
         >
-          <FontAwesomeIcon icon={faDatabase} className="mr-2" />
+          <FontAwesomeIcon icon={faDatabase} className="mr-10" />
           Add data element
         </button>
         <button
@@ -88,7 +88,7 @@ const Question = ({ data, onDelete, onUpdate, onDuplicate }: QuestionProps) => {
             onDuplicate();
           }}
         >
-          <FontAwesomeIcon icon={faCopy} className="mr-2" />
+          <FontAwesomeIcon icon={faCopy} className="mr-10" />
           Duplicate
         </button>
         <button
@@ -99,7 +99,7 @@ const Question = ({ data, onDelete, onUpdate, onDuplicate }: QuestionProps) => {
             onDelete();
           }}
         >
-          <FontAwesomeIcon icon={faTrash} className="mr-2" />
+          <FontAwesomeIcon icon={faTrash} className="mr-10" />
           Delete
         </button>
       </div>

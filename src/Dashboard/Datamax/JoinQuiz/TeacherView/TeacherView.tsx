@@ -161,12 +161,12 @@ const TeacherView = ({ joinCode, quiz }: Params) => {
           <h2 className="type-2 mb-2">Actions</h2>
           <div className="flex flex-row">
             <button
-              className="bg-teal-600 hover:bg-teal-700 text-white px-4 py-2 mr-2 rounded"
+              className="bg-teal-600 hover:bg-teal-700 text-white px-4 py-2 mr-10 rounded"
               onClick={handleEndQuiz}
             >
               <FontAwesomeIcon
                 icon={faStopwatch}
-                className="mr-2"
+                className="mr-10"
                 aria-hidden="true"
               />
               End Quiz
@@ -177,7 +177,7 @@ const TeacherView = ({ joinCode, quiz }: Params) => {
             >
               <FontAwesomeIcon
                 icon={faTrash}
-                className="mr-2"
+                className="mr-10"
                 aria-hidden="true"
               />
               Delete Quiz

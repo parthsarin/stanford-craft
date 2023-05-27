@@ -1,8 +1,11 @@
-import { faArrowLeft, faHome } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowLeft,
+  faDashboard,
+  faHome,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
 import { getBackground } from "../Generic/Background";
-import ContinueButton from "../Home/ContinueButton";
 
 const NoMatch = () => {
   const navigate = useNavigate();
@@ -16,28 +19,38 @@ const NoMatch = () => {
         backgroundPosition: "center",
       }}
     >
-      <div className="rounded w-11/12 sm:w-5/6 md:w-2/3 lg:w-1/2 bg-white/50 border border-black p-5 sm:p-10 backdrop-blur-sm text-center m-5">
-        <h1 className="text-2xl font-bold mb-3">404</h1>
-        <div className="w-full border-t border-gray-500 mb-3"></div>
-        <p className="type-1 mb-3">We couldn't find that page...</p>
-        <div className="w-full mb-0">
+      <div className="rounded w-11/12 sm:w-5/6 md:w-2/3 lg:w-1/2 bg-white/60 border border-black p-20 sm:p-30 backdrop-blur-sm text-center m-3">
+        <h1 className="type-1 font-bold font-serif mb-0">
+          404: Page Not Found
+        </h1>
+        <div className="w-full border-t border-gray-500 mb-10 mt-10"></div>
+        <p className="type-0 mb-10">We couldn't find that page...</p>
+        <div className="w-full mb-0 mt-15 flex flex-row justify-around flex-wrap">
           <button
-            className={`rounded border border-rose-700 bg-rose-700 text-white
-          px-3 py-2 hover:bg-rose-800 mr-2
-          `}
+            className={`rounded border border-digital-red bg-digital-red text-white
+            px-10 py-8 hover:bg-digital-red-dark mb-10
+            `}
             onClick={() => navigate(-1)}
           >
-            <FontAwesomeIcon icon={faArrowLeft} className="mr-2" /> Go Back
+            <FontAwesomeIcon icon={faArrowLeft} className="mr-10" /> Go Back
           </button>
           <button
-            className={`rounded border border-teal-700 bg-teal-700 text-white
-          px-3 py-2 hover:bg-teal-800 mr-2
-          `}
+            className={`rounded border border-digital-green bg-digital-green text-white
+            px-10 py-8 hover:bg-digital-green-dark mb-10
+            `}
             onClick={() => navigate("/")}
           >
-            <FontAwesomeIcon icon={faHome} className="mr-2" /> Home Page
+            <FontAwesomeIcon icon={faHome} className="mr-10" /> Home Page
           </button>
-          <ContinueButton />
+          <button
+            className={`rounded border border-plum bg-plum text-white
+            px-10 py-8 hover:bg-plum-dark mb-10
+            `}
+            onClick={() => navigate("/dash/resources")}
+          >
+            <FontAwesomeIcon icon={faDashboard} className="mr-10" /> View the
+            Curricular Resources
+          </button>
         </div>
       </div>
     </div>

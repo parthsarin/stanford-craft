@@ -111,7 +111,7 @@ const SelectQuiz = () => {
         className="ml-6 px-3 py-1 type-1 bg-red-600 text-white hover:bg-red-700 rounded"
         onClick={handleChoice}
       >
-        <FontAwesomeIcon icon={faChartLine} className="mr-2" />
+        <FontAwesomeIcon icon={faChartLine} className="mr-10" />
         Analyze
       </button>
     </div>

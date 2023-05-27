@@ -20,28 +20,41 @@ const JobPosting = () => {
           height: 500,
         }}
       >
-        <div className="rounded w-11/12 sm:w-5/6 md:w-2/3 lg:w-1/2 bg-white/50 border border-black p-5 sm:p-10 backdrop-blur-sm text-center m-5">
-          <p className="type-2 font-bold font-serif">
-            Curricular Resources about AI for Teaching (CRAFT)
-          </p>
-          <p className="type-1 mb-3">
-            A project from the Stanford Graduate School of Education
-          </p>
-          <div className="w-full border-t border-gray-500 mb-3"></div>
-          <p className="type-1">
-            We're building resources to teach AI literacies for high school and
-            college instructors and assembling them into a full curriculum that
-            will be deployed in a course with the National Educational Equity
-            Lab offered in Fall 2023.
-          </p>
-        </div>
+        <div
+          className="w-full flex items-center justify-center"
+          style={{
+            backgroundImage: `url(${getBackground()})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            height: 500,
+          }}
+        >
+          <div className="rounded w-11/12 sm:w-5/6 md:w-2/3 lg:w-1/2 bg-white/60 border border-black p-20 sm:p-30 backdrop-blur-sm text-center m-3">
+            <h1 className="type-1 font-bold font-serif mb-0">
+              Curricular Resources about AI for Teaching (CRAFT)
+            </h1>
+            <p className="type-0 mb-10">
+              A project from the Stanford Graduate School of Education
+            </p>
+            <div className="w-full border-t border-gray-500 mb-10 mt-10"></div>
+            <p className="type-0 mb-10">
+              We're building resources to teach AI literacies for high school
+              and college instructors and assembling them into a full curriculum
+              that will be deployed in a course with the{" "}
+              <a href="https://edequitylab.org/">
+                National Educational Equity Lab
+              </a>{" "}
+              offered in Fall 2023.
+            </p>
+          </div>
+        </div>{" "}
       </header>
-      <main id="jobs" className="p-4 min-h-screen text-md w-full">
+      <main id="jobs" className="p-10 min-h-screen text-md w-full basefont-20">
         <div className="container">
           <h1 className="mt-0">Join our teaching team!</h1>
-          <p className="italic">
+          <h2 className="italic type-0">
             CS XXE: The AI Toolbox: An Everyday Guide | Spring-Fall 2023
-          </p>
+          </h2>
           <p>
             In partnership with the{" "}
             <a href="https://edequitylab.org/">National Education Equity Lab</a>
@@ -219,11 +232,11 @@ const JobPosting = () => {
               onClick={() => {
                 window.location.href = "https://forms.gle/ihaV9NGFGip9dFGj8";
               }}
-              className="bg-emerald-700 hover:bg-emerald-900 type-2 text-white py-2 px-4 rounded w-full mt-6"
+              className="bg-palo-alto hover:bg-palo-alto-dark type-2 text-white py-10 px-20 rounded w-full mt-12"
             >
               Apply here for the section leader role!
             </button>
-            <span className="text-emerald-800 italic mt-2">
+            <span className="text-palo-alto italic mt-5">
               Applications will be accepted on a rolling basis through the end
               of May
             </span>

@@ -224,7 +224,7 @@ const ViewMessages = () => {
           onClick={prevPage}
           disabled={page === 1}
         >
-          <FontAwesomeIcon icon={faChevronLeft} className="mr-2" />
+          <FontAwesomeIcon icon={faChevronLeft} className="mr-10" />
           Previous
         </button>
         <p className="text-center">Page {page}</p>
@@ -267,7 +267,7 @@ const ViewMessages = () => {
             );
           }}
         >
-          <FontAwesomeIcon icon={faEnvelopeOpen} className="mr-2" />
+          <FontAwesomeIcon icon={faEnvelopeOpen} className="mr-10" />
           Mark all as read
         </button>
         <button
@@ -289,7 +289,7 @@ const ViewMessages = () => {
             );
           }}
         >
-          <FontAwesomeIcon icon={faEnvelope} className="mr-2" />
+          <FontAwesomeIcon icon={faEnvelope} className="mr-10" />
           Mark all as unread
         </button>
       </div>

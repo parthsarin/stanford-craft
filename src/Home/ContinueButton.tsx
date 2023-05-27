@@ -7,12 +7,12 @@ const ContinueButton = () => {
 
   return (
     <button
-      className={`rounded border border-fuchsia-700 bg-fuchsia-700 text-white
-        px-3 py-2 hover:bg-fuchsia-800 w-full type-2
+      className={`rounded border border-plum bg-plum text-white
+        px-10 py-8 hover:bg-plum-dark w-full type-0
         `}
       onClick={() => navigate("/dash/resources")}
     >
-      <FontAwesomeIcon icon={faDashboard} className="mr-2" /> View the
+      <FontAwesomeIcon icon={faDashboard} className="mr-10" /> View the
       Curricular Resources
     </button>
   );

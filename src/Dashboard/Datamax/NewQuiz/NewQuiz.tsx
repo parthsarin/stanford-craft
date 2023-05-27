@@ -141,12 +141,12 @@ const NewQuiz = () => {
           className="flex flex-row w-4/5 lg:w-1/2 rounded border border-black border-dashed p-2 justify-center items-center type-2 hover:bg-black-10"
           onClick={addQuestion}
         >
-          <FontAwesomeIcon icon={faPlus} className="mr-2" />
+          <FontAwesomeIcon icon={faPlus} className="mr-10" />
           <span>Add Question</span>
         </button>
 
         <button className="w-1/3 btn-indigo mt-2" type="submit">
-          <FontAwesomeIcon icon={faHammer} className="mr-2" />
+          <FontAwesomeIcon icon={faHammer} className="mr-10" />
           <span>Create Quiz</span>
         </button>
       </form>

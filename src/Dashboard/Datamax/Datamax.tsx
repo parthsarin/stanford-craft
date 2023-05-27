@@ -101,11 +101,11 @@ const Datamax = () => {
           className="btn-rose"
           onClick={() => protectedNav("/dash/datamax/new")}
         >
-          <FontAwesomeIcon icon={faPlus} className="mr-2" />
+          <FontAwesomeIcon icon={faPlus} className="mr-10" />
           New Quiz
         </button>
         <button className="btn-indigo" onClick={joinGame}>
-          <FontAwesomeIcon icon={faHand} className="mr-2" />
+          <FontAwesomeIcon icon={faHand} className="mr-10" />
           Join Game
         </button>
       </div>

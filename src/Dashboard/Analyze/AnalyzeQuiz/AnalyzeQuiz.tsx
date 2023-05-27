@@ -76,14 +76,14 @@ const ExploreQuiz = () => {
           className="py-2 px-4 rounded bg-blue-600 hover:bg-blue-700 text-white"
           onClick={downloadCSV}
         >
-          <FontAwesomeIcon icon={faDownload} className="mr-2" />
+          <FontAwesomeIcon icon={faDownload} className="mr-10" />
           Download CSV
         </button>
         <button
           className="py-2 px-4 rounded bg-green-600 hover:bg-green-700 text-white"
           onClick={explore}
         >
-          <FontAwesomeIcon icon={faChartLine} className="mr-2" />
+          <FontAwesomeIcon icon={faChartLine} className="mr-10" />
           Explore
         </button>
       </div>
@@ -91,7 +91,7 @@ const ExploreQuiz = () => {
         className="mt-6 py-2 px-4 rounded bg-red-600 hover:bg-red-700 text-white"
         onClick={() => navigate("/dash/analyze")}
       >
-        <FontAwesomeIcon icon={faChevronLeft} className="mr-2" />
+        <FontAwesomeIcon icon={faChevronLeft} className="mr-10" />
         Select a different quiz
       </button>
     </div>
