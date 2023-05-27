@@ -56,35 +56,35 @@ const ViewMessage = () => {
     day: "numeric",
   });
   return (
-    <div className="p-8 w-full md:w-2/3">
-      <h1 className="text-4xl font-bold mb-10">Message from {message.name}</h1>
+    <div className="p-20 w-full md:w-2/3">
+      <h1 className="mb-20">Message from {message.name}</h1>
 
       <div className="w-full type-1">
-        <p>
+        <p className="mb-0">
           <b>From: </b>
           {message.name} ({message.email})
         </p>
-        <p>
+        <p className="mb-0">
           <b>Subject: </b>
           {message.topic}
         </p>
-        <p className="mb-5">
+        <p className="mb-20">
           <b>Date: </b>
           {dateString}
         </p>
         <pre className="whitespace-pre-wrap font-sans">{message.message}</pre>
       </div>
 
-      <div className="flex flex-row flex-wrap justify-left space-x-4 mt-10">
+      <div className="flex flex-row flex-wrap justify-left space-x-20 mt-30 mb-30">
         <button
-          className="bg-teal-600 hover:bg-teal-800 text-white py-2 px-4 rounded"
+          className="btn-palo-verde"
           onClick={() => navigate("/dash/contact")}
         >
           <FontAwesomeIcon icon={faChevronLeft} className="mr-10" />
           Back
         </button>
         <button
-          className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded"
+          className="btn-digital-red"
           onClick={() => {
             MySwal.fire({
               icon: "warning",
@@ -108,7 +108,7 @@ const ViewMessage = () => {
           Delete
         </button>
         <button
-          className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded"
+          className="btn-digital-blue"
           onClick={() => {
             // create a message variable that can be put in a url
             const msg = message.message.replace(/\n/g, "%0A");

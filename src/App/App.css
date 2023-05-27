@@ -18,3 +18,72 @@
   @apply rounded border border-fuchsia-700 bg-fuchsia-700 text-white px-3 py-2;
   @apply hover:bg-fuchsia-800 mr-10;
 } */
+
+.btn-digital-blue {
+  @apply bg-digital-blue hover:bg-digital-blue-dark hover:underline;
+  @apply text-white py-10 px-20;
+}
+.btn-digital-red {
+  @apply bg-digital-red hover:bg-digital-red-dark hover:underline;
+  @apply text-white py-10 px-20;
+}
+.btn-digital-green {
+  @apply bg-digital-green hover:bg-digital-green-dark hover:underline;
+  @apply text-white py-10 px-20;
+}
+.btn-palo-alto {
+  @apply bg-palo-alto hover:bg-palo-alto-dark hover:underline;
+  @apply text-white py-10 px-20;
+}
+.btn-palo-verde {
+  @apply bg-palo-verde hover:bg-palo-verde-dark hover:underline;
+  @apply text-white py-10 px-20;
+}
+.btn-olive {
+  @apply bg-olive hover:bg-olive-dark hover:underline;
+  @apply text-white py-10 px-20;
+}
+.btn-bay {
+  @apply bg-bay hover:bg-bay-dark hover:underline;
+  @apply text-white py-10 px-20;
+}
+.btn-sky {
+  @apply bg-sky hover:bg-sky-dark hover:underline;
+  @apply text-white py-10 px-20;
+}
+.btn-lagunita {
+  @apply bg-lagunita hover:bg-lagunita-dark hover:underline;
+  @apply text-white py-10 px-20;
+}
+.btn-poppy {
+  @apply bg-poppy hover:bg-poppy-dark hover:underline;
+  @apply text-white py-10 px-20;
+}
+.btn-spirited {
+  @apply bg-spirited hover:bg-spirited-dark hover:underline;
+  @apply text-white py-10 px-20;
+}
+.btn-illuminating {
+  @apply bg-illuminating hover:bg-illuminating-dark hover:underline;
+  @apply text-white py-10 px-20;
+}
+.btn-plum {
+  @apply bg-plum hover:bg-plum-dark hover:underline;
+  @apply text-white py-10 px-20;
+}
+.btn-brick {
+  @apply bg-brick hover:bg-brick-dark hover:underline;
+  @apply text-white py-10 px-20;
+}
+.btn-archway {
+  @apply bg-archway hover:bg-archway-dark hover:underline;
+  @apply text-white py-10 px-20;
+}
+.btn-stone {
+  @apply bg-stone hover:bg-stone-dark hover:underline;
+  @apply text-white py-10 px-20;
+}
+.btn-foggy {
+  @apply bg-foggy hover:bg-foggy-dark hover:underline;
+  @apply text-white py-10 px-20;
+}

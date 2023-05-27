@@ -1,5 +1,28 @@
 const GlobalFooter = () => (
-  <footer className="su-global-footer">
+  <footer>
+    <div className="bg-black-20 p-20 flex flex-row justify-center items-center flex-wrap">
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">
+        <img
+          alt="Creative Commons License"
+          className="inline mb-10 mr-10"
+          style={{
+            borderWidth: 0,
+          }}
+          src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png"
+        />
+      </a>
+      <p className="mb-10">
+        This work is licensed under a{" "}
+        <a
+          rel="license"
+          className="inline"
+          href="http://creativecommons.org/licenses/by-nc/4.0/"
+        >
+          Creative Commons Attribution-NonCommercial 4.0 International License
+        </a>
+        .
+      </p>
+    </div>
     <div className="global-footer basefont-21 bg-digital-red rs-py-1 text-white link-white">
       <div
         className="cc flex flex-col lg:flex-row"
