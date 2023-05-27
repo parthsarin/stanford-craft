@@ -5,7 +5,7 @@ import mccoyLogo from "../../img/mccoy-logo.jpg";
 import haiLogo from "../../img/hai-logo.png";
 import Citation from "./Citation";
 import Funder from "./Funder";
-import { useNavigate } from "react-router-dom";
+import { ScrollRestoration, useNavigate } from "react-router-dom";
 
 const About = () => {
   const navigate = useNavigate();
@@ -182,6 +182,7 @@ const About = () => {
           Montreal, Canada: ISLS.
         </Citation>
       </ul>
+      <ScrollRestoration />
     </div>
   );
 };
