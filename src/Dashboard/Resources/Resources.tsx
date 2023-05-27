@@ -132,12 +132,16 @@ const Resources = () => {
         </div>
       </div>
       <div className="lg:flex p-0 gap-lg mt-20">
-        <div className="mb-12 lg:mb-0 lg:w-1/5 p-20 bg-plum/40 rounded">
-          <h2 className="type-2 mb-10">Search</h2>
-          <SearchBar onUpdate={handleSearch} />
+        <div className="lg:w-1/5">
+          <div className="sticky top-6">
+            <div className="mb-12 lg:mb-0 p-20 bg-plum/40 rounded">
+              <h2 className="type-2 mb-10">Search</h2>
+              <SearchBar onUpdate={handleSearch} />
 
-          <h2 className="type-2 mt-30 mb-10">Filter</h2>
-          <Filter onUpdate={handleFilter} />
+              <h2 className="type-2 mt-30 mb-10">Filter</h2>
+              <Filter onUpdate={handleFilter} />
+            </div>
+          </div>
         </div>
 
         {resources.length === 0 ? (
