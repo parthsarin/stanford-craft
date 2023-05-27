@@ -21,7 +21,7 @@ const JobPosting = () => {
         }}
       >
         <div className="rounded w-11/12 sm:w-5/6 md:w-2/3 lg:w-1/2 bg-white/50 border border-black p-5 sm:p-10 backdrop-blur-sm text-center m-5">
-          <p className="text-xl font-bold font-serif">
+          <p className="type-2 font-bold font-serif">
             Curricular Resources about AI for Teaching (CRAFT)
           </p>
           <p className="type-1 mb-3">
@@ -219,7 +219,7 @@ const JobPosting = () => {
               onClick={() => {
                 window.location.href = "https://forms.gle/ihaV9NGFGip9dFGj8";
               }}
-              className="bg-emerald-700 hover:bg-emerald-900 text-xl text-white py-2 px-4 rounded w-full mt-6"
+              className="bg-emerald-700 hover:bg-emerald-900 type-2 text-white py-2 px-4 rounded w-full mt-6"
             >
               Apply here for the section leader role!
             </button>

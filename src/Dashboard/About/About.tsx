@@ -28,7 +28,7 @@ const About = () => {
         .
       </p>
 
-      <h2 className="text-xl mt-4 font-bold mb-2">
+      <h2 className="type-2 mt-4 font-bold mb-2">
         2022-2023 Teacher Co-Design Fellows
       </h2>
       <ul className="ml-4">
@@ -66,7 +66,7 @@ const About = () => {
         </button>
       </p>
 
-      <h2 className="text-xl mt-4 font-bold mb-2">
+      <h2 className="type-2 mt-4 font-bold mb-2">
         Web and Interactive Tool Development Team
       </h2>
       <ul className="ml-4">
@@ -92,7 +92,7 @@ const About = () => {
         .
       </p>
 
-      <h2 className="text-xl mt-4 font-bold mb-2">
+      <h2 className="type-2 mt-4 font-bold mb-2">
         Stanford Curricular Resource Design Team
       </h2>
       <ul className="ml-4">
@@ -115,7 +115,7 @@ const About = () => {
         <li>Victoria Delaney, PhD Student in Mathematics Education</li>
       </ul>
 
-      <h2 className="text-xl mt-4 font-bold mb-5">
+      <h2 className="type-2 mt-4 font-bold mb-5">
         Financial Support and Sponsorship
       </h2>
       <p className="mb-4">
@@ -166,7 +166,7 @@ const About = () => {
           />
         </Funder>
       </div>
-      <h2 className="text-xl mt-4 font-bold mb-5">Affiliated Work</h2>
+      <h2 className="type-2 mt-4 font-bold mb-5">Affiliated Work</h2>
       <ul className="list-inside">
         <Citation>
           Lee, V. R., Sarin, P., Xie, B. & Wolf, J. CRAFT-work: An Integrative

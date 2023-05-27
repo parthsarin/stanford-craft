@@ -29,12 +29,12 @@
 }
 
 .dropdown ul {
-  @apply py-1 type-0 text-gray-700 dark:text-gray-200;
+  @apply py-1 type-0 text-black-70;
 }
 
 .dropdown ul li button {
   @apply flex flex-row justify-between items-center;
-  @apply w-full text-left text-xl;
-  @apply py-2 px-4 hover:bg-gray-100;
-  @apply dark:hover:bg-gray-500 dark:hover:text-white;
+  @apply w-full text-left type-2;
+  @apply py-2 px-4 hover:bg-black-30;
+  @apply dark:hover:bg-black-50 dark:hover:text-white;
 }

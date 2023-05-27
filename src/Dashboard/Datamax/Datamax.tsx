@@ -113,7 +113,7 @@ const Datamax = () => {
       {quizzesLoaded ? (
         <>
           <div className="mt-6">
-            <h2 className="text-xl mb-1">Active quizzes</h2>
+            <h2 className="type-2 mb-1">Active quizzes</h2>
             <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-3">
               {activeQuizzes.map((props, i) => (
                 <QuizPreviewCard {...props} key={props.joinCode} />
@@ -121,7 +121,7 @@ const Datamax = () => {
             </div>
           </div>
           <div className="mt-2">
-            <h2 className="text-xl mb-1">Past quizzes</h2>
+            <h2 className="type-2 mb-1">Past quizzes</h2>
             <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-3">
               {pastQuizzes.map((props, i) => (
                 <QuizPreviewCard {...props} key={props.joinCode} />

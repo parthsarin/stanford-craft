@@ -15,8 +15,8 @@ const ResourceCard = ({ resource }: Props) => {
   return (
     <div className="flex flex-col shadow-2xl overflow-hidden rounded-md justify-start p-4 bg-white">
       <div className="p-3">
-        <h2 className="type-1 font-bold text-gray-700">{title}</h2>
-        <p className="text-gray-700 type-0">{description}</p>
+        <h2 className="type-1 font-bold text-black-70">{title}</h2>
+        <p className="text-black-70 type-0">{description}</p>
         <ul className="list-disc ml-5 mt-2">
           {subLinks.map((subLink) => (
             <li key={subLink.url}>

@@ -116,7 +116,7 @@ const Resources = () => {
           <FontAwesomeIcon icon={faWarning} className="text-2xl" />
         </div>
         <div className="flex flex-col">
-          <h2 className="font-bold text-xl">These resources are in progress</h2>
+          <h2 className="font-bold type-2">These resources are in progress</h2>
           <p className="type-1">
             Many of these resources are currently being developed and more will
             be added soon. If you have any feedback or questions, you can reach

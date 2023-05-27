@@ -52,7 +52,7 @@ const Question = ({ data, onDelete, onUpdate, onDuplicate }: QuestionProps) => {
       {/* question title */}
       <input
         type="text"
-        className={`w-full h-fit text-center text-xl focus:ring-0 focus:border-0 focus:outline-none mb-2 rounded p-1`}
+        className={`w-full h-fit text-center type-2 focus:ring-0 focus:border-0 focus:outline-none mb-2 rounded p-1`}
         placeholder="What question should students answer?"
         value={data.prompt}
         onChange={(e) => onUpdate({ ...data, prompt: e.target.value })}

@@ -9,11 +9,13 @@ interface ResponseProps {
 
 const Response = ({ data, onUpdate }: ResponseProps) => {
   const [responseType, setResponseType] = useState<ResponseType>(data.type);
-  const [choicesString, setChoicesString] = useState<string>(data.choices ? data.choices.join(", ") : "");
+  const [choicesString, setChoicesString] = useState<string>(
+    data.choices ? data.choices.join(", ") : ""
+  );
   const questionKey = generateUUID();
 
   return (
-    <span className="text-xl">
+    <span className="type-2">
       Accept{" "}
       <select
         className="w-30 px-2 py-1 mt-2 mx-1 border rounded border-black"
@@ -48,7 +50,7 @@ const Response = ({ data, onUpdate }: ResponseProps) => {
                 ...data,
                 choices: e.target.value
                   .split(",")
-                  .map((choice: string) => choice.trim())
+                  .map((choice: string) => choice.trim()),
               });
             }}
           />
@@ -57,6 +59,6 @@ const Response = ({ data, onUpdate }: ResponseProps) => {
       .
     </span>
   );
-}
+};
 
 export default Response;

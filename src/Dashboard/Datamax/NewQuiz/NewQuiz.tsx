@@ -96,7 +96,7 @@ const NewQuiz = () => {
   return (
     <div className="p-4 flex flex-1 flex-col">
       {(!user || loading) && <Loader />}
-      <div className="w-4/5 lg:w-2/3 p-2 rounded bg-gray-200 mb-4">
+      <div className="w-4/5 lg:w-2/3 p-2 rounded bg-black-20 mb-4">
         <button
           className="text-digital-blue-dark hover:underline"
           onClick={() => navigate("/dash/datamax")}
@@ -138,7 +138,7 @@ const NewQuiz = () => {
         ))}
 
         <button
-          className="flex flex-row w-4/5 lg:w-1/2 rounded border border-black border-dashed p-2 justify-center items-center text-xl hover:bg-gray-100"
+          className="flex flex-row w-4/5 lg:w-1/2 rounded border border-black border-dashed p-2 justify-center items-center type-2 hover:bg-black-10"
           onClick={addQuestion}
         >
           <FontAwesomeIcon icon={faPlus} className="mr-2" />

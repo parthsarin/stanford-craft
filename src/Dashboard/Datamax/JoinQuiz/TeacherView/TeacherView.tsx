@@ -129,11 +129,11 @@ const TeacherView = ({ joinCode, quiz }: Params) => {
       <div className="flex flex-row justify-center">
         <div className="flex flex-col items-center p-4 border rounded border-black">
           <QRCode value={window.location.href} />
-          <h2 className="text-xl mt-2">Join Code: {joinCode}</h2>
+          <h2 className="type-2 mt-2">Join Code: {joinCode}</h2>
         </div>
       </div>
       <div className="flex flex-col mt-4">
-        <h2 className="text-xl mb-2">
+        <h2 className="type-2 mb-2">
           Responses ({Object.keys(responses).length})
         </h2>
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
@@ -144,7 +144,7 @@ const TeacherView = ({ joinCode, quiz }: Params) => {
             >
               {/* delete button */}
               <button
-                className="text-xl absolute right-0 top-0 -translate-y-3 translate-x-2"
+                className="type-2 absolute right-0 top-0 -translate-y-3 translate-x-2"
                 aria-label={"delete response"}
                 onClick={handleDelete(id)}
               >
@@ -158,7 +158,7 @@ const TeacherView = ({ joinCode, quiz }: Params) => {
           ))}
         </div>
         <div className="flex flex-col mt-4">
-          <h2 className="text-xl mb-2">Actions</h2>
+          <h2 className="type-2 mb-2">Actions</h2>
           <div className="flex flex-row">
             <button
               className="bg-teal-600 hover:bg-teal-700 text-white px-4 py-2 mr-2 rounded"

@@ -115,7 +115,7 @@ const SendMessage = () => {
         <button
           className={`
             border-teal-700 bg-teal-700 hover:bg-teal-800 text-white 
-            text-xl py-2 px-6 rounded mt-5 mb-10
+            type-2 py-2 px-6 rounded mt-5 mb-10
           `}
           type="submit"
         >

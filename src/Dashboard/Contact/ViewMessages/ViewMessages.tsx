@@ -109,7 +109,7 @@ const ViewMessages = () => {
       <h1 className="text-4xl font-bold mb-10">Messages</h1>
 
       <table className="table-auto w-full">
-        <thead className="uppercase bg-gray-100">
+        <thead className="uppercase bg-black-10">
           <tr>
             <th></th>
             <th className="text-left px-6 py-3">Name</th>
@@ -123,7 +123,7 @@ const ViewMessages = () => {
           {messages.map((message) => (
             <tr
               key={message.id}
-              className="bg-white border-b cursor-pointer hover:bg-gray-50 transition-colors"
+              className="bg-white border-b cursor-pointer hover:bg-black-50 transition-colors"
               onClick={() => navigate(`/dash/contact/view/${message.id}`)}
             >
               <td className="px-3 text-right text-xs">
@@ -157,7 +157,7 @@ const ViewMessages = () => {
                     distance={10}
                   >
                     <button
-                      className="text-digital-blue-dark text-xl"
+                      className="text-digital-blue-dark type-2"
                       onClick={(e) => {
                         e.stopPropagation();
                         const db = getFirestore();
@@ -189,7 +189,7 @@ const ViewMessages = () => {
                     distance={10}
                   >
                     <button
-                      className="text-digital-blue-dark text-xl"
+                      className="text-digital-blue-dark type-2"
                       onClick={(e) => {
                         e.stopPropagation();
                         const db = getFirestore();
@@ -218,7 +218,7 @@ const ViewMessages = () => {
       <div className="flex flex-row justify-around items-center mt-3">
         <button
           className={`
-            ${page === 1 ? "bg-gray-400" : "bg-blue-500 hover:bg-blue-700"} 
+            ${page === 1 ? "bg-black-40" : "bg-blue-500 hover:bg-blue-700"} 
             text-white py-2 px-4 rounded
           `}
           onClick={prevPage}
@@ -232,7 +232,7 @@ const ViewMessages = () => {
           className={`
           ${
             messages.length < NUM_PER_PAGE
-              ? "bg-gray-400"
+              ? "bg-black-40"
               : "bg-blue-500 hover:bg-blue-700"
           } 
           text-white py-2 px-4 rounded

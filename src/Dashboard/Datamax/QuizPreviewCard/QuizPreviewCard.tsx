@@ -51,12 +51,12 @@ const QuizPreviewCard = ({
 
   return (
     <div
-      className="border rounded border-black px-3 py-1 hover:bg-gray-100 hover:cursor-pointer relative text-center z-0"
+      className="border rounded border-black px-3 py-1 hover:bg-black-10 hover:cursor-pointer relative text-center z-0"
       onClick={onClick}
       role="button"
     >
       <button
-        className="text-xl absolute right-0 top-0 -translate-y-3 translate-x-2 z-10"
+        className="type-2 absolute right-0 top-0 -translate-y-3 translate-x-2 z-10"
         aria-label={"delete quiz"}
         onClick={(e) => {
           e.preventDefault();

@@ -12,7 +12,7 @@ const Question = ({ question, onChange }: QuestionProps) => {
   return (
     <div className="flex flex-col mb-4">
       <div className="flex flex-row justify-center mb-6">
-        <h2 className="text-xl">{prompt}</h2>
+        <h2 className="type-2">{prompt}</h2>
       </div>
       {dataElements.length > 0 && (
         <div className="grid grid-cols-2 md:grid-cols-4 type-1 gap-y-2 mb-6">
@@ -32,7 +32,7 @@ const Question = ({ question, onChange }: QuestionProps) => {
           <>
             <p className="type-1 font-bold mr-5">Answer:</p>
             <select
-              className={`w-full md:w-2/3 text-center text-xl rounded py-2
+              className={`w-full md:w-2/3 text-center type-2 rounded py-2
                 border border-black text-black`}
               onChange={(e) => onChange(e.target.value)}
               defaultValue=""
@@ -47,7 +47,7 @@ const Question = ({ question, onChange }: QuestionProps) => {
         {response.type === ResponseType.SHORT_ANSWER && (
           <textarea
             className={`
-            w-full border border-black text-xl rounded p-3
+            w-full border border-black type-2 rounded p-3
             h-32
           `}
             placeholder="Type your answer here..."

@@ -59,7 +59,7 @@ const ExploreQuiz = () => {
   if (!quiz) return <LoaderInline />;
   return (
     <div className="mt-4">
-      <h2 className="text-xl">{quiz.template.name}</h2>
+      <h2 className="type-2">{quiz.template.name}</h2>
       <ul className="type-0 list-disc ml-5 mt-2">
         <li>
           Created on {quiz.createdAt.toDate().toLocaleDateString("en-US")}

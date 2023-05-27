@@ -10,6 +10,7 @@ const plugin = require("tailwindcss/plugin");
 const dir = path.resolve(__dirname, "decanter/src/plugins");
 
 module.exports = {
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
   // The theme section is where you define your color palette, font stacks,
   // type scale, border sizes, breakpoints — anything related to the visual
   // design of your site.

@@ -1,10 +1,10 @@
-import gseLogo from '../../img/gse-logo.png';
-import haiLogo from '../../img/hai-logo.png';
-import salLogo from '../../img/sal-logo.png';
-import sdeLogo from '../../img/sde-logo.png';
+import gseLogo from "../../img/gse-logo.png";
+import haiLogo from "../../img/hai-logo.png";
+import salLogo from "../../img/sal-logo.png";
+import sdeLogo from "../../img/sde-logo.png";
 
 const Footer = () => (
-  <footer className="w-full bg-gray-300 px-12 py-6">
+  <footer className="w-full bg-black-30 px-12 py-6">
     <div
       className={`
       mt-5 md:mt-0 flex flex-wrap flex-row w-full

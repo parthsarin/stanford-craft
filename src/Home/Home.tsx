@@ -24,7 +24,7 @@ const Home = () => (
       }}
     >
       <div className="rounded w-11/12 sm:w-5/6 md:w-2/3 lg:w-1/2 bg-white/50 border border-black p-5 sm:p-10 backdrop-blur-sm text-center m-5">
-        <h1 className="text-xl font-bold font-serif">
+        <h1 className="type-2 font-bold font-serif">
           Curricular Resources about AI for Teaching (CRAFT)
         </h1>
         <p className="type-1 mb-3">
@@ -49,7 +49,7 @@ const Home = () => (
       </div>
     </div>
     <div
-      className={`w-full bg-gray-300 px-6 sm:px-16 md:px-32 lg:px-64 py-8 text-center`}
+      className={`w-full bg-black-30 px-6 sm:px-16 md:px-32 lg:px-64 py-8 text-center`}
     >
       <form
         className="flex flex-col items-center"
