@@ -10,8 +10,8 @@ import { useNavigate } from "react-router-dom";
 const About = () => {
   const navigate = useNavigate();
   return (
-    <div className="p-8 w-full md:w-2/3">
-      <h1 className="text-4xl font-bold mb-10">About CRAFT</h1>
+    <div className="p-20 w-full md:w-2/3">
+      <h1 className="mb-20">About CRAFT</h1>
 
       <p>
         CRAFT resources are the product of iterative co-design between Stanford
@@ -19,19 +19,14 @@ const About = () => {
         from across the United States from multiple subject areas. The resource
         collection will continue to grow. To find out more information or if you
         are interested in getting involved, please{" "}
-        <button
-          className="text-digital-blue hover:text-digital-blue-dark hover:underline"
-          onClick={() => navigate("/dash/contact")}
-        >
+        <button className="btn-link" onClick={() => navigate("/dash/contact")}>
           get in touch
         </button>
         .
       </p>
 
-      <h2 className="type-2 mt-4 font-bold mb-2">
-        2022-2023 Teacher Co-Design Fellows
-      </h2>
-      <ul className="ml-4">
+      <h2>2022-2023 Teacher Co-Design Fellows</h2>
+      <ul className="ml-4 list-none">
         <li>Rodger Brown, Granite Technical Institute, Utah</li>
         <li>Alison Ence, Green Canyon High School, Utah</li>
         <li>Shane Andrus, Green Canyon High School, Utah</li>
@@ -45,7 +40,7 @@ const About = () => {
         <li>Soo Shin, East Palo Alto Academy, California</li>
       </ul>
 
-      <div className="flex flex-col w-full items-center mt-4 mb-4">
+      <div className="flex flex-col w-full items-center mt-20 mb-4">
         <img
           className="w-2/3 rounded"
           src={codesignGroup}
@@ -58,18 +53,13 @@ const About = () => {
 
       <p>
         Interested in becoming a future co-design fellow?{" "}
-        <button
-          className="text-digital-blue hover:text-digital-blue-dark hover:underline"
-          onClick={() => navigate("/dash/contact")}
-        >
+        <button className="btn-link" onClick={() => navigate("/dash/contact")}>
           Contact us!
         </button>
       </p>
 
-      <h2 className="type-2 mt-4 font-bold mb-2">
-        Web and Interactive Tool Development Team
-      </h2>
-      <ul className="ml-4">
+      <h2>Web and Interactive Tool Development Team</h2>
+      <ul className="list-none ml-4">
         <li>
           Parth Sarin, MS Student in Computer Science and Stanford Digital
           Education Fellow
@@ -79,7 +69,7 @@ const About = () => {
         <li>Raycelle Garcia, MS Student in Learning Design, and Technology</li>
         <li>Anika Fuloria, BS Student in Computer Science</li>
       </ul>
-      <p className="mt-2">
+      <p className="mt-10">
         You can find the source code for this site and all included tools at{" "}
         <a
           className="text-digital-blue hover:text-digital-blue-dark hover:underline"
@@ -92,10 +82,8 @@ const About = () => {
         .
       </p>
 
-      <h2 className="type-2 mt-4 font-bold mb-2">
-        Stanford Curricular Resource Design Team
-      </h2>
-      <ul className="ml-4">
+      <h2>Stanford Curricular Resource Design Team</h2>
+      <ul className="ml-4 list-none mb-10">
         <li>Anika Fuloria, BS Student in Computer Science</li>
         <li>Benji Xie, Postdoctoral Fellow in Embedded EthiCS</li>
         <li>
@@ -115,23 +103,21 @@ const About = () => {
         <li>Victoria Delaney, PhD Student in Mathematics Education</li>
       </ul>
 
-      <h2 className="type-2 mt-4 font-bold mb-5">
-        Financial Support and Sponsorship
-      </h2>
-      <p className="mb-4">
+      <h2>Financial Support and Sponsorship</h2>
+      <p className="mb-10">
         Generous support for CRAFT comes from the following organizations. The
         contents of CRAFT resources are the product of the design and
         development teams and not necessarily representative of any sponsoring
         organization.
       </p>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-lg mb-30">
         <Funder
           url="https://digitaleducation.stanford.edu/"
           name="Stanford Digital Education"
         >
           <img
             src={sdeLogo}
-            className="max-h-48 "
+            className="max-h-150 "
             alt="Stanford Digital Education"
           />
         </Funder>
@@ -141,7 +127,7 @@ const About = () => {
         >
           <img
             src={mccoyLogo}
-            className="max-h-48 rounded-md"
+            className="max-h-150 rounded"
             alt="The McCoy Family Center for Ethics in Society"
           />
         </Funder>
@@ -151,7 +137,7 @@ const About = () => {
         >
           <img
             src={haiLogo}
-            className="max-h-48 "
+            className="max-h-150 "
             alt="The Institute for Human-Centered Artificial Intelligence"
           />
         </Funder>
@@ -161,13 +147,13 @@ const About = () => {
         >
           <img
             src={salLogo}
-            className="max-h-48 "
+            className="max-h-150 "
             alt="Stanford Accelerator for Learning"
           />
         </Funder>
       </div>
-      <h2 className="type-2 mt-4 font-bold mb-5">Affiliated Work</h2>
-      <ul className="list-inside">
+      <h2>Affiliated Work</h2>
+      <ul className="list-none pl-30">
         <Citation>
           Lee, V. R., Sarin, P., Xie, B. & Wolf, J. CRAFT-work: An Integrative
           Co-Design Approach for Designing High School AI Literacy Resources.

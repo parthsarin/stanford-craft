@@ -5,12 +5,12 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
-import Home from '../Home';
+import Home from "../Home";
 import Dashboard from "../Dashboard";
 import Resources from "../Dashboard/Resources";
 import NoMatch from "../NoMatch";
 
-import './App.css';
+import "./App.css";
 import Datamax from "../Dashboard/Datamax";
 import NewQuiz from "../Dashboard/Datamax/NewQuiz";
 import IdentityBar from "../Generic/Brand/IdentityBar";
@@ -50,10 +50,10 @@ const router = createBrowserRouter(
           <Route path=":joinCode" element={<AnalyzeQuiz />} />
         </Route>
         <Route path="explore/:joinCode" element={<ExploreQuiz />} />
-        <Route path="resources" element={<Resources />} />   
-        <Route path="contact" element={<Contact />} />   
-        <Route path="contact/view/:messageId" element={<ViewMessage />} />   
-        <Route path="about" element={<About />} />   
+        <Route path="resources" element={<Resources />} />
+        <Route path="contact" element={<Contact />} />
+        <Route path="contact/view/:messageId" element={<ViewMessage />} />
+        <Route path="about" element={<About />} />
       </Route>
       <Route path="*" element={<NoMatch />} />
     </>
@@ -62,22 +62,32 @@ const router = createBrowserRouter(
 
 const App = () => {
   const [user, setUser] = useState<User | null>(null);
-  
+  const [userLoading, setUserLoading] = useState<boolean>(true);
+
   useEffect(() => {
     const auth = getAuth();
-    const unsubscribe = onAuthStateChanged(auth, (user) => handleSignIn(user, setUser));
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setUserLoading(false);
+      handleSignIn(user, setUser);
+    });
     return unsubscribe;
   }, []);
 
   return (
     <>
-      <UserContext.Provider value={{ user, setUser: generateUserUpdateHandler(setUser) }}>
+      <UserContext.Provider
+        value={{
+          user,
+          setUser: generateUserUpdateHandler(setUser),
+          loading: userLoading,
+        }}
+      >
         <IdentityBar />
         <RouterProvider router={router} />
         <GlobalFooter />
       </UserContext.Provider>
     </>
   );
-}
+};
 
 export default App;

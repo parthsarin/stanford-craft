@@ -104,8 +104,8 @@ const Resources = () => {
   };
 
   return (
-    <div className="flex-1 p-8">
-      <h1 className="mb-20">Resources</h1>
+    <div className="flex-1 p-20">
+      <h1 className="mb-20 mt-0">Resources</h1>
       <div
         className={`
         rounded border border-black bg-poppy/40 text-black mb-20 px-20 py-15

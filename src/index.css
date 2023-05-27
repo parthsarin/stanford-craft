@@ -40,3 +40,7 @@ body,
 .btn-link:focus {
   color: #2e2d29;
 }
+
+li {
+  margin: 0;
+}
