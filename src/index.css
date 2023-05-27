@@ -21,3 +21,11 @@ body,
   font-weight: 300;
   font-display: swap;
 }
+
+.tippy-tooltip-content {
+  @apply type-3 px-8 py-5;
+}
+
+.arrow-regular {
+  @apply m-0;
+}

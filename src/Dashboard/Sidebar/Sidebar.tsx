@@ -41,44 +41,44 @@ const Sidebar = () => {
 
   return (
     <aside
-      className={`w-fit bg-violet-500 text-white z-10
+      className={`w-fit bg-plum text-white z-10
         ${isFixed ? "fixed top-0" : "absolute"}`}
       style={{ height }}
     >
-      <div className="w-full h-full p-4">
-        <ul className="space-y-2 flex flex-col h-full">
+      <div className="w-full h-full p-10">
+        <ul className="space-y-8 flex flex-col h-full list-none m-0 pl-0">
           {user && (
             <SidebarButton text={"Profile"} path={"/dash/profile"}>
               {user.photoURL ? (
                 <img
                   src={user.photoURL}
                   alt={user.displayName ? user.displayName : "User"}
-                  className={`w-6 h-6 rounded-full`}
+                  className={`w-26 h-26 rounded-full`}
                 />
               ) : (
-                <FontAwesomeIcon icon={faUser} className={`w-6 h-6`} />
+                <FontAwesomeIcon icon={faUser} className={`w-26 h-26`} />
               )}
             </SidebarButton>
           )}
           <SidebarButton text="Home Page" path="/">
-            <FontAwesomeIcon icon={faHome} className={`w-6 h-6`} />
+            <FontAwesomeIcon icon={faHome} className={`w-26 h-26`} />
           </SidebarButton>
           <SidebarButton text={"Resources"} path={"/dash/resources"}>
-            <FontAwesomeIcon icon={faBook} className={`w-6 h-6`} />
+            <FontAwesomeIcon icon={faBook} className={`w-26 h-26`} />
           </SidebarButton>
           <SidebarButton text={"Datamax"} path={"/dash/datamax"}>
-            <FontAwesomeIcon icon={faRobot} className={`w-6 h-6`} />
+            <FontAwesomeIcon icon={faRobot} className={`w-26 h-26`} />
           </SidebarButton>
           <SidebarButton text={"Analyze"} path={"/dash/analyze"}>
-            <FontAwesomeIcon icon={faChartLine} className={`w-6 h-6`} />
+            <FontAwesomeIcon icon={faChartLine} className={`w-26 h-26`} />
           </SidebarButton>
 
           <li className="flex-1"></li>
           <SidebarButton text="Contact" path="/dash/contact">
-            <FontAwesomeIcon icon={faEnvelope} className={`w-6 h-6`} />
+            <FontAwesomeIcon icon={faEnvelope} className={`w-26 h-26`} />
           </SidebarButton>
           <SidebarButton text="About" path="/dash/about">
-            <FontAwesomeIcon icon={faInfoCircle} className={`w-6 h-6`} />
+            <FontAwesomeIcon icon={faInfoCircle} className={`w-26 h-26`} />
           </SidebarButton>
           <SidebarButton
             text={user ? "Sign Out" : "Sign In"}
@@ -92,9 +92,9 @@ const Sidebar = () => {
             }}
           >
             {user ? (
-              <FontAwesomeIcon icon={faSignOut} className={`w-6 h-6`} />
+              <FontAwesomeIcon icon={faSignOut} className={`w-26 h-26`} />
             ) : (
-              <FontAwesomeIcon icon={faSignIn} className={`w-6 h-6`} />
+              <FontAwesomeIcon icon={faSignIn} className={`w-26 h-26`} />
             )}
           </SidebarButton>
         </ul>
