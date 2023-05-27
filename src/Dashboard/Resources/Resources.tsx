@@ -128,12 +128,16 @@ const Resources = () => {
         </div>
       </div>
       <div className="lg:flex p-0 gap-6">
-        <div className="mb-6 lg:mb-0 lg:w-1/5 p-5 bg-violet-300 rounded-md">
-          <h2 className="text-2xl font-bold mb-3">Search</h2>
-          <SearchBar onUpdate={handleSearch} />
+        <div className="lg:w-1/5">
+          <div className="sticky top-6 ">
+            <div className="bg-violet-300 rounded-md mb-6 lg:mb-0 p-5">
+              <h2 className="text-2xl font-bold mb-3">Search</h2>
+              <SearchBar onUpdate={handleSearch} />
 
-          <h2 className="text-2xl font-bold mt-3 mb-3">Filter</h2>
-          <Filter onUpdate={handleFilter} />
+              <h2 className="text-2xl font-bold mt-3 mb-3">Filter</h2>
+              <Filter onUpdate={handleFilter} />
+            </div>
+          </div>
         </div>
 
         {resources.length === 0 ? (
