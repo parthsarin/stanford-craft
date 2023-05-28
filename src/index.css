@@ -39,6 +39,12 @@ body,
   box-shadow: none;
   @apply ring-0;
 }
+
+/* Sweetalert */
+.swal2-popup {
+  font-size: 1.8rem !important;
+}
+
 /* Overrides */
 li {
   margin: 0;
