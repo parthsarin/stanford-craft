@@ -111,10 +111,10 @@ const StudentView = ({ joinCode, quiz }: Params) => {
       </div>
     );
   return (
-    <div className="p-4 w-full lg:w-2/3">
-      <h1 className="text-2xl mb-2">{quiz.template.name}</h1>
+    <div className="p-20 w-full lg:w-2/3">
+      <h1 className="">{quiz.template.name}</h1>
       <form
-        className="flex flex-col bg-slate-600 text-white rounded w-full p-4"
+        className="flex flex-col rounded w-full p-4"
         onSubmit={submitQuiz}
       >
         <div className="grid grid-cols-3">
@@ -126,7 +126,7 @@ const StudentView = ({ joinCode, quiz }: Params) => {
               type="text"
               name="displayName"
               value={responses.name ? responses.name : ""}
-              className="w-full p-2 rounded bg-slate-500 text-white"
+              className="input w-full"
               onChange={(e) =>
                 setResponses({ ...responses, name: e.target.value })
               }
@@ -136,7 +136,7 @@ const StudentView = ({ joinCode, quiz }: Params) => {
           {quiz.template.questions.map((question) => (
             <div
               key={question.id}
-              className="col-span-3 mb-6 bg-slate-100 text-black p-3 rounded"
+              className="col-span-3 mb-20 mt-20 bg-stone-light text-black"
             >
               <Question
                 question={question}
@@ -149,8 +149,7 @@ const StudentView = ({ joinCode, quiz }: Params) => {
           <button
             type="submit"
             className={`
-            col-span-3 bg-indigo-500 text-white p-2 rounded type-1
-            hover:bg-indigo-600
+            col-span-3 btn-sky
             `}
           >
             Submit

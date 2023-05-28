@@ -1,4 +1,4 @@
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faTrash, faXmarkCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { generateUUID } from "../../../../../Generic/UUID";
@@ -7,6 +7,7 @@ import {
   DataElementTemplate,
 } from "../../../DatamaxTypes";
 import { UniformPrompt, NormalPrompt } from "./DistributionParameterPrompts";
+import Select from 'react-select';
 
 interface DataElementProps {
   data: DataElementTemplate;
@@ -41,49 +42,52 @@ const DataElement = ({ data, onDelete, onUpdate }: DataElementProps) => {
   };
 
   return (
-    <div className="w-full flex flex-row mb-2">
-      {/* delete button */}
-      <div className="flex w-fit p-3">
-        <button
-          className="btn-rose"
-          onClick={onDelete}
-          aria-label={"delete data element"}
-        >
-          <FontAwesomeIcon icon={faTrash} size={"xl"} />
-        </button>
-      </div>
-
+    <div className="w-full flex flex-col mb-20 bg-stone/30 p-20 relative">
       {/* prompt for the data element */}
-      <div className="flex-1">
-        <p className="type-1">
-          Generate a field titled{" "}
+      <div>
+        <p style={{lineHeight: "3rem"}} className="mb-0">
+          Show students a randomly-generated value titled{" "}
           <input
-            className={`w-30 px-2 py-1 border rounded`}
+            className={`input inline w-228 p-3 mb-5`}
             value={data.name}
             onChange={(e) => {
               e.preventDefault();
               onUpdate({ ...data, name: e.target.value });
             }}
           />{" "}
-          from a{" "}
-          <select
-            className="w-30 px-2 py-1 mt-1 border rounded border-black"
-            value={data.generator}
+          generated from a{" "}
+          <div className="inline-block mb-5 mr-5">
+          <Select
+            className="select-container"
+            options={Object.values(DataElementGenerator).map((s) => ({
+              value: s,
+              label: s
+            }))}
+            value={{ value: data.generator, label: data.generator }}
+            styles={{
+              control: (baseStyles, state) => ({
+                ...baseStyles,
+                fontSize: "1.8rem",
+                lineHeight: "1.3",
+                borderRadius: 0,
+                width: "150px",
+                borderColor: "#6b7280",
+                "&:hover": {
+                  borderColor: "#6b7280",
+                },
+              }),
+            }}
             onChange={(e) => {
-              e.preventDefault();
+              if (!e) return;
               onUpdate({
                 ...data,
-                generator: e.target.value as DataElementGenerator,
+                generator: e.value as DataElementGenerator,
               });
-              setDistribution(e.target.value as DataElementGenerator);
+              setDistribution(e.value as DataElementGenerator);
             }}
-          >
-            {Object.values(DataElementGenerator).map((s) => (
-              <option value={s} key={`${deKey}/${s}`}>
-                {s}
-              </option>
-            ))}
-          </select>{" "}
+            placeholder="Select an answer"
+          />
+          </div>
           distribution{" "}
           {distribution === DataElementGenerator.UNIFORM && (
             <UniformPrompt onUpdate={updateDistribution} data={data} />
@@ -93,6 +97,16 @@ const DataElement = ({ data, onDelete, onUpdate }: DataElementProps) => {
           )}
         </p>
       </div>
+      <button
+        className="type-2 absolute right-0 top-0 -translate-y-15 translate-x-15 z-10"
+        aria-label={"delete data element"}
+        onClick={onDelete}
+      >
+        <FontAwesomeIcon
+          icon={faXmarkCircle}
+          className="bg-white rounded-full"
+        />
+      </button>
     </div>
   );
 };

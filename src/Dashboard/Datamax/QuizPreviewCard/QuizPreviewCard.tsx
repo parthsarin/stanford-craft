@@ -51,13 +51,13 @@ const QuizPreviewCard = ({
 
   return (
     <div
-      className="border rounded border-black px-3 py-1 hover:bg-black-10 hover:cursor-pointer relative text-center z-0"
+      className="border rounded border-black px-10 py-5 hover:bg-black-10 hover:cursor-pointer relative text-center z-0"
       onClick={onClick}
       role="button"
     >
       <button
-        className="type-2 absolute right-0 top-0 -translate-y-3 translate-x-2 z-10"
-        aria-label={"delete quiz"}
+        className="type-2 absolute right-0 top-0 -translate-y-15 translate-x-15 z-10"
+        aria-label={"delete game"}
         onClick={(e) => {
           e.preventDefault();
           e.stopPropagation();
@@ -71,7 +71,7 @@ const QuizPreviewCard = ({
       </button>
       <h2 className="type-1">{template.name}</h2>
       <p className="type-0 italic mb-2">Join Code: {joinCode}</p>
-      <p className="type-0">
+      <p className="type-0 mb-0">
         Created on {createdAt.toDate().toLocaleDateString("en-US")}
       </p>
     </div>

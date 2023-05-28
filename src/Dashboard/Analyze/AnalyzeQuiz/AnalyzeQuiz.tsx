@@ -85,7 +85,7 @@ const ExploreQuiz = () => {
           onClick={() => navigate("/dash/analyze")}
         >
           <FontAwesomeIcon icon={faChevronLeft} className="mr-10" />
-          <span>Select a different quiz</span>
+          <span>Select a different game</span>
         </button>
       </div>
       <ScrollRestoration />

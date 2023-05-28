@@ -96,37 +96,22 @@ const NewQuiz = () => {
 
   if (!userLoading && !user) return <AuthWall />;
   return (
-    <div className="p-4 flex flex-1 flex-col">
+    <div className="p-20 flex flex-1 flex-col">
       {(!user || loading) && <Loader />}
-      <div className="w-4/5 lg:w-2/3 p-2 rounded bg-black-20 mb-4">
-        <button
-          className="text-digital-blue-dark hover:underline"
-          onClick={() => navigate("/dash/datamax")}
-        >
-          Datamax
-        </button>{" "}
-        /{" "}
-        <button
-          className="text-digital-blue-dark hover:underline"
-          onClick={() => {}}
-        >
-          New Quiz
-        </button>
-      </div>
-      <h1 className="text-2xl mb-4">Create a new quiz</h1>
+      <h1 className="">Create a new game</h1>
 
       <form onSubmit={handleNewQuiz}>
-        <div className="flex flex-col mb-3">
-          <label htmlFor="name" className="mb-2">
-            Give your quiz a name
+        <div className="flex flex-col mb-20">
+          <label htmlFor="name" className="mb-5">
+            Give your game a name
           </label>
           <input
             type="text"
-            className="w-4/5 lg:w-1/2 rounded border type-1 px-2 py-1"
-            placeholder="My awesome quiz"
+            className="w-4/5 lg:w-1/2 input"
+            placeholder="My awesome game"
             value={quiz.name}
             onChange={(e) => setQuiz({ ...quiz, name: e.target.value })}
-          ></input>
+          />
         </div>
 
         {Object.keys(quiz.questions).map((questionKey) => (
@@ -139,18 +124,20 @@ const NewQuiz = () => {
           />
         ))}
 
-        <button
-          className="flex flex-row w-4/5 lg:w-1/2 rounded border border-black border-dashed p-2 justify-center items-center type-2 hover:bg-black-10"
-          onClick={addQuestion}
-        >
-          <FontAwesomeIcon icon={faPlus} className="mr-10" />
-          <span>Add Question</span>
-        </button>
+        <div className="flex flex-row mt-20">
+          <button
+            className="btn-digital-red mr-20"
+            onClick={addQuestion}
+          >
+            <FontAwesomeIcon icon={faPlus} className="mr-10" />
+            <span>Add Question</span>
+          </button>
 
-        <button className="w-1/3 btn-indigo mt-2" type="submit">
-          <FontAwesomeIcon icon={faHammer} className="mr-10" />
-          <span>Create Quiz</span>
-        </button>
+          <button className="btn-brick" type="submit">
+            <FontAwesomeIcon icon={faHammer} className="mr-10" />
+            <span>Start Game</span>
+          </button>
+        </div>
       </form>
     </div>
   );

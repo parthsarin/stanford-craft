@@ -12,13 +12,14 @@ import DataElement from "./DataElement";
 import Response from "./Response";
 
 interface QuestionProps {
+  key: string,
   data: QuestionTemplate;
   onDelete: () => void;
   onUpdate: (data: QuestionTemplate) => void;
   onDuplicate: () => void;
 }
 
-const Question = ({ data, onDelete, onUpdate, onDuplicate }: QuestionProps) => {
+const Question = ({ key, data, onDelete, onUpdate, onDuplicate }: QuestionProps) => {
   // data elements helper functions
   const addDataElement = (e: MouseEvent) => {
     e.preventDefault();
@@ -48,12 +49,16 @@ const Question = ({ data, onDelete, onUpdate, onDuplicate }: QuestionProps) => {
   };
 
   return (
-    <div className="relative w-4/5 lg:w-1/2 rounded border border-black p-2 mb-3 z-0">
+    <div className="relative w-4/5 lg:w-1/2 bg-stone-light p-20 mb-20 z-0">
       {/* question title */}
+      <label htmlFor={`${key}-title`} className="mb-5">
+        What question should students answer?
+      </label>
       <input
         type="text"
-        className={`w-full h-fit text-center type-2 focus:ring-0 focus:border-0 focus:outline-none mb-2 rounded p-1`}
-        placeholder="What question should students answer?"
+        id={`${key}-title`}
+        className={`input w-full mb-20`}
+        placeholder=""
         value={data.prompt}
         onChange={(e) => onUpdate({ ...data, prompt: e.target.value })}
       ></input>
@@ -72,16 +77,16 @@ const Question = ({ data, onDelete, onUpdate, onDuplicate }: QuestionProps) => {
       <Response data={data.response} onUpdate={updateResponse} />
 
       {/* delete and duplicate button */}
-      <div className="mt-4 flex flex-row w-full justify-around space-x-2">
+      <div className="mt-20 flex flex-row w-full flex-wrap">
         <button
-          className="px-3 py-2 hover:bg-blue-400 bg-blue-300 rounded border"
+          className="btn-digital-blue mr-10 mb-10"
           onClick={addDataElement}
         >
           <FontAwesomeIcon icon={faDatabase} className="mr-10" />
-          Add data element
+          <span>Add randomly generated value</span>
         </button>
         <button
-          className="px-3 py-2 hover:bg-orange-400 bg-orange-300 rounded border"
+          className="btn-poppy mr-10 mb-10"
           onClick={(e) => {
             e.preventDefault();
             e.stopPropagation();
@@ -89,10 +94,10 @@ const Question = ({ data, onDelete, onUpdate, onDuplicate }: QuestionProps) => {
           }}
         >
           <FontAwesomeIcon icon={faCopy} className="mr-10" />
-          Duplicate
+          <span>Duplicate</span>
         </button>
         <button
-          className="px-3 py-2 hover:bg-red-400 bg-red-300 rounded border"
+          className="btn-digital-red mr-10 mb-10"
           onClick={(e) => {
             e.preventDefault();
             e.stopPropagation();
@@ -100,7 +105,7 @@ const Question = ({ data, onDelete, onUpdate, onDuplicate }: QuestionProps) => {
           }}
         >
           <FontAwesomeIcon icon={faTrash} className="mr-10" />
-          Delete
+          <span>Delete</span>
         </button>
       </div>
     </div>

@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import { Question as RawQuestion, ResponseType } from "../../../DatamaxTypes";
 import DistributionGraph from "./DistributionGraph";
+import Select from "react-select";
 
 interface QuestionProps {
   question: RawQuestion;
@@ -10,12 +11,12 @@ interface QuestionProps {
 const Question = ({ question, onChange }: QuestionProps) => {
   const { prompt, dataElements, response, id } = question;
   return (
-    <div className="flex flex-col mb-4">
-      <div className="flex flex-row justify-center mb-6">
+    <div className="flex flex-col p-20">
+      <div className="flex flex-row justify-center mb-20">
         <h2 className="type-2">{prompt}</h2>
       </div>
       {dataElements.length > 0 && (
-        <div className="grid grid-cols-2 md:grid-cols-4 type-1 gap-y-2 mb-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 type-1 gap-y-2 mb-20">
           {dataElements.map((de) => (
             <Fragment key={`${id}/${de.id}`}>
               <p className="col-span-1 font-bold">{de.name}: </p>
@@ -27,21 +28,33 @@ const Question = ({ question, onChange }: QuestionProps) => {
           ))}
         </div>
       )}
-      <div className="flex flex-row justify-center items-center">
+      <div className="flex flex-row justify-center items-center mb-0">
         {response.type === ResponseType.MULTIPLE_CHOICE && (
           <>
-            <p className="type-1 font-bold mr-5">Answer:</p>
-            <select
-              className={`w-full md:w-2/3 text-center type-2 rounded py-2
-                border border-black text-black`}
-              onChange={(e) => onChange(e.target.value)}
-              defaultValue=""
-            >
-              <option value="" disabled></option>
-              {response.choices?.map((option) => (
-                <option key={`${id}/${option}`}>{option}</option>
-              ))}
-            </select>
+            <p className="type-1 font-bold mr-20 mb-0">Answer:</p>
+            <Select
+              className="select-container w-full md:w-2/3"
+              options={response.choices?.map((option) => ({
+                value: option,
+                label: option
+              }))}
+              styles={{
+                control: (baseStyles, state) => ({
+                  ...baseStyles,
+                  fontSize: "1.8rem",
+                  lineHeight: "1.3",
+                  borderRadius: 0,
+                  borderColor: "#6b7280",
+                  "&:hover": {
+                    borderColor: "#6b7280",
+                  },
+                }),
+              }}
+              onChange={(e) => {
+                if (e) onChange(e.value);
+              }}
+              placeholder="Select an answer"
+            />
           </>
         )}
         {response.type === ResponseType.SHORT_ANSWER && (

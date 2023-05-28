@@ -123,28 +123,28 @@ const TeacherView = ({ joinCode, quiz }: Params) => {
   };
 
   return (
-    <div className="p-4 w-full lg:w-2/3">
+    <div className="p-20 w-full lg:w-2/3">
       {loading && <Loader />}
-      <h1 className="text-2xl mb-4">{quiz.template.name}</h1>
+      <h1 className="">{quiz.template.name}</h1>
       <div className="flex flex-row justify-center">
-        <div className="flex flex-col items-center p-4 border rounded border-black">
+        <div className="flex flex-col items-center p-20 border rounded border-black mb-20">
           <QRCode value={window.location.href} />
-          <h2 className="type-2 mt-2">Join Code: {joinCode}</h2>
+          <h2 className="type-2 mt-10 mb-0">Join Code: {joinCode}</h2>
         </div>
       </div>
       <div className="flex flex-col mt-4">
-        <h2 className="type-2 mb-2">
+        <h2 className="type-2">
           Responses ({Object.keys(responses).length})
         </h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-lg mb-20">
           {Object.entries(responses).map(([id, response]) => (
             <div
               key={id}
-              className="relative text-center items-center py-3 border rounded border-black"
+              className="relative text-center items-center py-10 border rounded border-black"
             >
               {/* delete button */}
               <button
-                className="type-2 absolute right-0 top-0 -translate-y-3 translate-x-2"
+                className="type-2 absolute right-0 top-0 -translate-y-15 translate-x-15"
                 aria-label={"delete response"}
                 onClick={handleDelete(id)}
               >
@@ -153,15 +153,15 @@ const TeacherView = ({ joinCode, quiz }: Params) => {
                   className="bg-white rounded-full"
                 />
               </button>
-              <h3 className="type-1">{response.name}</h3>
+              <h3 className="type-1 mb-0">{response.name}</h3>
             </div>
           ))}
         </div>
         <div className="flex flex-col mt-4">
-          <h2 className="type-2 mb-2">Actions</h2>
+          <h2 className="type-2">Actions</h2>
           <div className="flex flex-row">
             <button
-              className="bg-teal-600 hover:bg-teal-700 text-white px-4 py-2 mr-10 rounded"
+              className="btn-palo-verde mr-10"
               onClick={handleEndQuiz}
             >
               <FontAwesomeIcon
@@ -169,10 +169,10 @@ const TeacherView = ({ joinCode, quiz }: Params) => {
                 className="mr-10"
                 aria-hidden="true"
               />
-              End Quiz
+              <span>End Quiz</span>
             </button>
             <button
-              className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded"
+              className="btn-digital-red"
               onClick={handleDeleteQuiz}
             >
               <FontAwesomeIcon
@@ -180,7 +180,7 @@ const TeacherView = ({ joinCode, quiz }: Params) => {
                 className="mr-10"
                 aria-hidden="true"
               />
-              Delete Quiz
+              <span>Delete Quiz</span>
             </button>
           </div>
         </div>
