@@ -5,6 +5,7 @@ import {
   faPalette,
   faBook,
   faInfoCircle,
+  faPaperPlane,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
@@ -50,20 +51,27 @@ const Home = () => {
             {", "}
             offered in Fall 2023.
           </p>
-          <div className="w-full mb-0 mt-20">
+          <div className="w-full mb-0 mt-20 grid grid-cols-2" style={{gap: '1rem'}} >
             <button
-              className="button w-full mb-10"
+              className="button col-span-2"
               onClick={() => navigate("/dash/resources")}
             >
               <FontAwesomeIcon icon={faBook} className="mr-10" />
               <span>View the Curricular Resources</span>
             </button>
             <button
-              className="btn-sky w-full"
+              className="btn-sky"
               onClick={() => navigate("/dash/about")}
             >
               <FontAwesomeIcon icon={faInfoCircle} className="mr-10" />
               <span>Meet the CRAFT Team</span>
+            </button>
+            <button
+              className="btn-palo-verde"
+              onClick={() => navigate("/dash/contact")}
+            >
+              <FontAwesomeIcon icon={faPaperPlane} className="mr-10" />
+              <span>Get in Touch</span>
             </button>
           </div>
         </div>
