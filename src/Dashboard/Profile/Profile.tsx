@@ -4,14 +4,15 @@ import Loader from "../../Generic/Loader";
 import { MySwal } from "../../Generic/Notify";
 import PhotoSelector from "./PhotoSelector";
 import { ScrollRestoration } from "react-router-dom";
+import AuthWall from "../../Generic/AuthWall/AuthWall";
 
 const Profile = () => {
-  const { user, setUser } = useContext(UserContext);
+  const { user, setUser, loading } = useContext(UserContext);
   const [updateUser, setUpdateUser] = useState<typeof user>(null);
   useEffect(() => setUpdateUser(user), [user, setUpdateUser]);
 
+  if (!loading && !user) return <AuthWall />;
   if (!updateUser) return <Loader />;
-
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     e.stopPropagation();

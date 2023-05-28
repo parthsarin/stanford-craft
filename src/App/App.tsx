@@ -67,8 +67,7 @@ const App = () => {
   useEffect(() => {
     const auth = getAuth();
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setUserLoading(false);
-      handleSignIn(user, setUser);
+      handleSignIn(user, setUser).then(() => setUserLoading(false));
     });
     return unsubscribe;
   }, []);

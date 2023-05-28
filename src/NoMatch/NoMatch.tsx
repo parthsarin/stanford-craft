@@ -26,30 +26,23 @@ const NoMatch = () => {
         <div className="w-full border-t border-gray-500 mb-10 mt-10"></div>
         <p className="type-0 mb-10">We couldn't find that page...</p>
         <div className="w-full mb-0 mt-15 flex flex-row justify-around flex-wrap">
-          <button
-            className={`rounded border border-digital-red bg-digital-red text-white
-            px-10 py-8 hover:bg-digital-red-dark mb-10
-            `}
-            onClick={() => navigate(-1)}
-          >
-            <FontAwesomeIcon icon={faArrowLeft} className="mr-10" /> Go Back
+          <button className={`button mb-10`} onClick={() => navigate(-1)}>
+            <FontAwesomeIcon icon={faArrowLeft} className="mr-10" />
+            <span>Go Back</span>
           </button>
           <button
-            className={`rounded border border-digital-green bg-digital-green text-white
-            px-10 py-8 hover:bg-digital-green-dark mb-10
-            `}
+            className={`btn-digital-green mb-10`}
             onClick={() => navigate("/")}
           >
-            <FontAwesomeIcon icon={faHome} className="mr-10" /> Home Page
+            <FontAwesomeIcon icon={faHome} className="mr-10" />
+            <span>Home Page</span>
           </button>
           <button
-            className={`rounded border border-plum bg-plum text-white
-            px-10 py-8 hover:bg-plum-dark mb-10
-            `}
+            className={`btn-plum mb-10`}
             onClick={() => navigate("/dash/resources")}
           >
-            <FontAwesomeIcon icon={faDashboard} className="mr-10" /> View the
-            Curricular Resources
+            <FontAwesomeIcon icon={faDashboard} className="mr-10" />
+            <span>View the Curricular Resources</span>
           </button>
         </div>
       </div>

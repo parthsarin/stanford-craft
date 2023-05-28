@@ -28,70 +28,87 @@
   @apply hover:bg-plum-dark mr-10;
 }
 .btn-digital-blue {
-  @apply bg-digital-blue hover:bg-digital-blue-dark hover:underline;
+  @apply bg-digital-blue hover:bg-black hover:text-white hover:underline;
   @apply text-white py-10 px-20;
+  transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
 }
 .btn-digital-red {
-  @apply bg-digital-red hover:bg-digital-red-dark hover:underline;
+  @apply bg-digital-red hover:bg-black hover:text-white hover:underline;
   @apply text-white py-10 px-20;
+  transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
 }
 .btn-digital-green {
-  @apply bg-digital-green hover:bg-digital-green-dark hover:underline;
+  @apply bg-digital-green hover:bg-black hover:text-white hover:underline;
   @apply text-white py-10 px-20;
+  transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
 }
 .btn-palo-alto {
-  @apply bg-palo-alto hover:bg-palo-alto-dark hover:underline;
+  @apply bg-palo-alto hover:bg-black hover:text-white hover:underline;
   @apply text-white py-10 px-20;
+  transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
 }
 .btn-palo-verde {
-  @apply bg-palo-verde hover:bg-palo-verde-dark hover:underline;
+  @apply bg-palo-verde hover:bg-black hover:text-white hover:underline;
   @apply text-white py-10 px-20;
+  transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
 }
 .btn-olive {
-  @apply bg-olive hover:bg-olive-dark hover:underline;
+  @apply bg-olive hover:bg-black hover:text-white hover:underline;
   @apply text-white py-10 px-20;
+  transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
 }
 .btn-bay {
-  @apply bg-bay hover:bg-bay-dark hover:underline;
+  @apply bg-bay hover:bg-black hover:text-white hover:underline;
   @apply text-white py-10 px-20;
+  transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
 }
 .btn-sky {
-  @apply bg-sky hover:bg-sky-dark hover:underline;
+  @apply bg-sky hover:bg-black hover:text-white hover:underline;
   @apply text-white py-10 px-20;
+  transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
 }
 .btn-lagunita {
-  @apply bg-lagunita hover:bg-lagunita-dark hover:underline;
+  @apply bg-lagunita hover:bg-black hover:text-white hover:underline;
   @apply text-white py-10 px-20;
+  transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
 }
 .btn-poppy {
-  @apply bg-poppy hover:bg-poppy-dark hover:underline;
+  @apply bg-poppy hover:bg-black hover:text-white hover:underline;
   @apply text-white py-10 px-20;
+  transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
 }
 .btn-spirited {
-  @apply bg-spirited hover:bg-spirited-dark hover:underline;
+  @apply bg-spirited hover:bg-black hover:text-white hover:underline;
   @apply text-white py-10 px-20;
+  transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
 }
 .btn-illuminating {
-  @apply bg-illuminating hover:bg-illuminating-dark hover:underline;
+  @apply bg-illuminating hover:bg-black hover:text-white hover:underline;
   @apply text-white py-10 px-20;
+  transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
 }
 .btn-plum {
-  @apply bg-plum hover:bg-plum-dark hover:underline;
+  @apply bg-plum hover:bg-black hover:text-white hover:underline;
   @apply text-white py-10 px-20;
+  transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
 }
 .btn-brick {
-  @apply bg-brick hover:bg-brick-dark hover:underline;
+  @apply bg-brick hover:bg-black hover:text-white hover:underline;
   @apply text-white py-10 px-20;
+  transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
 }
 .btn-archway {
-  @apply bg-archway hover:bg-archway-dark hover:underline;
+  @apply bg-archway hover:bg-black hover:text-white hover:underline;
   @apply text-white py-10 px-20;
+  transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
 }
 .btn-stone {
-  @apply bg-stone hover:bg-stone-dark hover:underline;
+  @apply bg-stone hover:bg-black hover:text-white hover:underline;
   @apply text-white py-10 px-20;
+  transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
 }
 .btn-foggy {
-  @apply bg-foggy hover:bg-foggy-dark hover:underline;
+  @apply bg-foggy hover:bg-black hover:text-white hover:underline;
   @apply text-white py-10 px-20;
+  transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
 }
