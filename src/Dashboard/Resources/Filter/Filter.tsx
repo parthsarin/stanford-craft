@@ -48,14 +48,15 @@ const Filter = ({ onUpdate }: Props) => {
   }, [prevTags, selectedTags, onUpdate, selectedTagsCount]);
 
   return (
-    <ul className="mt-4">
-      <h3 className="text-1xl font-bold mb-3">Unit</h3>
-      <li>
-        <label className="inline-flex items-center">
+    <>
+      <h3 className="type-1 mb-3">Unit</h3>
+      <ul className="mt-10 list-none pl-0">
+        <li>
           <input
             type="checkbox"
-            className="unit form-checkbox h-5 w-5 text-gray-600"
+            className="unit checkbox"
             value="Unit 2: AI & You"
+            id="u2"
             onChange={(e) =>
               handleTagSelect(
                 e.currentTarget.checked,
@@ -64,15 +65,16 @@ const Filter = ({ onUpdate }: Props) => {
               )
             }
           />
-          <span className="ml-2 text-gray-700">Unit 2: AI & You</span>
-        </label>
-      </li>
-      <li>
-        <label className="inline-flex items-center">
+          <label htmlFor="u2" className="label inline ml-5">
+            Unit 2: AI & You
+          </label>
+        </li>
+        <li>
           <input
             type="checkbox"
-            className="unit form-checkbox h-5 w-5 text-gray-600"
+            className="unit checkbox"
             value="Unit 3: AI & Math"
+            id="u3"
             onChange={(e) =>
               handleTagSelect(
                 e.currentTarget.checked,
@@ -81,15 +83,16 @@ const Filter = ({ onUpdate }: Props) => {
               )
             }
           />
-          <span className="ml-2 text-gray-700">Unit 3: AI & Math</span>
-        </label>
-      </li>
-      <li>
-        <label className="inline-flex items-center">
+          <label htmlFor="u3" className="label inline ml-5">
+            Unit 3: AI & Math
+          </label>
+        </li>
+        <li>
           <input
             type="checkbox"
-            className="unit form-checkbox h-5 w-5 text-gray-600"
+            className="unit checkbox"
             value="Unit 4: AI & Art"
+            id="u4"
             onChange={(e) =>
               handleTagSelect(
                 e.currentTarget.checked,
@@ -98,15 +101,16 @@ const Filter = ({ onUpdate }: Props) => {
               )
             }
           />
-          <span className="ml-2 text-gray-700">Unit 4: AI & Art</span>
-        </label>
-      </li>
-      <li>
-        <label className="inline-flex items-center">
+          <label htmlFor="u4" className="label inline ml-5">
+            Unit 4: AI & Art
+          </label>
+        </li>
+        <li>
           <input
             type="checkbox"
-            className="unit form-checkbox h-5 w-5 text-gray-600"
+            className="unit checkbox"
             value="Unit 5: AI & Society"
+            id="u5"
             onChange={(e) =>
               handleTagSelect(
                 e.currentTarget.checked,
@@ -115,17 +119,19 @@ const Filter = ({ onUpdate }: Props) => {
               )
             }
           />
-          <span className="ml-2 text-gray-700">Unit 5: AI & Society</span>
-        </label>
-      </li>
-
-      <h3 className="text-1xl font-bold mb-3 mt-3">Type</h3>
-      <li>
-        <label className="inline-flex items-center">
+          <label htmlFor="u5" className="label inline ml-5">
+            Unit 5: AI & Society
+          </label>
+        </li>
+      </ul>
+      <h3 className="type-1 mb-3 mt-20">Type</h3>
+      <ul className="mt-10 list-none pl-0">
+        <li>
           <input
             type="checkbox"
-            className="type form-checkbox h-5 w-5 text-gray-600"
+            className="type checkbox"
             value="Worksheet"
+            id="checkbox-Worksheet"
             onChange={(e) =>
               handleTagSelect(
                 e.currentTarget.checked,
@@ -134,15 +140,16 @@ const Filter = ({ onUpdate }: Props) => {
               )
             }
           />
-          <span className="ml-2 text-gray-700">Worksheet</span>
-        </label>
-      </li>
-      <li>
-        <label className="inline-flex items-center">
+          <label htmlFor="checkbox-Worksheet" className="label inline ml-5">
+            Worksheet
+          </label>
+        </li>
+        <li>
           <input
             type="checkbox"
-            className="type form-checkbox h-5 w-5 text-gray-600"
+            className="type checkbox"
             value="Video"
+            id="checkbox-Video"
             onChange={(e) =>
               handleTagSelect(
                 e.currentTarget.checked,
@@ -151,15 +158,16 @@ const Filter = ({ onUpdate }: Props) => {
               )
             }
           />
-          <span className="ml-2 text-gray-700">Video</span>
-        </label>
-      </li>
-      <li>
-        <label className="inline-flex items-center">
+          <label htmlFor="checkbox-Video" className="label inline ml-5">
+            Video
+          </label>
+        </li>
+        <li>
           <input
             type="checkbox"
-            className="type form-checkbox h-5 w-5 text-gray-600"
+            className="type checkbox"
             value="Podcast"
+            id="checkbox-Podcast"
             onChange={(e) =>
               handleTagSelect(
                 e.currentTarget.checked,
@@ -168,15 +176,16 @@ const Filter = ({ onUpdate }: Props) => {
               )
             }
           />
-          <span className="ml-2 text-gray-700">Podcast</span>
-        </label>
-      </li>
-      <li>
-        <label className="inline-flex items-center">
+          <label htmlFor="checkbox-Podcast" className="label inline ml-5">
+            Podcast
+          </label>
+        </li>
+        <li>
           <input
             type="checkbox"
-            className="type form-checkbox h-5 w-5 text-gray-600"
+            className="type checkbox"
             value="Reading"
+            id="checkbox-Reading"
             onChange={(e) =>
               handleTagSelect(
                 e.currentTarget.checked,
@@ -185,15 +194,16 @@ const Filter = ({ onUpdate }: Props) => {
               )
             }
           />
-          <span className="ml-2 text-gray-700">Reading</span>
-        </label>
-      </li>
-      <li>
-        <label className="inline-flex items-center">
+          <label htmlFor="checkbox-Reading" className="label inline ml-5">
+            Reading
+          </label>
+        </li>
+        <li>
           <input
             type="checkbox"
-            className="type form-checkbox h-5 w-5 text-gray-600"
+            className="type checkbox"
             value="Interactive"
+            id="checkbox-Interactive"
             onChange={(e) =>
               handleTagSelect(
                 e.currentTarget.checked,
@@ -202,15 +212,16 @@ const Filter = ({ onUpdate }: Props) => {
               )
             }
           />
-          <span className="ml-2 text-gray-700">Interactive</span>
-        </label>
-      </li>
-      <li>
-        <label className="inline-flex items-center">
+          <label htmlFor="checkbox-Interactive" className="label inline ml-5">
+            Interactive
+          </label>
+        </li>
+        <li>
           <input
             type="checkbox"
-            className="type form-checkbox h-5 w-5 text-gray-600"
+            className="type checkbox"
             value="Guided Exploration"
+            id="checkbox-Guided Exploration"
             onChange={(e) =>
               handleTagSelect(
                 e.currentTarget.checked,
@@ -219,10 +230,15 @@ const Filter = ({ onUpdate }: Props) => {
               )
             }
           />
-          <span className="ml-2 text-gray-700">Guided Exploration</span>
-        </label>
-      </li>
-    </ul>
+          <label
+            htmlFor="checkbox-Guided Exploration"
+            className="label inline ml-5"
+          >
+            Guided Exploration
+          </label>
+        </li>
+      </ul>
+    </>
   );
 };
 

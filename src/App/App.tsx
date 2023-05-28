@@ -48,12 +48,12 @@ const router = createBrowserRouter(
         <Route path="datamax" element={<Datamax />} />
         <Route path="datamax/new" element={<NewQuiz />} />
         <Route path="datamax/quiz/:joinCode" element={<JoinQuiz />} />
+        <Route path="prompty" element={<Prompty />} />
+        <Route path="prompty/:joinCode" element={<PlayPrompty />} />
         <Route path="analyze" element={<Analyze />}>
           <Route path=":joinCode" element={<AnalyzeQuiz />} />
         </Route>
         <Route path="explore/:joinCode" element={<ExploreQuiz />} />
-        <Route path="prompty" element={<Prompty />} />
-        <Route path="prompty/:joinCode" element={<PlayPrompty />} />
         <Route path="resources" element={<Resources />} />
         <Route path="contact" element={<Contact />} />
         <Route path="contact/view/:messageId" element={<ViewMessage />} />
@@ -66,19 +66,24 @@ const router = createBrowserRouter(
 
 const App = () => {
   const [user, setUser] = useState<User | null>(null);
+  const [userLoading, setUserLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const auth = getAuth();
-    const unsubscribe = onAuthStateChanged(auth, (user) =>
-      handleSignIn(user, setUser)
-    );
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      handleSignIn(user, setUser).then(() => setUserLoading(false));
+    });
     return unsubscribe;
   }, []);
 
   return (
     <>
       <UserContext.Provider
-        value={{ user, setUser: generateUserUpdateHandler(setUser) }}
+        value={{
+          user,
+          setUser: generateUserUpdateHandler(setUser),
+          loading: userLoading,
+        }}
       >
         <IdentityBar />
         <RouterProvider router={router} />

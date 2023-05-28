@@ -1,9 +1,10 @@
-import "./IdentityBar.css";
-
 const IdentityBar = () => (
-  <div className="su-brand-bar">
-    <div className="su-brand-bar__container">
-      <a className="su-brand-bar__logo" href="https://stanford.edu">
+  <div className="bg-digital-red pt-5 pb-1">
+    <div className="cc">
+      <a
+        className="logo text-white hocus:text-white text-20"
+        href="https://stanford.edu"
+      >
         Stanford University
       </a>
     </div>

@@ -1,47 +1,40 @@
-#jobs a, #jobs .link {
-  @apply text-blue-600;
+#jobs .link {
+  @apply text-digital-blue;
   @apply underline underline-offset-1;
 }
 
-#jobs a:hover, #jobs .link:hover {
-  @apply text-blue-800;
+#jobs .link:hover {
+  @apply text-stone;
 }
 
 #jobs h1 {
-  @apply text-2xl mb-4 mt-6;
+  @apply mb-10 mt-15;
 }
 
 #jobs h2 {
-  @apply text-2xl mb-4 mt-6;
+  @apply mb-10 mt-15;
 }
 
 #jobs h3 {
-  @apply text-xl mb-2 mt-6;
+  @apply mb-5 mt-12;
 }
 
 #jobs p {
-  @apply mb-2;
+  @apply mb-5;
 }
 
 #jobs ul {
-  @apply list-disc ml-10 mt-2 mb-2;
+  @apply list-disc ml-20 mt-10 mb-10;
+}
+
+#jobs ul li {
+  @apply mt-0 mb-0;
 }
 
 #jobs .divider {
-  @apply border border-t border-gray-600 mt-8 mb-8 w-4/5 mx-auto;
+  @apply border border-t border-stone mt-30 mb-30 w-4/5 mx-auto;
 }
 
 #jobs .container {
   @apply mx-auto w-full md:w-4/5 lg:w-2/3;
-}
-
-#jobs .coord-grid {
-  @apply grid grid-cols-1 md:grid-cols-3 w-full xl:w-4/5 mx-auto;
-  @apply mt-8 mb-8;
-  @apply gap-x-8 gap-y-8;
-}
-
-#jobs .coord-grid > div {
-  @apply p-4 rounded rounded-md flex flex-col;
-  @apply border border-black;
 }

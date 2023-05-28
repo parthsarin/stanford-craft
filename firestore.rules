@@ -36,7 +36,14 @@ service cloud.firestore {
     }
     
     match /users/{uid} {
-    	allow read, write: if request.auth.uid == uid;
+    	allow read: if request.auth.uid == uid;
+      
+      // don't allow the user to change their admin status or role
+      allow update: if (!request.resource.data.diff(resource.data).affectedKeys()
+        .hasAny(['admin', 'role']));
+
+			// don't allow the user to specify their admin status or role
+      allow create: if (!request.resource.data.keys().hasAny(['admin', 'role']));
     }
     
     match /prompty/{gameid} {
@@ -60,6 +67,11 @@ service cloud.firestore {
 
       allow create: if true;
       allow read, write: if isAdmin();
+    }
+
+    // request a resource
+    match /requestResource/{resourceSlug} {
+      allow create, update: if true;
     }
   }
 }

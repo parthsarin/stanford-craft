@@ -19,9 +19,7 @@ const Datamax = () => {
   const [activeQuizzes, setActiveQuizzes] = useState<QuizPreviewCardProps[]>(
     []
   );
-  const [pastQuizzes, setPastQuizzes] = useState<QuizPreviewCardProps[]>(
-    []
-  );
+  const [pastQuizzes, setPastQuizzes] = useState<QuizPreviewCardProps[]>([]);
 
   useEffect(() => {
     if (!user) return;
@@ -63,7 +61,7 @@ const Datamax = () => {
 
       setQuizzesLoaded(true);
     })();
-  }, [user, setActiveQuizzes, setPastQuizzes]); 
+  }, [user, setActiveQuizzes, setPastQuizzes]);
 
   const joinGame = () => {
     MySwal.fire({
@@ -87,44 +85,43 @@ const Datamax = () => {
         if (code) {
           navigate(`/dash/datamax/quiz/${code.toUpperCase()}`);
         }
-      })
-  }
-
+      });
+  };
 
   return (
-    <div className="p-8">
-      <h1 className="text-4xl font-bold mb-10">Datamax</h1>
-      <p className="text-lg italic">
+    <div className="p-20">
+      <h1 className="mb-0">Datamax</h1>
+      <p className="italic">
         Generate quizzes with random data elements and aggregate student
         responses in realtime
       </p>
 
-      <div className="flex flex-row my-2">
+      <div className="flex flex-row mb-10">
         <button
-          className="btn-rose"
+          className="btn-digital-red mr-10"
           onClick={() => protectedNav("/dash/datamax/new")}
         >
-          <FontAwesomeIcon icon={faPlus} className="mr-2" />
-          New Quiz
+          <FontAwesomeIcon icon={faPlus} className="mr-10" />
+          <span>New Game</span>
         </button>
-        <button className="btn-indigo" onClick={joinGame}>
-          <FontAwesomeIcon icon={faHand} className="mr-2" />
-          Join Game
+        <button className="btn-palo-verde" onClick={joinGame}>
+          <FontAwesomeIcon icon={faHand} className="mr-10" />
+          <span>Join Game</span>
         </button>
       </div>
 
       {quizzesLoaded ? (
         <>
           <div className="mt-6">
-            <h2 className="text-xl mb-1">Active quizzes</h2>
-            <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-3">
+            <h2 className="type-2">Active games</h2>
+            <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-3 mb-20">
               {activeQuizzes.map((props, i) => (
                 <QuizPreviewCard {...props} key={props.joinCode} />
               ))}
             </div>
           </div>
           <div className="mt-2">
-            <h2 className="text-xl mb-1">Past quizzes</h2>
+            <h2 className="type-2">Past games</h2>
             <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-3">
               {pastQuizzes.map((props, i) => (
                 <QuizPreviewCard {...props} key={props.joinCode} />
@@ -138,6 +135,6 @@ const Datamax = () => {
       <ScrollRestoration />
     </div>
   );
-}
+};
 
 export default Datamax;

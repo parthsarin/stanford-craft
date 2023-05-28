@@ -7,7 +7,7 @@ import UserContext from "./UserContext";
 function useProtectedNav() {
   const { user } = useContext(UserContext);
   const navigate = useNavigate();
-  
+
   return (route: string) => {
     if (user) {
       navigate(route);
@@ -23,16 +23,14 @@ function useProtectedNav() {
       confirmButtonText: `Sign in with Google`,
       confirmButtonColor: "#4285f4",
       cancelButtonText: "Cancel",
-      html: `<p class="text-sm">This resource requires backend functionality 
+      html: `<p class="type-0">This resource requires backend functionality 
       (e.g., the database) so all users are required to sign in for safety and 
-      data persistence.</p>`
-    })
-    .then((result) => {
+      data persistence.</p>`,
+    }).then((result) => {
       if (!result.isConfirmed) return;
       signIn().then(() => navigate(route));
     });
-  }
-
-};
+  };
+}
 
 export { useProtectedNav };

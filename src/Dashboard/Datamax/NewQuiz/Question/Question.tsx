@@ -2,23 +2,24 @@ import { faCopy, faDatabase, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { MouseEvent } from "react";
 import { generateUUID } from "../../../../Generic/UUID";
-import { 
-  DataElementTemplate, 
-  generateBlankDataElement, 
-  QuestionTemplate, 
-  ResponseTemplate
+import {
+  DataElementTemplate,
+  generateBlankDataElement,
+  QuestionTemplate,
+  ResponseTemplate,
 } from "../../DatamaxTypes";
 import DataElement from "./DataElement";
-import Response from './Response';
+import Response from "./Response";
 
 interface QuestionProps {
+  key: string,
   data: QuestionTemplate;
   onDelete: () => void;
   onUpdate: (data: QuestionTemplate) => void;
   onDuplicate: () => void;
 }
 
-const Question = ({ data, onDelete, onUpdate, onDuplicate }: QuestionProps) => {
+const Question = ({ key, data, onDelete, onUpdate, onDuplicate }: QuestionProps) => {
   // data elements helper functions
   const addDataElement = (e: MouseEvent) => {
     e.preventDefault();
@@ -35,25 +36,29 @@ const Question = ({ data, onDelete, onUpdate, onDuplicate }: QuestionProps) => {
     onUpdate({ ...data, dataElements: newDataElements });
   };
 
-  const updateDataElement = (dataElementKey: string) => (newData: DataElementTemplate) => {
-    const newDataElements = { ...data.dataElements };
-    newDataElements[dataElementKey] = newData;
-    onUpdate({ ...data, dataElements: newDataElements });
-  };
+  const updateDataElement =
+    (dataElementKey: string) => (newData: DataElementTemplate) => {
+      const newDataElements = { ...data.dataElements };
+      newDataElements[dataElementKey] = newData;
+      onUpdate({ ...data, dataElements: newDataElements });
+    };
 
   // response helper function
   const updateResponse = (newResponse: ResponseTemplate) => {
     onUpdate({ ...data, response: newResponse });
-  }
-  
+  };
 
   return (
-    <div className="relative w-4/5 lg:w-1/2 rounded border border-black p-2 mb-3 z-0">
+    <div className="relative w-4/5 lg:w-1/2 bg-stone-light p-20 mb-20 z-0">
       {/* question title */}
+      <label htmlFor={`${key}-title`} className="mb-5">
+        What question should students answer?
+      </label>
       <input
         type="text"
-        className={`w-full h-fit text-center text-xl focus:ring-0 focus:border-0 focus:outline-none mb-2 rounded p-1`}
-        placeholder="What question should students answer?"
+        id={`${key}-title`}
+        className={`input w-full mb-20`}
+        placeholder=""
         value={data.prompt}
         onChange={(e) => onUpdate({ ...data, prompt: e.target.value })}
       ></input>
@@ -68,44 +73,43 @@ const Question = ({ data, onDelete, onUpdate, onDuplicate }: QuestionProps) => {
         />
       ))}
 
-
       {/* response */}
       <Response data={data.response} onUpdate={updateResponse} />
 
       {/* delete and duplicate button */}
-      <div className="mt-4 flex flex-row w-full justify-around space-x-2">
+      <div className="mt-20 flex flex-row w-full flex-wrap">
         <button
-          className="px-3 py-2 hover:bg-blue-400 bg-blue-300 rounded rounded-md border"
+          className="btn-digital-blue mr-10 mb-10"
           onClick={addDataElement}
         >
-          <FontAwesomeIcon icon={faDatabase} className="mr-2" />
-          Add data element
+          <FontAwesomeIcon icon={faDatabase} className="mr-10" />
+          <span>Add randomly generated value</span>
         </button>
         <button
-          className="px-3 py-2 hover:bg-orange-400 bg-orange-300 rounded rounded-md border"
+          className="btn-poppy mr-10 mb-10"
           onClick={(e) => {
             e.preventDefault();
             e.stopPropagation();
             onDuplicate();
           }}
         >
-          <FontAwesomeIcon icon={faCopy} className="mr-2" />
-          Duplicate
+          <FontAwesomeIcon icon={faCopy} className="mr-10" />
+          <span>Duplicate</span>
         </button>
         <button
-          className="px-3 py-2 hover:bg-red-400 bg-red-300 rounded rounded-md border"
+          className="btn-digital-red mr-10 mb-10"
           onClick={(e) => {
             e.preventDefault();
             e.stopPropagation();
             onDelete();
           }}
         >
-          <FontAwesomeIcon icon={faTrash} className="mr-2" />
-          Delete
+          <FontAwesomeIcon icon={faTrash} className="mr-10" />
+          <span>Delete</span>
         </button>
       </div>
     </div>
   );
-}
+};
 
 export default Question;

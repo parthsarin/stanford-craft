@@ -4,6 +4,7 @@ import { ScrollRestoration } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { MessageTopic, sendMessage } from "../ContactUtils";
+import Select from "react-select";
 
 const SendMessage = () => {
   const { user } = useContext(UserContext);
@@ -27,9 +28,9 @@ const SendMessage = () => {
   };
 
   return (
-    <div className="p-8 w-full md:w-2/3">
-      <h1 className="text-4xl font-bold mb-10">Get in touch</h1>
-      <p className="text-lg italic">Fill out this form to send us a message</p>
+    <div className="p-20 w-full md:w-2/3">
+      <h1 className="mb-0">Get in touch</h1>
+      <p className="italic">Fill out this form to send us a message</p>
 
       <form
         className="flex flex-col items-start"
@@ -38,7 +39,7 @@ const SendMessage = () => {
           sendMessage(name, email, topic, message, clearData);
         }}
       >
-        <label htmlFor="name" className="text-lg mt-5 w-full font-bold">
+        <label htmlFor="name" className="mt-10 w-full font-bold">
           Name
         </label>
 
@@ -46,16 +47,13 @@ const SendMessage = () => {
           type="text"
           name="name"
           id="name"
-          className={`
-            border border-gray-500 rounded px-3 py-2 w-full
-            xl:w-3/4 
-          `}
+          className={`input w-full xl:w-3/4`}
           value={name}
           onChange={(e) => setName(e.target.value)}
           disabled={Boolean(user && user.displayName)}
         />
 
-        <label htmlFor="email" className="text-lg mt-3 w-full font-bold">
+        <label htmlFor="email" className="mt-10 w-full font-bold">
           Email
         </label>
 
@@ -63,61 +61,56 @@ const SendMessage = () => {
           type="text"
           name="email"
           id="email"
-          className={`
-            border border-gray-500 rounded px-3 py-2 w-full
-            xl:w-3/4 
-          `}
+          className={`input w-full xl:w-3/4 `}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           disabled={Boolean(user && user.email)}
         />
 
-        <label htmlFor="messageType" className="text-lg mt-3 w-full font-bold">
+        <label htmlFor="messageType" className="mt-10 w-full font-bold">
           Topic
         </label>
 
-        <select
-          name="messageType"
-          id="messageType"
-          className={`
-            border border-gray-500 rounded px-3 py-2 w-full
-            xl:w-3/4
-          `}
-          value={topic}
-          onChange={(e) => setTopic(e.target.value as MessageTopic)}
-        >
-          <option value=""></option>
-          {Object.values(MessageTopic).map((topic) => (
-            <option value={topic} key={topic}>
-              {topic}
-            </option>
-          ))}
-        </select>
+        <Select
+          id={"messageType"}
+          className={`w-full xl:w-3/4 select-container`}
+          styles={{
+            control: (baseStyles, state) => ({
+              ...baseStyles,
+              fontSize: "1.8rem",
+              lineHeight: "1.3",
+              borderRadius: 0,
+              borderColor: "#6b7280",
+              "&:hover": {
+                borderColor: "#6b7280",
+              },
+            }),
+          }}
+          options={Object.values(MessageTopic).map((topic) => ({
+            value: topic,
+            label: topic,
+          }))}
+          onChange={(e) => {
+            if (e) setTopic(e.value as MessageTopic);
+          }}
+        />
 
-        <label htmlFor="message" className="text-lg mt-3 mb-2 w-full font-bold">
+        <label htmlFor="message" className="mt-10 w-full font-bold">
           Message
         </label>
 
         <textarea
           name="message"
           id="message"
-          className={`
-            border border-gray-500 rounded px-3 py-2 w-full
-            xl:w-3/4
-          `}
+          className={`input w-full xl:w-3/4`}
           rows={10}
           value={message}
           onChange={(e) => setMessage(e.target.value)}
         />
 
-        <button
-          className={`
-            border-teal-700 bg-teal-700 hover:bg-teal-800 text-white 
-            text-xl py-2 px-6 rounded mt-5 mb-10
-          `}
-          type="submit"
-        >
-          <FontAwesomeIcon icon={faPaperPlane} /> Send
+        <button className={`button mt-20`} type="submit">
+          <FontAwesomeIcon icon={faPaperPlane} className="mr-10" />
+          <span>Send</span>
         </button>
       </form>
       <ScrollRestoration />
