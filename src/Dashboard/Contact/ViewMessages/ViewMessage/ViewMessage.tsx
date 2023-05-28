@@ -17,16 +17,18 @@ import {
   faPaperPlane,
   faTrash,
 } from "@fortawesome/free-solid-svg-icons";
+import AuthWall, { Issue } from "../../../../Generic/AuthWall";
 
 const ViewMessage = () => {
-  const { user } = useContext(UserContext);
+  const { user, loading: userLoading } = useContext(UserContext);
   const { messageId } = useParams();
   const [message, setMessage] = useState<Message | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
     if (!messageId) return;
-    if (!user) return;
+    if (userLoading || !user) return;
+    if (!("admin" in user) || !user.admin) return;
 
     (async () => {
       const db = getFirestore();
@@ -48,6 +50,9 @@ const ViewMessage = () => {
     })();
   }, [messageId, user, navigate]);
 
+  if (!userLoading && !user) return <AuthWall />;
+  if (user && (!("admin" in user) || !user.admin))
+    return <AuthWall issue={Issue.NoAdmin} />;
   if (!message) return <Loader />;
   const dateString = message.timestamp.toDate().toLocaleString("en-us", {
     weekday: "long",

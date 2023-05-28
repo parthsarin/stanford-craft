@@ -17,9 +17,10 @@ import { UserContext } from "../../../Auth";
 import Question from "./Question";
 import createQuiz from "./CreateQuiz";
 import { MySwal } from "../../../Generic/Notify";
+import AuthWall from "../../../Generic/AuthWall/AuthWall";
 
 const NewQuiz = () => {
-  const { user } = useContext(UserContext);
+  const { user, loading: userLoading } = useContext(UserContext);
   const navigate = useNavigate();
 
   // store all of the data for the quiz in a single variable (quiz)
@@ -93,6 +94,7 @@ const NewQuiz = () => {
     setQuiz((quiz) => ({ ...quiz, upload: true }));
   };
 
+  if (!userLoading && !user) return <AuthWall />;
   return (
     <div className="p-4 flex flex-1 flex-col">
       {(!user || loading) && <Loader />}
