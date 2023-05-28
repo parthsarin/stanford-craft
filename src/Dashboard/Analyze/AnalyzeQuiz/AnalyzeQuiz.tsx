@@ -6,7 +6,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { doc, getDoc, getFirestore } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { ScrollRestoration, useNavigate, useParams } from "react-router-dom";
 import { LoaderInline } from "../../../Generic/Loader";
 import { MySwal } from "../../../Generic/Notify";
 import { QuizDoc } from "../../Datamax/DatamaxTypes";
@@ -71,29 +71,24 @@ const ExploreQuiz = () => {
         Download CSV first, and press Explore -- you'll be uploading the CSV in
         future steps
       </p>
-      <div className="mt-2 flex flex-row space-x-2">
-        <button
-          className="py-2 px-4 rounded bg-blue-600 hover:bg-blue-700 text-white"
-          onClick={downloadCSV}
-        >
+      <div className="mt-10 flex flex-row">
+        <button className="btn-digital-blue mr-10 mb-10" onClick={downloadCSV}>
           <FontAwesomeIcon icon={faDownload} className="mr-10" />
-          Download CSV
+          <span>Download CSV</span>
+        </button>
+        <button className="btn-digital-green mr-10 mb-10" onClick={explore}>
+          <FontAwesomeIcon icon={faChartLine} className="mr-10" />
+          <span>Explore</span>
         </button>
         <button
-          className="py-2 px-4 rounded bg-green-600 hover:bg-green-700 text-white"
-          onClick={explore}
+          className="button mr-10 mb-10"
+          onClick={() => navigate("/dash/analyze")}
         >
-          <FontAwesomeIcon icon={faChartLine} className="mr-10" />
-          Explore
+          <FontAwesomeIcon icon={faChevronLeft} className="mr-10" />
+          <span>Select a different quiz</span>
         </button>
       </div>
-      <button
-        className="mt-6 py-2 px-4 rounded bg-red-600 hover:bg-red-700 text-white"
-        onClick={() => navigate("/dash/analyze")}
-      >
-        <FontAwesomeIcon icon={faChevronLeft} className="mr-10" />
-        Select a different quiz
-      </button>
+      <ScrollRestoration />
     </div>
   );
 };
