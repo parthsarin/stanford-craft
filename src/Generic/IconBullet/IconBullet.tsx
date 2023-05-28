@@ -1,17 +1,26 @@
-import { FontAwesomeIcon, FontAwesomeIconProps } from "@fortawesome/react-fontawesome";
+import {
+  FontAwesomeIcon,
+  FontAwesomeIconProps,
+} from "@fortawesome/react-fontawesome";
 
 interface IconBulletProps {
-  icon: FontAwesomeIconProps['icon'];
+  icon: FontAwesomeIconProps["icon"];
   title: string;
   color?: string;
   children: React.ReactNode;
 }
 
 const IconBullet = ({ icon, title, children, color }: IconBulletProps) => (
-  <div className="flex flex-row mb-8">
-    <div><FontAwesomeIcon icon={icon} size={'xl'} className={`rounded-lg p-3 ${color ? color : 'bg-emerald-300'}`} /></div>
-    <div className="px-4">
-      <h2 className="text-2xl font-bold">{title}</h2>
+  <div className="flex flex-row mb-12">
+    <div>
+      <FontAwesomeIcon
+        icon={icon}
+        size={"xl"}
+        className={`rounded p-10 mt-4 ${color ? color : "bg-palo-verde-light"}`}
+      />
+    </div>
+    <div className="ml-20">
+      <h3 className="type-1 mb-0">{title}</h3>
       {children}
     </div>
   </div>

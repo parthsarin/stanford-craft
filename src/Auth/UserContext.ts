@@ -9,18 +9,24 @@ enum UserRole {
 interface User extends FirebaseUser {
   role?: UserRole;
   admin?: boolean;
+  affiliation?: string;
   datamax?: {
     activeQuizzes: string[];
     pastQuizzes: string[];
-  }
+  };
 }
 
 interface UserContextPayload {
   user: User | null;
   setUser: (user: User | null) => void;
+  loading: boolean;
 }
 
-const UserContext = createContext<UserContextPayload>({ user: null, setUser: () => {} });
+const UserContext = createContext<UserContextPayload>({
+  user: null,
+  setUser: () => {},
+  loading: true,
+});
 
 export default UserContext;
 export type { User };

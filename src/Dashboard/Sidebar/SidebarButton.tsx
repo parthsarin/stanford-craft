@@ -3,29 +3,28 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { Tooltip } from "react-tippy";
 
 interface Props {
-  path?: string,
-  onClick?: () => void,
-  text: string,
-  children: React.ReactNode,
+  path?: string;
+  onClick?: () => void;
+  text: string;
+  children: React.ReactNode;
 }
 
 const SidebarButton = ({ path, onClick, text, children }: Props) => {
   const navigate = useNavigate();
-  
+
   // set the active link
   const loc = useLocation();
 
   let activeClass = "";
   if (path && loc.pathname.startsWith(path) && path !== "/")
-    activeClass = "bg-violet-600";
-  else 
-    activeClass = "hover:bg-violet-600";
+    activeClass = "bg-plum-light";
+  else activeClass = "hover:bg-plum-light";
 
   // if there's a path, use it, otherwise use the onClick
   if (path) onClick = () => navigate(path);
-  
+
   return (
-    <li>
+    <li className="mb-0">
       {/* @ts-ignore */}
       <Tooltip
         title={text}
@@ -33,10 +32,10 @@ const SidebarButton = ({ path, onClick, text, children }: Props) => {
         trigger="mouseenter"
         arrow={true}
         theme="light"
-        distance={10}
+        distance={15}
       >
         <button
-          className={`w-full p-2 flex flex-row items-center ${activeClass} rounded`}
+          className={`w-full p-10 flex flex-row items-center ${activeClass} rounded`}
           onClick={onClick}
           aria-label={text}
         >
@@ -45,6 +44,6 @@ const SidebarButton = ({ path, onClick, text, children }: Props) => {
       </Tooltip>
     </li>
   );
-}
+};
 
 export default SidebarButton;

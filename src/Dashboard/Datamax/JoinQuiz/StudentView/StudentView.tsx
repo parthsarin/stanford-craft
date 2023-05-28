@@ -20,7 +20,7 @@ interface QuizResponse {
 const StudentView = ({ joinCode, quiz }: Params) => {
   const { user } = useContext(UserContext);
   const [filledTemplate, setFilledTemplate] = useState<Quiz | null>(null);
-  const [responses, setResponses] = useState<QuizResponse['responses']>({});
+  const [responses, setResponses] = useState<QuizResponse["responses"]>({});
   const [submitted, setSubmitted] = useState(false);
 
   // generate a copy of the quiz
@@ -59,7 +59,7 @@ const StudentView = ({ joinCode, quiz }: Params) => {
 
       responsePayload[q.id] = {
         dataElementValues,
-        response: responses[q.id]
+        response: responses[q.id],
       };
     });
 
@@ -67,7 +67,7 @@ const StudentView = ({ joinCode, quiz }: Params) => {
       MySwal.fire({
         title: "Please answer all questions",
         icon: "error",
-        text: `Questions not answered: ${invalidQuestions.join(", ")}`
+        text: `Questions not answered: ${invalidQuestions.join(", ")}`,
       });
       return;
     }
@@ -83,36 +83,38 @@ const StudentView = ({ joinCode, quiz }: Params) => {
         MySwal.fire({
           title: "Quiz submitted",
           icon: "success",
-          text: "Your quiz has been submitted"
+          text: "Your quiz has been submitted",
         });
         setSubmitted(true);
       })
-      .catch((err) => MySwal.fire({
-        title: "Error submitting quiz",
-        icon: "error",
-        text: "There was an error submitting your quiz.",
-        footer: `${err}`
-      }));
+      .catch((err) =>
+        MySwal.fire({
+          title: "Error submitting quiz",
+          icon: "error",
+          text: "There was an error submitting your quiz.",
+          footer: `${err}`,
+        })
+      );
   };
 
   if (!quiz) return <Loader />;
-  if (submitted) return (
-    <div className="p-4 w-full lg:w-2/3">
-      <h1 className="text-2xl mb-2">🎉 Submitted "{quiz.template.name}"!</h1>
-      <button
-        onClick={() => window.location.reload()}
-        className="text-lg text-blue-500 hover:text-blue-600 underline"
-      >
-        Submit another response
-      </button>
-
-    </div> 
-  )
+  if (submitted)
+    return (
+      <div className="p-4 w-full lg:w-2/3">
+        <h1 className="text-2xl mb-2">🎉 Submitted "{quiz.template.name}"!</h1>
+        <button
+          onClick={() => window.location.reload()}
+          className="type-1 text-digital-blue hover:text-digital-blue-dark underline"
+        >
+          Submit another response
+        </button>
+      </div>
+    );
   return (
-    <div className="p-4 w-full lg:w-2/3">
-      <h1 className="text-2xl mb-2">{quiz.template.name}</h1>
+    <div className="p-20 w-full lg:w-2/3">
+      <h1 className="">{quiz.template.name}</h1>
       <form
-        className="flex flex-col bg-slate-600 text-white rounded rounded-md w-full p-4"
+        className="flex flex-col rounded w-full p-4"
         onSubmit={submitQuiz}
       >
         <div className="grid grid-cols-3">
@@ -124,26 +126,30 @@ const StudentView = ({ joinCode, quiz }: Params) => {
               type="text"
               name="displayName"
               value={responses.name ? responses.name : ""}
-              className="w-full p-2 rounded rounded-md bg-slate-500 text-white"
-              onChange={(e) => setResponses({ ...responses, name: e.target.value })}
+              className="input w-full"
+              onChange={(e) =>
+                setResponses({ ...responses, name: e.target.value })
+              }
               disabled={user ? true : false}
             />
           </div>
-          {
-            quiz.template.questions.map((question) => (
-              <div key={question.id} className="col-span-3 mb-6 bg-slate-100 text-black p-3 rounded rounded-md">
-                <Question 
-                  question={question} 
-                  onChange={(r) => setResponses({ ...responses, [question.id]: r })} 
-                />
-              </div>
-            ))
-          }
+          {quiz.template.questions.map((question) => (
+            <div
+              key={question.id}
+              className="col-span-3 mb-20 mt-20 bg-stone-light text-black"
+            >
+              <Question
+                question={question}
+                onChange={(r) =>
+                  setResponses({ ...responses, [question.id]: r })
+                }
+              />
+            </div>
+          ))}
           <button
             type="submit"
             className={`
-            col-span-3 bg-indigo-500 text-white p-2 rounded rounded-md text-lg
-            hover:bg-indigo-600
+            col-span-3 btn-sky
             `}
           >
             Submit
@@ -152,6 +158,6 @@ const StudentView = ({ joinCode, quiz }: Params) => {
       </form>
     </div>
   );
-}
+};
 
 export default StudentView;
