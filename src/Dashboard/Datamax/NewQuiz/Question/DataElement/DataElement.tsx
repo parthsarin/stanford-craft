@@ -1,7 +1,6 @@
-import { faTrash, faXmarkCircle } from "@fortawesome/free-solid-svg-icons";
+import { faXmarkCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
-import { generateUUID } from "../../../../../Generic/UUID";
 import {
   DataElementGenerator,
   DataElementTemplate,
@@ -17,8 +16,6 @@ interface DataElementProps {
 
 const DataElement = ({ data, onDelete, onUpdate }: DataElementProps) => {
   const [distribution, setDistribution] = useState(data.generator);
-
-  const deKey = generateUUID();
 
   // updateDistribution allows the parameter prompt fields to inject values into
   // the data element which is then passed up to the parent component
