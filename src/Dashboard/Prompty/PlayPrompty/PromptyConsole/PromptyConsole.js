@@ -2,7 +2,7 @@ import { getFunctions, httpsCallable } from "firebase/functions";
 import { useState, useEffect } from "react";
 import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore";
 import { useDocument } from "react-firebase-hooks/firestore";
-import Loader from "../../../../Generic/Loader/Loader";
+import Loader, { LoaderInline } from "../../../../Generic/Loader/Loader";
 import { MySwal } from "../../../../Generic/Notify";
 import { useNavigate } from "react-router-dom";
 
@@ -300,18 +300,7 @@ const PromptyConsole = (props) => {
               ) : (
                 <p>No more tries available!</p>
               )}
-              {loader && (
-                <img
-                  style={{
-                    width: "40px",
-                    position: "relative",
-                    left: "170px",
-                    bottom: "40px",
-                  }}
-                  src="/loader.gif"
-                  alt="Loader Icon"
-                ></img>
-              )}
+              {loader && <LoaderInline />}
             </div>
             <div>
               <div className="float-right">
@@ -331,11 +320,7 @@ const PromptyConsole = (props) => {
           <div className="flex-1 bg-slate-200 p-8 overflow-y-scroll">
             {loader && (
               <div className="text-center">
-                <img
-                  style={{ width: "40px", position: "relative", left: "50%" }}
-                  src="/loader.gif"
-                  alt="Loader Icon"
-                ></img>
+                <LoaderInline />
               </div>
             )}
             {responsesData.length === 0 ? (
