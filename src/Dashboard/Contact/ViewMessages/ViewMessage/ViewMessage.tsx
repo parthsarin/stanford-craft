@@ -48,7 +48,7 @@ const ViewMessage = () => {
         }).then(() => navigate("/dash/contact"));
       }
     })();
-  }, [messageId, user, navigate]);
+  }, [messageId, user, navigate, userLoading]);
 
   if (!userLoading && !user) return <AuthWall />;
   if (user && (!("admin" in user) || !user.admin))
