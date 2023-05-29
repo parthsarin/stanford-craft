@@ -8,6 +8,7 @@ import {
   faEnvelope,
   faHome,
   faInfoCircle,
+  faKeyboard,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
@@ -68,6 +69,9 @@ const Sidebar = () => {
           </SidebarButton>
           <SidebarButton text={"Datamax"} path={"/dash/datamax"}>
             <FontAwesomeIcon icon={faRobot} className={`w-26 h-26`} />
+          </SidebarButton>
+          <SidebarButton text={"Prompty"} path={"/dash/prompty"}>
+            <FontAwesomeIcon icon={faKeyboard} className={`w-26 h-26`} />
           </SidebarButton>
           <SidebarButton text={"Analyze"} path={"/dash/analyze"}>
             <FontAwesomeIcon icon={faChartLine} className={`w-26 h-26`} />

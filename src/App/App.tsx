@@ -12,6 +12,8 @@ import NoMatch from "../NoMatch";
 
 import "./App.css";
 import Datamax from "../Dashboard/Datamax";
+import Prompty from "../Dashboard/Prompty";
+import PlayPrompty from "../Dashboard/Prompty/PlayPrompty";
 import NewQuiz from "../Dashboard/Datamax/NewQuiz";
 import IdentityBar from "../Generic/Brand/IdentityBar";
 import GlobalFooter from "../Generic/Brand/GlobalFooter";
@@ -46,6 +48,8 @@ const router = createBrowserRouter(
         <Route path="datamax" element={<Datamax />} />
         <Route path="datamax/new" element={<NewQuiz />} />
         <Route path="datamax/quiz/:joinCode" element={<JoinQuiz />} />
+        <Route path="prompty" element={<Prompty />} />
+        <Route path="prompty/:joinCode" element={<PlayPrompty />} />
         <Route path="analyze" element={<Analyze />}>
           <Route path=":joinCode" element={<AnalyzeQuiz />} />
         </Route>
