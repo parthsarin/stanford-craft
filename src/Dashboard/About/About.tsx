@@ -6,6 +6,8 @@ import haiLogo from "../../img/hai-logo.png";
 import Citation from "./Citation";
 import Funder from "./Funder";
 import { ScrollRestoration, useNavigate } from "react-router-dom";
+import { signUpForUpdates } from "../Contact/ContactUtils";
+import { getAnalytics, logEvent } from "firebase/analytics";
 
 const About = () => {
   const navigate = useNavigate();
@@ -24,6 +26,30 @@ const About = () => {
         </button>
         .
       </p>
+
+      <form
+          className="mb-20"
+          onSubmit={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+
+            // @ts-ignore
+            signUpForUpdates(document.getElementById("email").value);
+            logEvent(getAnalytics(), "sign_up_for_updates");
+          }}
+        >
+          <p className="mb-10 w-full">
+            Want to receive updates about the project? Add your email below and we'll keep you in the loop:
+          </p>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            className={`input mb-10 w-full`}
+            placeholder="Email address"
+          />
+          <button className={`btn-palo-alto`}>Sign me up!</button>
+        </form>
 
       <h2>2022-2023 Teacher Co-Design Fellows</h2>
       <ul className="ml-4 list-none">
