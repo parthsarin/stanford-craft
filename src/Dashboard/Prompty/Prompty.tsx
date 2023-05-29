@@ -1,3 +1,4 @@
+import { ScrollRestoration } from "react-router-dom";
 import PromptyInitialize from "./components/PromptyInitialize.js";
 
 const Prompty = () => {
@@ -7,6 +8,7 @@ const Prompty = () => {
         <h1 className="text-4xl font-bold mb-10">Prompty</h1>
         <PromptyInitialize />
       </div>
+      <ScrollRestoration />
     </>
   );
 };
