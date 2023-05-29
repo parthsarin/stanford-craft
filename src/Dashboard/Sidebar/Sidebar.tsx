@@ -71,7 +71,7 @@ const Sidebar = () => {
             <FontAwesomeIcon icon={faRobot} className={`w-26 h-26`} />
           </SidebarButton>
           <SidebarButton text={"Prompty"} path={"/dash/prompty"}>
-            <FontAwesomeIcon icon={faKeyboard} className={`w-6 h-6`} />
+            <FontAwesomeIcon icon={faKeyboard} className={`w-26 h-26`} />
           </SidebarButton>
           <SidebarButton text={"Analyze"} path={"/dash/analyze"}>
             <FontAwesomeIcon icon={faChartLine} className={`w-26 h-26`} />

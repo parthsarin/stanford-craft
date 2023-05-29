@@ -1,9 +1,8 @@
 import { MySwal } from "../../../Generic/Notify";
-import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
+import { getFirestore, doc, getDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
-import { UserContext } from "../../../Auth";
-import { signIn } from "../../../Auth";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 async function checkInstance(joinCode) {
   const db = getFirestore();
@@ -20,34 +19,8 @@ async function checkInstance(joinCode) {
 
 const PromptyInitialize = () => {
   const navigate = useNavigate();
-  const { user } = useContext(UserContext);
 
-  const validateAndJoinPrompty = () => {
-    if (user) {
-      console.log(user);
-      joinPrompty(user);
-      return;
-    }
-    // otherwise, open a modal to sign in
-    MySwal.fire({
-      title: "Please sign in to continue",
-      backdrop: true,
-      icon: "info",
-      showCancelButton: true,
-      confirmButtonText: `Sign in with Google`,
-      confirmButtonColor: "#4285f4",
-      cancelButtonText: "Cancel",
-    }).then((result) => {
-      if (!result.isConfirmed) return;
-      signIn().then(() => {});
-    });
-  };
-  function createUserPromptyInstance(joinCode, uid, displayName) {
-    const db = getFirestore();
-    let docRef = doc(db, "prompty", joinCode, "instances", uid);
-    setDoc(docRef, { displayName: displayName }, { merge: true });
-  }
-  const joinPrompty = (userDetails) => {
+  const joinPrompty = () => {
     MySwal.fire({
       title: "Start Prompty",
       input: "text",
@@ -62,14 +35,9 @@ const PromptyInitialize = () => {
       inputValidator: async (value) => {
         let validator = await checkInstance(value);
         if (validator === true) {
-          createUserPromptyInstance(
-            value,
-            userDetails.uid,
-            userDetails.displayName
-          );
           navigate("/dash/prompty/" + value);
         } else {
-          return "Code Invalid!";
+          return "Invalid Code";
         }
       },
     });
@@ -77,14 +45,10 @@ const PromptyInitialize = () => {
 
   return (
     <>
-      <p>Experience and analyze prompting with Prompty!</p>
-      <button
-        className="mt-5 bg-red-600 hover:bg-red-700 disabled:bg-red-400  text-white font-bold py-2 px-4 rounded"
-        onClick={() => {
-          validateAndJoinPrompty();
-        }}
-      >
-        Start Prompty
+      <p>Experience and analyze prompting with Prompty</p>
+      <button className="btn-digital-red mr-10" onClick={() => joinPrompty()}>
+        <FontAwesomeIcon icon={faPlus} className="mr-10" />
+        <span>Start Prompty</span>
       </button>
     </>
   );
