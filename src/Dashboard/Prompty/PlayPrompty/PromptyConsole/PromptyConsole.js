@@ -187,14 +187,14 @@ const PromptyConsole = (props) => {
                   title="Role"
                   color="digital-blue"
                   helperTooltipHTML={
-                    <div className="text-left">
+                    <span className="text-left">
                       <p className="mb-4">
                         Who should the AI act like when writing this piece?
                       </p>
                       <p className="mb-2">
                         <i>Example: You are a concerned citizen.</i>
                       </p>
-                    </div>
+                    </span>
                   }
                 />
                 <textarea
@@ -214,7 +214,7 @@ const PromptyConsole = (props) => {
                   title="Context"
                   color="palo-alto"
                   helperTooltipHTML={
-                    <div className="text-left">
+                    <span className="text-left">
                       <p className="mb-4">
                         What should the AI base the content on?
                       </p>
@@ -224,7 +224,7 @@ const PromptyConsole = (props) => {
                           crisis in the United States.
                         </i>
                       </p>
-                    </div>
+                    </span>
                   }
                 />
                 <textarea
@@ -244,7 +244,7 @@ const PromptyConsole = (props) => {
                   title="Task"
                   color="digital-red"
                   helperTooltipHTML={
-                    <div className="text-left">
+                    <span className="text-left">
                       <p className="mb-4">What does the AI need to do?</p>
                       <p className="mb-2">
                         <i>
@@ -252,7 +252,7 @@ const PromptyConsole = (props) => {
                           States suggesting reforms for the ongoing food crisis.
                         </i>
                       </p>
-                    </div>
+                    </span>
                   }
                 />
                 <textarea
@@ -273,14 +273,14 @@ const PromptyConsole = (props) => {
               <Label
                 for="openPrompt"
                 title="Prompt"
-                color="black-50"
+                color="stone"
                 helperTooltipHTML={
-                  <div className="text-left">
+                  <span className="text-left">
                     <p className="mb-4">
                       Write a prompt that completely conveys what you intend to
                       get from the AI.
                     </p>
-                  </div>
+                  </span>
                 }
               />
               <textarea

@@ -41,7 +41,7 @@ const PlayPrompty = () => {
     if (!loading) {
       if (user === null) {
         MySwal.fire({
-          title: "Please sign in to continue",
+          title: "Please sign in to play Prompty!",
           backdrop: true,
           icon: "info",
           showCancelButton: true,
@@ -49,15 +49,18 @@ const PlayPrompty = () => {
           confirmButtonColor: "#4285f4",
           cancelButtonText: "Cancel",
         }).then((result) => {
-          if (!result.isConfirmed) return;
-          signIn().then(() => {});
+          if (result.isConfirmed) {
+            signIn().then(() => {});
+          } else {
+            navigate("/dash/prompty");
+          }
         });
       }
       if (user) {
         createUserPromptyInstance(joinCode, user.uid, user.displayName);
       }
     }
-  }, [joinCode, user, loading]);
+  }, [joinCode, user, loading, navigate]);
 
   if (error) {
     MySwal.fire({

@@ -42,7 +42,7 @@ const GeneratedResponses = (props) => {
         {props.responses[selectedResponse].scaffold ? (
           // Scaffolded Prompt
           <div className="mx-10 mb-6">
-            <p className="mb-0">
+            <div className="mb-0">
               <Tooltip title="Role" arrow={true}>
                 <span
                   className="mr-6 px-6"
@@ -67,7 +67,7 @@ const GeneratedResponses = (props) => {
                   {props.responses[selectedResponse].task}
                 </span>
               </Tooltip>
-            </p>
+            </div>
           </div>
         ) : (
           <div className="mx-10 mb-6">
