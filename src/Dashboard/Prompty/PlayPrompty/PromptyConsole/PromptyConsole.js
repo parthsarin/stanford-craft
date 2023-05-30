@@ -7,6 +7,10 @@ import { MySwal } from "../../../../Generic/Notify";
 import { useNavigate } from "react-router-dom";
 import { Switch } from "../../../../Generic/Switch/Switch";
 import GeneratedResponses from "./components/GeneratedResponses";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBitcoin } from "@fortawesome/free-brands-svg-icons";
+import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
+import { Tooltip } from "react-tippy";
 
 async function moderationAndCompletionApiCall(prompt) {
   const functions = getFunctions();
@@ -172,13 +176,18 @@ const PromptyConsole = (props) => {
     <>
       <div className="h-screen">
         <div className="bg-slate-100 p-20 h-[230px] overflow-y-scroll">
-          <p className="text-xl mb-6">{props.instruction}</p>
+          <p className="text-[1.2em] font-bold mb-6">{props.instruction}</p>
 
           {promptScaffoldMode ? (
             // Scaffold mode
             <div className="grid my-15 grid-cols-3">
               <div className="mr-20">
-                <Label for="role" title="Role" color="blue" />
+                <Label
+                  for="role"
+                  title="Role"
+                  color="digital-blue"
+                  helperTooltip="This role is very helpful for so and so and so and so and so!"
+                />
                 <textarea
                   id="role"
                   value={roleText}
@@ -191,7 +200,12 @@ const PromptyConsole = (props) => {
                 ></textarea>
               </div>
               <div>
-                <Label for="context" title="Context" color="green" />
+                <Label
+                  for="context"
+                  title="Context"
+                  color="palo-verde"
+                  helperTooltip="This context is very helpful for so and so and so and so and so!"
+                />
                 <textarea
                   id="context"
                   value={contextText}
@@ -204,7 +218,12 @@ const PromptyConsole = (props) => {
                 ></textarea>
               </div>
               <div className="ml-20">
-                <Label for="task" title="Task" color="brown" />
+                <Label
+                  for="task"
+                  title="Task"
+                  color="digital-red"
+                  helperTooltip="This task is very helpful for so and so and so and so and so!"
+                />
                 <textarea
                   id="task"
                   value={taskText}
@@ -220,7 +239,12 @@ const PromptyConsole = (props) => {
           ) : (
             // Open Prompt
             <div className="my-15">
-              <Label for="openPrompt" title="Prompt" color="gray" />
+              <Label
+                for="openPrompt"
+                title="Prompt"
+                color="gray"
+                helperTooltip="Enter prompt to generate response from AI"
+              />
               <textarea
                 id="openPrompt"
                 value={openPromptText}
@@ -240,7 +264,9 @@ const PromptyConsole = (props) => {
               userRole === "teacher" ? (
                 <>
                   <button
-                    className="btn-digital-red"
+                    className={`${
+                      allowGenerate ? "bg-black-40" : "bg-digital-red"
+                    } text-white px-20 py-10 rounded `}
                     disabled={allowGenerate ? true : false}
                     onClick={() => {
                       generateFromOpenAi(props.identifier, props.instanceCode);
@@ -275,6 +301,7 @@ const PromptyConsole = (props) => {
           {loader && (
             <div className="text-center">
               <LoaderInline />
+              <p>This might take some time. Please be patient!</p>
             </div>
           )}
           {responsesData.length === 0 ? (
@@ -301,21 +328,27 @@ const Label = (props) => {
     <>
       <label htmlFor={props.for} className="block ml-6">
         <span
-          className="rounded-t mt-0"
+          className={`rounded-t mt-0 bg-${props.color}`}
           style={{
-            backgroundColor: props.color,
-            height: "20px",
-            width: "70px",
+            height: "24px",
+            padding: "0px 15px",
+            width: "fit-content",
             display: "block",
             textAlign: "center",
             color: "white",
           }}
         >
-          <small
-            style={{ fontSize: "16px", position: "relative", bottom: "4px" }}
-          >
-            {props.title}
-          </small>
+          <Tooltip title={props.helperTooltip} theme="light" arrow={true}>
+            <small
+              style={{ fontSize: "16px", position: "relative", bottom: "2px" }}
+            >
+              {props.title}
+            </small>
+
+            <span className="text-[16px] relative bottom-1 ml-4">
+              <FontAwesomeIcon icon={faInfoCircle} />
+            </span>
+          </Tooltip>
         </span>
       </label>
     </>
@@ -326,17 +359,24 @@ const TryCounter = (props) => {
   if (props.usedTry >= 0 && props.availableTry >= 0) {
     return (
       <>
-        <span className="text-xl">Tries Available: </span>
-        {[...Array(props.usedTry)].map((e, i) => (
-          <span className="text-gray-400 text-2xl" key={i}>
-            ★
-          </span>
-        ))}
-        {[...Array(props.availableTry)].map((e, i) => (
-          <span className="text-orange-400 text-2xl" key={i}>
-            ★
-          </span>
-        ))}
+        <Tooltip
+          title="Generating AI responses require signifant energy and resource expenditure. We are limiting the number of tries available to ensure mindful consumption."
+          theme="light"
+          arrow={true}
+        >
+          <FontAwesomeIcon icon={faInfoCircle} />
+          <span className="text-xl">Tries Available: </span>
+          {[...Array(props.usedTry)].map((e, i) => (
+            <span className="text-black-30" key={i}>
+              <FontAwesomeIcon icon={faBitcoin} />
+            </span>
+          ))}
+          {[...Array(props.availableTry)].map((e, i) => (
+            <span className="text-plum" key={i}>
+              <FontAwesomeIcon icon={faBitcoin} />
+            </span>
+          ))}
+        </Tooltip>
       </>
     );
   }
