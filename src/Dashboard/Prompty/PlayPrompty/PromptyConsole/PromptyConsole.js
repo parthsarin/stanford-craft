@@ -203,7 +203,7 @@ const PromptyConsole = (props) => {
                 <Label
                   for="context"
                   title="Context"
-                  color="palo-verde"
+                  color="palo-alto"
                   helperTooltip="This context is very helpful for so and so and so and so and so!"
                 />
                 <textarea
@@ -242,7 +242,7 @@ const PromptyConsole = (props) => {
               <Label
                 for="openPrompt"
                 title="Prompt"
-                color="gray"
+                color="black-50"
                 helperTooltip="Enter prompt to generate response from AI"
               />
               <textarea
