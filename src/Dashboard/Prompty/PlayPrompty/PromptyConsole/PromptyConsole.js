@@ -175,7 +175,22 @@ const PromptyConsole = (props) => {
   return (
     <>
       <div className="h-screen">
-        <div className="bg-slate-100 p-20 h-[230px] overflow-y-scroll">
+        <div className="bg-slate-100 p-20 h-[260px] overflow-y-scroll">
+          <Tooltip
+            title="The goal that you want the AI to help you with!"
+            theme="light"
+            arrow={true}
+          >
+            <span>
+              <small>
+                Goal{" "}
+                <FontAwesomeIcon
+                  className="relative top-1"
+                  icon={faInfoCircle}
+                />
+              </small>
+            </span>
+          </Tooltip>
           <p className="text-[1.2em] font-bold mb-6">{props.instruction}</p>
 
           {promptScaffoldMode ? (
@@ -335,7 +350,7 @@ const PromptyConsole = (props) => {
           </div>
         </div>
 
-        <div className="p-20 h-[calc(100%-230px)] bg-foggy-light overflow-hidden">
+        <div className="p-20 h-[calc(100%-260px)] bg-foggy-light overflow-hidden">
           {loader && (
             <div className="text-center">
               <LoaderInline />
