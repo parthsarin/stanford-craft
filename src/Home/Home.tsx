@@ -64,7 +64,7 @@ const Home = () => {
       </div>
       <div className={`w-full px-12 sm:px-32 md:px-60 lg:px-216 py-40`}>
         <p>
-          CRAFT is an initiative in collaboration with the Graduate School of Education and Institute for Human-Centered AI.  CRAFT co-creates curricular resources about AI with practicing high school teachers, to help you teach students to explore, understand, question, and critique AI. CRAFT intentionally pursues a multidisciplinary approach so all high school and college teachers with a variety of discipline backgrounds can teach about AI.
+          CRAFT is an initiative in collaboration with the Graduate School of Education and Institute for Human-Centered AI. CRAFT co-creates AI Literacy curricular resources with practicing high school teachers, to help you teach students to explore, understand, question, and critique AI. CRAFT intentionally pursues a multidisciplinary approach so all high school and college teachers with a variety of discipline backgrounds can teach about AI.
         </p>
         <p className="mb-24 grow w-full">
           This website hosts a collection of instructional resources co-designed to facilitate learning in a way that fits your teaching cadence and curriculum. You can integrate a small activity or tool, or follow a series of lessons.
