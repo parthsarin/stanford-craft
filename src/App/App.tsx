@@ -37,6 +37,8 @@ import ExploreQuiz from "../Dashboard/Analyze/ExploreQuiz";
 import Contact from "../Dashboard/Contact";
 import ViewMessage from "../Dashboard/Contact/ViewMessages/ViewMessage";
 
+import Resource from "../Dashboard/Resource";
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
@@ -55,6 +57,7 @@ const router = createBrowserRouter(
         </Route>
         <Route path="explore/:joinCode" element={<ExploreQuiz />} />
         <Route path="resources" element={<Resources />} />
+        <Route path="resource/:resourceID" element={<Resource />} />
         <Route path="contact" element={<Contact />} />
         <Route path="contact/view/:messageId" element={<ViewMessage />} />
         <Route path="about" element={<About />} />
