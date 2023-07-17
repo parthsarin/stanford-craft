@@ -5,6 +5,14 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
+
+//Global
+import IdentityBar from "../Generic/Brand/IdentityBar";
+import GlobalFooter from "../Generic/Brand/GlobalFooter";
+
+import "./App.css";
+
+//Routes
 import Home from "../Home";
 import Home2 from "../Home-new";
 
@@ -12,16 +20,14 @@ import Dashboard from "../Dashboard";
 import Resources from "../Dashboard/Resources";
 import NoMatch from "../NoMatch";
 
-import "./App.css";
 import Datamax from "../Dashboard/Datamax";
 import Prompty from "../Dashboard/Prompty";
 import PlayPrompty from "../Dashboard/Prompty/PlayPrompty";
 import NewQuiz from "../Dashboard/Datamax/NewQuiz";
-import IdentityBar from "../Generic/Brand/IdentityBar";
-import GlobalFooter from "../Generic/Brand/GlobalFooter";
 import ExternalLink from "../ExternalLink";
 import Profile from "../Dashboard/Profile";
 
+//Tools
 import { useEffect, useState } from "react";
 import {
   handleSignIn,

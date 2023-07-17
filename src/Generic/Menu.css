@@ -1,0 +1,36 @@
+.site-nav {
+	padding-block: 2rem;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+/* Brand Img */
+.site-nav img {
+	height: 70px;
+	width: auto;
+}
+
+/* Nav links */
+.site-links {
+	display: inline-flex;
+	flex-direction: row;
+	list-style: none;
+	gap: 2ch;
+}
+
+.site-links button {
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+	padding-left: 2rem;
+	padding-right: 2rem;
+	--tw-text-opacity: 1;
+	color: rgb(0 108 184 / var(--tw-bg-opacity));
+	transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
+}
+
+.site-links button:hover {
+	background: rgb(0 108 184);
+	color: rgb(255 255 255);
+}

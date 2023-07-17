@@ -15,6 +15,8 @@ import { useNavigate } from "react-router-dom";
 import imgHome from '../img/CRAFT-home.jpg';
 import imgHero from '../img/CRAFT-hero.jpg';
 
+import SiteHeader from "../Generic/Menu";
+
 import Footer from "./Footer/Footer";
 import { signUpForUpdates } from "../Dashboard/Contact/ContactUtils";
 import { ScrollRestoration } from "react-router-dom";
@@ -22,8 +24,10 @@ import { getAnalytics, logEvent } from "firebase/analytics";
 
 const Home = () => {
   const navigate = useNavigate();
-  return (
+  return (      
     <main>
+      <SiteHeader></SiteHeader>
+
       <section className="hero">
         <img src={imgHero} className="hero-img" />
         <div className="cc hero-wrap">
