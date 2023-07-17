@@ -11,16 +11,16 @@ interface IconBulletProps {
 }
 
 const IconBullet = ({ icon, title, children, color }: IconBulletProps) => (
-  <div className="flex flex-row mb-12">
-    <div>
+  <div className="flex flex-col px-20 text-center bg-foggy-light">
+    <div className="my-30">
       <FontAwesomeIcon
         icon={icon}
         size={"xl"}
-        className={`rounded p-10 mt-4 ${color ? color : "bg-palo-verde-light"}`}
+        className={`rounded p-10 mt-4`}
       />
     </div>
-    <div className="ml-20">
-      <h3 className="type-1 mb-0">{title}</h3>
+    <div>
+      <h3 className="type-1 mb-20">{title}</h3>
       {children}
     </div>
   </div>

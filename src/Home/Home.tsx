@@ -31,36 +31,22 @@ const Home = () => {
       >
         <div className="rounded w-11/12 sm:w-5/6 md:w-2/3 lg:w-1/2 bg-white/60 border border-black p-20 sm:p-30 backdrop-blur-sm text-center m-3">
           <h1 className="type-1 font-bold font-serif mb-0">
-            Curricular Resources about AI for Teaching (CRAFT)
+            Classroom-Ready Resources About AI For Teaching (CRAFT)
           </h1>
           <p className="type-0 mb-10">
-            A project from the Stanford Graduate School of Education
+            A co-design project from the Stanford Graduate School of Education
           </p>
           <div className="w-full border-t border-gray-500 mb-10 mt-10"></div>
-          <p className="type-0 mb-10">
-            We're building resources to teach AI literacies for high school and
-            college instructors and assembling them into a full curriculum that
-            will be deployed in a course with the{" "}
-            <a
-              href="https://docs.google.com/document/d/1p_Racn9prXz3MyZ2qwAWcwdIUWCiccr76i6o8iSPUCk/preview"
-              target="_blank"
-              rel="noreferrer"
-            >
-              National Educational Equity Lab
-            </a>
-            {", "}
-            offered in Fall 2023.
-          </p>
           <div className="w-full mb-0 mt-20 grid grid-cols-2" style={{gap: '1rem'}} >
             <button
-              className="button col-span-2"
+              className="button rounded col-span-2"
               onClick={() => navigate("/dash/resources")}
             >
               <FontAwesomeIcon icon={faBook} className="mr-10" />
-              <span>View the Curricular Resources</span>
+              <span>View the resources</span>
             </button>
             <button
-              className="btn-sky"
+              className="rounded btn-sky"
               onClick={() => navigate("/dash/about")}
             >
               <FontAwesomeIcon icon={faInfoCircle} className="mr-10" />
@@ -76,15 +62,50 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <div className={`w-full px-12 sm:px-32 md:px-60 lg:px-216 py-40`}>
+        <p>
+          CRAFT is an initiative in collaboration with the Graduate School of Education and Institute for Human-Centered AI. CRAFT co-creates AI Literacy curricular resources with practicing high school teachers, to help you teach students to explore, understand, question, and critique AI. CRAFT intentionally pursues a multidisciplinary approach so all high school and college teachers with a variety of discipline backgrounds can teach about AI.
+        </p>
+        <p className="mb-24 grow w-full">
+          This website hosts a collection of instructional resources co-designed to facilitate learning in a way that fits your teaching cadence and curriculum. You can integrate a small activity or tool, or follow a series of lessons.
+        </p>
+        <hr className="mt-20 mb-40" />
+        <div className="grid gap-5 grid-cols-3" style={{gap: "2rem"}}>
+          <IconBullet
+            icon={faPalette}
+            title="Co-Design"
+          >
+            <p>
+              We work with teachers representing multiple disciplines, states, and countries to design these resources.  Insights from group discussions and classroom implementations shape the content, structure, and style of the resources available to you.
+            </p>
+          </IconBullet>
+          <IconBullet
+            icon={faAtom}
+            title="Multidisciplinary"
+          >
+            <p>
+              We take a humanistic approach to teaching about AI, so our resources contextualize AI in multiple disciplines like art, math, english, and history so that teachers in any discipline can use them.
+            </p>
+          </IconBullet>
+          <IconBullet
+            icon={faChalkboardTeacher}
+            title="Flexible"
+          >
+            <p>
+              Resources help facilitate instruction that’s intended to fit into the “nooks and crannies” of your teaching time. The resources co-created range from 15 minute activities to full lessons and are created in a way to give you agency to adapt the resources to fit your teaching context and student needs and interests.
+            </p>
+          </IconBullet>
+        </div>
+      </div>
       <div
-        className={`w-full bg-black-20 px-12 sm:px-32 md:px-60 lg:px-126 py-40 text-center`}
+        className={`w-full bg-foggy-light px-12 sm:px-32 md:px-60 lg:px-126 py-40 text-center`}
       >
         <form
           className="flex flex-col items-center"
           onSubmit={(e) => {
             e.preventDefault();
             e.stopPropagation();
-
+      
             // @ts-ignore
             signUpForUpdates(document.getElementById("email").value);
             logEvent(getAnalytics(), "sign_up_for_updates");
@@ -93,93 +114,22 @@ const Home = () => {
           <p className="type-0 mb-10 w-full">
             Want to receive updates about the project? Enter your email below!
           </p>
-          <input
-            type="email"
-            name="email"
-            id="email"
-            className={`
-          border rounded px-10 py-5 mb-10 w-full xl:w-3/4
-          type-0
-          `}
-            placeholder="Email address"
-          />
-          <button className={`btn-palo-alto`}>Sign me up!</button>
+          <div className="flex flex-column">
+            <input
+              type="email"
+              name="email"
+              id="email"
+              className={`
+            border rounded px-10 py-5 mr-10
+            type-0
+            `}
+              placeholder="Email address"
+            />
+            <button className={`btn-palo-alto rounded`}>Sign me up!</button>
+            </div>
         </form>
       </div>
-      <div className={`w-full px-12 sm:px-32 md:px-60 lg:px-216 py-40`}>
-        <div className="flex flex-col">
-          <p className="mb-24 w-full">
-            CRAFT is an initiative in collaboration with the Graduate School of
-            Education, Institute for Human-Centered AI, and Stanford Digital
-            Education. We aim to provide support for teachers in high school and
-            early college who want to teach their students about artificial
-            intelligence, or AI. This website hosts a collection of resources to
-            facilitate such instruction with the following core principles:
-          </p>
-          <IconBullet
-            icon={faPalette}
-            title="AI instruction is multidisciplinary"
-          >
-            <p>
-              These tools contextualize AI in multiple disciplines like art,
-              math, english, and history, so that teachers across the school can
-              use them. Currently, the resources focus on English, Art, Politics
-              and Civics, and Mathematics.
-            </p>
-          </IconBullet>
-          <IconBullet
-            icon={faAtom}
-            title="Teaching AI shouldn’t require a new class"
-          >
-            <p>
-              These resources help facilitate instruction that’s intended to fit
-              into the “nooks and crannies” of your time. They range from
-              15-minute activities to full lessons and units. Grab what you
-              need!
-            </p>
-          </IconBullet>
-          <IconBullet
-            icon={faChalkboardTeacher}
-            title="Teachers know pedagogy, routines, and assessment strategies best"
-          >
-            <p>
-              Between November 2022 and May 2023, we worked with ten teachers,
-              representing nine disciplines, five states, and two countries to
-              design these resources. Their insights from group discussions and
-              classroom implementations shaped the content, structure, and style
-              of the resources—we are so very grateful for their work.
-            </p>
-          </IconBullet>
-          <div className="w-full border-t border-gray-500 mb-20"></div>
-          <div className="flex flex-row justify-center">
-            <h2 className="type-3 font-serif mb-10">EUs and EQs</h2>
-          </div>
-          <p className="mb-10 w-full">
-            These resources center the following enduring understandings (EUs)
-            and essential questions (EQs):
-          </p>
-          <ol className="list-decimal ml-6">
-            <li className="mb-10">
-              AI is involved in many different parts of our modern lives. Being
-              “knowledgeable” about AI is not limited to being able to use math
-              and write code to build AI.
-            </li>
-            <li className="mb-10">
-              Modern AI relies heavily on data created by humans. Relying on
-              human-produced data allows AI to do a number of surprising things,
-              but because AI is only as good as the data that it uses, and data
-              is a simplification of the world, it also has limitations.
-            </li>
-            <li className="mb-10">
-              AI can amplify and accelerate the work of existing systems. This
-              can be both positive and negative. Even though modern AI has
-              impressive capabilities, humans still bear the ultimate
-              responsibility for ensuring that AI is designed and used in ways
-              that are beneficial to all people.
-            </li>
-          </ol>
-        </div>
-      </div>
+
       <Footer />
       <ScrollRestoration />
     </div>

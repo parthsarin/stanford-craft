@@ -5,8 +5,8 @@
 html,
 body,
 #root {
-  height: 100%;
-  width: 100%;
+  min-height: 100%;
+  min-width: 100%;
 }
 
 /** Source Sans Pro, Source Serif Pro, Roboto Slab, Roboto Mono (regular only) */
