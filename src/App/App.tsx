@@ -6,6 +6,8 @@ import {
 } from "react-router-dom";
 
 import Home from "../Home";
+import Home2 from "../Home-new";
+
 import Dashboard from "../Dashboard";
 import Resources from "../Dashboard/Resources";
 import NoMatch from "../NoMatch";
@@ -41,6 +43,7 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path="/" element={<Home />} />
+      <Route path="/home2" element={<Home2 />} />
       <Route path="/jobs" element={<JobPosting />} />
       <Route path="/link/*" element={<ExternalLink />} />
       <Route path="/dash" element={<Dashboard />}>
