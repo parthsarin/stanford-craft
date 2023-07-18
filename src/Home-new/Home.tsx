@@ -12,7 +12,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
 
-import imgHome from '../img/CRAFT-home.jpg';
+import imgHome from '../img/CRAFT-home-04.jpg';
 import imgHero from '../img/CRAFT-hero.jpg';
 
 import SiteHeader from "../Generic/Menu";
@@ -32,8 +32,8 @@ const Home = () => {
         <img src={imgHero} className="hero-img" />
         <div className="cc hero-wrap">
           <div className="hero-text">
-            <h1>Empowering teachers to teach about technology.</h1>
-            <p>A co-design project from the<br />Stanford Graduate School of Education</p>
+            <h1>Empowering students with<br />AI Literacy.</h1>
+            <p>Free resources to help you teach high school students in all subject areas to understand and question Artificial Intelligence</p>
             <div className="hero-links">
               <button onClick={() => navigate("/dash/resources")} className="btn-digital-red">Explore resources</button>
               <button onClick={() => navigate("/dash/about")} className="btn-digital-blue">Meet the team</button>
@@ -79,10 +79,11 @@ const Home = () => {
       
       <article className="cc home-section-article">
         <div className="home-section-text">
-          <h2>CRAFT intentionally pursues a multidisciplinary approach so all high school and college teachers with a variety of discipline backgrounds can teach about AI.</h2>
-          <p>CRAFT co-creates AI Literacy curricular resources with practicing high school teachers, to help you teach students to explore, understand, question, and critique AI.</p>
-          <p>This website hosts a collection of instructional resources co-designed to facilitate learning in a way that fits your teaching cadence and curriculum. You can integrate a small activity or tool, or follow a series of lessons.</p>
-          <div className="home-section-links"><button className="btn-digital-blue-outline" onClick={() => navigate("/dash/resources")}>View the resources</button></div>
+          <h2>Classroom-Ready Resources About AI For Teaching (CRAFT) is a  co-design initiative from the Stanford Graduate School of Education.</h2>
+          <p>CRAFT is a collaboration with the Graduate School of Education and Institute for Human-Centered AI.  CRAFT co-designed  free AI Literacy resources about AI with practicing high school teachers, to help them teach students to explore, understand, question, and critique AI. CRAFT intentionally pursues a multidisciplinary approach so educators with a variety of discipline backgrounds can teach about AI. 
+          </p>
+          <p>This website hosts a collection of instructional resources to facilitate such instruction with the following core principles:</p>
+          {/* <div className="home-section-links"><button className="btn-digital-blue-outline" onClick={() => navigate("/dash/resources")}>View the resources</button></div> */}
         </div>
         <div className="home-section-image">
           <img src={ imgHome } alt="" />
@@ -90,14 +91,14 @@ const Home = () => {
       </article>
       
       <div className="cc home-section-values">
-        <h3><span>Core values</span></h3>
+        <h3><span>Core principles</span></h3>
         <div className="card">
           <div className="card-icon">
             <FontAwesomeIcon icon={faPalette} className="mr-10" />
           </div>
           <div className="card-text">
             <p><strong>Co-Design</strong></p>
-            <p>We work with teachers representing multiple disciplines, states, and countries to design these resources. Insights from group discussions and classNameroom implementations shape the content, structure, and style of the resources available to you.</p>
+            <p>We work with teachers representing multiple disciplines, states, and countries to design these resources.  Insights from group discussions and classroom implementations shape the content, structure, and style of the resources available to you.</p>
           </div>
         </div>
         <div className="card">

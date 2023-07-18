@@ -13,8 +13,8 @@ import GlobalFooter from "../Generic/Brand/GlobalFooter";
 import "./App.css";
 
 //Routes
-import Home from "../Home";
-import Home2 from "../Home-new";
+import Home2 from "../Home";
+import Home from "../Home-new";
 
 import Dashboard from "../Dashboard";
 import Resources from "../Dashboard/Resources";

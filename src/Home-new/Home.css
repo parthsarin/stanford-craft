@@ -30,6 +30,10 @@ section.hero {
 	@apply mb-20;
 }
 
+.hero-text p {
+	max-width: 55ch;
+}
+
 .hero-wrap button {
 	@apply mr-10;
 }
@@ -78,6 +82,10 @@ section.hero {
 }
 
 /* Home section: Values */
+.home-section-values {
+	@apply mb-120;
+}
+
 .home-section-values h3 {
 	font-size: 1.5em;
 	position: relative;
