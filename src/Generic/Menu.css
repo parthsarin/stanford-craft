@@ -10,6 +10,7 @@
 .site-nav img {
 	height: 70px;
 	width: auto;
+	object-fit: contain;
 }
 
 /* Nav links */
