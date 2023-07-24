@@ -79,10 +79,10 @@ const Home = () => {
       
       <article className="cc home-section-article">
         <div className="home-section-text">
-          <h2>Classroom-Ready Resources About AI For Teaching (CRAFT) is a  co-design initiative from the Stanford Graduate School of Education.</h2>
-          <p>CRAFT is a collaboration with the Graduate School of Education and Institute for Human-Centered AI.  CRAFT co-designed  free AI Literacy resources about AI with practicing high school teachers, to help them teach students to explore, understand, question, and critique AI. CRAFT intentionally pursues a multidisciplinary approach so educators with a variety of discipline backgrounds can teach about AI. 
+          <h2>Classroom-Ready Resources About AI For Teaching (CRAFT) is a co-design initiative from the Stanford Graduate School of Education.</h2>
+          <p>CRAFT is a collaboration with the Graduate School of Education and Institute for Human-Centered AI. CRAFT co-designed free AI Literacy resources about AI with practicing high school teachers, to help them teach students to explore, understand, question, and critique AI. CRAFT intentionally pursues a multidisciplinary approach so educators with a variety of discipline backgrounds can teach about AI. 
           </p>
-          <p>This website hosts a collection of instructional resources to facilitate such instruction with the following core principles:</p>
+          <p>This website hosts a collection of instructional resources to facilitate such instruction You can integrate a small activity or tool, or follow a multi-day series of lessons.  with the following core principles:</p>
           {/* <div className="home-section-links"><button className="btn-digital-blue-outline" onClick={() => navigate("/dash/resources")}>View the resources</button></div> */}
         </div>
         <div className="home-section-image">
