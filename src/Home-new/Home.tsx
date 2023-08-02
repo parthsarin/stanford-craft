@@ -8,6 +8,7 @@ import {
   faBook,
   faInfoCircle,
   faPaperPlane,
+  faClock
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
@@ -80,9 +81,9 @@ const Home = () => {
       <article className="cc home-section-article">
         <div className="home-section-text">
           <h2>Classroom-Ready Resources About AI For Teaching (CRAFT) is a co-design initiative from the Stanford Graduate School of Education.</h2>
-          <p>CRAFT is a collaboration with the Graduate School of Education and Institute for Human-Centered AI. CRAFT co-designed free AI Literacy resources about AI with practicing high school teachers, to help them teach students to explore, understand, question, and critique AI. CRAFT intentionally pursues a multidisciplinary approach so educators with a variety of discipline backgrounds can teach about AI. 
+          <p>CRAFT is a collaboration with the Graduate School of Education and Institute for Human-Centered AI. CRAFT is a collection of co-designed free AI Literacy resources about AI for high school teachers, to help students explore, understand, question, and critique AI. CRAFT intentionally pursues a <strong>multidisciplinary</strong> approach so educators with a variety of discipline backgrounds can teach about AI. 
           </p>
-          <p>This website hosts a collection of instructional resources to facilitate such instruction You can integrate a small activity or tool, or follow a multi-day series of lessons.  with the following core principles:</p>
+          <p>This website hosts a continuously growing collection of free and adaptable instructional resources to facilitate instruction within the nooks and crannies of your teaching. You can integrate a small activity or tool, or follow a multi-day series of lessons. The work of CRAFT is grounded in the following core principles:</p>
           {/* <div className="home-section-links"><button className="btn-digital-blue-outline" onClick={() => navigate("/dash/resources")}>View the resources</button></div> */}
         </div>
         <div className="home-section-image">
@@ -98,7 +99,7 @@ const Home = () => {
           </div>
           <div className="card-text">
             <p><strong>Co-Design</strong></p>
-            <p>We work with teachers representing multiple disciplines, states, and countries to design these resources.  Insights from group discussions and classroom implementations shape the content, structure, and style of the resources available to you.</p>
+            <p>We work with teachers representing multiple disciplines, states, and countries to design these resources. Insights from group discussions and classroom implementations shape the content, structure, and style of the resources available to you.</p>
           </div>
         </div>
         <div className="card">
@@ -110,6 +111,16 @@ const Home = () => {
             <p>We take a humanistic approach to teaching about AI, so our resources contextualize AI in multiple disciplines like art, math, english, and history so that teachers in any discipline can use them.</p>
           </div>
         </div>
+        <div className="card">
+          <div className="card-icon">
+            <FontAwesomeIcon icon={faClock} className="mr-10" />
+          </div>
+          <div className="card-text">
+            <p><strong>Current</strong></p>
+            <p>We draw on Stanford’s national expertise in learning sciences and artificial intelligence to guide the development of content for materials. This means the resources stay current and timely, so you can continue to expand student understanding of artificial intelligence.</p>
+          </div>
+        </div>
+
         <div className="card">
           <div className="card-icon">
             <FontAwesomeIcon icon={faChalkboardTeacher} className="mr-10" />  
