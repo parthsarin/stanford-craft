@@ -55,7 +55,7 @@ const Filter = ({ onUpdate }: Props) => {
           <input
             type="checkbox"
             className="unit checkbox"
-            value="Unit 2: AI & You"
+            value="AI & You"
             id="u2"
             onChange={(e) =>
               handleTagSelect(
@@ -66,14 +66,14 @@ const Filter = ({ onUpdate }: Props) => {
             }
           />
           <label htmlFor="u2" className="label inline ml-5">
-            Unit 2: AI & You
+            AI & You
           </label>
         </li>
         <li>
           <input
             type="checkbox"
             className="unit checkbox"
-            value="Unit 3: AI & Math"
+            value="AI & Math"
             id="u3"
             onChange={(e) =>
               handleTagSelect(
@@ -84,14 +84,14 @@ const Filter = ({ onUpdate }: Props) => {
             }
           />
           <label htmlFor="u3" className="label inline ml-5">
-            Unit 3: AI & Math
+            AI & Math
           </label>
         </li>
         <li>
           <input
             type="checkbox"
             className="unit checkbox"
-            value="Unit 4: AI & Art"
+            value="AI & Art"
             id="u4"
             onChange={(e) =>
               handleTagSelect(
@@ -102,14 +102,14 @@ const Filter = ({ onUpdate }: Props) => {
             }
           />
           <label htmlFor="u4" className="label inline ml-5">
-            Unit 4: AI & Art
+            AI & Art
           </label>
         </li>
         <li>
           <input
             type="checkbox"
             className="unit checkbox"
-            value="Unit 5: AI & Society"
+            value="AI & Society"
             id="u5"
             onChange={(e) =>
               handleTagSelect(
@@ -120,7 +120,7 @@ const Filter = ({ onUpdate }: Props) => {
             }
           />
           <label htmlFor="u5" className="label inline ml-5">
-            Unit 5: AI & Society
+            AI & Society
           </label>
         </li>
       </ul>

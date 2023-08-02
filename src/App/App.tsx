@@ -5,21 +5,29 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
-import Home from "../Home";
+
+//Global
+import IdentityBar from "../Generic/Brand/IdentityBar";
+import GlobalFooter from "../Generic/Brand/GlobalFooter";
+
+import "./App.css";
+
+//Routes
+import Home2 from "../Home";
+import Home from "../Home-new";
+
 import Dashboard from "../Dashboard";
 import Resources from "../Dashboard/Resources";
 import NoMatch from "../NoMatch";
 
-import "./App.css";
 import Datamax from "../Dashboard/Datamax";
 import Prompty from "../Dashboard/Prompty";
 import PlayPrompty from "../Dashboard/Prompty/PlayPrompty";
 import NewQuiz from "../Dashboard/Datamax/NewQuiz";
-import IdentityBar from "../Generic/Brand/IdentityBar";
-import GlobalFooter from "../Generic/Brand/GlobalFooter";
 import ExternalLink from "../ExternalLink";
 import Profile from "../Dashboard/Profile";
 
+//Tools
 import { useEffect, useState } from "react";
 import {
   handleSignIn,
@@ -41,6 +49,7 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path="/" element={<Home />} />
+      <Route path="/home2" element={<Home2 />} />
       <Route path="/jobs" element={<JobPosting />} />
       <Route path="/link/*" element={<ExternalLink />} />
       <Route path="/dash" element={<Dashboard />}>

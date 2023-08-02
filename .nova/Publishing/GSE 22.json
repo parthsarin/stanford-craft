@@ -1,0 +1,11 @@
+{
+  "identifier" : "91043736-BC05-411C-9FB0-D6F12CD566D4",
+  "ignoredFilePatterns" : [
+    "node_modules",
+    "src"
+  ],
+  "localPath" : "build",
+  "remotePath" : "\/var\/www\/html\/craft",
+  "server" : "GSE 22",
+  "usesPublishing" : true
+}
