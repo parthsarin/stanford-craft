@@ -22,7 +22,7 @@
       }
     ],
     "tags": {
-      "unit": ["Unit 2: AI & You"],
+      "unit": ["AI & You"],
       "type": ["Worksheet", "Video"],
       "misc": []
     }
@@ -42,7 +42,7 @@
       }
     ],
     "tags": {
-      "unit": ["Unit 2: AI & You"],
+      "unit": ["AI & You"],
       "type": ["Video"],
       "misc": []
     }
@@ -62,7 +62,7 @@
       }
     ],
     "tags": {
-      "unit": ["Unit 2: AI & You"],
+      "unit": ["AI & You"],
       "type": ["Video"],
       "misc": []
     }
@@ -86,7 +86,7 @@
       }
     ],
     "tags": {
-      "unit": ["Unit 2: AI & You"],
+      "unit": ["AI & You"],
       "type": ["Video", "Worksheet"],
       "misc": []
     }
@@ -118,7 +118,7 @@
       }
     ],
     "tags": {
-      "unit": ["Unit 2: AI & You"],
+      "unit": ["AI & You"],
       "type": ["Guided Exploration", "Podcast", "Reading", "Worksheet"],
       "misc": []
     }
@@ -146,7 +146,7 @@
       }
     ],
     "tags": {
-      "unit": ["Unit 3: AI & Math"],
+      "unit": ["AI & Math"],
       "type": ["Interactive", "Article", "Worksheet"],
       "misc": ["Art"]
     }
@@ -170,7 +170,7 @@
       }
     ],
     "tags": {
-      "unit": ["Unit 3: AI & Math"],
+      "unit": ["AI & Math"],
       "misc": ["Bias", "Dataset"],
       "type": ["Interactive", "Guided Exploration", "Worksheet"]
     }
@@ -194,7 +194,7 @@
       }
     ],
     "tags": {
-      "unit": ["Unit 3: AI & Math"],
+      "unit": ["AI & Math"],
       "type": ["Video"],
       "misc": ["Sound"]
     }
@@ -218,7 +218,7 @@
       }
     ],
     "tags": {
-      "unit": ["Unit 3: AI & Math"],
+      "unit": ["AI & Math"],
       "misc": ["Hands-On"],
       "type": ["Worksheet"]
     }
@@ -242,7 +242,7 @@
       }
     ],
     "tags": {
-      "unit": ["Unit 4: AI & Art"],
+      "unit": ["AI & Art"],
       "type": ["Video"],
       "misc": ["Generative AI", "Generative Adversarial Network"]
     }
@@ -266,7 +266,7 @@
       }
     ],
     "tags": {
-      "unit": ["Unit 4: AI & Art"],
+      "unit": ["AI & Art"],
       "type": [],
       "misc": ["dall-e", "generative art"]
     }
@@ -290,7 +290,7 @@
       }
     ],
     "tags": {
-      "unit": ["Unit 4: AI & Art"],
+      "unit": ["AI & Art"],
       "type": ["stable diffusion"],
       "misc": ["generative art", "t-chart"]
     }
@@ -314,7 +314,7 @@
       }
     ],
     "tags": {
-      "unit": ["Unit 4: AI & Art"],
+      "unit": ["AI & Art"],
       "type": [],
       "misc": ["generative art", "ai assisted drawing", "t-chart"]
     }
@@ -342,7 +342,7 @@
       }
     ],
     "tags": {
-      "unit": ["Unit 4: AI & Art"],
+      "unit": ["AI & Art"],
       "type": [],
       "misc": ["generative art", "dall-e", "chatgpt", "attribution", "ethics"]
     }
@@ -358,7 +358,7 @@
       }
     ],
     "tags": {
-      "unit": ["Unit 5: AI & Society"],
+      "unit": ["AI & Society"],
       "type": ["Interactive"],
       "misc": []
     }
