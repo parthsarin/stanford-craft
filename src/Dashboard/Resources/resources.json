@@ -1,93 +1,49 @@
 [
   {
-    "title": "What is AI?",
-    "description": "A video and worksheet to help students think about and apply the definitions of device, algorithm, and AI to things in their everyday life. In doing so, students can better distinguish what AI is amidst other technologies and will be better prepared to think about what role AI specifically plays in various applications. The teacher guide offers commentary",
+    "title": "Where in the World is AI Around Me?",
+    "description": "Students explore the prevalence of artificial intelligence in their personal lives and develop an understanding of what AI is and how to recognize technologies that use it.",
     "img": "https://i.postimg.cc/N0dp0nX3/AI-Around-You.png",
     "subLinks": [
       {
-        "url": "https://www.youtube.com/watch?v=oJC8VIDSx_Q",
-        "name": "Video"
-      },
-      {
-        "url": "https://docs.google.com/presentation/d/1IvYJWicXd2M-kn_MVEQlwl704MQYdwYibVamP0gnl3s",
-        "name": "Worksheet"
-      },
-      {
-        "url": "https://docs.google.com/presentation/d/1C7gVBSw-8H4R1oa-wlpSvkvCouf44z7TPOZJ2B-FSGY/edit#slide=id.p",
-        "name": "Teacher Guide"
-      },
-      {
         "url": "https://docs.google.com/document/d/17wKvHiUO0tWavwE5N8esn1GZEWfJTpoo7NxVcRpMOds/edit#bookmark=id.e7u6eswa4d72",
-        "name": "Curriculum"
+        "name": "Lesson Plan"
       }
     ],
     "tags": {
       "unit": ["AI & You"],
-      "type": ["Worksheet", "Video"],
+      "type": ["Lesson"],
       "misc": []
     }
   },
   {
-    "title": "“What the world looks like to an algorithm” YouTube Video",
-    "description": "A video discussing how an AI algorithm “sees” the world to recognize objects in photos. It discusses how humans and computers often attend to different features of objects when trying to recognize them.",
+    "title": "Resource: What the world looks like to an algorithm (From Verge Science)",
+    "description": "This video discusses how an AI algorithm “sees” the world to recognize objects in photos. It explores how humans and computers often attend to different features of objects when trying to recognize them.",
     "img": "https://i.postimg.cc/BnS42Wrt/What-the-world-looks-like-to-an-algorithm.png",
     "subLinks": [
       {
         "url": "https://www.youtube.com/watch?v=PwcuTCfSIyI",
-        "name": "Video"
-      },
-      {
-        "url": "https://docs.google.com/document/d/17wKvHiUO0tWavwE5N8esn1GZEWfJTpoo7NxVcRpMOds/edit#bookmark=id.e7u6eswa4d72",
-        "name": "Curriculum"
+        "name": "Video: What the world looks like..."
       }
     ],
     "tags": {
       "unit": ["AI & You"],
-      "type": ["Video"],
+      "type": ["Resource", "Video"],
       "misc": []
     }
   },
   {
-    "title": "Gender Shades Video",
-    "description": "A video report on a study done on facial recognition software indicating that the algorithms that power the software were trained on white, male faces and weren’t as good at recognizing others’ faces.",
+    "title": "Resource: How well do IBM, Microsoft, and Face++ AI services guess the gender of a face? (From MIT MediaLab)",
+    "description": "This video reports on a study done on facial recognition software indicating that the algorithms that power the software were trained on white, male faces and weren’t as good at recognizing others’ faces.",
     "img": "https://i.postimg.cc/C1cFKwMj/Gender-shades.png",
     "subLinks": [
       {
         "url": "http://gendershades.org/",
-        "name": "Video"
-      },
-      {
-        "url": "https://docs.google.com/document/d/17wKvHiUO0tWavwE5N8esn1GZEWfJTpoo7NxVcRpMOds/edit#bookmark=id.e7u6eswa4d72",
-        "name": "Curriculum"
+        "name": "Video: Gender Shades..."
       }
     ],
     "tags": {
-      "unit": ["AI & You"],
-      "type": ["Video"],
-      "misc": []
-    }
-  },
-  {
-    "title": "Squid Model",
-    "description": "A framework for understanding the inputs, processes, and outputs of AI systems.",
-    "img": "https://i.postimg.cc/bNt91rXN/Squid-model.png",
-    "subLinks": [
-      {
-        "url": "https://docs.google.com/presentation/d/1-cVwivICr-h-IQJDHcx-vU6pVE8poT7WioaVLvZ5IM4/edit#slide=id.p",
-        "name": "Teacher Worksheet"
-      },
-      {
-        "url": "https://docs.google.com/presentation/d/1nXczmIFcxCLnscFAj_XQyjbDm2Ze9qZ66kwsDRXNLmQ/edit",
-        "name": "Worksheet"
-      },
-      {
-        "url": "https://docs.google.com/document/d/17wKvHiUO0tWavwE5N8esn1GZEWfJTpoo7NxVcRpMOds/edit#bookmark=id.uek0uo6wl3z5",
-        "name": "Curriculum"
-      }
-    ],
-    "tags": {
-      "unit": ["AI & You"],
-      "type": ["Video", "Worksheet"],
+      "unit": ["AI & Society"],
+      "type": ["Resource", "Video"],
       "misc": []
     }
   },
@@ -152,51 +108,39 @@
     }
   },
   {
-    "title": "Gender and Age Bias in Coco Captions Dataset",
-    "description": "This guided exploration takes students through a captions datasets and lets them add features like “caption_words_gender”, “caption_words_age”, “caption_words_attractive” to see if there is bias in the data. ",
-    "img": "https://i.postimg.cc/tg4TxYVY/Screenshot-2023-04-23-at-10-15-36-PM.png",
+    "title": "Resource: Hidden Bias (From Google PAIR Explorables)",
+    "description": "This guided exploration takes students through how models trained on real-world data can contain real-world bias.",
+    "img": "https://i.postimg.cc/765PXTGB/image.png",
     "subLinks": [
       {
-        "url": "https://knowyourdata-tfds.withgoogle.com/#dataset=coco_captions&tab=RELATIONS&relations=default_segment.cloud_vision.label.value,default_segment.coco_captions.captions_words_gendered_groups.value&draw=default_segment.coco_captions.objects_label.value,bbox,bbox&auto_draw=false",
-        "name": "Coco Captions Dataset"
-      },
-      {
-        "url": "https://docs.google.com/presentation/d/1fzNSUxl1IAtXFDKczvJMlumns7xvUONwGOdR6mS_-i4/edit#slide=id.p",
-        "name": "Worksheet"
-      },
-      {
-        "url": "https://docs.google.com/document/d/1lbF25Q6_I45NRSWzFW3ZbcIkTJ7zAfs638HOGthMK0A/edit#bookmark=id.phvesovriup7",
-        "name": "Curriculum"
+        "url": "https://pair.withgoogle.com/explorables/hidden-bias/",
+        "name": "Explorable"
       }
     ],
     "tags": {
-      "unit": ["AI & Math"],
-      "misc": ["Bias", "Dataset"],
-      "type": ["Interactive", "Guided Exploration", "Worksheet"]
+      "unit": ["AI & Society"],
+      "misc": [],
+      "type": ["Resource", "Explorable"]
     }
   },
   {
-    "title": "Whale Songs",
-    "description": "This video and resultant website shows how AI can be used to analyze to analyze soundwaves of whales and find patterns by highlighting similar sounds. The curriculum and optional worksheet (linked in curriculum) discusses the benefits and drawbacks of turning whale songs into numerical data for analysis. ",
+    "title": "Resource: Whale Songs and AI, for everyone to explore (From Google)",
+    "description": "This video and resultant website shows how AI can be used to analyze to analyze soundwaves of whales and find patterns by highlighting similar sounds.",
     "img": "https://i.postimg.cc/4yVFZvZM/maxresdefault.jpg",
     "subLinks": [
       {
-        "url": "https://www.youtube.com/watch?v=JE3-LkMqBfM&ab_channel=Google",
-        "name": "Video: Whale Songs"
+        "url": "https://www.youtube.com/watch?v=JE3-LkMqBfM",
+        "name": "Video: Whale Songs..."
       },
       {
-        "url": "https://docs.google.com/presentation/d/1fzNSUxl1IAtXFDKczvJMlumns7xvUONwGOdR6mS_-i4/edit#slide=id.p",
-        "name": "Website: Whale Songs"
-      },
-      {
-        "url": "https://docs.google.com/document/d/1lbF25Q6_I45NRSWzFW3ZbcIkTJ7zAfs638HOGthMK0A/edit#bookmark=id.psys7aio5rsu",
-        "name": "Curriculum"
+        "url": "https://patternradio.withgoogle.com/",
+        "name": "Pattern Radio Website"
       }
     ],
     "tags": {
-      "unit": ["AI & Math"],
-      "type": ["Video"],
-      "misc": ["Sound"]
+      "unit": ["AI & Society"],
+      "type": ["Resource", "Video", "Explorable"],
+      "misc": []
     }
   },
   {
@@ -244,122 +188,98 @@
     "tags": {
       "unit": ["AI & Art"],
       "type": ["Video"],
-      "misc": ["Generative AI", "Generative Adversarial Network"]
+      "misc": []
     }
   },
   {
-    "title": "The DALL•E Prompt Book",
+    "title": "Resource: The DALL•E Prompt Book (From dall•ery gall•ery)",
     "description": "This book gives examples of prompts and breaks down how each word in the prompt tends to affect the output. It's a good way to get students thinking about how they can use AI models.",
     "img": "https://i.postimg.cc/dVmVzdzS/prompt-book.png",
     "subLinks": [
       {
         "url": "https://pitch.com/v/tmd33y/6fb6f14b-10ef-48f3-a597-d4af7aa1c9c6",
         "name": "Prompt Book"
-      },
-      {
-        "url": "https://docs.google.com/document/d/1J6C4aIqWZjl8i1H-GmPxVKZM7jpYgHJMfcPu6wHksXI/edit#bookmark=id.l9rmrsmq9v29",
-        "name": "Activity"
-      },
-      {
-        "url": "https://docs.google.com/document/d/1lbF25Q6_I45NRSWzFW3ZbcIkTJ7zAfs638HOGthMK0A/edit#",
-        "name": "Curriculum"
       }
     ],
     "tags": {
       "unit": ["AI & Art"],
-      "type": [],
-      "misc": ["dall-e", "generative art"]
+      "type": ["Resource", "Reading"],
+      "misc": []
     }
   },
   {
-    "title": "Lexica",
+    "title": "Resource: Lexica",
     "description": "Lexica is an online gallery of AI-generated art. Each example on the page also includes the prompt that was used to generate it.",
     "img": "https://i.postimg.cc/y6cxFwLH/lexica.png",
     "subLinks": [
       {
         "url": "https://lexica.art/",
-        "name": "Website"
+        "name": "Gallery"
       },
       {
         "url": "https://docs.google.com/presentation/d/1XqlGgAAB7IjVgzSe_E6EP0lhV4CqgvV7QMzkYFrftYc/edit#slide=id.p",
-        "name": "T-Chart Activity"
-      },
-      {
-        "url": "https://docs.google.com/document/d/1J6C4aIqWZjl8i1H-GmPxVKZM7jpYgHJMfcPu6wHksXI/edit",
-        "name": "Curriculum"
+        "name": "Worksheet"
       }
     ],
     "tags": {
       "unit": ["AI & Art"],
-      "type": ["stable diffusion"],
-      "misc": ["generative art", "t-chart"]
+      "type": ["Resource", "Explorable"],
+      "misc": []
     }
   },
   {
-    "title": "Vizcom",
-    "description": "This app allows people to draw pictures assisted with artificial intelligence. So, they can make a sketch, describe what they're drawing, and the algorithm will complete the drawing. Then, they can keep building on what they created",
+    "title": "Resource: What's generative AI algorithms relationship with artistic practice?",
+    "description": "Vizcom is an application that turns your sketches into stunning concept drawings in seconds. Import drawings or sketch directly in the app. Note: This website needs a sign in",
     "img": "https://i.postimg.cc/527wF63y/vizcom.png",
     "subLinks": [
       {
-        "url": "https://app.vizcom.ai/auth",
-        "name": "Website"
-      },
-      {
         "url": "https://docs.google.com/presentation/d/1XqlGgAAB7IjVgzSe_E6EP0lhV4CqgvV7QMzkYFrftYc/edit#slide=id.p",
-        "name": "T-Chart Activity"
+        "name": "Worksheet"
       },
       {
-        "url": "https://docs.google.com/document/d/1J6C4aIqWZjl8i1H-GmPxVKZM7jpYgHJMfcPu6wHksXI/edit",
-        "name": "Curriculum"
+        "url": "https://www.vizcom.ai/",
+        "name": "Explorable"
       }
     ],
     "tags": {
       "unit": ["AI & Art"],
-      "type": [],
-      "misc": ["generative art", "ai assisted drawing", "t-chart"]
+      "type": ["Resource", "Explorable"],
+      "misc": []
     }
   },
   {
-    "title": "ChatGPT Debate",
-    "description": "In this routine, students use ChatGPT as a debate partner — i.e., someone to have a short debate against. In this example, students debate about the topic of attribution of images created by DALL-E 2: is it right or wrong for DALL-E to be trained on publicly available images?",
+    "title": "Resource: Is Dall-E's art borrowed or stolen?",
+    "description": "Readings to support students in engaging the debate about the Dall-E and the impact on the art community",
     "img": "https://i.postimg.cc/RZMkZbs9/gpt-debate-routine.png",
     "subLinks": [
       {
-        "url": "https://docs.google.com/document/d/1J6C4aIqWZjl8i1H-GmPxVKZM7jpYgHJMfcPu6wHksXI/edit#bookmark=id.dxp7cvh0jvym",
-        "name": "Lesson Plan"
-      },
-      {
-        "url": "https://docs.google.com/presentation/d/11EZWyh5yefOoImax9huJOYMydxhnny5r0JE2EJdQ-gU/edit#slide=id.p",
-        "name": "Sample Debate"
-      },
-      {
         "url": "https://www.engadget.com/dall-e-generative-ai-tracking-data-privacy-160034656.html",
-        "name": "Attribution Reading"
+        "name": "Article: Is Dall-E's art borrowed..."
       },
       {
-        "url": "https://docs.google.com/document/d/1J6C4aIqWZjl8i1H-GmPxVKZM7jpYgHJMfcPu6wHksXI/edit#",
-        "name": "Curriculum"
+        "url": "https://www.newyorker.com/culture/infinite-scroll/is-ai-art-stealing-from-artists",
+        "name": "Article: Is AI Art Stealing..."
       }
     ],
     "tags": {
       "unit": ["AI & Art"],
-      "type": [],
-      "misc": ["generative art", "dall-e", "chatgpt", "attribution", "ethics"]
+      "type": ["Reading"],
+      "misc": []
     }
   },
   {
-    "title": "AI Bias Explorer",
+    "title": "Resource: AI Bias Explorer",
     "description": "An interactive tool for exploring how text-to-image AI represent different professions and adjectives",
     "img": "https://i.postimg.cc/pVZ5nw06/bias-explorer.jpg",
     "subLinks": [
       {
         "url": "https://huggingface.co/spaces/society-ethics/DiffusionBiasExplorer",
-        "name": "Interactive"
+        "name": "Interactive: Diffusion Bias Explorer"
       }
     ],
     "tags": {
       "unit": ["AI & Society"],
-      "type": ["Interactive"],
+      "type": ["Resource", "Explorable"],
       "misc": []
     }
   }
