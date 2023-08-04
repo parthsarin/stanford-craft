@@ -5,7 +5,7 @@
     "img": "https://i.postimg.cc/N0dp0nX3/AI-Around-You.png",
     "subLinks": [
       {
-        "url": "https://docs.google.com/document/d/17wKvHiUO0tWavwE5N8esn1GZEWfJTpoo7NxVcRpMOds/edit#bookmark=id.e7u6eswa4d72",
+        "url": "https://docs.google.com/document/d/190RaOUgxEUdPf1LC25oTzfUnblLiuXh_eXCvQNjOQMU/edit",
         "name": "Lesson Plan"
       }
     ],
@@ -16,115 +16,71 @@
     }
   },
   {
-    "title": "Resource: What the world looks like to an algorithm (From Verge Science)",
+    "title": "What the world looks like to an algorithm?",
     "description": "This video discusses how an AI algorithm “sees” the world to recognize objects in photos. It explores how humans and computers often attend to different features of objects when trying to recognize them.",
     "img": "https://i.postimg.cc/BnS42Wrt/What-the-world-looks-like-to-an-algorithm.png",
     "subLinks": [
       {
         "url": "https://www.youtube.com/watch?v=PwcuTCfSIyI",
         "name": "Video: What the world looks like..."
+      },
+      {
+        "url": "https://docs.google.com/document/d/17wKvHiUO0tWavwE5N8esn1GZEWfJTpoo7NxVcRpMOds/edit#bookmark=id.e7u6eswa4d72",
+        "name": "Lesson"
       }
     ],
     "tags": {
       "unit": ["AI & You"],
-      "type": ["Resource", "Video"],
+      "type": ["Video", "Lesson"],
       "misc": []
     }
   },
   {
-    "title": "Resource: How well do IBM, Microsoft, and Face++ AI services guess the gender of a face? (From MIT MediaLab)",
+    "title": "Does face recognition have racial bias?",
     "description": "This video reports on a study done on facial recognition software indicating that the algorithms that power the software were trained on white, male faces and weren’t as good at recognizing others’ faces.",
     "img": "https://i.postimg.cc/C1cFKwMj/Gender-shades.png",
     "subLinks": [
       {
         "url": "http://gendershades.org/",
         "name": "Video: Gender Shades..."
-      }
-    ],
-    "tags": {
-      "unit": ["AI & Society"],
-      "type": ["Resource", "Video"],
-      "misc": []
-    }
-  },
-  {
-    "title": "Amazon AI Applications Exploration",
-    "description": "A podcast and article that explore how Amazon uses AI in its delivery system and what factors it uses (and doesn't use) to implement this system.",
-    "img": "https://i.postimg.cc/gJbVCtDF/Amazon-AI-Applications-Exploration.png",
-    "subLinks": [
-      {
-        "url": "https://www.npr.org/transcripts/660168325",
-        "name": "Podcast"
       },
       {
-        "url": "https://docs.google.com/presentation/u/0/d/17_HivwK7bRULppXXFGlpBX-xVHpCYBWBK_PLL59BGLY/edit",
-        "name": "Podcast Listening Guide"
-      },
-      {
-        "url": "https://docs.google.com/presentation/u/0/d/17ARIHSEdDFAJwUwUZxNUCaOY2JuSbp3821RlmW0LABQ/edit",
-        "name": "Podcast Listening Guide Key"
-      },
-      {
-        "url": "https://www.bloomberg.com/graphics/2016-amazon-same-day/",
-        "name": "Article"
-      },
-      {
-        "url": "https://docs.google.com/document/d/17wKvHiUO0tWavwE5N8esn1GZEWfJTpoo7NxVcRpMOds/edit#bookmark=id.uek0uo6wl3z5",
-        "name": "Curriculum"
+        "url": "https://docs.google.com/document/u/0/d/17wKvHiUO0tWavwE5N8esn1GZEWfJTpoo7NxVcRpMOds/edit",
+        "name": "Lesson"
       }
     ],
     "tags": {
       "unit": ["AI & You"],
-      "type": ["Guided Exploration", "Podcast", "Reading", "Worksheet"],
+      "type": ["Video"],
       "misc": []
     }
   },
   {
-    "title": "How Computers See",
-    "description": "This interactive and article demonstrates how computers see visual informations as pixels which inturn becomes numerical data that can be analyzed to find patterns. ",
-    "img": "https://i.postimg.cc/mDDNrLws/Screenshot-2023-04-23-at-10-10-26-PM.png",
-    "subLinks": [
-      {
-        "url": "https://editor.p5js.org/Stanford/full/weOL1sHJ1",
-        "name": "Interactive"
-      },
-      {
-        "url": "https://dimensionality-reduction-293e465c2a3443e8941b016d.vercel.app/",
-        "name": "Article"
-      },
-      {
-        "url": "https://docs.google.com/presentation/d/1fzNSUxl1IAtXFDKczvJMlumns7xvUONwGOdR6mS_-i4/edit#slide=id.p",
-        "name": "Worksheet"
-      },
-      {
-        "url": "https://docs.google.com/document/d/1lbF25Q6_I45NRSWzFW3ZbcIkTJ7zAfs638HOGthMK0A/edit#bookmark=id.rdf2ltoefwha",
-        "name": "Curriculum"
-      }
-    ],
-    "tags": {
-      "unit": ["AI & Math"],
-      "type": ["Interactive", "Article", "Worksheet"],
-      "misc": ["Art"]
-    }
-  },
-  {
-    "title": "Resource: Hidden Bias (From Google PAIR Explorables)",
+    "title": "How can bias get hidden in data?",
     "description": "This guided exploration takes students through how models trained on real-world data can contain real-world bias.",
     "img": "https://i.postimg.cc/765PXTGB/image.png",
     "subLinks": [
       {
         "url": "https://pair.withgoogle.com/explorables/hidden-bias/",
         "name": "Explorable"
+      },
+      {
+        "url": "https://docs.google.com/presentation/u/0/d/1fzNSUxl1IAtXFDKczvJMlumns7xvUONwGOdR6mS_-i4/edit",
+        "name": "Worksheet"
+      },
+      {
+        "url": "https://docs.google.com/document/u/0/d/1lbF25Q6_I45NRSWzFW3ZbcIkTJ7zAfs638HOGthMK0A/edit",
+        "name": "Lesson Plan"
       }
     ],
     "tags": {
-      "unit": ["AI & Society"],
+      "unit": ["AI & Math"],
       "misc": [],
-      "type": ["Resource", "Explorable"]
+      "type": ["Explorable"]
     }
   },
   {
-    "title": "Resource: Whale Songs and AI, for everyone to explore (From Google)",
+    "title": "How can scientists use AI be for whale songs?",
     "description": "This video and resultant website shows how AI can be used to analyze to analyze soundwaves of whales and find patterns by highlighting similar sounds.",
     "img": "https://i.postimg.cc/4yVFZvZM/maxresdefault.jpg",
     "subLinks": [
@@ -135,80 +91,60 @@
       {
         "url": "https://patternradio.withgoogle.com/",
         "name": "Pattern Radio Website"
+      },
+      {
+        "url": "https://docs.google.com/document/u/0/d/1lbF25Q6_I45NRSWzFW3ZbcIkTJ7zAfs638HOGthMK0A/edit",
+        "name": "Lesson Plan"
       }
     ],
     "tags": {
-      "unit": ["AI & Society"],
-      "type": ["Resource", "Video", "Explorable"],
+      "unit": ["AI & Society", "AI & Math"],
+      "type": ["Video", "Explorable"],
       "misc": []
     }
   },
   {
-    "title": "Sentiment Analysis Hands-On",
-    "description": "In this example, we have a collection of reviews from the movie rating site IMDB. Each review has the (lowercase) text that the critic left and a tag indicating whether it is positive or negative. You can enter a word and the notebook will calculate its sentiment based on the data provided above.",
+    "title": "Can AI tell good online reviews from bad ones?",
+    "description": "This interactive tool calculates the sentiment of words based on a collection of  reviews from the movie rating site IMDB.",
     "img": "https://i.postimg.cc/t4cGvNkj/sentiment-analysis.png",
     "subLinks": [
       {
         "url": "https://observablehq.com/@craft/sentiment-analysis-example",
-        "name": "Notebook"
+        "name": "Explorable"
       },
       {
-        "url": "https://docs.google.com/presentation/d/18XQZmqr23Ps2ZwPwHvnYZSSHVv7enZ46G1qarKX2oMs/edit",
+        "url": "https://docs.google.com/presentation/d/18XQZmqr23Ps2ZwPwHvnYZSSHVv7enZ46G1qarKX2oMs/edit#slide=id.p",
         "name": "Worksheet"
-      },
-      {
-        "url": "https://docs.google.com/document/d/1lbF25Q6_I45NRSWzFW3ZbcIkTJ7zAfs638HOGthMK0A/edit#",
-        "name": "Curriculum"
       }
     ],
     "tags": {
       "unit": ["AI & Math"],
-      "misc": ["Hands-On"],
-      "type": ["Worksheet"]
+      "misc": [],
+      "type": ["Worksheet", "Explorable"]
     }
   },
   {
-    "title": "Learning to See: Gloomy Sunday",
-    "description": "Gloomy Sunday is a video showing how a Generative Adversarial Network (a \"GAN\") can re-interpret the image from your webcam in the context of its training data. In that way, it only \"sees\" what it it has been shown in the past.",
-    "img": "https://i.postimg.cc/fysDPh6G/gloomy-sunday.png",
-    "subLinks": [
-      {
-        "url": "https://vimeo.com/260612034",
-        "name": "Video"
-      },
-      {
-        "url": "https://docs.google.com/presentation/d/1RysVqDTBKbpB-3-d6_nUxFxjjdOFEoiKIheEhaqef14/edit#slide=id.p",
-        "name": "Video Organizer"
-      },
-      {
-        "url": "https://docs.google.com/document/d/1J6C4aIqWZjl8i1H-GmPxVKZM7jpYgHJMfcPu6wHksXI/edit",
-        "name": "Curriculum"
-      }
-    ],
-    "tags": {
-      "unit": ["AI & Art"],
-      "type": ["Video"],
-      "misc": []
-    }
-  },
-  {
-    "title": "Resource: The DALL•E Prompt Book (From dall•ery gall•ery)",
+    "title": "What's a prompt for AI image generators?",
     "description": "This book gives examples of prompts and breaks down how each word in the prompt tends to affect the output. It's a good way to get students thinking about how they can use AI models.",
     "img": "https://i.postimg.cc/dVmVzdzS/prompt-book.png",
     "subLinks": [
       {
         "url": "https://pitch.com/v/tmd33y/6fb6f14b-10ef-48f3-a597-d4af7aa1c9c6",
-        "name": "Prompt Book"
+        "name": "Explorable"
+      },
+      {
+        "url": "https://docs.google.com/document/u/0/d/1J6C4aIqWZjl8i1H-GmPxVKZM7jpYgHJMfcPu6wHksXI/edit",
+        "name": "Lesson Plan"
       }
     ],
     "tags": {
       "unit": ["AI & Art"],
-      "type": ["Resource", "Reading"],
+      "type": ["Explorable", "Lesson"],
       "misc": []
     }
   },
   {
-    "title": "Resource: Lexica",
+    "title": "What are some examples of AI-generated images?",
     "description": "Lexica is an online gallery of AI-generated art. Each example on the page also includes the prompt that was used to generate it.",
     "img": "https://i.postimg.cc/y6cxFwLH/lexica.png",
     "subLinks": [
@@ -219,16 +155,20 @@
       {
         "url": "https://docs.google.com/presentation/d/1XqlGgAAB7IjVgzSe_E6EP0lhV4CqgvV7QMzkYFrftYc/edit#slide=id.p",
         "name": "Worksheet"
+      },
+      {
+        "url": "https://docs.google.com/document/u/0/d/1J6C4aIqWZjl8i1H-GmPxVKZM7jpYgHJMfcPu6wHksXI/edit",
+        "name": "Lesson Plan"
       }
     ],
     "tags": {
       "unit": ["AI & Art"],
-      "type": ["Resource", "Explorable"],
+      "type": ["Lesson", "Explorable"],
       "misc": []
     }
   },
   {
-    "title": "Resource: What's generative AI algorithms relationship with artistic practice?",
+    "title": "Can humans and AI make new images together?",
     "description": "Vizcom is an application that turns your sketches into stunning concept drawings in seconds. Import drawings or sketch directly in the app. Note: This website needs a sign in",
     "img": "https://i.postimg.cc/527wF63y/vizcom.png",
     "subLinks": [
@@ -239,16 +179,20 @@
       {
         "url": "https://www.vizcom.ai/",
         "name": "Explorable"
+      },
+      {
+        "url": "https://docs.google.com/document/u/0/d/1J6C4aIqWZjl8i1H-GmPxVKZM7jpYgHJMfcPu6wHksXI/edit",
+        "name": "Lesson Plan"
       }
     ],
     "tags": {
       "unit": ["AI & Art"],
-      "type": ["Resource", "Explorable"],
+      "type": ["Explorable"],
       "misc": []
     }
   },
   {
-    "title": "Resource: Is Dall-E's art borrowed or stolen?",
+    "title": "Did AI steal work from artists?",
     "description": "Readings to support students in engaging the debate about the Dall-E and the impact on the art community",
     "img": "https://i.postimg.cc/RZMkZbs9/gpt-debate-routine.png",
     "subLinks": [
@@ -257,18 +201,26 @@
         "name": "Article: Is Dall-E's art borrowed..."
       },
       {
-        "url": "https://www.newyorker.com/culture/infinite-scroll/is-ai-art-stealing-from-artists",
-        "name": "Article: Is AI Art Stealing..."
+        "url": "https://docs.google.com/document/d/1J6C4aIqWZjl8i1H-GmPxVKZM7jpYgHJMfcPu6wHksXI/edit#bookmark=id.dxp7cvh0jvym",
+        "name": "Readings"
+      },
+      {
+        "url": "https://docs.google.com/presentation/u/0/d/11EZWyh5yefOoImax9huJOYMydxhnny5r0JE2EJdQ-gU/edit",
+        "name": "Worksheet"
+      },
+      {
+        "url": "https://docs.google.com/document/u/0/d/1J6C4aIqWZjl8i1H-GmPxVKZM7jpYgHJMfcPu6wHksXI/edit",
+        "name": "Lesson Plan"
       }
     ],
     "tags": {
       "unit": ["AI & Art"],
-      "type": ["Reading"],
+      "type": ["Reading", "Lesson"],
       "misc": []
     }
   },
   {
-    "title": "Resource: AI Bias Explorer",
+    "title": "Does AI show a gender bias?",
     "description": "An interactive tool for exploring how text-to-image AI represent different professions and adjectives",
     "img": "https://i.postimg.cc/pVZ5nw06/bias-explorer.jpg",
     "subLinks": [
@@ -279,7 +231,7 @@
     ],
     "tags": {
       "unit": ["AI & Society"],
-      "type": ["Resource", "Explorable"],
+      "type": ["Explorable"],
       "misc": []
     }
   }
