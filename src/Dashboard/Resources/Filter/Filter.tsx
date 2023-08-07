@@ -49,7 +49,7 @@ const Filter = ({ onUpdate }: Props) => {
 
   return (
     <>
-      <h3 className="type-1 mb-3">Unit</h3>
+      <h3 className="type-1 mb-3">Topic</h3>
       <ul className="mt-10 list-none pl-0">
         <li>
           <input
@@ -130,8 +130,8 @@ const Filter = ({ onUpdate }: Props) => {
           <input
             type="checkbox"
             className="type checkbox"
-            value="Worksheet"
-            id="checkbox-Worksheet"
+            value="Lesson"
+            id="checkbox-Lesson"
             onChange={(e) =>
               handleTagSelect(
                 e.currentTarget.checked,
@@ -140,8 +140,26 @@ const Filter = ({ onUpdate }: Props) => {
               )
             }
           />
-          <label htmlFor="checkbox-Worksheet" className="label inline ml-5">
-            Worksheet
+          <label htmlFor="checkbox-Lesson" className="label inline ml-5">
+            Lesson
+          </label>
+        </li>
+        <li>
+          <input
+            type="checkbox"
+            className="type checkbox"
+            value="Reading"
+            id="checkbox-Reading"
+            onChange={(e) =>
+              handleTagSelect(
+                e.currentTarget.checked,
+                e.target.value,
+                e.target.classList.item(0)
+              )
+            }
+          />
+          <label htmlFor="checkbox-Reading" className="label inline ml-5">
+            Reading
           </label>
         </li>
         <li>
@@ -184,8 +202,8 @@ const Filter = ({ onUpdate }: Props) => {
           <input
             type="checkbox"
             className="type checkbox"
-            value="Reading"
-            id="checkbox-Reading"
+            value="Explorable"
+            id="checkbox-Explorable"
             onChange={(e) =>
               handleTagSelect(
                 e.currentTarget.checked,
@@ -194,47 +212,8 @@ const Filter = ({ onUpdate }: Props) => {
               )
             }
           />
-          <label htmlFor="checkbox-Reading" className="label inline ml-5">
-            Reading
-          </label>
-        </li>
-        <li>
-          <input
-            type="checkbox"
-            className="type checkbox"
-            value="Interactive"
-            id="checkbox-Interactive"
-            onChange={(e) =>
-              handleTagSelect(
-                e.currentTarget.checked,
-                e.target.value,
-                e.target.classList.item(0)
-              )
-            }
-          />
-          <label htmlFor="checkbox-Interactive" className="label inline ml-5">
-            Interactive
-          </label>
-        </li>
-        <li>
-          <input
-            type="checkbox"
-            className="type checkbox"
-            value="Guided Exploration"
-            id="checkbox-Guided Exploration"
-            onChange={(e) =>
-              handleTagSelect(
-                e.currentTarget.checked,
-                e.target.value,
-                e.target.classList.item(0)
-              )
-            }
-          />
-          <label
-            htmlFor="checkbox-Guided Exploration"
-            className="label inline ml-5"
-          >
-            Guided Exploration
+          <label htmlFor="checkbox-Explorable" className="label inline ml-5">
+            Explorable
           </label>
         </li>
       </ul>
