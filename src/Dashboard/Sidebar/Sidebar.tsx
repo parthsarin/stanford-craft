@@ -39,6 +39,10 @@ const Sidebar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   });
+  
+  function sendEmail(email = 'vrlee@stanford.edu') {
+    window.location.assign("mailto:" + email);
+  };
 
   return (
     <aside
@@ -78,9 +82,11 @@ const Sidebar = () => {
           </SidebarButton>
 
           <li className="flex-1"></li>
-          <SidebarButton text="Contact" path="/dash/contact">
+          
+          <SidebarButton text="Contact" onClick={() => {sendEmail() }}>
             <FontAwesomeIcon icon={faEnvelope} className={`w-26 h-26`} />
-          </SidebarButton>
+          </SidebarButton>          
+
           <SidebarButton text="About" path="/dash/about">
             <FontAwesomeIcon icon={faInfoCircle} className={`w-26 h-26`} />
           </SidebarButton>
