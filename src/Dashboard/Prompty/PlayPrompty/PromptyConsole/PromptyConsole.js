@@ -1,6 +1,6 @@
 import { getFunctions, httpsCallable } from "firebase/functions";
 import { useState, useEffect } from "react";
-import { getFirestore, doc, getDoc } from "firebase/firestore";
+import { getFirestore, doc } from "firebase/firestore";
 import { useDocument } from "react-firebase-hooks/firestore";
 import Loader, { LoaderInline } from "../../../../Generic/Loader/Loader";
 import { MySwal } from "../../../../Generic/Notify";
