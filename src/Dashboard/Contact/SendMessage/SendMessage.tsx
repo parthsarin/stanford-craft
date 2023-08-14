@@ -11,7 +11,7 @@ const SendMessage = () => {
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [topic, setTopic] = useState<MessageTopic | "">("");
+  const [topic, setTopic] = useState<MessageTopic | null>(null);
   const [message, setMessage] = useState("");
 
   useEffect(() => {
@@ -23,7 +23,7 @@ const SendMessage = () => {
   const clearData = () => {
     setName(user && user.displayName ? user.displayName : "");
     setEmail(user && user.email ? user.email : "");
-    setTopic("");
+    setTopic(null);
     setMessage("");
   };
 
@@ -93,6 +93,7 @@ const SendMessage = () => {
           onChange={(e) => {
             if (e) setTopic(e.value as MessageTopic);
           }}
+          value={topic ? { value: topic, label: topic } : null}
         />
 
         <label htmlFor="message" className="mt-10 w-full font-bold">

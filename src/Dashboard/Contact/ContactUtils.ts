@@ -73,7 +73,7 @@ function signUpForUpdates(email: string) {
 function sendMessage(
   name: string,
   email: string,
-  topic: MessageTopic | "",
+  topic: MessageTopic | null,
   message: string,
   clearData: () => void
 ) {

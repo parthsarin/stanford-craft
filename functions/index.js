@@ -73,16 +73,6 @@ exports.broadcastMessage = onDocumentCreated(
   }
 );
 
-async function getPromptyInstanceTryLimit(code) {
-  const db = getFirestore();
-  const doc = await db.collection("prompty").doc(code).get();
-  if (!doc.exists) {
-    throw new functions.https.HttpsError("not-found", "No such document!");
-  }
-
-  return doc.data().tryLimit;
-}
-
 async function getCurrentGenerations(code, userId) {
   const db = getFirestore();
   const doc = await db
@@ -103,17 +93,21 @@ async function getCurrentGenerations(code, userId) {
   return doc.data().generations;
 }
 
-async function checkIfTeacher(userId) {
-  const db = getFirestore();
-  const doc = await db.collection("users").doc(userId).get();
-  if (!doc.exists) {
-    throw new functions.https.HttpsError("permission-denied", "User Not Found");
-  }
-  let role = doc.data()?.role;
-  if (role === "teacher") {
-    return true;
-  }
-  return false;
+function isNumberOfGenerationWithinLimit(entries, limit) {
+  if (entries.length === 0) return true;
+
+  // Sort entries by logTime in descending order
+  entries.sort((a, b) => b.logTime - a.logTime);
+
+  // Take the first entry as the latest logTime
+  const latestLogTime = entries[0].logTime;
+
+  // Count entries within 60 minutes from the latest logTime
+  const countWithin60Minutes = entries.filter(
+    (entry) => latestLogTime - entry.logTime <= 3600000
+  ).length;
+
+  return countWithin60Minutes <= limit;
 }
 
 exports.moderatePromptAndCreateCompletion = functions
@@ -126,42 +120,21 @@ exports.moderatePromptAndCreateCompletion = functions
         data.userId
       );
 
-      //check if the role of the user is teacher
-      const isTeacher = await checkIfTeacher(data.userId);
-
-      if (isTeacher) {
-        //unlimited tries if teacher
-        return await moderateAndCreateCompletion(
-          data.prompt,
-          data.scaffoldMode,
-          data.instanceId,
-          data.userId,
-          currentGenerations
-        );
-      } else {
-        //Get the tryLimit Count of the Instance
-        const instanceTryLimits = await getPromptyInstanceTryLimit(
-          data.instanceId
-        );
-
-        //Get the number of tries by the user
-        const userTriesCount = currentGenerations.length;
-
-        //Check if the user hasn't exhausted the tries
-        if (instanceTryLimits <= userTriesCount) {
-          throw new functions.https.HttpsError(
-            "permission-denied",
-            "You have already exhausted the maximum number of tries!"
-          );
-        }
-        return await moderateAndCreateCompletion(
-          data.prompt,
-          data.scaffoldMode,
-          data.instanceId,
-          data.userId,
-          currentGenerations
+      //check if the user has generated more than 20 responses in the last 60 minutes
+      if (!isNumberOfGenerationWithinLimit(currentGenerations, 20)) {
+        throw new functions.https.HttpsError(
+          "permission-denied",
+          "You have generated more than 20 responses in the last 60 minutes. Please try again later."
         );
       }
+
+      return await moderateAndCreateCompletion(
+        data.prompt,
+        data.scaffoldMode,
+        data.instanceId,
+        data.userId,
+        currentGenerations
+      );
     } catch (e) {
       throw new functions.https.HttpsError("unknown", e);
     }
@@ -210,12 +183,14 @@ async function moderateAndCreateCompletion(
         context: prompt.contextText,
         task: prompt.taskText,
         iterations: responsesData,
+        logTime: Date.now(),
       };
     } else {
       obj = {
         scaffold: false,
         promptText: prompt.openPromptText,
         iterations: responsesData,
+        logTime: Date.now(),
       };
     }
 

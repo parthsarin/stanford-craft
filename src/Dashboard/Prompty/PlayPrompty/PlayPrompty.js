@@ -73,13 +73,7 @@ const PlayPrompty = () => {
   if (pageLoading || !joinCode || !promptyData || !user) return <Loader />;
   return (
     <>
-      <PromptyConsole
-        instanceCode={joinCode}
-        identifier={user.uid}
-        instruction={promptyData.instruction}
-        limit={promptyData.tryLimit}
-        helpInstructions={promptyData.helpText}
-      />
+      <PromptyConsole instanceCode={joinCode} identifier={user.uid} />
     </>
   );
 };

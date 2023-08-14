@@ -1,0 +1,142 @@
+/* Hero */
+section.hero {
+	width: 100vw;
+	position: relative;
+	@apply bg-sky;
+}
+
+.hero-wrap {
+	padding-block: 10rem;
+	@apply text-lagunita-dark;
+	position: relative;
+	z-index: 2;
+}
+
+.hero-img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	mix-blend-mode: screen;
+	z-index: 0;
+	pointer-events: none;
+}
+
+.hero-wrap h1 {
+	max-width: 25ch;
+	line-height: 1.1;
+	@apply mb-20;
+}
+
+.hero-text p {
+	max-width: 55ch;
+}
+
+.hero-wrap button {
+	@apply mr-10;
+}
+
+.hero-links {
+	@apply py-20;
+}
+
+/* Home Section: Article */
+.home-section-article {
+	display: inline-flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	column-gap: 10rem;
+	row-gap: 5ch;
+	@apply mt-40 mb-80;
+}
+
+@media screen and (max-width: 950px) {
+	.home-section-article {
+		flex-direction: column;
+	}
+}
+
+.home-section-text {
+	flex: 1;
+}
+
+.home-section-text h2 {
+	@apply text-lagunita-dark;
+	max-width: 30ch;
+	font-size: 1.75em;
+}
+
+.home-section-text p {
+	max-width: 60ch;
+}
+
+.home-section-links {
+	@apply mt-40;
+}
+
+.home-section-image {
+	flex: 1;
+	filter: drop-shadow(10px 10px 0 #734675);
+}
+
+/* Home section: Values */
+.home-section-values {
+	@apply mb-120;
+}
+
+.home-section-values h3 {
+	font-size: 1.5em;
+	position: relative;
+}
+
+.home-section-values h3 span {
+	background: white;
+	padding-right: 3ch;
+	position: relative;
+}
+
+.home-section-values h3:before {
+	width: 100%;
+	height: 1px;
+	background: currentColor;
+	position: absolute;
+	top: 50%;
+	content: " ";
+}
+
+.home-section-values .card {
+	@apply p-20 mb-20 bg-fog-light;
+	display: flex;
+	flex-direction: row;
+	gap: 5ch;
+	align-items: center;
+}
+
+.home-section-values .card-icon svg {
+	width: 8ch;
+	margin-left: 2ch;
+	height: auto;
+}
+
+.home-section-values p {
+	max-width: 75ch;
+}
+
+
+/* Buttons */
+.btn-digital-blue-outline {
+	@apply text-digital-blue;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+	padding-left: 2rem;
+	padding-right: 2rem;
+	transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
+	border: 1px solid currentColor;
+}
+
+.btn-digital-blue-outline:hover {
+	background: rgb(0 108 184 / var(--tw-text-opacity));
+	color: white;
+}
