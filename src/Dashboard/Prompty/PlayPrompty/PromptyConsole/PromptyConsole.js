@@ -17,6 +17,23 @@ async function moderationAndCompletionApiCall(prompt) {
   return await callOpenAi(prompt);
 }
 
+function isNumberOfGenerationWithinLimit(entries, limit) {
+  if (entries.length === 0) return true;
+
+  // Sort entries by logTime in descending order
+  entries.sort((a, b) => b.logTime - a.logTime);
+
+  // Take the first entry as the latest logTime
+  const latestLogTime = entries[0].logTime;
+
+  // Count entries within 60 minutes from the latest logTime
+  const countWithin60Minutes = entries.filter(
+    (entry) => latestLogTime - entry.logTime <= 3600000
+  ).length;
+
+  return countWithin60Minutes <= limit;
+}
+
 const PromptyConsole = (props) => {
   const [roleText, setRoleText] = useState("");
   const [contextText, setContextText] = useState("");
@@ -27,7 +44,6 @@ const PromptyConsole = (props) => {
   const [promptyInstanceData, setPromptyInstanceData] = useState();
   const [responsesData, setResponsesData] = useState([]);
   const [allowGenerate, setAllowGenerate] = useState(false);
-  const [userRole, setUserRole] = useState();
 
   const navigate = useNavigate();
 
@@ -43,18 +59,6 @@ const PromptyConsole = (props) => {
       snapshotListenOptions: { includeMetadataChanges: true },
     }
   );
-
-  useEffect(() => {
-    (async () => {
-      const db = getFirestore();
-      const docRef = doc(db, "users", props.identifier);
-      const docSnap = await getDoc(docRef);
-      const data = docSnap.data();
-      if (data !== undefined) {
-        setUserRole(data.role);
-      }
-    })();
-  }, [props.identifier]);
 
   useEffect(() => {
     instanceData !== undefined && instanceDataFunctions();
@@ -172,8 +176,11 @@ const PromptyConsole = (props) => {
     <>
       <div className="h-screen">
         <div className="bg-slate-100 p-20 h-[230px] overflow-y-scroll">
-          <p className="text-xl mb-6">{props.instruction}</p>
-
+          <p>
+            Enter your prompt to generate responses from a Large Language Model
+            (LLM). You can use the 'Prompt Guide' to help you scaffold your
+            prompt.
+          </p>
           {promptScaffoldMode ? (
             // Scaffold mode
             <div className="grid my-15 grid-cols-3">
@@ -236,8 +243,7 @@ const PromptyConsole = (props) => {
           <div className="mt-5 grid grid-cols-2">
             <div>
               {/* Check for tries */}
-              {props.limit - responsesData.length > 0 ||
-              userRole === "teacher" ? (
+              {isNumberOfGenerationWithinLimit(responsesData, 20) ? (
                 <>
                   <button
                     className="btn-digital-red"
@@ -253,20 +259,17 @@ const PromptyConsole = (props) => {
                   </div>
                 </>
               ) : (
-                <p>No more tries available!</p>
-              )}
-            </div>
-            <div>
-              <div className="float-right">
-                {userRole === "teacher" ? (
-                  <div>⭐Unlimited tries available for you!</div>
-                ) : (
+                <div className="float-right">
+                  <p>
+                    You have used Prompty for more than 20 times in the past one
+                    hour. Please try again after an hour!
+                  </p>
                   <TryCounter
                     availableTry={props.limit - responsesData.length}
                     usedTry={responsesData.length}
                   />
-                )}
-              </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
