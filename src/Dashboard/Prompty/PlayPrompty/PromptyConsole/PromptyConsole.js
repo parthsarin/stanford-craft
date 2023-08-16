@@ -180,10 +180,36 @@ const PromptyConsole = (props) => {
     <>
       <div className="h-screen">
         <div className="bg-slate-100 p-20 h-[260px] overflow-y-scroll">
-          <p className="text-[1.2em] font-bold mb-6">
-            Enter your prompt to generate responses from a Large Language Model
-            (LLM). You can use the 'Prompt Guide' to help you scaffold your
-            prompt.
+          <p className="mb-6">
+            Enter your prompt to generate responses from a{" "}
+            <Tooltip
+              html={
+                <div className="text-left">
+                  <p>
+                    Large Language Model (LLM) is an AI model with billions of
+                    parameters used to generate sequences of text or code.
+                  </p>
+                  <p>
+                    Interested in learning more about LLMs? Check out{" "}
+                    <a href="/#" target="_blank" rel="noreferrer">
+                      this lesson
+                    </a>
+                    .
+                  </p>
+                </div>
+              }
+              theme="light"
+              arrow={true}
+              interactive={true}
+            >
+              <span className="underline">
+                <span className="text-[16px] relative bottom-0 ml-4">
+                  <FontAwesomeIcon icon={faInfoCircle} />
+                </span>
+                Large Language Model (LLM)
+              </span>
+            </Tooltip>
+            . Use the 'Prompt Guide' below to write an effective prompt.
           </p>
 
           {promptScaffoldMode ? (
