@@ -9,7 +9,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
 
-import imgHome from "../img/CRAFT-home-04.jpg";
+import imgHome from "../img/jason-goodman-Oalh2MojUuk-unsplash.jpg";
 import imgHero from "../img/CRAFT-hero.jpg";
 
 import SiteHeader from "../Generic/Menu";
@@ -115,7 +115,7 @@ const Home = () => {
           {/* <div className="home-section-links"><button className="btn-digital-blue-outline" onClick={() => navigate("/dash/resources")}>View the resources</button></div> */}
         </div>
         <div className="home-section-image">
-          <img src={imgHome} alt="" />
+          <img src={imgHome} title="Photo by Jason Goodman on Unsplash" />
         </div>
       </article>
 
