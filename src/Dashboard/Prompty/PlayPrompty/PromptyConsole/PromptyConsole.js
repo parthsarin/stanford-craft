@@ -21,21 +21,50 @@ async function moderationAndCompletionApiCall(prompt) {
   return await callOpenAi(prompt);
 }
 
-function isNumberOfGenerationWithinLimit(entries, limit) {
-  if (entries.length === 0) return true;
+const allowedTries = 5;
 
-  // Sort entries by logTime in descending order
-  entries.sort((a, b) => b.logTime - a.logTime);
+function numberOfGenerationsWithin60Mins(entries) {
+  if (entries.length === 0) {
+    return { lastLogtime: null, numberOfEntries: 0, minutesDifference: 0 };
+  }
 
-  // Take the first entry as the latest logTime
-  const latestLogTime = entries[0].logTime;
+  // Initialize variables to track the latest log time, count of entries within 60 minutes, and the time limit in minutes
+  let timeLimitInMins = 60;
+  let latestLogTime = 0;
+  let countWithin60Minutes = 0;
 
-  // Count entries within 60 minutes from the latest logTime
-  const countWithin60Minutes = entries.filter(
-    (entry) => latestLogTime - entry.logTime <= 3600000
-  ).length;
+  // Get the current time in milliseconds
+  const currentTime = new Date().getTime();
 
-  return countWithin60Minutes <= limit;
+  // Iterate through the log entries
+  for (const entry of entries) {
+    const logTime = entry.logTime;
+
+    // Calculate the minutes difference by dividing the time difference by the time limit
+    const minutesDifference = Math.floor((currentTime - logTime) / 60000);
+
+    // Update the latest log time
+    if (logTime > latestLogTime) {
+      latestLogTime = logTime;
+    }
+
+    // Check if the entry is within 60 minutes and increment the count
+    if (minutesDifference <= timeLimitInMins) {
+      countWithin60Minutes++;
+    }
+  }
+
+  // Calculate the number of minutes it would take to cross 60 minutes from the last log time
+  const minutesDifference = Math.max(
+    0,
+    timeLimitInMins - Math.floor((currentTime - latestLogTime) / 60000)
+  );
+
+  return {
+    lastLogtime: latestLogTime,
+    numberOfEntries: countWithin60Minutes + 1, // Add 1 to count the latest log entry
+    minutesDifference,
+  };
 }
 
 const PromptyConsole = (props) => {
@@ -48,6 +77,11 @@ const PromptyConsole = (props) => {
   const [promptyInstanceData, setPromptyInstanceData] = useState();
   const [responsesData, setResponsesData] = useState([]);
   const [allowGenerate, setAllowGenerate] = useState(false);
+  const [countCheck, setCountCheck] = useState({
+    lastLogtime: null,
+    numberOfEntries: 0,
+    minutesDifference: 0,
+  });
 
   const navigate = useNavigate();
 
@@ -72,8 +106,14 @@ const PromptyConsole = (props) => {
   }, [instanceData]);
 
   useEffect(() => {
-    promptyInstanceData?.generations !== undefined &&
+    if (promptyInstanceData?.generations !== undefined) {
       setResponsesData(promptyInstanceData.generations);
+      let countCheck = numberOfGenerationsWithin60Mins(
+        promptyInstanceData.generations
+      );
+      console.log(countCheck);
+      setCountCheck(countCheck);
+    }
   }, [promptyInstanceData]);
 
   useEffect(() => {
@@ -332,7 +372,7 @@ const PromptyConsole = (props) => {
           <div className="mt-5 grid grid-cols-2">
             <div>
               {/* Check for tries */}
-              {isNumberOfGenerationWithinLimit(responsesData, 4) ? (
+              {countCheck.numberOfEntries <= allowedTries ? (
                 <>
                   <button
                     className={`${
@@ -351,13 +391,16 @@ const PromptyConsole = (props) => {
                 </>
               ) : (
                 <div>
-                  <p>No more tries left.</p>
+                  <p>
+                    No more tries left. Please try again after{" "}
+                    {countCheck.minutesDifference} mins!
+                  </p>
                 </div>
               )}
             </div>
             <div className="inline text-right relative top-10">
               <TryCounter
-                availableTry={5 - responsesData.length}
+                availableTry={allowedTries - responsesData.length}
                 usedTry={responsesData.length}
               />
             </div>
@@ -430,7 +473,7 @@ const TryCounter = (props) => {
     return (
       <>
         <Tooltip
-          title="AI technologies such as LLMs require significant energy and resource expenditure for their training. We are limiting the number of tries available to promote conscious usage."
+          title="AI technologies such as LLMs require significant energy and resource expenditure for their training. We are limiting the number of tries available to promote conscious usage. You can use Prompty to generate responses from AI up to 5 times every 60 minutes."
           theme="light"
           arrow={true}
         >
