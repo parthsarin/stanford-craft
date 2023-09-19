@@ -332,7 +332,7 @@ const PromptyConsole = (props) => {
           <div className="mt-5 grid grid-cols-2">
             <div>
               {/* Check for tries */}
-              {isNumberOfGenerationWithinLimit(responsesData, 20) ? (
+              {isNumberOfGenerationWithinLimit(responsesData, 4) ? (
                 <>
                   <button
                     className={`${
@@ -345,22 +345,21 @@ const PromptyConsole = (props) => {
                   >
                     Generate From AI
                   </button>
-                  <div className="inline ml-10">
+                  <div className="inline relative top-5 ml-10">
                     <ScaffoldButton />
                   </div>
                 </>
               ) : (
-                <div className="float-right">
-                  <p>
-                    You have used Prompty for more than 20 times in the past one
-                    hour. Please try again after an hour!
-                  </p>
-                  <TryCounter
-                    availableTry={props.limit - responsesData.length}
-                    usedTry={responsesData.length}
-                  />
+                <div>
+                  <p>No more tries left.</p>
                 </div>
               )}
+            </div>
+            <div className="inline text-right relative top-10">
+              <TryCounter
+                availableTry={5 - responsesData.length}
+                usedTry={responsesData.length}
+              />
             </div>
           </div>
         </div>
@@ -374,7 +373,10 @@ const PromptyConsole = (props) => {
           )}
           {responsesData.length === 0 ? (
             <>
-              <p className="text-[2em] font-thin text-center mt-[100px]">
+              <p className="text-[3em] text-[#C8C8C8] font-bold text-center mt-[100px] mb-[0px]">
+                Prompty
+              </p>
+              <p className="text-[2em] font-thin text-center mt-[0px]">
                 Enter your prompt and generate responses from AI.
               </p>
             </>
@@ -428,7 +430,7 @@ const TryCounter = (props) => {
     return (
       <>
         <Tooltip
-          title="Generating AI responses require signifant energy and resource expenditure. We are limiting the number of tries available to ensure mindful consumption."
+          title="AI technologies such as LLMs require significant energy and resource expenditure for their training. We are limiting the number of tries available to promote conscious usage."
           theme="light"
           arrow={true}
         >
