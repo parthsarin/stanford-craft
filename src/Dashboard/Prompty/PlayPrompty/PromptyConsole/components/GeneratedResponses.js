@@ -105,7 +105,10 @@ const IndividualTry = (props) => {
               className="m-10 shadow-lg bg-white p-10 overflow-y-scroll"
               key={i}
             >
-              <p className="whitespace-pre-wrap text-[0.9em]">
+              <span className="relative bg-black-50 px-8 py-2 text-[14px] rounded text-white">
+                Option {i + 1}
+              </span>
+              <p className="whitespace-pre-wrap mt-4 text-[0.9em]">
                 {removeInitialNewlinesAndSpaces(iteration.text)}
               </p>
             </div>
