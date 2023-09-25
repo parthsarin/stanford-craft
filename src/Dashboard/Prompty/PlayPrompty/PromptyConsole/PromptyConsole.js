@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { Switch } from "../../../../Generic/Switch/Switch";
 import GeneratedResponses from "./components/GeneratedResponses";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBitcoin } from "@fortawesome/free-brands-svg-icons";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { Tooltip } from "react-tippy";
 
@@ -258,7 +258,7 @@ const PromptyConsole = (props) => {
               <div className="mr-20">
                 <Label
                   for="role"
-                  title="Role"
+                  title="Speaker"
                   color="digital-blue"
                   helperTooltipHTML={
                     <span className="text-left">
@@ -285,7 +285,7 @@ const PromptyConsole = (props) => {
               <div>
                 <Label
                   for="context"
-                  title="Context"
+                  title="Purpose"
                   color="palo-alto"
                   helperTooltipHTML={
                     <span className="text-left">
@@ -315,7 +315,7 @@ const PromptyConsole = (props) => {
               <div className="ml-20">
                 <Label
                   for="task"
-                  title="Task"
+                  title="Audience"
                   color="digital-red"
                   helperTooltipHTML={
                     <span className="text-left">
@@ -479,14 +479,14 @@ const TryCounter = (props) => {
         >
           <FontAwesomeIcon icon={faInfoCircle} />
           <span className="text-xl">Tries Available: </span>
-          {[...Array(props.usedTry)].map((e, i) => (
-            <span className="text-black-30" key={i}>
-              <FontAwesomeIcon icon={faBitcoin} />
-            </span>
-          ))}
           {[...Array(props.availableTry)].map((e, i) => (
             <span className="text-plum" key={i}>
-              <FontAwesomeIcon icon={faBitcoin} />
+              <FontAwesomeIcon icon={faStar} />
+            </span>
+          ))}
+          {[...Array(props.usedTry)].map((e, i) => (
+            <span className="text-black-30" key={i}>
+              <FontAwesomeIcon icon={faStar} />
             </span>
           ))}
         </Tooltip>
