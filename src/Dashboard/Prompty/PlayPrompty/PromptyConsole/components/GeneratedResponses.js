@@ -43,7 +43,7 @@ const GeneratedResponses = (props) => {
           // Scaffolded Prompt
           <div className="mx-10 mb-2">
             <div className="mb-0 mt-0 " style={{ lineHeight: "26px" }}>
-              <Tooltip title="Role" arrow={true}>
+              <Tooltip title="Speaker" arrow={true}>
                 <span
                   className="mr-6 px-6"
                   style={{ backgroundColor: "#0000ff26" }}
@@ -51,7 +51,7 @@ const GeneratedResponses = (props) => {
                   {props.responses[selectedResponse].role}
                 </span>
               </Tooltip>
-              <Tooltip title="Context" arrow={true}>
+              <Tooltip title="Purpose" arrow={true}>
                 <span
                   className="mr-6 px-6"
                   style={{ backgroundColor: "#00800026" }}
@@ -59,7 +59,7 @@ const GeneratedResponses = (props) => {
                   {props.responses[selectedResponse].context}
                 </span>
               </Tooltip>
-              <Tooltip title="Task" arrow={true}>
+              <Tooltip title="Audience" arrow={true}>
                 <span
                   className="mr-6 px-6 my-8"
                   style={{ backgroundColor: "#a52a2a26" }}
