@@ -290,12 +290,12 @@ const PromptyConsole = (props) => {
                   helperTooltipHTML={
                     <span className="text-left">
                       <p className="mb-4">
-                        What should the AI base the content on?
+                        What is the purpose of the written piece?
                       </p>
                       <p className="mb-2">
                         <i>
-                          Example: Currently, there is an ongoing nutrition
-                          crisis in the United States.
+                          Example: You are writing a piece on the importance of
+                          voting.
                         </i>
                       </p>
                     </span>
@@ -319,11 +319,12 @@ const PromptyConsole = (props) => {
                   color="digital-red"
                   helperTooltipHTML={
                     <span className="text-left">
-                      <p className="mb-4">What does the AI need to do?</p>
+                      <p className="mb-4">
+                        Who is the audience of the written piece?
+                      </p>
                       <p className="mb-2">
                         <i>
-                          Example: Write a letter to the President of the United
-                          States suggesting reforms for the ongoing food crisis.
+                          Example: The audience is the United States Congress.
                         </i>
                       </p>
                     </span>
