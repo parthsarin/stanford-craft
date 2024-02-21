@@ -174,6 +174,17 @@ async function moderateAndCreateCompletion(
         promptText
     );
 
+    // rewrite responses data to the format of the text-davinci-003 model
+    let newResponsesData = [];
+    for (let i = 0; i < responsesData.length; i++) {
+      newResponsesData.push({
+        index: responsesData[i].index,
+        finish_reason: responsesData[i].finish_reason,
+        logprobs: responsesData[i].logprobs,
+        text: responsesData[i].message.content,
+      });
+    }
+
     //save openAI response to the user's firestore data
     //create object according to the scaffold mode
     if (scaffoldMode) {
@@ -182,14 +193,14 @@ async function moderateAndCreateCompletion(
         role: prompt.roleText,
         context: prompt.contextText,
         task: prompt.taskText,
-        iterations: responsesData,
+        iterations: newResponsesData,
         logTime: Date.now(),
       };
     } else {
       obj = {
         scaffold: false,
         promptText: prompt.openPromptText,
-        iterations: responsesData,
+        iterations: newResponsesData,
         logTime: Date.now(),
       };
     }

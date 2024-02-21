@@ -111,8 +111,6 @@ const IndividualTry = (props) => {
               <p className="whitespace-pre-wrap mt-4 text-[0.9em]">
                 {iteration.text &&
                   removeInitialNewlinesAndSpaces(iteration.text)}
-                {iteration.message &&
-                  removeInitialNewlinesAndSpaces(iteration.message.content)}
               </p>
             </div>
           );
