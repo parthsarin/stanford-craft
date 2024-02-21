@@ -1,18 +1,34 @@
-const { Configuration, OpenAIApi } = require("openai");
-
-const configuration = new Configuration({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+const axios = require("axios");
 
 module.exports.openAiTextCompletion = async function (prompt) {
-  const openai = new OpenAIApi(configuration);
-  const completion = await openai.createCompletion({
-    model: "text-davinci-003",
-    prompt: prompt,
+  const data = {
+    messages: [
+      {
+        role: "system",
+        content: prompt,
+      },
+    ],
+    model: "gpt-3.5-turbo",
     max_tokens: 1024,
     n: 3,
     stop: null,
     temperature: 0.7,
-  });
-  return completion.data.choices;
+  };
+
+  const config = {
+    method: "post",
+    url: "https://api.openai.com/v1/chat/completions",
+    headers: {
+      Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+      "Content-Type": "application/json",
+    },
+    data: data,
+  };
+
+  try {
+    const response = await axios(config);
+    return response.data.choices;
+  } catch (error) {
+    console.error(error);
+  }
 };

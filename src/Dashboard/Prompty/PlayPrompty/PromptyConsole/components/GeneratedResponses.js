@@ -109,7 +109,10 @@ const IndividualTry = (props) => {
                 Option {i + 1}
               </span>
               <p className="whitespace-pre-wrap mt-4 text-[0.9em]">
-                {removeInitialNewlinesAndSpaces(iteration.text)}
+                {iteration.text &&
+                  removeInitialNewlinesAndSpaces(iteration.text)}
+                {iteration.message &&
+                  removeInitialNewlinesAndSpaces(iteration.message.content)}
               </p>
             </div>
           );

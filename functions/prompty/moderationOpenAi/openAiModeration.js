@@ -1,13 +1,18 @@
-const { Configuration, OpenAIApi } = require("openai");
-
-const configuration = new Configuration({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+const axios = require("axios");
 
 module.exports.openAiModeration = async function (prompt) {
-  const openai = new OpenAIApi(configuration);
-  const moderation = await openai.createModeration({
-    input: prompt,
-  });
-  return moderation.data.results[0];
+  const response = await axios.post(
+    "https://api.openai.com/v1/moderations",
+    {
+      input: prompt,
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+    }
+  );
+
+  return response.data.results[0];
 };
