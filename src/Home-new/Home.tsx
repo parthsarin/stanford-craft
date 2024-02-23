@@ -18,9 +18,11 @@ import Footer from "./Footer/Footer";
 import { signUpForUpdates } from "../Dashboard/Contact/ContactUtils";
 import { ScrollRestoration } from "react-router-dom";
 import { getAnalytics, logEvent } from "firebase/analytics";
+import usePageTracking from "../Generic/usePageTracking";
 
 const Home = () => {
   const navigate = useNavigate();
+  usePageTracking();
   return (
     <main>
       <SiteHeader></SiteHeader>
