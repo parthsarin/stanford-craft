@@ -1,7 +1,9 @@
 import { ScrollRestoration } from "react-router-dom";
 import PromptyInitialize from "./components/PromptyInitialize.js";
+import usePageTracking from "../../Generic/usePageTracking";
 
 const Prompty = () => {
+  usePageTracking();
   return (
     <>
       <div className="p-20">

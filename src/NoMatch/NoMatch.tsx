@@ -6,10 +6,11 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
 import { getBackground } from "../Generic/Background";
+import usePageTracking from "../Generic/usePageTracking";
 
 const NoMatch = () => {
   const navigate = useNavigate();
-
+  usePageTracking();
   return (
     <div
       className="w-full h-full flex items-center justify-center fixed top-0"

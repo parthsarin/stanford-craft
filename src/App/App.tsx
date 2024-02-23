@@ -45,6 +45,7 @@ import ExploreQuiz from "../Dashboard/Analyze/ExploreQuiz";
 import Contact from "../Dashboard/Contact";
 import ViewMessage from "../Dashboard/Contact/ViewMessages/ViewMessage";
 
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
@@ -74,6 +75,7 @@ const router = createBrowserRouter(
 );
 
 const App = () => {
+
   const [user, setUser] = useState<User | null>(null);
   const [userLoading, setUserLoading] = useState<boolean>(true);
 
@@ -84,6 +86,7 @@ const App = () => {
     });
     return unsubscribe;
   }, []);
+  
 
   return (
     <>

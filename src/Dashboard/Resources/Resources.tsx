@@ -16,6 +16,8 @@ import {
   setDoc,
 } from "firebase/firestore";
 
+import usePageTracking from "../../Generic/usePageTracking";
+
 const defaultResources = require("./resources.json") as Resource[];
 
 const Resources = () => {
@@ -103,6 +105,8 @@ const Resources = () => {
       });
   };
 
+  usePageTracking();
+  
   return (
     <div className="flex-1 p-20">
       <h1 className="mb-20 mt-0">Resources</h1>

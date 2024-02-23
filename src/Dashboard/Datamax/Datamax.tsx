@@ -9,8 +9,10 @@ import { LoaderInline } from "../../Generic/Loader";
 import { MySwal } from "../../Generic/Notify";
 import { QuizDoc, QuizPreviewCardProps } from "./DatamaxTypes";
 import QuizPreviewCard from "./QuizPreviewCard";
+import usePageTracking from "../../Generic/usePageTracking";
 
 const Datamax = () => {
+  usePageTracking();
   const navigate = useNavigate();
   const protectedNav = useProtectedNav();
   const { user } = useContext(UserContext);

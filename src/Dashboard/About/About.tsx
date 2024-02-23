@@ -8,9 +8,11 @@ import Funder from "./Funder";
 import { ScrollRestoration, useNavigate } from "react-router-dom";
 import { signUpForUpdates } from "../Contact/ContactUtils";
 import { getAnalytics, logEvent } from "firebase/analytics";
+import usePageTracking from "../../Generic/usePageTracking";
 
 const About = () => {
   const navigate = useNavigate();
+  usePageTracking();
   return (
     <div className="p-20 w-full md:w-2/3">
       <h1 className="mb-20">About CRAFT</h1>
