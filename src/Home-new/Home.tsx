@@ -117,7 +117,11 @@ const Home = () => {
           {/* <div className="home-section-links"><button className="btn-digital-blue-outline" onClick={() => navigate("/dash/resources")}>View the resources</button></div> */}
         </div>
         <div className="home-section-image">
-          <img src={imgHome} title="Photo by Jason Goodman on Unsplash" />
+          <img
+            src={imgHome}
+            alt="teacher and students in a classroom"
+            title="Photo by Jason Goodman on Unsplash"
+          />
         </div>
       </article>
 

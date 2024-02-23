@@ -1,12 +1,16 @@
 import { getFunctions, httpsCallable } from "firebase/functions";
 import { useState, useEffect } from "react";
-import { getFirestore, doc, getDoc } from "firebase/firestore";
+import { getFirestore, doc } from "firebase/firestore";
 import { useDocument } from "react-firebase-hooks/firestore";
 import Loader, { LoaderInline } from "../../../../Generic/Loader/Loader";
 import { MySwal } from "../../../../Generic/Notify";
 import { useNavigate } from "react-router-dom";
 import { Switch } from "../../../../Generic/Switch/Switch";
 import GeneratedResponses from "./components/GeneratedResponses";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
+import { Tooltip } from "react-tippy";
 
 async function moderationAndCompletionApiCall(prompt) {
   const functions = getFunctions();
@@ -15,6 +19,52 @@ async function moderationAndCompletionApiCall(prompt) {
     "moderatePromptAndCreateCompletion"
   );
   return await callOpenAi(prompt);
+}
+
+const allowedTries = 5;
+
+function numberOfGenerationsWithin60Mins(entries) {
+  if (entries.length === 0) {
+    return { lastLogtime: null, numberOfEntries: 0, minutesDifference: 0 };
+  }
+
+  // Initialize variables to track the latest log time, count of entries within 60 minutes, and the time limit in minutes
+  let timeLimitInMins = 60;
+  let latestLogTime = 0;
+  let countWithin60Minutes = 0;
+
+  // Get the current time in milliseconds
+  const currentTime = new Date().getTime();
+
+  // Iterate through the log entries
+  for (const entry of entries) {
+    const logTime = entry.logTime;
+
+    // Calculate the minutes difference by dividing the time difference by the time limit
+    const minutesDifference = Math.floor((currentTime - logTime) / 60000);
+
+    // Update the latest log time
+    if (logTime > latestLogTime) {
+      latestLogTime = logTime;
+    }
+
+    // Check if the entry is within 60 minutes and increment the count
+    if (minutesDifference <= timeLimitInMins) {
+      countWithin60Minutes++;
+    }
+  }
+
+  // Calculate the number of minutes it would take to cross 60 minutes from the last log time
+  const minutesDifference = Math.max(
+    0,
+    timeLimitInMins - Math.floor((currentTime - latestLogTime) / 60000)
+  );
+
+  return {
+    lastLogtime: latestLogTime,
+    numberOfEntries: countWithin60Minutes + 1, // Add 1 to count the latest log entry
+    minutesDifference,
+  };
 }
 
 const PromptyConsole = (props) => {
@@ -27,7 +77,11 @@ const PromptyConsole = (props) => {
   const [promptyInstanceData, setPromptyInstanceData] = useState();
   const [responsesData, setResponsesData] = useState([]);
   const [allowGenerate, setAllowGenerate] = useState(false);
-  const [userRole, setUserRole] = useState();
+  const [countCheck, setCountCheck] = useState({
+    lastLogtime: null,
+    numberOfEntries: 0,
+    minutesDifference: 0,
+  });
 
   const navigate = useNavigate();
 
@@ -45,18 +99,6 @@ const PromptyConsole = (props) => {
   );
 
   useEffect(() => {
-    (async () => {
-      const db = getFirestore();
-      const docRef = doc(db, "users", props.identifier);
-      const docSnap = await getDoc(docRef);
-      const data = docSnap.data();
-      if (data !== undefined) {
-        setUserRole(data.role);
-      }
-    })();
-  }, [props.identifier]);
-
-  useEffect(() => {
     instanceData !== undefined && instanceDataFunctions();
     function instanceDataFunctions() {
       setPromptyInstanceData(instanceData.data());
@@ -64,8 +106,14 @@ const PromptyConsole = (props) => {
   }, [instanceData]);
 
   useEffect(() => {
-    promptyInstanceData?.generations !== undefined &&
+    if (promptyInstanceData?.generations !== undefined) {
       setResponsesData(promptyInstanceData.generations);
+      let countCheck = numberOfGenerationsWithin60Mins(
+        promptyInstanceData.generations
+      );
+      console.log(countCheck);
+      setCountCheck(countCheck);
+    }
   }, [promptyInstanceData]);
 
   useEffect(() => {
@@ -171,14 +219,58 @@ const PromptyConsole = (props) => {
   return (
     <>
       <div className="h-screen">
-        <div className="bg-slate-100 p-20 h-[230px] overflow-y-scroll">
-          <p className="text-xl mb-6">{props.instruction}</p>
+        <div className="bg-slate-100 p-20 h-[260px] overflow-y-scroll">
+          <p className="mb-6">
+            Enter your prompt to generate responses from a{" "}
+            <Tooltip
+              html={
+                <div className="text-left">
+                  <p>
+                    Large Language Model (LLM) is an AI model with billions of
+                    parameters used to generate sequences of text or code.
+                  </p>
+                  <p>
+                    Interested in learning more about LLMs? Check out{" "}
+                    <a href="/#" target="_blank" rel="noreferrer">
+                      this lesson
+                    </a>
+                    .
+                  </p>
+                </div>
+              }
+              theme="light"
+              arrow={true}
+              interactive={true}
+            >
+              <span className="underline">
+                <span className="text-[16px] relative bottom-0 ml-4">
+                  <FontAwesomeIcon icon={faInfoCircle} />
+                </span>
+                Large Language Model (LLM)
+              </span>
+            </Tooltip>
+            . Use the 'Prompt Guide' below to write an effective prompt.
+          </p>
 
           {promptScaffoldMode ? (
             // Scaffold mode
             <div className="grid my-15 grid-cols-3">
               <div className="mr-20">
-                <Label for="role" title="Role" color="blue" />
+                <Label
+                  for="role"
+                  title="Speaker"
+                  color="digital-blue"
+                  helperTooltipHTML={
+                    <span className="text-left">
+                      <p className="mb-4">
+                        Who should the AI act like when writing this piece?
+                      </p>
+                      <p className="mb-2">
+                        <i>Example: You are a concerned citizen.</i>
+                      </p>
+                    </span>
+                  }
+                />
                 <textarea
                   id="role"
                   value={roleText}
@@ -191,7 +283,24 @@ const PromptyConsole = (props) => {
                 ></textarea>
               </div>
               <div>
-                <Label for="context" title="Context" color="green" />
+                <Label
+                  for="context"
+                  title="Purpose"
+                  color="palo-alto"
+                  helperTooltipHTML={
+                    <span className="text-left">
+                      <p className="mb-4">
+                        What is the purpose of the written piece?
+                      </p>
+                      <p className="mb-2">
+                        <i>
+                          Example: You are writing a piece on the importance of
+                          voting.
+                        </i>
+                      </p>
+                    </span>
+                  }
+                />
                 <textarea
                   id="context"
                   value={contextText}
@@ -204,7 +313,23 @@ const PromptyConsole = (props) => {
                 ></textarea>
               </div>
               <div className="ml-20">
-                <Label for="task" title="Task" color="brown" />
+                <Label
+                  for="task"
+                  title="Audience"
+                  color="digital-red"
+                  helperTooltipHTML={
+                    <span className="text-left">
+                      <p className="mb-4">
+                        Who is the audience of the written piece?
+                      </p>
+                      <p className="mb-2">
+                        <i>
+                          Example: The audience is the United States Congress.
+                        </i>
+                      </p>
+                    </span>
+                  }
+                />
                 <textarea
                   id="task"
                   value={taskText}
@@ -220,7 +345,19 @@ const PromptyConsole = (props) => {
           ) : (
             // Open Prompt
             <div className="my-15">
-              <Label for="openPrompt" title="Prompt" color="gray" />
+              <Label
+                for="openPrompt"
+                title="Prompt"
+                color="stone"
+                helperTooltipHTML={
+                  <span className="text-left">
+                    <p className="mb-4">
+                      Write a prompt that completely conveys what you intend to
+                      get from the AI.
+                    </p>
+                  </span>
+                }
+              />
               <textarea
                 id="openPrompt"
                 value={openPromptText}
@@ -236,11 +373,12 @@ const PromptyConsole = (props) => {
           <div className="mt-5 grid grid-cols-2">
             <div>
               {/* Check for tries */}
-              {props.limit - responsesData.length > 0 ||
-              userRole === "teacher" ? (
+              {countCheck.numberOfEntries <= allowedTries ? (
                 <>
                   <button
-                    className="btn-digital-red"
+                    className={`${
+                      allowGenerate ? "bg-black-40" : "bg-digital-red"
+                    } text-white px-20 py-10 rounded `}
                     disabled={allowGenerate ? true : false}
                     onClick={() => {
                       generateFromOpenAi(props.identifier, props.instanceCode);
@@ -248,38 +386,41 @@ const PromptyConsole = (props) => {
                   >
                     Generate From AI
                   </button>
-                  <div className="inline ml-10">
+                  <div className="inline relative top-5 ml-10">
                     <ScaffoldButton />
                   </div>
                 </>
               ) : (
-                <p>No more tries available!</p>
+                <div>
+                  <p>
+                    No more tries left. Please try again after{" "}
+                    {countCheck.minutesDifference} mins!
+                  </p>
+                </div>
               )}
             </div>
-            <div>
-              <div className="float-right">
-                {userRole === "teacher" ? (
-                  <div>⭐Unlimited tries available for you!</div>
-                ) : (
-                  <TryCounter
-                    availableTry={props.limit - responsesData.length}
-                    usedTry={responsesData.length}
-                  />
-                )}
-              </div>
+            <div className="inline text-right relative top-10">
+              <TryCounter
+                availableTry={allowedTries - responsesData.length}
+                usedTry={responsesData.length}
+              />
             </div>
           </div>
         </div>
 
-        <div className="p-20 h-[calc(100%-230px)] bg-foggy-light overflow-hidden">
+        <div className="p-20 h-[calc(100%-260px)] bg-foggy-light overflow-hidden">
           {loader && (
             <div className="text-center">
               <LoaderInline />
+              <p>This might take some time. Please be patient!</p>
             </div>
           )}
           {responsesData.length === 0 ? (
             <>
-              <p className="text-[2em] font-thin text-center mt-[100px]">
+              <p className="text-[3em] text-[#C8C8C8] font-bold text-center mt-[100px] mb-[0px]">
+                Prompty
+              </p>
+              <p className="text-[2em] font-thin text-center mt-[0px]">
                 Enter your prompt and generate responses from AI.
               </p>
             </>
@@ -301,21 +442,27 @@ const Label = (props) => {
     <>
       <label htmlFor={props.for} className="block ml-6">
         <span
-          className="rounded-t mt-0"
+          className={`rounded-t mt-0 bg-${props.color}`}
           style={{
-            backgroundColor: props.color,
-            height: "20px",
-            width: "70px",
+            height: "24px",
+            padding: "0px 15px",
+            width: "fit-content",
             display: "block",
             textAlign: "center",
             color: "white",
           }}
         >
-          <small
-            style={{ fontSize: "16px", position: "relative", bottom: "4px" }}
-          >
-            {props.title}
-          </small>
+          <Tooltip html={props.helperTooltipHTML} theme="light" arrow={true}>
+            <small
+              style={{ fontSize: "16px", position: "relative", bottom: "2px" }}
+            >
+              {props.title}
+            </small>
+
+            <span className="text-[16px] relative bottom-1 ml-4">
+              <FontAwesomeIcon icon={faInfoCircle} />
+            </span>
+          </Tooltip>
         </span>
       </label>
     </>
@@ -326,17 +473,24 @@ const TryCounter = (props) => {
   if (props.usedTry >= 0 && props.availableTry >= 0) {
     return (
       <>
-        <span className="text-xl">Tries Available: </span>
-        {[...Array(props.usedTry)].map((e, i) => (
-          <span className="text-gray-400 text-2xl" key={i}>
-            ★
-          </span>
-        ))}
-        {[...Array(props.availableTry)].map((e, i) => (
-          <span className="text-orange-400 text-2xl" key={i}>
-            ★
-          </span>
-        ))}
+        <Tooltip
+          title="AI technologies such as LLMs require significant energy and resource expenditure for their training. We are limiting the number of tries available to promote conscious usage. You can use Prompty to generate responses from AI up to 5 times every 60 minutes."
+          theme="light"
+          arrow={true}
+        >
+          <FontAwesomeIcon icon={faInfoCircle} />
+          <span className="text-xl">Tries Available: </span>
+          {[...Array(props.availableTry)].map((e, i) => (
+            <span className="text-plum" key={i}>
+              <FontAwesomeIcon icon={faStar} />
+            </span>
+          ))}
+          {[...Array(props.usedTry)].map((e, i) => (
+            <span className="text-black-30" key={i}>
+              <FontAwesomeIcon icon={faStar} />
+            </span>
+          ))}
+        </Tooltip>
       </>
     );
   }
