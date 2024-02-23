@@ -22,13 +22,13 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 getAnalytics(app);
-const functions = getFunctions(app);
-const db = getFirestore();
+// const functions = getFunctions(app);
+// const db = getFirestore();
 
-if (window.location.hostname === "localhost") {
-  connectFunctionsEmulator(functions, "localhost", 5001);
-  connectFirestoreEmulator(db, "localhost", 8080);
-}
+// if (window.location.hostname === "localhost") {
+//   connectFunctionsEmulator(functions, "localhost", 5001);
+//   // connectFirestoreEmulator(db, "localhost", 8080);
+// }
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
