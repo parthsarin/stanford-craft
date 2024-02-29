@@ -9,6 +9,7 @@ const DEV_TEAM = [
 
 const COMMS_TEAM = [
   // "psarin@stanford.edu",
+  "cbywater@stanford.edu",
   "jrabin@stanford.edu",
   "jwolf@stanford.edu",
   "vrlee@stanford.edu",
