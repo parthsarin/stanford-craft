@@ -1,13 +1,14 @@
 const { logger } = require("firebase-functions/v1");
 
 const DEV_TEAM = [
-  "psarin@stanford.edu",
+  "dguimara@stanford.edu",
+  // "psarin@stanford.edu",
   "isabelrs@stanford.edu",
   "deepakvd@stanford.edu",
 ];
 
 const COMMS_TEAM = [
-  "psarin@stanford.edu",
+  // "psarin@stanford.edu",
   "jrabin@stanford.edu",
   "jwolf@stanford.edu",
   "vrlee@stanford.edu",
@@ -16,7 +17,7 @@ const COMMS_TEAM = [
 const FUNDRAISING_TEAM = [
   "vrlee@stanford.edu",
   "pfiden@stanford.edu",
-  "psarin@stanford.edu",
+  // "psarin@stanford.edu",
 ];
 
 let NEED_TO_KNOW = {
@@ -27,21 +28,21 @@ let NEED_TO_KNOW = {
     "raycellegarcia@stanford.edu",
   ],
   "Media inquiry": [...COMMS_TEAM],
-  "Partnership inquiry": ["vrlee@stanford.edu", "psarin@stanford.edu"],
+  "Partnership inquiry": ["vrlee@stanford.edu", "cbywater@stanford.edu"],
   "Make a gift to the project": [...FUNDRAISING_TEAM],
   "Other (please specify)": ["vrlee@stanford.edu"],
 };
 
-if (process.env.FUNCTIONS_EMULATOR) {
-  NEED_TO_KNOW = {
-    "Report a bug": ["psarin@stanford.edu"],
-    "Request a feature": ["psarin@stanford.edu"],
-    "Media inquiry": ["psarin@stanford.edu"],
-    "Partnership inquiry": ["psarin@stanford.edu"],
-    "Make a gift to the project": ["psarin@stanford.edu"],
-    "Other (please specify)": ["psarin@stanford.edu"],
-  };
-}
+// if (process.env.FUNCTIONS_EMULATOR) {
+//   NEED_TO_KNOW = {
+//     "Report a bug": ["psarin@stanford.edu"],
+//     "Request a feature": ["psarin@stanford.edu"],
+//     "Media inquiry": ["psarin@stanford.edu"],
+//     "Partnership inquiry": ["psarin@stanford.edu"],
+//     "Make a gift to the project": ["psarin@stanford.edu"],
+//     "Other (please specify)": ["psarin@stanford.edu"],
+//   };
+// }
 
 module.exports.broadcastMessage = (db, event) => {
   const data = event.data.data();
